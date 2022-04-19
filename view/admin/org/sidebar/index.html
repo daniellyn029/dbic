@@ -1,0 +1,84 @@
+<!-- Left side column. contains the logo and sidebar -->
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img ng-src="{{ dashboard.values.userInformation.pic }}" style="width:25px" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ dashboard.values.userInformation.fname + ' ' + dashboard.values.userInformation.lname }}</p>
+        </div>
+      </div>
+     
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" ng-init="activeclass()">  
+		<!--li ng-show=" dashboard.values.userInformation.dblist.length > 1 " class="header">ENTITIES</li>
+		<li ng-show=" dashboard.values.userInformation.dblist.length > 1 " class="treeview" title="Branches">
+			<a>
+				<i style="background: url('assets/images/icons/sidebar/org/Switching.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i>
+				<span>
+					<select style="color: white;width: 90%;height: 34px;background: #222d32;border-color: #222d32;border:none" ng-model="global_branch" ng-change="changeBranch(global_branch)" ng-options="dblist.id as dblist.alias for dblist in dashboard.values.userInformation.dblist " >					
+					</select>
+				</span>
+			</a>
+        </li-->
+      <li class="header">MAIN NAVIGATION</li>
+	  <li id="home" >
+        <a href="#/admin/home" >
+			<i style="background: url('assets/images/icons/sidebar/org/Dashboard.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Back To Dashboard</span>        
+        </a>
+      </li>	
+	  
+	  <li id="struct" >
+        <a href="#/admin/org/struct" >
+          <i style="background: url('assets/images/icons/sidebar/org/Organizational Structure.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Structure</span>        
+        </a>
+      </li>
+	  
+	  <li id="company" >
+        <a href="#/admin/org/company" >
+			<i style="background: url('assets/images/icons/sidebar/org/Company Profile.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Company</span>        
+        </a>
+      </li>
+	  
+      <li id="units" >
+        <a href="#/admin/org/units" >
+			<i style="background: url('assets/images/icons/sidebar/org/Business Unit.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Classification</span>        
+        </a>
+      </li>	
+	  
+	  <li id="posi" >
+        <a href="#/admin/org/posi" >
+          <i style="background: url('assets/images/icons/sidebar/org/Job Title.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Position</span>        
+        </a>
+      </li>
+
+      <li id="labor" >
+        <a href="#/admin/org/labor" >
+          <i style="background: url('assets/images/icons/sidebar/org/Labor Types.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Labor Types</span>        
+        </a>
+      </li>
+	  
+	  <li id="matrix" >
+        <a href="#/admin/org/matrix" >
+          <i style="background: url('assets/images/icons/sidebar/org/Approver Matrix.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Approver Matrix</span>        
+        </a>
+      </li>
+	  
+	  <li id="activities" >
+        <a href="#/admin/org/activities" >
+          <i style="background: url('assets/images/icons/sidebar/org/News & Events.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Company Activities</span>        
+        </a>
+      </li>
+	   <li class="header">FILE MAINTENANCE</li>
+		<li id="uploader" >
+        <a href="#/admin/org/uploader" >
+			<i style="background: url('assets/images/icons/sidebar/org/Data Uploader.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> <span>Data Uploader</span>        
+        </a>
+      </li>	
+    </ul>
+    </section>
+    <!-- /.sidebar -->
+  

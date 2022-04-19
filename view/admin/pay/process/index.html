@@ -1,0 +1,463 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	
+	progress[value] {
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+	}
+	progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	progress[value]::-webkit-progress-value {
+	  background-image:
+		   -webkit-linear-gradient(-45deg, 
+								   transparent 33%, rgba(0, 0, 0, .1) 33%, 
+								   rgba(0,0, 0, .1) 66%, transparent 66%),
+		   -webkit-linear-gradient(top, 
+								   rgba(255, 255, 255, .25), 
+								   rgba(0, 0, 0, .25)),
+		   -webkit-linear-gradient(left, #09c, #f44);
+
+		border-radius: 2px; 
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #76dcdc ;  }
+		25%  { background: #62d6d6 ;  }
+		50%  { background: #4dd1d1 ;  }
+		100% { background: #39cccc ;  }
+	}
+</style>
+<div class="wrapper" ng-controller="PMProcessController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+			<div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-edit" style="float: left;color:#00000052"></i>									
+					<div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+					<div style="font-size: 15pt; text-indent:15px">Process</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/pay/process"> Payroll Master's Portal</a></li>
+                <li class="active">Process</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content">                
+			<div ng-init="payprocess_functions()">
+			
+				<div id="form01print" class="print-only" style="color:black" >
+					<div style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+						<b>{{view.company + ' ' }} PAYSLIP</b>
+					</div>
+					<div style="display:table;width: 870px !important;border:1px solid black;">
+						<div>
+							<div style="display:table-cell;width: 435px !important;padding:5px">
+								<div style="width: 435px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Payout Date:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px "  >{{  view.pay_date }}</div>
+								</div>
+								<div style="width: 435px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Employee ID:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >{{  view.empid }}</div>
+								</div>
+								<div style="width: 435px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Name:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >{{  view.empname }}</div>
+								</div>
+								<div style="width: 435px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Pay Group:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >{{  view.pay_grp }}</div>
+								</div>
+								<div style="width: 435px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Pay Rate:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >{{ '₱' +  view.salary }}</div>
+								</div>
+							</div>
+							<div style="display:table-cell;width: 400px !important;padding:5px">
+								<div style="width: 400px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Period:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >{{ view.period_start + ' - ' + view.period_end }}</div>
+								</div>
+								<div style="width: 400px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >SSS No.:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >&nbsp {{  view.idsss }} &nbsp </div>
+								</div>
+								<div style="width: 400px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >PhilHealth No.:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >&nbsp {{  view.idhealth }} &nbsp </div>
+								</div>
+								<div style="width: 400px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >Pag-Ibig No.:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >&nbsp {{  view.idibig  }} &nbsp </div>
+								</div>
+								<div style="width: 400px !important;" >
+									<div style="display:table-cell;width: 95px !important;text-align: right" 				  >TIN No.:</div>
+									<div style="display:table-cell;width: 340px !important;text-align: left;text-indent:10px " >&nbsp {{  view.idtin  }} &nbsp </div>
+								</div>
+							</div>
+						</div>
+						<div style="margin-top:30px">
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;">
+								<div style="display:table-cell;width: 660px !important;padding:5px;text-align:center;border:1px solid black;">EARNINGS</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:1px solid black;">HOURS</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:1px solid black;">AMOUNT</div>
+							</div>
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;" ng-repeat="views in view.earnings | filter: earnings1 track by $index">
+								<div style="display:table-cell;width: 660px !important;padding:5px;text-align:left;border:0px solid black;">{{ views.description }}</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ views.units }}</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ views.tot_amt }}</div>
+							</div>	
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;">
+								<div style="display:table-cell;width: 760px !important;padding:5px;text-align:left;border:0px solid black;">TOTAL GROSS INCOME</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ view.gross }}</div>
+							</div>
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;">
+								<div style="display:table-cell;width: 660px !important;padding:5px;text-align:center;border:1px solid black;">DEDUCTIONS</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:1px solid black;border-right:none"></div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:1px solid black;border-left:none">AMOUNT</div>
+							</div>
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;" ng-repeat="views in view.earnings | filter: earnings2 track by $index">
+								<div style="display:table-cell;width: 660px !important;padding:5px;text-align:left;border:0px solid black;">{{ views.description }}</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ views.units }}</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ views.tot_amt }}</div>
+							</div>	
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;">
+								<div style="display:table-cell;width: 760px !important;padding:5px;text-align:left;border:0px solid black;">TOTAL DEDUCTIONS</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ views.tot_deduct }}</div>
+							</div>
+							<div style="display:table;width: 860px !important;padding-left:10px;padding-right:10px;" ng-repeat="views in view.earnings | filter: earnings3 track by $index">
+								<div style="display:table-cell;width: 760px !important;padding:5px;text-align:left;border:0px solid black;">{{ views.description }}</div>
+								<div style="display:table-cell;width: 100px !important;text-align:center;border:0px solid black;">{{ '₱' + views.tot_amt }}</div>
+							</div>	
+						</div>
+					</div>					
+				</div>
+			
+				<div class="row">
+					<form ng-hide="mySignUpForm" role="form" name="registerForm" >
+						<div class="col-md-6">
+							<div class="col-md-12">
+								<label for="file">Process Payroll for <i>{{ dashboard.values.period.pay_start }} To {{ dashboard.values.period.pay_end }}</i> <span class="req-field"> *</span></label>
+							</div>
+							<div class="form-group">								
+								<div class="col-md-12">
+									<div class="input-group">	
+										<select class="form-control" ng-model="typeprocess" id="typeprocess" name="typeprocess" ng-disabled="isSaving" ng-change="resetBar()" >
+											<option value="">-- TYPE --</option>
+											<option value="1">Normal</option>
+											<option value="2">Special</option>
+										</select>
+										<span class="input-group-addon" ng-click="process()" style="background: #367fa9;color: white;cursor: pointer;">Process</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">	
+								<label id="progstatus"> Analyzing 0% </label>
+								<progress id="progressbar" value="0" max="100" style="width:100%;height:33px" ></progress>
+							</div>
+						</div>
+					</form>
+				</div>
+				
+				<div class="box-header">
+					<button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" ng-click="dtInstance.reloadData()" title="Refresh">
+						<i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+					</button>					
+				</div>
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered"></table>
+				
+				<div class="modal fade modal-info" id="editModal" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog modal-lg" style="min-width: 450px;">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">{{view.company + ' ' }} PAYSLIP</h4>
+						</div>
+						<div class="modal-body" style="background: #ffffff !important; color:black !important;">
+							<div class="row">
+								<div class="form-group">	
+									<div class="col-md-6" style="padding:15px;padding-top:0px;padding-bottom:0px">
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Payout Date:</div>
+											<div class="col-xs-8"> {{  view.pay_date }} </div>
+										</div>
+									</div>
+									<div class="col-md-6" style="padding:15px;padding-top:0px;padding-bottom:0px">
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Period:</div>
+											<div class="col-xs-8"> {{ view.period_start + ' - ' + view.period_end }} </div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group" style="margin-bottom:15px">	
+									<div class="col-md-6" style="padding:15px;padding-top:0px">
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Employee ID:</div>
+											<div class="col-xs-8"> {{  view.empid }} </div>
+										</div>
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Name:</div>
+											<div class="col-xs-8"> {{  view.empname }} </div>
+										</div>		
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Pay Group:</div>
+											<div class="col-xs-8"> {{  view.pay_grp }} </div>
+										</div>
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Pay Rate:</div>
+											<div class="col-xs-8"> {{ '₱' +  view.salary }} </div>
+										</div>
+									</div>
+									<div class="col-md-6" style="padding:15px;padding-top:0px">
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">SSS No.:</div>
+											<div class="col-xs-8"> &nbsp {{  view.idsss }} &nbsp </div>
+										</div>
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">PhilHealth No.:</div>
+											<div class="col-xs-8"> &nbsp {{  view.idhealth }} &nbsp </div>
+										</div>
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">Pag-Ibig No.:</div>
+											<div class="col-xs-8"> &nbsp {{  view.idibig  }} &nbsp </div>
+										</div>
+										<div class="col-md-12" style="padding:5px" >
+											<div class="col-xs-4" style="text-align:right">TIN No.:</div>
+											<div class="col-xs-8"> {{  view.idtin }} </div>
+										</div>							
+									</div>
+								</div>
+
+								<div class="form-group">	
+									<div class="col-md-12" style="padding:15px;padding-top:0px;padding-bottom:0px">
+										<div style="border:none">
+											<div class="box-body table-responsive">
+												<table id="example22" class="table table-bordered table-hover table-condensed" style="font-size:9pt"  >
+													<thead>
+														<tr>
+															<th style="text-align:center;background: #3c8dbc;color:white"> EARNINGS </th>
+															<th style="text-align:center;background: #3c8dbc;color:white"> HOURS </th>
+															<th style="text-align:center;background: #3c8dbc;color:white"> AMOUNT </th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="views in view.earnings | filter: earnings1 track by $index" >
+															<td> {{ views.description }} </td>
+															<td style="text-align:center"> {{ views.units }} </td>
+															<td style="text-align:right"> {{ views.tot_amt }} </td>
+														</tr>
+														<tr>
+															<td colspan="2"> TOTAL GROSS INCOME </td>
+															<td style="text-align:right">{{ view.gross }}</td>
+														</tr>														
+														<tr>
+															<td colspan="2" style="text-align:center;background: #3c8dbc;color:white" > DEDUCTIONS </td>
+															<td ></td>
+														</tr>
+														<tr ng-repeat="views in view.earnings | filter: earnings2 track by $index" >
+															<td> {{ views.description }} </td>
+															<td style="text-align:center"> {{ views.units }} </td>
+															<td style="text-align:right"> {{ views.tot_amt }} </td>
+														</tr>
+														<tr>
+															<td colspan="2"> TOTAL DEDUCTIONS </td>
+															<td style="text-align:right">{{ view.tot_deduct }}</td>
+														</tr>
+														<tr ng-repeat="views in view.earnings | filter: earnings3 track by $index" >
+															<td class="modal-header" colspan="2" > {{ views.description }} </td>
+															<td  style="text-align:right;font-weight:bold"> {{ '₱' + views.tot_amt }} </td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button style="width:100px" type="button" class="btn btn-danger pull-right" ng-print print-element-id="form01print" ng-disabled="isSaving">Print</button>
+							<button style="width:100px" data-target="#editModal" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving" >Close</button>
+						</div>
+					</div>
+				</div>				
+			</div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

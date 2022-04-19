@@ -1,0 +1,507 @@
+<style>
+  .main-footer {
+      background: #fff;
+      padding: 5px;
+      color: #444;
+      border-top: 1px solid #d2d6de;
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: 999;
+  }
+  .content-wrapper{
+      background:white
+  }
+  .example2 th{
+      color:white;
+      background-color: #006ba6;
+      text-align:center
+  }
+  .btnTD{
+      text-align:center;
+  }
+  .info{
+      font-weight: bold;
+  }
+  .ui-widget-header {
+      border: 1px solid green;
+      background: #008d4c;
+      color:black;
+  }
+  .lightbox-modal{
+      z-index:99999 !important;
+  }
+  .bder{
+      border:0px solid black;
+  }
+  .table-striped>tbody>tr:nth-child(odd)>td, 
+  .table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #d9e5f3;
+  }
+  table.dataTable>tbody>tr.child ul li {
+      border-bottom: 0px solid #efefef !important;
+  }	
+  .req-field {
+      color: red;
+  }
+  .paddingZero{
+      padding: 0px !important;
+  }
+  .fixwidth {
+    width: 50px !important;
+  }
+  .lbltbl{
+    font-weight:bold;
+    font-size:10pt;	
+    text-align:right;
+    padding:5px !important;
+    width:140px !important;
+  }
+  .datatbl{
+    text-indent:5px;
+    padding:5px !important;
+    font-size:9pt;
+    width:210px !important;
+  }
+  .print-only{
+    display: none;
+  }
+
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    .print-only{
+      display: block;
+    }
+  }
+
+
+  .sec-head{
+    overflow:hidden;
+    animation: bgColor 8s normal forwards;
+  }	
+  .bgPulse{
+    width: 100%;
+    height: 100%;
+  }	
+  .bgPulse span{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    
+  }	
+  .bgPulse span:nth-child(2n+1){
+    background: transparent;
+    border: 5px solid #fff;
+  }	
+  .bgPulse span:nth-child(1){
+    border-radius:12px;
+    top: 30%;
+    left: 30%;
+    animation: animate 10s linear infinite;
+  }	
+  .bgPulse span:nth-child(2){
+    top: 20%;
+    left: 50%;
+    animation: animate 15s linear infinite;
+  }	
+  .bgPulse span:nth-child(3){
+    top: 40%;
+    left: 70%;
+    animation: animate 20s linear infinite;
+  }	
+  .bgPulse span:nth-child(4){
+    border-radius:12px;
+    top: 60%;
+    left: 80%;
+    animation: animate 12s linear infinite;
+  }
+  .bgPulse span:nth-child(5){
+    top: 60%;
+    left: 40%;
+    animation: animate 17s linear infinite;
+  }
+  .bgPulse span:nth-child(6){
+    border-radius:12px;
+    top: 60%;
+    left: 60%;
+    animation: animate 22s linear infinite;
+  }
+  .bgPulse span:nth-child(7){
+    top: 60%;
+    left: 20%;
+    animation: animate 17s linear infinite;
+  }	
+  @keyframes animate{
+    0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.4; }
+    100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+  }
+  @keyframes bgColor{
+    0%   { background: #00f383 ;  }
+    25%  { background: #00d976 ;  }
+    50%  { background: #00c068 ;  }
+    100% { background: #00a65a ;  }
+  }
+	#approverlist_info{ visibility:hidden; }
+  #approverlist th{
+		color: white;
+		background: #00a65a;
+		height: auto !important;
+	}
+  .buttons{
+		margin-right: 0px;
+	}
+
+  
+</style>
+<div class="wrapper" ng-controller="HRLateralTransferController" ng-init="dashboard.active();">
+
+  <div class="main-header" ng-include="headerTemplate"></div> 
+  <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+  <div ng-include="entryModalTemplate"></div>
+  <div class="content-wrapper">
+      <spinner name="form01spinner" ng-cloak="">
+          <div class="overlay"></div>
+          <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+          </div>
+          <div class="please-wait">Please Wait...</div>
+      </spinner>
+      <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+    <div style="font-size: 9em;/*color: #00a65a !important;*/">
+		<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>																								
+        <div style="font-size: 12pt;padding-top: 15px;text-indent:15px">{{ dashboard.values.userInformation.db.company }}</div>		
+        <div style="font-size: 20pt;text-indent:15px">Lateral Transfer</div>
+        <div style="font-size: 15pt; text-indent:15px">Approver Setup</div>		
+    </div>
+    <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+      <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href=".#/admin/hr/dashboard"> HR Portal</a></li>
+              <li class="active">Personnel Action</li>
+              <li class="active">Lateral Transfer</li>
+              <li class="active">Approver Setup</li>
+    </ol>	
+    <div class="bgPulse hidden-xs">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+      </section>
+
+      <section class="content">
+        <div ng-init="approversetupTable()">
+          <!-- <div class="box-header">
+            <button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-success pull-right" ng-click="dtInstanceApproverSetup.reloadData()" title="Refresh">
+              <i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+            </button>
+          </div> -->
+          <table id="approverlist" datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstanceApproverSetup" class="example2 row-border hover table-striped table-bordered" ></table>
+          
+        </div>
+      </section>        
+      
+  </div>
+
+  <div ng-include="footerTemplate"></div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="sequence" role="dialog" style="display:none;overflow-y: scroll !important;display:none">
+        <div class="modal-dialog modal-lg">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #008d4c;">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title"><b style="color:white;">Approver Setup</b></h4>
+            </div>
+            <div class="modal-body">
+              <div class="row paddingZero">
+                <input type="hidden" ng-model="sequence.id">
+                <!--Approver 1-->
+                <div class="col-md-12">
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 1</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype1a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (1A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver1a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype1a==2||sequence.approvertype1a==3">
+                      <option value="" selected>Select approver (1A)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype1b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (1B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver1b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype1b==2||sequence.approvertype1b==3">
+                      <option value="" selected>Select approver (1B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 1-->
+
+                <!--Approver 2-->
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px" ng-show="sequence.ctr_approvers >= 2 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 2</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype2a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (2A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver2a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype2a==2||sequence.approvertype2a==3">
+                      <option value="" selected>Select approver (2A)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="sequence.ctr_approvers >= 2 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype2b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (2B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver2b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype2b==2||sequence.approvertype2b==3">
+                      <option value="" selected>Select approver (2B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 2-->
+
+                <!--Approver 3-->
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px" ng-show="sequence.ctr_approvers >= 3 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 3</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype3a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (3A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver3a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype3a==2||sequence.approvertype3a==3">
+                      <option value="" selected>Select approver (3B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="sequence.ctr_approvers >= 3 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype3b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (3B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver3b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype3b==2||sequence.approvertype3b==3">
+                      <option value="" selected>Select approver (3B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 3-->
+
+                <!--Approver 4-->
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px" ng-show="sequence.ctr_approvers >= 4 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 4</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype4a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (4A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver4a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype4a==2||sequence.approvertype4a==3">
+                      <option value="" selected>Select approver (4A)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="sequence.ctr_approvers >= 4 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype4b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (4B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver4b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype4b==2||sequence.approvertype4b==3">
+                      <option value="" selected>Select approver (4B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 4-->
+
+                <!--Approver 5-->
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px" ng-show="sequence.ctr_approvers >= 5 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 5</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype5a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (5A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver5a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype5a==2||sequence.approvertype5a==3">
+                      <option value="" selected>Select approver (5A)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="sequence.ctr_approvers >= 5 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype5b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (5B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver5b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype5b==2||sequence.approvertype5b==3">
+                      <option value="" selected>Select approver (5B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 5-->
+
+                <!--Approver 6-->
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px" ng-show="sequence.ctr_approvers >= 6 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 6</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype6a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (6A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver6a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype6a==2||sequence.approvertype6a==3">
+                      <option value="" selected>Select approver (6A)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="sequence.ctr_approvers >= 6 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype6b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (6B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver6b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype6b==2||sequence.approvertype6b==3">
+                      <option value="" selected>Select approver (6B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 6-->
+
+                <!--Approver 7-->
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px" ng-show="sequence.ctr_approvers >= 7 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Approver 7</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype7a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (7A)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver7a" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype7a==2||sequence.approvertype7a==3">
+                      <option value="" selected>Select approver (7A)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-12" ng-show="sequence.ctr_approvers >= 7 " >
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approvertype7b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" >
+                      <option value="" selected>Select type (7B)</option>
+                      <option ng-repeat="data in allApproverType track by $index" value="{{data.id}}">{{data.type}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.approver7b" class="form-control" style="text-align: center;width: 100%;text-align-last: center;" ng-show="sequence.approvertype7b==2||sequence.approvertype7b==3">
+                      <option value="" selected>Select approver (7B)</option>
+                      <option ng-repeat="data in allEmployee track by $index" value="{{data.id}}">{{data.fullname}}</option>
+                    </select>
+                  </div>
+                </div>
+                <!--Approver 7-->
+
+                <div class="col-md-12 col-xs-12" style="padding-top: 10px">
+                  <div class="col-md-3 col-xs-12" style="text-align: center;padding: 5px;">
+                    <label>Status</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12" style="text-align: center;padding: 5px">
+                    <select ng-model="sequence.status" class="form-control" style="text-align: center;width: 100%;text-align-last: center;">
+                      <option value="" selected>Select status</option>
+                      <option value="1">ACTIVE</option>
+                      <option value="2">BLOCK</option>
+                      <option value="3">INACTIVE</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" ng-click="saveApproverSetup();">Save</button>
+              <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+</div>

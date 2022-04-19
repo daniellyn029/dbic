@@ -1,0 +1,928 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	
+	progress[value] {
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+	}
+	progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	progress[value]::-webkit-progress-value {
+	  background-image:
+		   -webkit-linear-gradient(-45deg, 
+								   transparent 33%, rgba(0, 0, 0, .1) 33%, 
+								   rgba(0,0, 0, .1) 66%, transparent 66%),
+		   -webkit-linear-gradient(top, 
+								   rgba(255, 255, 255, .25), 
+								   rgba(0, 0, 0, .25)),
+		   -webkit-linear-gradient(left, #09c, #f44);
+
+		border-radius: 2px; 
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #76dcdc ;  }
+		25%  { background: #62d6d6 ;  }
+		50%  { background: #4dd1d1 ;  }
+		100% { background: #39cccc ;  }
+	}
+.scrollmenuy {
+  /* background-color: #333; */
+  /* overflow: auto; */
+  overflow-y: auto;
+  width: 100%;
+  white-space: nowrap;
+}
+.scrollmenux {
+  overflow-x: auto;
+  height: 100% !important;
+  white-space: nowrap;
+}
+
+</style>
+<div class="wrapper" ng-controller="PMMonthlyConController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+			<div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-edit" style="float: left;color:#00000052"></i>									
+					<div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+					<div style="font-size: 15pt; text-indent:15px">Alphalist of Minimum Wage Earners</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/pay/process"> Payroll Master's Portal</a></li>
+				 <li><a href=".#/admin/pay/report/register">Government Reports</a></li>
+                <li class="active">Alphalist Schedule 2</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+        <section class="content">
+            <div class="row" style="padding: 10px 50px 0 50px;">
+                <div class = "col-md-12 col-xs-12">
+					<div id="awardsR_companyName" style="font-size:18pt; text-align:center; font-weight: bold;">Delsan Business Innovation Company</div>
+					<div id="awardsR_txt" style="font-size:15pt; text-align:center; font-weight: bold;">Alphabetical List of Employees/Payees from Whom Taxes Were Withheld (Format Only)</div>
+					<!-- <div id="awardsR_filter" style="font-size:11pt; text-align:center;" ng-show="filter">Filtered per - {{filter | titlecase}}</span></div> -->
+					<!-- <div id="awardsR_date" style="font-size:11pt; text-align:center; padding-bottom:20px;">Withholding Tax for the Month of January, 2020</div> -->
+                </div>
+                <div class="scrollmenuy scrollmenux" id="container" style="margin-left:auto; margin-right:auto;">
+                    <div class="scrollmenuy scrollmenux">
+                        <div style ="width: 100%;">
+                            <table style="width:3667px;">
+                                <tr>
+                                    <td style = "width:100%; border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; border-top:1px solid black;">
+                                        <div style="font-size:9pt; text-align:center; font-weight: bold;">Schedule 2 - Alphalist of Minimum Wage Earners (Declared and Certified using BIR Form no. 2316)</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <table style = "width: 3667px;">
+                                        <td style = "border-left:1px solid black;">
+                                            <div style="width:70%; font-size:11pt; text-align:center; font-weight: bold;">P&nbsp;&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;N&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;&nbsp;&nbsp;&nbsp;L&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;R </div>
+                                        </td>
+                                        <td style = "border-right:1px solid black; ">
+                                            <div style="width:35%; font-size:11pt; text-align:center; font-weight: bold;">P&nbsp;&nbsp;&nbsp;&nbsp;R&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;V&nbsp;&nbsp;&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;U&nbsp;&nbsp;&nbsp;&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;P&nbsp;&nbsp;&nbsp;&nbsp;L&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;&nbsp;&nbsp;R </div>
+                                        </td>
+                                    </table> 
+                                </tr>
+                            </table>
+                            <table style="width:100%; border:1px solid black">
+                                <tr>
+                                    <td style = "width:2%; border-right:1px solid black;">
+                                        <table stlye = "width: 100%">
+                                            <tr>
+                                                <td style = "padding: 57px 0 50px 0; text-align:center; border-bottom:1px solid black">
+                                                    <div style="font-size:9pt;">Seq.</div>
+                                                    <div style="font-size:9pt; line-height: 5px;">No</div>                                        
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style = "width:2%; text-align:center;">
+                                                    <div style="font-size:9pt;">1</div>                                       
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style = "width:8%; border-right:1px solid black;">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <div style ="text-align: center; font-size: 11pt;"> 
+                                                    <span>NAME OF EMPLOYEES</span>
+                                                </div> 
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 40px 0 40px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">Last</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Name</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">First</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Name</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Middle</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Name</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">2a</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">2b</div>
+                                                            </td>
+                                                            <td style = "border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">2c</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style="width:5%;">
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style="width:1%; padding: 33px 0 33px 0; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                                    <div style="font-size:9pt; text-align: center;">Current</div>
+                                                    <div style="font-size:9pt; line-height: 11px; text-align: center;">Employment</div>
+                                                    <div style="font-size:9pt; line-height: 11px; text-align: center;">Status</div>
+                                                    <div style="font-size:13pt; text-align: center;">*</div>
+                                                </td>
+                                                <td style="width:1%; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                                    <div style="font-size:9pt; text-align: center;">Region</div>
+                                                    <div style="font-size:9pt; text-align: center; line-height: 11px;">No.</div>
+                                                    <div style="font-size:9pt; text-align: center; line-height: 11px;">Where</div>
+                                                    <div style="font-size:9pt; text-align: center;">Assigned</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-right: 1px solid black;">
+                                                    <div style="font-size:9pt; text-align: center;">3</div>
+
+                                                </td>
+                                                <td style="border-right: 1px solid black;">
+                                                    <div style="font-size:9pt; text-align: center;">4</div>
+    
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style = "width:4%; border-right:1px solid black">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <div style ="text-align: center; font-size: 11pt;">PERIOD OF</div> 
+                                                <div style ="text-align: center; font-size: 11pt; line-height: 11px;">EMPLOYMENT</div> 
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "padding: 35px 0 34px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">From</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(MM/DD)</i></div>
+                                                            </td>
+                                                            <td style = "border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">To</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(MM/DD)</i></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">5a</div>
+                                                            </td>
+                                                            <td style = "border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">5b</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style="width:5%;">
+                                        <table style="width:100%;; text-align: center;">
+                                            <tr>
+                                                <td style="padding: 43px 0 43px 0; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">Reason of</div>
+                                                    <div style="font-size:9pt; line-height: 11px;">Separation,</div>
+                                                    <div style="font-size:8pt;"><i>if applicable**</i></div>
+                                                </td>
+                                                <td style="border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">Gross</div>
+                                                    <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                    <div style="font-size:9pt; line-height: 11px;">Income</div>
+                                                    <div style="font-size:8pt;"><i>(present</div>
+                                                    <div style="font-size:8pt; line-height: 11px;">employer)</i></div>                                           
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style=" border-top: 1px solid black; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">6</div>
+                                                </td>
+                                                <td style=" border-top: 1px solid black; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">7a=(7o+7r)</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style = "width:25%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style = "border-right: 1px solid black;">
+                                                    <div style ="text-align: center; font-size: 11pt; margin-right:10px;">NON-TAXABLE/EXEMPT
+                                                    </div> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td >
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 40px 0 40px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">Basic/SMW</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">per Day</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Basic/SMW</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">per Month</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Basic/SMW</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">per Year</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Factor Used</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(No. of</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Days/Year</i></div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Basic/SMW</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(actual)</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">(net of </div>
+                                                                <div style="font-size:8pt; line-height: 11px;">SSS,GSIS,</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">PHIC,HDMF</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Contributions</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">& Union</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Dues)</i></div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Holiday</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Overtime</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Night Shift</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Differential</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Hazard</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">13<sup>th</sup> Month</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay & Other</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">De</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Minimis</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">SSS,GSIS,</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">PHIC,HDMF</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Contributions</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">& Union</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Dues</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(employee</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">share only)</i></div>
+
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Salaries</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">and Other</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Forms of</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Total</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Non-Taxable</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">/Exempt</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(present</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">employer)</i></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">7b</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7c</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7d</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7e</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7f</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7g</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7h</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7i</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7j</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7k</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7l</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7m</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7n</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7o=(sum of 7f to 7n)</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style = "width:12%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div style ="text-align: center; font-size: 11pt; border-right: 1px solid black;">TAXABLE</div> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 12px 0 13px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">13<sup>th</sup>Month</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay &</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Other</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(In Excess</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">of</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Threshold)</i></div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Salaries</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">and Other</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Forms of</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Total</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Taxable</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Income</div>
+                                                                <div style="font-size:9pt; line-height: 11px;"><i>(present</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">employer)</i></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">7p</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7q</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">7r=(7p+7q)</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style="width:4%;">
+                                        <table style="width:100%;; text-align: center;">
+                                            <tr>
+                                                <td style="width:1%; padding: 45px 0 45px 0; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">TIN</div>
+                                                    <div style="font-size:8pt; line-height: 11px;"><i>(previous</div>
+                                                    <div style="font-size:8pt; line-height: 11px;">employer)</i></div>                                                
+                                                </td>
+                                                <td style="width:1%; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">Employement</div>
+                                                    <div style="font-size:9pt;">Status*</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-right: 1px solid black; border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">8</div>
+                                                </td>
+                                                <td style="border-right: 1px solid black; border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">9</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style = "width:4%; border-right:1px solid black">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <div style ="text-align: center; font-size: 11pt;">PERIOD OF</div> 
+                                                <div style ="text-align: center; font-size: 11pt; line-height: 11px;">EMPLOYMENT</div> 
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 35px 0 34px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">From</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(MM/DD)</i></div>
+                                                            </td>
+                                                            <td style = "width:1%; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">To</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(MM/DD)</i></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">10a</div>
+                                                            </td>
+                                                            <td style = "border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">10b</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style="width:5%;">
+                                        <table style="width:100%;; text-align: center;">
+                                            <tr>
+                                                <td style="width:1%; padding: 43px 0 43px 0; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">Reason of</div>
+                                                    <div style="font-size:9pt; line-height: 11px;">Separation,</div>
+                                                    <div style="font-size:8pt;"><i>if applicable**</i></div>
+                                                </td>
+                                                <td style="width:1%; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">Gross</div>
+                                                    <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                    <div style="font-size:9pt; line-height: 11px;">Income</div>
+                                                    <div style="font-size:8pt;"><i>(previous</i></div>
+                                                    <div style="font-size:8pt;line-height: 11px;">employer)</i></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-right: 1px solid black; border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">11</div>
+                                                </td>
+                                                <td style="border-right: 1px solid black; border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">12a=(12k+12n)</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style = "width:25%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style = "border-right: 1px solid black;">
+                                                    <div style ="text-align: center; font-size: 11pt; margin-right:10px;">NON-TAXABLE/EXEMPT
+                                                    </div> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td >
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 18px 0 18px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">Basic/SMW</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(actual)</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">(net, of SSS,GSIS</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">HDMF,PHIC</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Contributions</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">& Union Dues)</i></div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt; ">Holiday</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt; ">Overtime</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt; ">Night Shift</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Differential</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt; ">Hazard</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt; ">13<sup>th</sup>Month</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay &</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Other</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt; ">De</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Minimis</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">SSS,GSIS,PHIC,</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">HDMF Contributions</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">& Union Dues</div>
+                                                                <div style="font-size:8pt; line-height: 11px;"><i>(employee share only)</i></div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Salaries and</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Total Non-Taxable/</div>
+                                                                <!-- <div style="font-size:9pt; line-height: 11px;"></div> -->
+                                                                <div style="font-size:9pt; line-height: 11px;">Exempt</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                                <div style="font-size:9pt; line-height: 11px;"><i>(previous employer)</i></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">12b</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12c</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12d</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12e</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12f</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12g</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12h</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12i</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12j</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12k=(sum of 12b to 12j)</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style = "width:12%">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td>
+                                                    <div style ="text-align: center; font-size: 11pt; border-right: 1px solid black;">TAXABLE</div> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 35px 0 34px 0; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">13<sup>th</sup>Month</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Pay & Other</div>
+                                                                <div style="font-size:8pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Salaries and</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Pay & Other</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Benefits</div>
+                                                            </td>
+                                                            <td style = "width:1%; border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Total Taxable</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Compensation</div>
+                                                                <div style="font-size:9pt; line-height: 11px;"><i>(prevoius employer)</i></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">12i</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12m</div>
+                                                            </td>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">12n=(12l+12m)</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style="width:4%;">
+                                        <table style="width:100%;; text-align: center;">
+                                            <tr>
+                                                <td style="width:1%; padding: 40px 5px 39px 5px; border-right: 1px solid black;">
+                                                <div style="font-size:9pt;">Total Taxable</div>
+                                                <div style="font-size:9pt; line-height: 11px;">Compensation Income</div>
+                                                    <div style="font-size:8pt; line-height: 11px;"><i>(Present & Previous</div>
+                                                    <div style="font-size:8pt; line-height: 11px;">Employer)</i></div>                                           
+                                                </td>
+                                                <td style="width:1%; padding: 40px 5px 39px 5px; border-right: 1px solid black;">
+                                                    <div style="font-size:9pt;">Tax Due</div>
+                                                    <div style="font-size:8pt; line-height: 11px;"><i>(January to December)</i></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-right: 1px solid black; border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">13</div>
+                                                </td>
+                                                <td style="border-right: 1px solid black; border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">14</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style = "width:4%; border-right:1px solid black">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <div style ="text-align: center; font-size: 11pt;">Tax Withheld</div> 
+                                                <div style ="text-align: center; font-size: 9pt; line-height: 11px;"><i>(January to November)</i></div> 
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 40px 5px 40px 5px; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">Previous Employer</div>
+                                                            </td>
+                                                            <td style = "width:1%; padding: 40px 5px 40px 5px; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Present Employer</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">15a</div>
+                                                            </td>
+                                                            <td style = "border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">15b</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style = "width:4%; border-right:1px solid black">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <div style ="text-align: center; font-size: 11pt;">Year-End Adjustment (16a or 16b)</div> 
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style = "width:100%; text-align: center;">
+                                                        <tr>
+                                                            <td style = "width:1%; padding: 40px 5px 40px 5px; border-right: 1px solid black; border-top: 1px solid black; ">
+                                                                <div style="font-size:9pt;">Amount Withheld and Paid for in</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">December or Last Salary</div>
+                                                            </td>
+                                                            <td style = "width:1%; padding: 40px 5px 40px 5px; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">Over Withheld Tax Refunded to</div>
+                                                                <div style="font-size:9pt; line-height: 11px;">Employee</div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style = "border-right: 1px solid black; border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">13</div>
+                                                            </td>
+                                                            <td style = "border-top: 1px solid black;">
+                                                                <div style="font-size:9pt;">14</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </td>
+                                    <td style="width:4%;">
+                                        <table style="width:100%;; text-align: center;">
+                                            <tr>
+                                                <td style="width:1%; padding: 40px 5px 39px 5px;">
+                                                <div style="font-size:9pt;">AMOUNT OF TAX WITHHELD AS</div>
+                                                <div style="font-size:9pt; line-height: 11px;">ADJUSTED</div>
+                                                    <div style="font-size:8pt; line-height: 11px;"><i>(To be reflected in BIR Form No. 2316</div>
+                                                    <div style="font-size:8pt; line-height: 11px;">issued by the present employer)</i></div>                                           
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-top: 1px solid black;">
+                                                    <div style="font-size:9pt;">17</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>	
+
+
+    </div>
+    <!--/.content wrapper-->
+    <div ng-include="footerTemplate"></div>
+
+</div>

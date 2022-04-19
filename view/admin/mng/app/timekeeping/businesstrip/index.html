@@ -1,0 +1,482 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        background-color: #5faad682;
+        text-align: center;
+        color: #666;
+        padding-left: 0px;
+        padding-right: 0px;
+        font-size: 13pt;
+        border: 0px solid !important;
+        font-weight: 400 !important;
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .btnTDC {
+        text-align: left;
+        color: green;
+        font-weight: 400 !important;
+    }
+
+    .btnTDL {
+        border-left: none !important;
+        text-align: right;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #67aed845;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #63a0d4;
+        }
+
+        25% {
+            background: #4f93ce;
+        }
+
+        50% {
+            background: #3b87c8;
+        }
+
+        100% {
+            background: #0073b7;
+        }
+    }
+
+    .title_table {
+        margin: 0px;
+        clear: both;
+    }
+
+    .cutoffinfo {
+        margin: 0px;
+        clear: both;
+        text-indent: 10px;
+    }
+
+    /* ModalFilter */
+    .select2-container--default .select2-selection--single {
+        border: none !important;
+        border-bottom: 1px solid black !important;
+        height: 30px !important;
+        padding: 1px !important;
+        text-align-last: center !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 30px !important;
+    }
+
+    label {
+        color: black !important;
+        font-weight: 400;
+        font-size: 10pt;
+        margin-bottom: 0px;
+    }
+
+    table.dataTable,
+    table.dataTable.no-footer {
+        margin: 0;
+    }
+
+    .buttons {
+        margin-top: 5px;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        padding-top: 0px;
+    }
+
+    .foot_con {
+        display: table;
+        width: 100%;
+        background: #5faad682;
+        padding: 5px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+        color: white !important;
+        font-weight: 700 !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        color: white !important;
+        font-weight: 700 !important;
+    }
+
+    @media screen and (max-width: 767px) {
+
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            float: none !important;
+            text-align: center;
+        }
+
+        table.dataTable thead .sorting,
+        table.dataTable thead .sorting_asc,
+        table.dataTable thead .sorting_desc,
+        table.dataTable thead .sorting_asc_disabled,
+        table.dataTable thead .sorting_desc_disabled {
+            background-repeat: no-repeat;
+            background-position: bottom right;
+        }
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        float: left;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        float: right;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    .btn-group button {
+        background-color: green;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-width: 1px;
+        color: white;
+    }
+</style>
+<div class="wrapper" ng-controller="MNGAppOBController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            <div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+
+                <div class="row">
+                    <div class="col-md-6" style="margin-bottom:15px">
+                        <a style="color: white !important;" class="">
+                            <img ng-src="assets/images/icons/HRIS Dashboard icon Manager.png"
+                                style="height: 80px;  border-radius: 50%; margin-right:15px"
+                                class="user-image pull-left" alt="User Image">
+                        </a>
+                        <div>
+                            <p class="respontext"
+                                style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Staff Management
+                            </p>
+                            <p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">For
+                                Approval</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+                        <ol class="breadcrumb" style="width: 380px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+                            <li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i
+                                        class="fa fa-dashboard"></i> Home</a></li>
+                            <li style="color:black !important"><a href=".#/admin/emp/dashboard"
+                                    style="color:black !important">Manager's Portal</a></li>
+                            <li style="color:black !important">For Approval</li>
+                            <li class="active">Official Business Trip</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="content">
+            <div ng-init="app_ob_functions()">
+
+                <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+                    class="example2 row-border hover table-striped table-bordered table-condensed"></table>
+
+                <!--Approved Modal-->
+                <div class="modal fade modal-info" id="modal-approved" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);">
+                    <div class="modal-dialog">
+                        <div class="modal-header"
+                            style="background: #006ba6 !important; border-color: #006ba6  !important;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Approved</h4>
+                        </div>
+                        <div class="modal-body" style="background: white !important">
+                            <div class="row">
+                                <p style="color: rgba(0, 0, 0, 0.8); text-align:center">Are you sure you want to
+                                    Approve{{str}}?</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer"
+                            style="background: #006ba6 !important; border-color: #006ba6  !important;">
+                            <button style="width:100px" type="button" class="btn btn-warning pull-right"
+                                data-dismiss="modal">No</button>
+                            <button style="width:100px" type="button" class="btn btn-success pull-left"
+                                ng-click="approve()">Yes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Dispproved Modal-->
+                <div class="modal fade modal-info" id="modal-disapproved" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);">
+                    <div class="modal-dialog">
+                        <div class="modal-header"
+                            style="background: #DD4B39 !important; border-color: #DD4B39  !important;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Disapproved</h4>
+                        </div>
+                        <div class="modal-body" style="background: white !important">
+                            <div class="row">
+                                <p style="color: rgba(0, 0, 0, 0.8); text-align:center">Are you sure you want to
+                                    Disapprove{{str1}}?</p>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="eleave_reason">Reason</label>
+                                        <textarea id="eleave_reason" name="eleave_reason" class="form-control txtresize"
+                                            ng-model="cancelreason"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer"
+                            style="background: #DD4B39 !important; border-color: #DD4B39  !important;">
+                            <button style="width:100px" type="button" class="btn btn-warning pull-right"
+                                data-dismiss="modal">No</button>
+                            <button style="width:100px" type="button" class="btn btn-success pull-left"
+                                ng-click="disapproved()"> Yes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade modal-info" id="modal-search" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);">
+                    <div class="modal-dialog">
+                        <div class="modal-header"
+                            style="background: #0073b7 !important; border-color: #0073b7  !important;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Filter</h4>
+                        </div>
+                        <div class="modal-body" style="background: white !important">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="employee">Select Employee:</label>
+                                        <select select2 ng-disabled="isSaving" id="search_acct" class="form-control"
+                                            ng-model="search.acct"
+                                            ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct track by search_employees.id"
+                                            required
+                                            style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="awards_title">Enter Document Number:</label>
+                                        <input type="text" class="form-control" id="search_docu" name="search_docu"
+                                            maxlength="60" ng-model="search.docu"
+                                            style="border:none; border-bottom:1px solid black !important;"
+                                            autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_docu">Application Status:</label>
+                                        <select class="form-control" id="app_status" name="app_status"
+                                            ng-model="search.appstat"
+                                            style="border:none; border-bottom:1px solid black !important;">
+                                            <option value="">Status</option>
+                                            <option value="1">Approved</option>
+                                            <option value="2">Disapproved</option>
+                                            <option value="3">Pending</option>
+                                            <!--option value="4">Canceled</option-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dfrom">Date From</label>
+										<input class="form-control" type="text" readonly searchdatepickers ng-model="search.datefrom" maxlength="10" style="border:none; border-bottom:1px solid black !important; background-color: white;" id="search_dfrom" name="search_dfrom"  required  />
+									</div>
+								</div>	
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dto">Date To</label>
+										<input class="form-control" type="text" readonly searchdatepickers ng-model="search.dateto" maxlength="10" style="border:none; border-bottom:1px solid black !important; background-color: white;" id="search_dto" name="search_dto" required  />
+									</div>
+								</div-->
+                            </div>
+                        </div>
+                        <div class="modal-footer"
+                            style="background: #0073b7 !important; border-color: #0073b7  !important;">
+                            <button style="width:100px" type="button" class="btn btn-danger pull-left"
+                                ng-click="resetSearch()">Reset</button>
+                            <button style="width:100px" type="button" class="btn btn-primary" ng-click="unitSearch()"
+                                data-dismiss="modal"><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

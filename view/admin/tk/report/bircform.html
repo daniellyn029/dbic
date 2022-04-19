@@ -1,0 +1,1675 @@
+<style>
+        .main-footer {
+            background: #fff;
+            padding: 5px;
+            color: #444;
+            border-top: 1px solid #d2d6de;
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            right: 0;
+            z-index: 999;
+        }
+        .content-wrapper{
+            background:white
+        }
+        .example2 th{
+            color:white;
+            background-color: #006ba6;
+            
+            padding: 10px !important;
+    
+        }
+        .btnTD{
+            text-align:center;
+        }
+        .info{
+            font-weight: bold;
+        }
+        .ui-widget-header {
+            border: 1px solid green;
+            background: #008d4c;
+            color:black;
+        }
+        .lightbox-modal{
+            z-index:99999 !important;
+        }
+        .bder{
+            border:0px solid black;
+        }
+        .table-striped>tbody>tr:nth-child(odd)>td, 
+        .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+        }
+        table.dataTable>tbody>tr.child ul li {
+            border-bottom: 0px solid #efefef !important;
+        }	
+        .req-field {
+            color: red;
+        }
+        .paddingZero{
+            padding: 0px !important;
+        }
+        .fixwidth {
+            width: 50px !important;
+        }
+        .lbltbl{
+            font-weight:bold;
+            font-size:10pt;	
+            text-align:right;
+            padding:5px !important;
+            width:140px !important;
+        }
+        .datatbl{
+            text-indent:5px;
+            padding:5px !important;
+            font-size:9pt;
+            width:210px !important;
+        }
+        .print-only{
+            display: none;
+        }
+        
+        @media print {
+            .no-print {
+                display: none;
+            }
+        
+            .print-only{
+                display: block;
+            }
+        }
+        
+        .sec-head{
+            overflow:hidden;
+            animation: bgColor 8s normal forwards;
+        }	
+        .bgPulse{
+            width: 100%;
+            height: 100%;
+        }	
+        .bgPulse span{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            
+        }	
+        .bgPulse span:nth-child(2n+1){
+            background: transparent;
+            border: 5px solid #fff;
+        }	
+        .bgPulse span:nth-child(1){
+            border-radius:12px;
+            top: 30%;
+            left: 30%;
+            animation: animate 10s linear infinite;
+        }	
+        .bgPulse span:nth-child(2){
+            top: 20%;
+            left: 50%;
+            animation: animate 15s linear infinite;
+        }	
+        .bgPulse span:nth-child(3){
+            top: 40%;
+            left: 70%;
+            animation: animate 20s linear infinite;
+        }	
+        .bgPulse span:nth-child(4){
+            border-radius:12px;
+            top: 60%;
+            left: 80%;
+            animation: animate 12s linear infinite;
+        }
+        .bgPulse span:nth-child(5){
+            top: 60%;
+            left: 40%;
+            animation: animate 17s linear infinite;
+        }
+        .bgPulse span:nth-child(6){
+            border-radius:12px;
+            top: 60%;
+            left: 60%;
+            animation: animate 22s linear infinite;
+        }
+        .bgPulse span:nth-child(7){
+            top: 60%;
+            left: 20%;
+            animation: animate 17s linear infinite;
+        }	
+        @keyframes animate{
+            0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.4; }
+            100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+        }
+        @keyframes bgColor{
+            0%   { background: #63a0d4 ;  }
+            25%  { background: #4f93ce ;  }
+            50%  { background: #3b87c8 ;  }
+            100% { background: #337ab7 ;  }
+        }
+        .mybox {
+              background-image: linear-gradient(black, black);
+              background-repeat: no-repeat;
+              background-size: 1px 50%, calc(100% - 4px) 100%;
+              background-position: right bottom, 1px 0;		  
+              display: table-cell;
+              text-align:center;
+              vertical-align:middle;
+            }
+            .boxlast{
+                display: table-cell;
+                text-align:center;
+                vertical-align:middle;
+            }
+            .tin{
+                width: 40px;
+            }
+
+            .mybox1 {
+              background-image: linear-gradient(black, black);
+              background-repeat: no-repeat;
+              background-size: 1px 140%, calc(100% - 4px) 100%;
+              background-position: right bottom, 1px 0;		  
+              display: table-cell;
+              text-align:center;
+              vertical-align:middle;
+            }
+            .d{
+                display:inline-block;
+                transform:scale(2,3); /* W3C */
+                -webkit-transform:scale(1.7,1); /* Safari and Chrome */
+                -moz-transform:scale(2,3); /* Firefox */
+                -ms-transform:scale(2,3); /* IE 9 */
+                -o-transform:scale(2,3); /* Opera */
+            }
+
+
+    </style>
+    <div class="wrapper" ng-controller="TKReportController" ng-init="dashboard.active();">
+        <div class="main-header" ng-include="headerTemplate"></div> 
+            <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+                <div class="content-wrapper">
+                    <spinner name="form01spinner" ng-cloak="">
+                        <div class="overlay"></div>
+                        <div class="spinner">
+                            <div class="double-bounce1"></div>
+                            <div class="double-bounce2"></div>
+                        </div>
+                        <div class="please-wait">Please Wait...</div>
+                    </spinner>
+    
+                    <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+                        <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                            <i class="fa fa-clock-o" style="float: left;color:#00000052"></i>                 
+                            <div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Timekeeper's Portal</div>
+                            <div style="font-size: 15pt;text-indent:15px">BIR 1601 -C Form</div>    
+                        </div>
+                        <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                            <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li><a href=".#/admin/tk/timesheet"> Timekeeper's Portal</a></li>
+                            <li><a href=".#/admin/tk/report/rptsheet"> Reports</a></li>
+                            <li class="active">BIR Form</li>
+                        </ol>
+                        <div class="bgPulse hidden-xs">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </section>
+                    <div id="container" style="width: 1125px !important; margin-left:auto; margin-right:auto; margin-top:20px; height: 215vh !important;">    
+                        <table style="width:100%; border:1px solid black">
+                            <tr>
+                                <td style="text-align:center; width:6%;">
+                                    <div style="margin-left:10px;"><img src="assets/images/birlogo.png" style="width:90%;height:50px" /></div>  
+                                </td>
+                                <td style="text-align:left; width:15%; line-height: normal;">
+                                    <div style="font-size:9pt; margin-left:10px;">Republika ng Pilipinas</div>
+                                    <div style="font-size:9pt; margin-left:10px;">Kagawaran ng Pananalapi</div>
+                                    <div style="font-size:9pt; margin-left:10px;">Kawanihan ng Rentas Internas</div>
+                                </td>
+                                <td style="text-align:center;width:45%; line-height: 171%;">
+                                    <strong> 
+                                        <div style="font-size:16pt">Monthly Remittance Return</div>
+                                        <div style="font-size:16pt">of Income Taxes Withheld</div>
+                                        <div style="font-size:16pt">on Compensation</div>
+                                    </strong>
+                                </td>
+                                <td style="width:21%; line-height: 180%; ">
+                                    <div style="font-size:10pt; margin-left:123px;">BIR Form No.</div>
+                                    <strong><div style="font-size:23pt; margin-left:120px">1601 -C</div></strong>
+                                    <div style="font-size:10pt; margin-left:122px">July 2008 (ENCS)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style = "border-top: 1px solid black">
+                                    <div style="font-size:9pt;text-indent:5px">Fill in all applicable spaces. Mark all appropriate boxes with an "X"</div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table border="1" style="width:100%; ">
+                            <tr>
+                                <td style="width:26%; border-bottom:1px solid black; border-right:1px solid black">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:35%"> 
+                                                <div style = "padding-bottom:15px;"> 
+                                                    <span style="margin-left: 3px;">1</span>
+                                                    <span style="margin-left: 10px;">For the Month</span>
+                                                    <div style="text-indent: 21px;">(MM/YYYY) <i class="fa fa-play fa-xs" style = "margin-left:10px; font-size:7pt"></i></div>
+                                                </div>
+                                            </td>
+                                            <td style="width:20%; padding-top:20px;"> 
+                                                <div style="border:1px solid black;padding:3px;width:140px;">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox1">2</div>
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="width:24%; border-bottom:1px solid black; border-right:1px solid black">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:35%;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">2</span>
+                                                    <span style="margin-left: 10px;">Amended Return?</span>                                                           
+                                                </div>
+                                            </td>
+                                        <tr/>   
+                                        <tr>
+                                            <td style="width:10%; padding-bottom:6px; padding-top: 8px;"> 
+                                                <div style="display:table-cell; width:40px;"> 
+                                                    <i class="fa fa-play fa-xs" style = "margin-left:50px; font-size:7pt"></i> 
+                                                </div>
+                                                <div style="display:table-cell; width:40px;"> 
+                                                    <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                </div>
+                                                <div style="display:table-cell;"> 
+                                                    <span style="margin-left: 3px;">Yes</span>							
+                                                </div>
+                                                <div style="display:table-cell; width:40px;"> 
+                                                    <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                </div>
+                                                <div style="display:table-cell;"> 
+                                                    <span style="margin-left: 3px;">No</span>							
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td style="width:24%; border-bottom:1px solid black; border-right:1px solid black">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:35%;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">3</span>
+                                                    <span style="margin-left: 10px;">No. of Sheets Attached</span>
+                                                </div>
+                                                
+                                            </td>
+                                        <tr/>   
+                                        <tr>
+                                            <td style="width:20%; padding-bottom:4px;"> 
+                                                <div style="border:1px solid black; padding:3px; width:70px; margin-top: 5px; margin-left: 130px;">
+                                                    <div class="tin mybox">2</div>  
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                    </table>
+                                </td>
+                                <td style="width:24%; border-bottom:1px solid black; border-right:1px solid black">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:35%;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">4</span>
+                                                    <span style="margin-left: 10px;">Any Taxes Withheld?</span>           
+                                                </div>
+                                            </td>
+                                        <tr/>   
+                                        <tr>
+                                            <td style="width:10%;  padding-top: 10px;"> 
+                                                <div style="display:table-cell; width:40px;"> 
+                                                    <i class="fa fa-play fa-xs" style = "margin-left:50px; font-size:7pt"></i> 
+                                                </div>
+                                                <div style="display:table-cell; width:40px;"> 
+                                                    <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                </div>
+                                                <div style="display:table-cell;"> 
+                                                    <span style="margin-left: 3px;">Yes</span>							
+                                                </div>
+                                                <div style="display:table-cell; width:40px;"> 
+                                                    <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                </div>
+                                                <div style="display:table-cell;"> 
+                                                    <span style="margin-left: 3px;">No</span>							
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = "4" style="font-size:9pt;">
+                                    <div style="display:table-cell;"> 
+                                        <strong> 
+                                            <span style="margin-left: 3px;">Part I</span>
+                                            <span style="margin-left: 400px;">B a c k g r o u n d I n f o r m a t i o n</span>								
+                                        </strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                            <td style="width:40%; vertical-align:top">
+                                <table style="width:100%;">
+                                    <tr>							
+                                        <td style="width:15%"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">5</span>
+                                                <span style="margin-left: 10px;">TIN</span>
+                                            </div>
+                                            <div style="height:15px"> <i class="fa fa-play fa-xs" style = "margin-left:26px; font-size:7pt"></i> </div>
+                                        </td>
+                                        <td style="width:75%; padding-top:5px;"> 
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="display:table-cell; width:25px;"></div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="display:table-cell; width:25px;"></div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="display:table-cell; width:25px;"></div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                        </td>	 							
+                                    </tr>
+                                </table>
+                            </td>  
+                            <td style="width:25%; border-left:1px solid black; ">
+                                <table style="width:100%;">
+                                    <td style="width:20%; vertical-align: top;"> 
+                                        <div> 
+                                            <span style="margin-left: 3px;">6</span>
+                                            <span style="margin-left: 10px;">RDO CODE</span>
+                                            <div> <i class="fa fa-play fa-xs" style = "margin-left:75px; font-size:7pt"></i> </div>           
+                                        </div>
+                                    </td>
+                                    <td style="width:25%; ">
+                                        <div style="display:table-cell;"> 
+                                            <input type="text" readonly style=" margin-top: 5px; width: 140px; height:30px;border:1px solid black;">					
+                                        </div>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style="width:35%; border-left:1px solid black; ">
+                                <table style="width:100%;">
+                                    <td style="width:25%; vertical-align: top;"> 
+                                        <div> 
+                                            <span style="margin-left: 3px;">7</span>
+                                            <span style="margin-left: 10px;">Line of Business/</span>           
+                                        </div>
+                                        <div>
+                                            <span style="margin-left: 22px;">Occupation  <i class="fa fa-play fa-xs" style = "margin-left:15px; font-size:7pt"></i></span>     
+                                        </div>
+                                    </td>
+                                    <td style="width:25%; ">
+                                        <div style="display:table-cell;"> 
+                                            <input type="text" readonly style=" margin-top: 5px; margin-left: 7px; width: 220px; height:30px; border:1px solid black;">					
+                                        </div>
+                                    </td>
+                                </table>
+                            </td>
+                        </table>
+
+                        <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                            <tr>
+                                <td style="width:70%; vertical-align:top">
+                                    <table style="width:100%;">
+                                        <tr>							
+                                            <td style="width:15%"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">8</span>
+                                                    <span style="margin-left: 10px;">Withholding Agent's Name (Last Name, First Name, Middle Name for Individuals)/(Registered Name for Non-Individuals)</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-play fa-xs" style = "margin-left:26px; margin-right: 10px; font-size:7pt"></i>   
+                                                    <input type="text" readonly style=" margin-bottom:5px; width: 790px; height:30px;border:1px solid black;">	
+                                                </div>
+                                            </td>                        
+                                        </tr>
+                                    </table>
+                                </td>  
+                                <td style="width:20%; border-left:1px solid black; border-right:1px solid black;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:25%; vertical-align: top;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">9</span>
+                                                    <span style="margin-left: 10px;">Telephone Number</span>           
+                                                </div>
+                                                <div style = "margin-left: 30px;">
+                                                    <div style="border:1px solid black;padding:3px;width:200px;">
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin boxlast">9</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>    
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr style = "border-top: 1px solid black">
+                                <td style="width:70%; vertical-align:top">
+                                    <table style="width:100%;">
+                                        <tr>							
+                                            <td style="width:15%"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">10</span>
+                                                    <span style="margin-left: 5px;">Registered Address</span>
+                                                </div>
+                                                <div>
+                                                    <i class="fa fa-play fa-xs" style = "margin-left:26px; margin-right: 10px; font-size:7pt"></i>   
+                                                    <input type="text" readonly style=" margin-bottom:5px; width: 790px; height:30px;border:1px solid black;">	
+                                                </div>
+                                            </td>                        
+                                        </tr>
+                                    </table>
+                                </td>  
+                                <td style="width:20%; border-left:1px solid black; border-right:1px solid black;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <div> 
+                                                <span style="margin-left: 3px; ">11 </span>
+                                                <span style="margin-left: 10px; ">Zip Code</span>           
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    <i class="fa fa-play fa-xs" style = "margin-left:42px; margin-bottom:17px; margin-top:7px;font-size:7pt"></i> 
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <div style="border:1px solid black;padding:3px;width:150px;">
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin mybox">2</div>
+                                                        <div class="tin boxlast">9</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr style = "border-top: 1px solid black">
+                                <td style="width:30%; vertical-align:top">
+                                    <table style="width:100%;">
+                                        <tr>							
+                                            <td style="width:15%; padding-bottom: 20px;"> 
+                                                <table style = "width:100%">
+                                                        <tr>
+                                                            <td style="width:35%;"> 
+                                                                <div> 
+                                                                    <span style="margin-left: 3px;">12</span>
+                                                                    <span style="margin-left: 10px;">Category of Withholding Agent</span>           
+                                                                </div>
+                                                            </td>
+                                                        <tr/>   
+                                                        <tr>
+                                                            <td style="width:10%;  padding-top: 10px;"> 
+                                                                <div style="display:table-cell; width:40px;"> 
+                                                                    <i class="fa fa-play fa-xs" style = "margin-left:32px; font-size:7pt"></i> 
+                                                                </div>
+                                                                <div style="display:table-cell; width:40px;"> 
+                                                                    <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                                </div>
+                                                                <div style="display:table-cell;"> 
+                                                                    <span style="margin-left: 3px;">Private</span>							
+                                                                </div>
+                                                                <div style="display:table-cell; width:40px;"> 
+                                                                    <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                                </div>
+                                                                <div style="display:table-cell;"> 
+                                                                    <span style="margin-left: 3px;">Government</span>							
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                </table>
+                                            </td> 
+                                            
+                                            <td style="width:45%; border-left: 1px solid black"> 
+                                                <table style = "width:100%">
+                                                    <tr>    
+                                                        <div> 
+                                                            <span style="margin-left: 3px;">13</span>
+                                                            <span style="margin-left: 5px;">Are there payees availing of tax relief under Special Law</span>
+                                                        </div>
+                                                        <div> 
+                                                            <span style="margin-left: 5px;">or International Tax Treaty?</span>        
+                                                        </div>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="display:table-cell; width:40px;"> 
+                                                                <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                            </div>
+                                                            <div style="display:table-cell;"> 
+                                                                <span style="margin-left: 3px;">Yes</span>							
+                                                            </div>
+                                                            <div style="display:table-cell; width:40px;"> 
+                                                                <div style="margin-left:15px; text-align:center;border:1px solid black">X</div>
+                                                            </div>
+                                                            <div style="display:table-cell;"> 
+                                                                <span style="margin-left: 3px;">No</span>
+                                                                <span style="margin-left: 20px;">If yes, specify</span>							
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div>   
+                                                                <input type="text" readonly style=" margin-bottom:5px; width: 330px; height:30px;border:1px solid black;">	
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>     
+                                        </tr>
+                                    </table>
+                                </td>  
+                                <td style="width:20%; border-left:1px solid black; border-right:1px solid black;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <div> 
+                                                <span style="margin-left: 3px; ">14 </span>
+                                                <span style="margin-left: 10px; ">A T C</span>           
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style = "margin-top:10px">
+                                                    <i class="fa fa-play fa-xs" style = "margin-left:42px; margin-bottom:17px; margin-top:7px;font-size:7pt"></i> 
+                                                </div>
+                                            </td>
+                                            <td style ="margin-top:10px">
+                                                <div>   
+                                                    <input type="text" style="width: 150px; height:30px;border:1px solid black;">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan = "4" style="font-size:9pt; border-top: 1px solid black;">
+                                    <div style="display:table-cell;"> 
+                                        <strong> 
+                                            <span style="margin-left: 3px;">Part II</span>
+                                             
+                                            <span style="margin-left: 400px;"><i class="fa fa-play fa-xs" style = "margin-right: 15px; font-size:7pt"></i> C o m p u t a t i o n o f T a x</span>								
+                                        </strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    <table style="width:100%; border-right:1px solid black; border-left:1px solid black;">
+                        <td style="width:35%; vertical-align: top;">
+                            <table style = "width: 100%;">
+                                    <tr>
+                                        <div> 
+                                            <span style="margin-left: 80px;"> Particulars</span>          
+                                        </div>
+                                    </tr>
+
+                                <tr>
+                                    <div style = "margin-top:10px;"> 
+                                        <span style="margin-left: 3px;">15</span>
+                                        <span style="margin-left: 5px;">Total Amount of Compensation</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top: 15px;"> 
+                                        <span style="margin-left: 3px;">16</span>
+                                        <span style="margin-left: 20px;">Less: Non-Taxable Compensation</span>
+                                    </div>
+                                    <div> 
+                                        <span style="margin-left: 65px;  line-height: 15px;">16A Statutory Minimum Wage (MWEs)</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div> 
+                                        <span style="margin-left: 65px;">16B Holiday Pay,Overtime Pay, Night Shift</span>
+                                    </div>
+                                    <div> 
+                                        <span style="margin-left: 90px;  line-height: 15px;">Differential Pay, Hazard Pay</span>
+                                    </div>
+                                    <div> 
+                                        <span style="margin-left: 90px;  line-height: 15px;">(Minimum Wage Earner)</span>
+                                    
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div > 
+                                        <span style="margin-left: 65px;">16C Other Non-Taxable Compensation</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:10px;"> 
+                                        <span style="margin-left: 3px;">17</span>
+                                        <span style="margin-left: 5px;">Taxable Compensation</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:5px;"> 
+                                        <span style="margin-left: 3px;">18</span>
+                                        <span style="margin-left: 5px;">Tax Required to be withheld</span>
+                                    </div>
+                                </tr>
+
+                                <tr>
+                                    <div style = "margin-top:5px;"> 
+                                        <span style="margin-left: 3px;">19</span>
+                                        <span style="margin-left: 20px;">Add/Less: Adjustment(from Item 26 of Section A)</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:5px;"> 
+                                        <span style="margin-left: 3px;">20</span>
+                                        <span style="margin-left: 5px;">Tax Required to be withheld for Remittance</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:5px;"> 
+                                        <span style="margin-left: 3px;">21</span>
+                                        <span style="margin-left: 20px;">Less: Tax Remitted in Return Previosuly Failed.</span>
+                                    </div>
+                                    <div> 
+                                        <span style="margin-left: 85px;  line-height: 15px;">If this is an amended return</span>
+                                    </div>
+                                    <div> 
+                                        <span style="margin-left: 75px;  line-height: 15px;">Other Payments Made (please attach</span>
+                                    </div>
+                                    <div> 
+                                        <span style="margin-left: 85px;  line-height: 15px;">proof of payment BIR Form No. 0605)</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:20px;"> 
+                                        <span style="margin-left: 3px;">22</span>
+                                        <span style="margin-left: 5px;">Total Tax Payments Made (Sum of Item Nos. 21A & 21B)</span>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:8px;"> 
+                                        <span style="margin-left: 3px;">23</span>
+                                        <span style="margin-left: 5px;">Tax Still Due/(Overremittance) (Item No. 20 less Item No. 22)</span>
+                                    </div>
+                                </tr>
+                                
+                            </table>
+                        </td>
+
+                        <td style="width:32%;">
+                            <table style = "width: 100%;">
+                                <tr>
+                                    <div> 
+                                        <span style = "margin-left: 115px;"> Amount of Compensation</span>          
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">15</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">16A</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">16B</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">16C</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">17</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;"></span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid white;">	
+                                    </div>
+                                </tr>   
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;"></span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid white;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;"></span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:15px; border:1px solid white;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 4px;">21A</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 4px;">21B</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 12px;"></span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid white;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 12px;"></span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; margin-left:7px; height:30px; border:1px solid white;">	
+                                    </div>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <td style="width:33%; padding-left:30px; vertical-align: top;">
+                            <table style = "width: 100%;">
+                                <tr>
+                                    <div> 
+                                        <span style ="margin-left: 180px;">Tax Due</span>          
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div style = "margin-top:165px;">   
+                                        <span style="margin-right: 9px;">18</span>
+                                        <input type="text" readonly style="width: 300px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">19</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">20</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">22</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:60px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <div>   
+                                        <span style="margin-right: 9px;">23</span>
+                                        <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                    </div>
+                                </tr>
+                            </table>
+                        </td>                                    
+                    </table>    
+
+                    <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                         <tr>
+                            <td style = "width: 24%;">
+                                <div> 
+                                    <span style="margin-left: 3px;">24</span>
+                                    <span style="margin-left: 5px;">Add: Penalties</span>
+                                </div>
+                                <div style = "margin-top:10px;"> 
+                                    <span style="margin-left: 100px;">Surcharge</span>
+                                </div>
+                                <div>   
+                                    <span style="margin-right: 9px; margin-left: 23px;"">24A</span>
+                                    <input type="text" readonly style="width: 180px; height:30px; border:1px solid black;">	
+                                </div>
+                                <div style = "margin-top:10px;"> 
+                                    <span style="margin-left: 3px;">25</span>
+                                    <span style="margin-left: 5px;">Total Amount Still Due/(Overremittance)</span>
+                                </div>
+                            </td>
+                            <td style = "width: 23%;">
+                                <div> 
+                                    <span style="margin-left: 100px;">Interest</span>
+                                </div>
+                                <div>   
+                                    <span style="margin-right: 9px;">24B</span>
+                                    <input type="text" readonly style="width: 180px; height:30px; border:1px solid black;">	
+                                </div>
+                            </td>
+                            <td style = "width: 23%;">
+                                <div> 
+                                    <span style="margin-left: 130px;">Compromise</span>
+                                </div>
+                                <div>   
+                                    <span style="margin-right: 9px;">24C</span>
+                                    <input type="text" readonly style="width: 180px; height:30px; border:1px solid black;">	
+                                </div>
+                            </td>
+                            <td style = "width: 31%;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <div>   
+                                            <span>24D</span>
+                                            <input type="text" readonly style="width: 300px; margin-top: 40px; height:30px; border:1px solid black;">	
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <div>   
+                                            <span style="margin-right: 9px;">25</span>
+                                            <input type="text" readonly style="width: 300px; margin-top:5px; height:30px; border:1px solid black;">	
+                                        </div>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr>
+                            <td colspan = "4" style="font-size:9pt; border-top: 1px solid black;">
+                                <div style="display:table-cell;"> 
+                                    <strong> 
+                                        <span style="margin-left: 3px;">Section A</span>
+                                        <span style="margin-left: 300px;">Adjustment of Taxes Withheld on Compensation For Previous Months</span>								
+                                    </strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                        <tr>
+                            <td style = "width: 25%; border-right:1px solid black;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Previous Months(s)</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span style = "line-height: 10px;">(1)</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span >(MM/YYYY)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <td>
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:40%; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:40%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:40%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style = "width: 25%; border-right:1px solid black;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Date Paid</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span style = "line-height: 10px;">(2)</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span >(MM/DD/YYYY)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <td>
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:20%; border-top:1px solid black; border-right:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:40%; border-top:1px solid black; ">
+                                                    asds
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:20%; border-top:1px solid black; border-right:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:40%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:20%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                                <td style ="width:40%; border-right:1px solid black; border-top:1px solid black;">
+                                                    asds
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style = "width: 25%; border-right:1px solid black;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Bank Validation/</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span style = "line-height: 10px;">ROR No.</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span >(3)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <td>
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style = "width: 25%; border-right:1px solid black;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Bank Code/</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span style = "line-height: 10px;">(4)</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span >&nbsp;</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <td>
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </td>
+                            <tr>
+                                <td colspan = "4" style="font-size:9pt; border-top: 1px solid black;">
+                                    <div style="display:table-cell;"> 
+                                        <strong> 
+                                            <span style="margin-left: 3px;">Section A (Continuation)</span>					
+                                        </strong>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                        <tr>
+                            <td style = "width: 25%; border-right: 1px solid black">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center;margin-top:6px">   
+                                                <span>Tax Paid (Excluding Penalties)</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span style = "line-height: 10px;">For the Month</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span >(5)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <td>
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </td>
+                            <td style = "width: 25%; border-right: 1px solid black">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center; margin-top:6px">   
+                                                <span>Should Be Tax Due</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span style = "line-height: 10px;">For the Month</span>
+                                            </div>
+                                            <div style="text-align:center;">   
+                                                <span >(6)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <td>
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style ="border-top:1px solid black;">
+                                                    asdasd
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </td>
+
+                            <td style="width:50%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <div style ="text-align: center;"> 
+                                            <span >Adjustment (7)</span>
+                                        </div> 
+                                    </tr>
+                                    <tr>
+                                        <td border ="1" style = "width:40%;z-index:1">
+                                            <table style = "width:100%;z-index:1; text-align: center;">
+                                                <tr>
+                                                    <td style = "border-right: 1px solid black; border-top: 1px solid black; width:37.9%;">
+                                                        <div style = "margin-top:1px;"> 
+                                                            <span>From Current Year</span>
+                                                        </div>
+                                                        <div style = "margin-top:1px; line-height: 13px;"> 
+                                                            <span>(7a)</span>
+                                                        </div>
+                                                    </td>
+                                                    <td style = "border-top: 1px solid black; width:38.3%;">
+                                                        <div style = "margin-top:1px; line-height: 10px;"> 
+                                                            <span >From Year - End Adjustment of the</span>
+                                                        </div>
+                                                        <div style = "margin-top:1px;"> 
+                                                            <span >Immediately Preceeding Year(7b)</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr> 
+                                    <tr>
+                                        <td style ="border-top:1px solid black;">
+                                            asdasd
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style ="border-top:1px solid black;">
+                                            asdasd
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style ="border-top:1px solid black;">
+                                            asdasd
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td colspan = "4" style="font-size:9pt; border-top: 1px solid black;">
+                                <div style = "margin-top:10px; display: table-cell;"> 
+                                    <strong><span style="margin-left: 3px;">26</span></strong>
+                                    <span style="margin-left: 5px;">Total (7a plus 7b) (To Item 19)</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                    <table style = "width:100%;border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black;">
+                        <tr>
+                            <td>
+                                <table style = "width: 100%;">
+                                    <td>
+                                        <div style = "font-size: 9pt; text-align: center;"> 
+                                       
+                                            <span style="margin-left:20px; width:10px; letter-spacing: 0px;">We declare, under the penalties of perjury, that this return has been made in good faith, vertified by us, and to the best of our knowledge and belief,</span>
+                                        </div>
+                                        <div style = "text-align: center;"> 
+                                            <span style="margin-left:20px; font-size: 9pt; letter-spacing: 0px;">is true and correct, pursuant to theprovisions of the National Internal Revenue Code, as amended, and the requlations issued under authority thereof.</span>
+                                        </div>
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td style = "padding-top: 20px;">
+                                <div style="display:table-cell;"> 									
+                                    <strong><span style="margin-left: 50px;">27</span></strong>
+                                    <div style="margin-left:70px; width:320px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center; ">Present/Vice President/Principal Officer/Accredited Tax Agent/</div>
+                                    <div style="margin-left:40px; font-size:9pt; text-align:center; line-height: 12px;">Authorized Representative / Taxpayer</div>
+                                    <div style="margin-left:40px; font-size:9pt;text-align:center;">(Signature Over Printed Name)</div>
+                                </div>
+                                <div style="display:table-cell; padding-left: 250px;"> 									
+                                    <strong><span style="margin-left: 20px;">28</span></strong>
+                                    <div style="margin-left:40px; width:320px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center;">Treasurer/Assistant Treasurer</div>
+                                    <div style="margin-left:40px; font-size:9pt;text-align:center;">(Signature Over Printed Name)</div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style = "padding-top: 30px;">
+                                <div style="display:table-cell;"> 									
+                                    <div style="margin-left:70px; width:150px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center; ">Title/Position of Signatory</div>
+                                </div>
+                                <div style="display:table-cell; padding-left: 75px;"> 									
+                                    <div style="margin-left:10px; width:150px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center;">Tin of Signatory</div>
+                                </div>
+                                <div style="display:table-cell; padding-left: 218px;"> 									
+                                    
+                                    <div style="margin-left:10px; width:320px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center;">Title/Position of Signatory</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style = "padding-top: 30px;">
+                                <div style="display:table-cell;"> 									
+                                    <div style="margin-left:30px; width:240px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center; ">Tax Agent Acc. No./Atty's Roll No.(if applicable)</div>
+                                </div>
+                                <div style="display:table-cell; padding-left: 30px;"> 									
+                                    <div style="width:105px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center;">Date of Issuance</div>
+                                </div>
+                                <div style="display:table-cell; padding-left: 30px;"> 									
+                                    <div style="width:105px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center;">Date of Expiry</div>
+                                </div>
+                                <div style="display:table-cell; padding-left: 115px;"> 									
+                                    <div style="margin-left:30px; width:320px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;text-align:center; ">TIN of Signatory</div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:9pt; border-top: 1px solid black;">
+                                <div style="display:table-cell;"> 
+                                    <strong> 
+                                        <span style="margin-left: 3px;">Part III</span>
+                                        <span style="margin-left: 300px;">D e t a i l s  o f  P a y m e n t</span>								
+                                    </strong>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+
+
+                    <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                        <tr>
+                            <td style = "width: 4%; border-right:1px solid black; vertical-align: bottom;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Particulars</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style = "width: 6%; border-right:1px solid black; vertical-align: bottom;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Drawee Bank/</span>
+                                            </div>
+                                            <div style="text-align:center; margin-bottom: 5px;">   
+                                                <span style = "line-height: 10px;">Agency</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style = "width: 7%; border-right:1px solid black; vertical-align: bottom;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Number</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style = "width: 9%; border-right:1px solid black;padding-top:19px; text-align:center; padding-left:15px">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td colspan = "3">
+                                            <div>   
+                                                <span>Date</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style ="border-right:1px solid black; border-left:1px solid black;border-top:1px solid black;">
+                                            <div>   
+                                                <span>MM</span>
+                                            </div>
+                                        </td>
+                                        <td style ="border-right:1px solid black; border-top:1px solid black; ">
+                                            <div>   
+                                                <span>DD</span>
+                                            </div>
+                                        </td>
+                                        <td style = "border-top:1px solid black">
+                                            <div>   
+                                                <span>YYYY</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            <td style = "width: 10%; border-right:1px solid black; vertical-align: bottom;">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Amount</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style = "width: 10%; border-right:1px solid black; border-bottom:1px solid white">
+                                <table style = "width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="text-align:center">   
+                                                <span>Stamp of</span>
+                                            </div>
+                                             <div style="text-align:center">   
+                                                <span>Receiving Office/AAB</span>
+                                            </div>
+                                            <div style="text-align:center">   
+                                                <span>and</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                        </tr>
+
+
+                    </table>
+
+                    <table style="width:100%;border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                        <tr>   
+                            <td style = "width: 9%;vertical-align:top;">
+                                <div>
+                                    <span><strong>29</strong> Cash/Bank</span>
+                                </div>
+                                <div> 
+                                    <span style="margin-left: 18px;">Debit Memo</span>
+                                </div>
+                            </td>
+
+                            <td style = "vertical-align:top;">
+                                <td style="width: 13%;">
+                                    <div>   
+                                        <strong><span>29A</span></strong>
+                                        <input type="text" readonly style="width: 115px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align:top;">
+                                <td style="width: 15%;">
+                                    <div>   
+                                        <strong><span>29B</span></strong>
+                                        <input type="text" readonly style="width: 137px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align: top;">
+                                <td style="width: 1%;">
+                                    <div>   
+                                        <strong><span>29C</span></strong>
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                                <td style = "vertical-align: top;">
+                                    <div style="border:1px solid black; padding:3px; width: 200px; margin-left: 5px;  margin-top: 3px;">
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox1">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox1">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin boxlast">9</div>
+                                    </div>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align:top; ">
+                                <td style= "width: 21%; border-right: 1px solid black;">
+                                    <div style = " margin-top: 3px;">   
+                                        <strong><span>29D</span></strong>
+                                        <input type="text" readonly style="width: 198px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <div>
+                                         <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                    </div>
+                                </td>
+                            </td>
+                            <td style = "vertical-align:top; ">
+                                <td style= "width: 21.3%; border-right: 1px solid black;">
+                                    <table>
+                                        <tr>
+                                            <div style="text-align:center;">   
+                                                <span>Date of Receipt</span>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <div style="text-align:center">   
+                                                <span>(RO's Signature/</span>
+                                            </div>
+                                        </tr>
+                                </table>
+                                </td>
+                            </td>
+
+                        </tr> 
+
+                        
+                        <tr>   
+                            <td style = "width: 9%;text-align:left;">
+                                <div>
+                                    <span><strong>30</strong></span>
+                                
+                                    <span style="margin-left: 3px;">Check</span>
+                                </div>
+                            </td>
+
+                            <td style = "vertical-align:top;">
+                                <td style="width: 13%;">
+                                    <div>   
+                                        <strong><span>30A</span></strong>
+                                        <input type="text" readonly style="width: 115px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align:top;">
+                                <td style="width: 15%;">
+                                    <div>   
+                                        <strong><span>30B</span></strong>
+                                        <input type="text" readonly style="width: 137px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align: top;">
+                                <td style="width: 1%;">
+                                    <div>   
+                                        <strong><span>30C</span></strong>
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                                <td style = "vertical-align: top;">
+                                    <div style="border:1px solid black; padding:3px; width: 200px; margin-left: 5px;  margin-top: 3px;">
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox1">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox1">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin boxlast">9</div>
+                                    </div>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align:top; ">
+                                <td style= "width: 21%; border-right: 1px solid black;">
+                                    <div style = " margin-top: 3px;">   
+                                        <strong><span>30D</span></strong>
+                                        <input type="text" readonly style="width: 198px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <div>
+                                         <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                    </div>
+                                </td>
+                            </td>
+                            <td>
+                                <td style= "width: 21.3%; border-right: 1px solid black; padding-bottom:16px;">
+                                   <table>
+                                       <tr>
+                                            <div style="text-align:center">   
+                                                <span>Bank Teller's Initial)</span>
+                                            </div>
+                                        </tr>
+                                    </table> 
+                                </td>
+                            </td>
+                        </tr> 
+
+                        <tr>   
+                            <td style = "width: 9%; text-align:left;">
+                                <div>
+                                    <span><strong>31</strong></span>
+                                    <span style="margin-left: 3px;">Others</span>
+                                </div>
+                            </td>
+
+                            <td style = "vertical-align:top;">
+                                <td style="width: 13%;">
+                                    <div>   
+                                        <strong><span>31A</span></strong>
+                                        <input type="text" readonly style="width: 115px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align:top;">
+                                <td style="width: 15%;">
+                                    <div>   
+                                        <strong><span>31B</span></strong>
+                                        <input type="text" readonly style="width: 137px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align: top;">
+                                <td style="width: 1%;">
+                                    <div>   
+                                        <strong><span>31C</span></strong>
+                                    </div>
+                                    <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                </td>
+                                <td style = "vertical-align: top;">
+                                    <div style="border:1px solid black; padding:3px; width: 200px; margin-left: 5px;  margin-top: 3px;">
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox1">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox1">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin mybox">2</div>
+                                        <div class="tin boxlast">9</div>
+                                    </div>
+                                </td>
+                            </td>
+
+                            <td style = "vertical-align:top; ">
+                                <td style= "width: 21%; border-right: 1px solid black;">
+                                    <div style = " margin-top: 3px;">   
+                                        <strong><span>31D</span></strong>
+                                        <input type="text" readonly style="width: 198px; height:25px; border:1px solid black;">	
+                                    </div>
+                                    <div>
+                                         <span style="margin-left: 15px;"><i class="fa fa-play fa-xs" style = "font-size:7pt"></i>
+                                    </div>
+                                </td>
+                            </td>
+                            <td style = "vertical-align:top; ">
+                                <td style= "width: 21.3%; border-right: 1px solid black;">
+                                </td>
+                            </td>
+                        </tr> 
+
+                    </table>
+
+                    <table style="width:100%; height:3.5%; border-bottom:1px solid black; border-right:1px solid black; border-left:1px solid black;">
+                        <tr>
+                            <td style = "vertical-align:top">
+                               <span style ="float:left">Machine Validation/Revenue Official Receipt Details (If not filed with the bank)</span>
+                            </td>
+                        </tr>
+                    </table>
+                    
+
+    </div>
+            
+                
+                </div> <!--/.content wrapper-->
+         <div ng-include="footerTemplate"></div>
+    </div> <!--/.wrapper-->
+    

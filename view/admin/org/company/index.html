@@ -1,0 +1,382 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #e8867a ;  }
+		25%  { background: #e47365 ;  }
+		50%  { background: #e15f4f ;  }
+		100%  { background: #dd4b39 ; }
+	}
+	.txtresize{ 
+		resize:none; 
+		/* min-height:110px !important; */
+	}
+	label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+	}
+	.style-15::-webkit-scrollbar{
+		height:10px;
+		width:4px;
+		border-radius: 4px;
+		background: transparent;
+		transition: all 0.3s ease;
+	}
+	.style-15::-webkit-scrollbar:hover{
+		background: #c6c7ca;
+	}
+	.style-15::-webkit-scrollbar-thumb{
+		background: #777779;
+		border-radius: 4px;
+	}
+    
+    img {
+    display: block;
+    max-width:230px;
+    max-height:95px;
+    width: auto;
+    height: auto;
+    }
+</style>
+<div class="wrapper" ng-controller="CompanyController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color:#dd4b39 !important*/">
+				<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon Organization.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+				<div style="font-size: 12pt;padding-top: 15px;">{{ dashboard.values.userInformation.dbcompany }}</div>		
+				<div style="font-size: 20pt;">Organizational Data</div>
+				<div style="font-size: 15pt;">Company Profile</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:160px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/org"> Organizational Data</a></li>
+                <li class="active">Company Profile</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content" style="padding: 0px 10px 0px 10px;">                
+            <div class="row" style="padding:5px">
+                <div class="row" style="padding:5px;margin-left: auto;margin-right: auto;margin-bottom:40px">                     
+                    <div class="row" >	
+                        <div class="col-md-12" >	
+                            <div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0;border:1px solid #cebfbf63; ">
+                                <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Company Information</h5>
+                            </div>
+                            <div class="col-md-12 col-xs-12" style="padding: 0 0 10px 0;border:1px solid #cebfbf63; ">
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group" >	
+                                        <div class="profile-pic">
+                                            <div style="padding: 43px;text-align: center;color: #fff;">								
+                                                <img class="img-responsive img-thumbnail" ng-src=" {{ company.pic }} " alt="" style="margin-bottom: 15px;">                                    							
+                                                <input ng-show=" global_branch == '1' " style="background:none;border:none;border-bottom: 1px black solid;width: 250px;margin: auto" class="form-control" type="file" ngf-select ng-model="company.picFile" id="file" name="file" accept="image/*" />	
+                                            </div>	
+                                        </div>					
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortname">Name<span class="req-field"> *</span></label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control readonly" disabled id="shortname" placeholder="Enter Name" maxlength="60" ng-model="company.name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortind">Industry<span class="req-field"> *</span></label>
+                                        <select style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" id="shortind" class="form-control" ng-model="company.idind" ng-options="compind.id as compind.industry for compind in dashboard.values.compind" >
+                                            <option value="">Select Industry</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shorttype">Type<span class="req-field"> *</span></label>
+                                        <select style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" id="shorttype" class="form-control" ng-model="company.idtype" ng-options="comptypes.id as comptypes.type for comptypes in dashboard.values.comptypes" >
+                                            <option value="">Select Type</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortsize">Size<span class="req-field"> *</span></label>
+                                        <select style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" id="shortsize" class="form-control" ng-model="company.idsize" ng-options="compsize.id as compsize.size for compsize in dashboard.values.compsize" >
+                                            <option value="">Select Size</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0;border:1px solid #cebfbf63; ">
+                                <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Address</h5>
+                            </div>
+                            <div class="col-md-12 col-xs-12" style="padding: 10px 0 10px 0;border:1px solid #cebfbf63; ">
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="unitno">Unit No. and Building</label>
+                                        <input id="unitno" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" placeholder="Enter Unit No. and Bldg." maxlength="100" ng-model="company.addr_bldg">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="street">Street</label>
+                                        <input id="street" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" placeholder="Enter Street" maxlength="100" ng-model="company.addr_street">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="brgy">Barangay</label>
+                                        <input id="brgy" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" placeholder="Enter Barangay" maxlength="100" ng-model="company.addr_brgy">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input id="city" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" placeholder="Enter City" maxlength="100" ng-model="company.addr_city">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="province">Province</label>
+                                        <input id="province" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" placeholder="Enter Province or Region" maxlength="100" ng-model="company.addr_prov">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="postal">Postal Code</label>
+                                        <input id="postal" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" placeholder="Enter Postal Code" maxlength="4" ng-model="company.addr_code">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12" style="padding: 0 0 10px 0;border:1px solid #cebfbf63; " >
+                                <div class="col-md-12 col-xs-12 text-center" style="padding: 0 0 10px 0">
+                                    <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Short Profile</h5>
+                                </div>
+                                <div class="form-group" >	                                    
+                                    <textarea style="border:none;border-bottom: 0px black solid;width:100%; background: white;text-align: justify;" ng-disabled="isSaving" class="form-control txtresize style-15" placeholder="Input Company Short Profile" ng-model="company.profile"></textarea>			
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 col-xs-12" style="padding: 0 0 10px 0;border:1px solid #cebfbf63; " >
+                                <div class="col-md-12 col-xs-12 text-center" style="padding: 0 0 10px 0">
+                                    <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Mission</h5>
+                                </div>
+                                <div class="form-group" >	                                    
+                                    <textarea style="border:none;border-bottom: 0px black solid;width:100%; background: white;text-align: justify;" ng-disabled="isSaving" class="form-control txtresize style-15" placeholder="Input Company Mission" ng-model="company.mission"></textarea>			
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-12 col-xs-12" style="padding: 0 0 10px 0;border:1px solid #cebfbf63; " >
+                                <div class="col-md-12 col-xs-12 text-center" style="padding: 0 0 10px 0">
+                                    <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Vision</h5>
+                                </div>
+                                <div class="form-group" >	                                    
+                                    <textarea style="border:none;border-bottom: 0px black solid;width:100%; background: white;text-align: justify;" ng-disabled="isSaving" class="form-control txtresize style-15" placeholder="Input Company Vision" ng-model="company.vision"></textarea>			
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-xs-12" style="padding: 0 0 10px 0;border:1px solid #cebfbf63; " >
+                                <div class="col-md-12 col-xs-12 text-center" style="padding: 0 0 10px 0">
+                                    <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Contact Details</h5>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortphone">Phone Number<span class="req-field"> *</span></label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortphone" placeholder="Enter Phone Number" maxlength="20" ng-model="company.cnumber">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortfax">Fax Number</label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortfax" placeholder="Enter Fax Number" maxlength="20" ng-model="company.fnumber">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortemail">Email</label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortemail" placeholder="Enter Email" maxlength="100" ng-model="company.email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group ">
+                                        <label for="shortweb">Website</label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortweb" placeholder="Enter Website" maxlength="100" ng-model="company.website">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12" style="padding: 0 0 10px 0;border:1px solid #cebfbf63; " >
+                                <div class="col-md-12 col-xs-12 text-center" style="padding: 0 0 10px 0">
+                                    <h5 style="background-color:#e47365;color: white;margin-bottom: 0px;margin-top: 0px;padding: 5px;font-size: 12pt">Government IDs</h5>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortbir">TIN<span class="req-field"> *</span></label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortbir" maxlength="25" ng-model="company.idbir" ui-mask="999-999999-999" placeholder="___-______-___">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortsss">SSS ID<span class="req-field"> *</span></label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortsss" maxlength="25" ng-model="company.idsss" ui-mask="99-9999999-9" placeholder="__-_______-_">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shortibig">Pag-Ibig ID<span class="req-field"> *</span></label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shortibig" maxlength="25" ng-model="company.idibig" ui-mask="99-999999999-9" placeholder="__-_________-_">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="shorthealth">Phil Health ID<span class="req-field"> *</span></label>
+                                        <input style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;font-weight: bold;" type="text" class="form-control" id="shorthealth" maxlength="25" ng-model="company.idhealth" ui-mask="99-999999999-9" placeholder="__-_________-_">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xs-12" style="padding: 10px 10px 10px 10px;border:1px solid #cebfbf63; " >
+                                <div class="form-group" >
+                                    <button class="btn btn-danger pull-right" ng-click="dashboard.save( company.picFile );"> SAVE </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>
+
+
+

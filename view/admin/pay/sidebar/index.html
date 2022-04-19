@@ -1,0 +1,172 @@
+<!-- Left side column. contains the logo and sidebar -->
+<style>
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#4D9C41),
+                to(#19911D),
+                color-stop(.6, #54DE5D))
+    }
+
+    .sidebar1280 {
+        overflow: auto;
+        height: 100vh;
+        padding-bottom: 160px;
+    }
+
+    .content {
+        padding-bottom: 100px;
+    }
+</style>
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar style-15">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+        <div class="pull-left image">
+            <img ng-src="{{ dashboard.values.userInformation.pic }}" style="width:25px" class="img-circle"
+                alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>{{ dashboard.values.userInformation.fname + ' ' + dashboard.values.userInformation.lname }}</p>
+        </div>
+    </div>
+
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" ng-init="activeclass()">
+        <li class="header">MAIN NAVIGATION</li>
+        <li id="home">
+            <a href="#/admin/home">
+                <i class="fa fa-dashboard"></i> <span>Back To Dashboard</span>
+            </a>
+        </li>
+        <li id="phome">
+			<a href="#/admin/pay/home" >
+			    <i class="fa fa-home"></i> <span>Home</span>        
+			</a>
+		</li>
+        <li class="header">REGULAR CYCLE PROCESS</li>
+        <li id="process">
+            <a href="#/admin/pay/process">
+                <i class="fa fa-money"></i> <span>Payroll Processing</span>
+            </a>
+        </li>
+        <li id="closing">
+            <a href="#/admin/pay/closing">
+                <i class="fa fa-check-square-o"></i> <span>Payroll Closing</span>
+            </a>
+        </li>
+        <li class="header">PAYROLL ENTRIES</li>
+        <li id="timesheetsummary">
+            <a href="#/admin/pay/entries/timesheetsummary">
+                <i class="fa fa-check-square-o"></i> <span>Timesheet Summary</span>
+            </a>
+        </li>
+        <li id="batchentries">
+            <a href="#/admin/pay/entries/batchentries">
+                <i class="fa fa-check-square-o"></i> <span>Batch Entries</span>
+            </a>
+        </li>
+        <li id="recurring">
+            <a href="#/admin/pay/entries/recurring">
+                <i class="fa fa-check-square-o"></i> <span>Recurring Payroll</span>
+            </a>
+        </li>
+        <li id="servicecharge">
+            <a href="#/admin/pay/entries/servicecharge">
+                <i class="fa fa-check-square-o"></i> <span>Service Charge</span>
+            </a>
+        </li>
+        <li id="employeeloans">
+            <a href="#/admin/pay/entries/employeeloans">
+                <i class="fa fa-check-square-o"></i> <span>Loans</span>
+            </a>
+        </li>
+        <li id="bonuses">
+            <a href="#/admin/pay/entries/bonuses">
+                <i class="fa fa-check-square-o"></i> <span>Bonuses</span>
+            </a>
+        </li>
+        <li id="accrual">
+            <a href="#/admin/pay/entries/accrual">
+                <i class="fa fa-check-square-o"></i> <span>Accrual</span>
+            </a>
+        </li>
+        <li class="header">OFF-CYCLE PROCESS</li>
+        <li id="retroactive">
+            <a href="#/admin/pay/process/retroactive">
+                <i class="fa fa-check-square-o"></i> <span>Retroactive Adjustment</span>
+            </a>
+        </li>
+        <li id="finalpay">
+            <a href="#/admin/pay/process/finalpay">
+                <i class="fa fa-check-square-o"></i> <span>Final Pay Processing</span>
+            </a>
+        </li>
+        <li class="header">SPECIAL PAY PROCESS</li>
+        <li id="13month">
+            <a href="#/admin/pay/process/13month">
+                <i class="fa fa-check-square-o"></i> <span>13th Month Pay Processing</span>
+            </a>
+        </li>
+        <li id="yearend">
+            <a href="#/admin/pay/process/yearend">
+                <i class="fa fa-check-square-o"></i> <span>Year End Processing</span>
+            </a>
+        </li>
+        <li class="header">REPORTS</li>
+        <li id="register">
+            <a href="#/admin/pay/report/register">
+                <i class="fa fa-cube"></i> <span>Payroll Register</span>
+            </a>
+        </li>
+        <li class="header">GOVERNMENT ROUTINES</li>
+        <li class="treeview" id="header-esetting">
+        <li id="hdmf">
+            <a href="#/admin/pay/government/hdmf">
+                <i class="fa fa-cube"></i> <span>HDMF</span>
+            </a>
+        </li>
+        <li id="sss">
+            <a href="#/admin/pay/government/sss">
+                <i class="fa fa-cube"></i> <span>SSS</span>
+            </a>
+        </li>
+        <li id="philhealth">
+            <a href="#/admin/pay/government/philhealth">
+                <i class="fa fa-cube"></i> <span>PHILHEALTH</span>
+            </a>
+        </li>
+        <li id="bir">
+            <a href="#/admin/pay/government/bir">
+                <i class="fa fa-cube"></i> <span>BIR</span>
+            </a>
+        </li>
+        <li class="header">FILE MAINTENANCE</li>
+        <li id="payrollperiods">
+            <a href="#/admin/pay/file/payrollperiods">
+                <i class="fa fa-cog"></i> <span>Payroll Periods</span>
+            </a>
+        </li>
+        <li id="bank">
+            <a href="#/admin/pay/file/bank">
+                <i class="fa fa-cog"></i> <span>Bank Setup</span>
+            </a>
+        </li>
+        <li class="header">GOVERNMENT ROUTINES</li>
+    </ul>
+</section>
+<!-- /.sidebar -->

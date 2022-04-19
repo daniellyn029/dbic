@@ -1,0 +1,750 @@
+<style>
+  .main-footer {
+      background: #fff;
+      padding: 5px;
+      color: #444;
+      border-top: 1px solid #d2d6de;
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: 999;
+  }
+  .content-wrapper{
+      background:white
+  }
+  .example2 th{
+      color:white;
+      background-color: #006ba6;
+      text-align:center
+  }
+  .btnTD{
+      text-align:center;
+  }
+  .info{
+      font-weight: bold;
+  }
+  .ui-widget-header {
+      border: 1px solid green;
+      background: #008d4c;
+      color:black;
+  }
+  .lightbox-modal{
+      z-index:99999 !important;
+  }
+  .bder{
+      border:0px solid black;
+  }
+  .table-striped>tbody>tr:nth-child(odd)>td, 
+  .table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #d9e5f3;
+  }
+  table.dataTable>tbody>tr.child ul li {
+      border-bottom: 0px solid #efefef !important;
+  }	
+  .req-field {
+      color: red;
+  }
+  .paddingZero{
+      padding: 0px !important;
+  }
+  .fixwidth {
+    width: 50px !important;
+  }
+  .lbltbl{
+    font-weight:bold;
+    font-size:10pt;	
+    text-align:right;
+    padding:5px !important;
+    width:140px !important;
+  }
+  .datatbl{
+    text-indent:5px;
+    padding:5px !important;
+    font-size:9pt;
+    width:210px !important;
+  }
+  .print-only{
+    display: none;
+  }
+
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    .print-only{
+      display: block;
+    }
+  }
+
+
+  .sec-head{
+    overflow:hidden;
+    animation: bgColor 8s normal forwards;
+  }	
+  .bgPulse{
+    width: 100%;
+    height: 100%;
+  }	
+  .bgPulse span{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    
+  }	
+  .bgPulse span:nth-child(2n+1){
+    background: transparent;
+    border: 5px solid #fff;
+  }	
+  .bgPulse span:nth-child(1){
+    border-radius:12px;
+    top: 30%;
+    left: 30%;
+    animation: animate 10s linear infinite;
+  }	
+  .bgPulse span:nth-child(2){
+    top: 20%;
+    left: 50%;
+    animation: animate 15s linear infinite;
+  }	
+  .bgPulse span:nth-child(3){
+    top: 40%;
+    left: 70%;
+    animation: animate 20s linear infinite;
+  }	
+  .bgPulse span:nth-child(4){
+    border-radius:12px;
+    top: 60%;
+    left: 80%;
+    animation: animate 12s linear infinite;
+  }
+  .bgPulse span:nth-child(5){
+    top: 60%;
+    left: 40%;
+    animation: animate 17s linear infinite;
+  }
+  .bgPulse span:nth-child(6){
+    border-radius:12px;
+    top: 60%;
+    left: 60%;
+    animation: animate 22s linear infinite;
+  }
+  .bgPulse span:nth-child(7){
+    top: 60%;
+    left: 20%;
+    animation: animate 17s linear infinite;
+  }	
+  @keyframes animate{
+    0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.4; }
+    100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+  }
+  @keyframes bgColor{
+    0%   { background: #f7c069 ;  }
+    25%  { background: #f1ae43 ;  }
+    50%  { background: #f1a428 ;  }
+    100% { background: #f39c12 ;  }
+  }
+
+  #archivelist th{
+		color: white;
+		background: #f39c12 ;
+		height: auto !important;
+	}
+  
+	.buttons{
+		margin-right: 0px;
+	}
+	
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		font-size: 11pt !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+    label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+</style>
+<div class="wrapper" ng-controller="EPCashAdvanceController" ng-init="dashboard.active();">
+
+  <div class="main-header" ng-include="headerTemplate"></div> 
+  <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+  <div ng-include="entryModalTemplate"></div>
+  <div class="content-wrapper">
+      <spinner name="form01spinner" ng-cloak="">
+          <div class="overlay"></div>
+          <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+          </div>
+          <div class="please-wait">Please Wait...</div>
+      </spinner>
+      <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+    <div style="font-size: 9em;/*color: #00a65a !important;*/">
+		<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>																					
+        <div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Cash Advance</div>
+        <div style="font-size: 15pt; text-indent:15px">Archive</div>		
+    </div>
+    <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+      <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href=".#/admin/hr/dashboard"> Employee's Portal</a></li>
+              <li class="active">Loans</li>
+              <li class="active">Cash Advance</li>
+              <li class="active">Archive</li>
+    </ol>	
+    <div class="bgPulse hidden-xs">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+      </section>
+
+      <section class="content">
+        <div ng-init="archiveTable()">
+			<!-- <div class="box-header">
+				<button id="btn-refresh-archive" style="margin-right:3px;" class="btn btn-flat btn-success pull-right" ng-click="dtInstanceArchive.reloadData()" title="Refresh">
+				<i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+				</button>
+				<button style="margin-right:3px;" class="btn btn-flat btn-success pull-right" title="Search" data-toggle="modal" data-target="#modal-search-archive"  >
+				<i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+				</button>
+			</div> -->
+			
+			<table id="archivelist" datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstanceArchive" class="example2 row-border hover table-striped table-bordered" ></table>
+			
+			<div class="modal fade modal-info" id="modal-search-archive" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+				<div class="modal-dialog">
+					<div class="modal-header" style="background: #f39c12 !important; border-color: #f39c12  !important;">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Filter</h4>
+					</div>
+					<div class="modal-body" style="background: white !important">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="search_acct_archive">Employee</label>
+									<select select2 ng-disabled="isSaving" id="search_acct_archive" class="form-control" ng-model="searchArchive.acct" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										<!-- <option value="">Select Employee</option> -->
+										<option ng-repeat="data in dashboard.values.accounts track by $index" value="{{data.empname}}">{{data.empid}}&nbsp;{{data.empname}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="search_cd_archive">Create Date</label>
+									<input type="text" readonly searchdatepickers ng-model="searchArchive.datecreate" class="form-control" maxlength="10" id="search_cd_archive" name="search_cd_archive"  required  style="border:none;border-bottom:1px solid black !important;background-color: white;"/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="search_docid_archive">Document ID</label>
+									<input type="text" ng-model="searchArchive.docid" class="form-control" id="search_docid_archive" name="search_docid_archive" required  style="border:none;border-bottom:1px solid black !important;background-color: white;"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="background: #f39c12 !important; border-color: #f39c12  !important;">
+						<button type="button" class="btn btn-danger pull-left" ng-click="resetSearchArchive()" >Reset</button>
+						<button type="button" class="btn btn-primary" ng-click="unitSearchArchive()" data-toggle="modal">Search</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+      </section>        
+      
+  </div>
+
+  <div ng-include="footerTemplate"></div>
+  
+  <!-- Modal View -->
+	<div class="modal fade" id="CashAdvanceViewArchive" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important;z-index: 1049 !important" >
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row paddingZero">
+						<div class="col-md-6 col-xs-6" style="text-align: left;padding-bottom: 5px;">
+							<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-6 col-xs-6" style="text-align: right;padding-bottom: 5px;">
+							<img src="assets/images/delsanlogo.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-6 col-xs-12" style="text-align: left;padding: 20px 15px 0px 15px">
+                            <span><b>{{viewArchive.refferenceno}}</b></span>
+						</div>
+						<div class="col-md-6 col-xs-12" style="text-align: right;padding: 20px 15px 0px 15px">
+                            <span><b>EMPLOYEE SALARY ADVANCE FORM</b></span>
+						</div>
+						<div class="col-md-12 col-xs-12">
+							<div class="col-md-8 col-xs-12" style="border:1px solid black">
+								<div class="col-md-3 col-xs-4 paddingZero"><b>Employee Name</b></div>
+								<div class="col-md-9 col-xs-8 paddingZero">{{viewArchive.empname}}&nbsp;({{viewArchive.empid}})</div>
+							</div>
+							<div class="col-md-4 col-xs-12" style="border:1px solid black">
+								<div class="col-md-4 col-xs-4 paddingZero"><b>Date</b></div>
+								<div class="col-md-8 col-xs-8 paddingZero">{{viewArchive.datecreated | date : "MMMM dd, y"}}</div>
+							</div>
+							<div class="col-md-8 col-xs-12" style="border:1px solid black">
+								<div class="col-md-3 col-xs-4 paddingZero"><b>Position/Dept.</b></div>
+								<div class="col-md-9 col-xs-8 paddingZero">{{viewArchive.position}} / {{viewArchive.department}}</div>
+							</div>
+							<div class="col-md-4 col-xs-12" style="border:1px solid black">
+								<div class="col-md-4 col-xs-4 paddingZero"><b>Date Hired</b></div>
+								<div class="col-md-8 col-xs-8 paddingZero">{{viewArchive.datehired | date : "MMMM dd, y"}}</div>
+							</div>
+							<div class="col-md-6 col-xs-12" style="border:1px solid black;height:180px">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Reason for Salary Advance (Pls. Check)</b></div>
+								<div class="col-md-12 col-xs-12">
+									<input id="health2" type="radio" ng-disabled="viewArchive.reason != 'Health/Sickness/Medication'" ng-checked="viewArchive.reason == 'Health/Sickness/Medication'" value="Health/Sickness/Medication">
+									<label for="health2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Health/Sickness/Medication</label>
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<input id="educ2" type="radio" ng-disabled="viewArchive.reason != 'Education'" ng-checked="viewArchive.reason == 'Education'" value="Education">
+									<label for="educ2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Education</label>
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<input id="hosp2" type="radio" ng-disabled="viewArchive.reason != 'Hospitalization'" ng-checked="viewArchive.reason == 'Hospitalization'" value="Hospitalization">
+									<label for="hosp2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Hospitalization</label>
+								</div>
+							</div>
+							<div class="col-md-6 col-xs-12" style="border:1px solid black;height:180px">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Attach Documents/Required</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.reason=='Health/Sickness/Medication'">Health/Sickness/Medication</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Health/Sickness/Medication'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="medcert2" type="checkbox" ng-model="viewArchive.medcert" ng-true-value="1" ng-false-value="0">
+										<label for="medcert2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Medical Certificate</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.medcertfile );" ng-show="viewArchive.medcertfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Health/Sickness/Medication'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="docpresc2" type="checkbox" ng-model="viewArchive.docpresc" ng-true-value="1" ng-false-value="0">
+										<label for="docpresc2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Doctor's Prescription</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.docprescfile );" ng-show="viewArchive.docprescfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Health/Sickness/Medication'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="ormeddoc2" type="checkbox" ng-model="viewArchive.ormeddoc" ng-true-value="1" ng-false-value="0">
+										<label for="ormeddoc2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Official receipt (Medicine/Doctor's Fee)</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.ormeddocfile );" ng-show="viewArchive.ormeddocfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.reason=='Education'">Education</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Education'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="assessform2" type="checkbox" ng-model="viewArchive.assessform" ng-true-value="1" ng-false-value="0">
+										<label for="assessform2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Assessment Form</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.assessformfile );" ng-show="viewArchive.assessformfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Education'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="billstate2" type="checkbox" ng-model="viewArchive.billstate" ng-true-value="1" ng-false-value="0">
+										<label for="billstate2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Billing Statement</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.billstatefile );" ng-show="viewArchive.billstatefile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Education'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="orsch2" type="checkbox" ng-model="viewArchive.orsch" ng-true-value="1" ng-false-value="0">
+										<label for="orsch2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Official receipt (School Fee)</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.orschfile );" ng-show="viewArchive.orschfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.reason=='Hospitalization'">Hospitalization</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Hospitalization'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="pbsor2" type="checkbox" ng-model="viewArchive.pbsor" ng-true-value="1" ng-false-value="0">
+										<label for="pbsor2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Partial Billing Statement or Official Receipt</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.pbsorfile );" ng-show="viewArchive.pbsorfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+								<div class="col-md-12 col-xs-12" style="margin-bottom:5px" ng-show="viewArchive.reason=='Hospitalization'">
+									<div class="col-md-10 col-xs-10 paddingZero">
+										<input id="hospmedcert2" type="checkbox" ng-model="viewArchive.hospmedcert" ng-true-value="1" ng-false-value="0">
+										<label for="hospmedcert2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Medican Certificate</label>
+									</div>
+									<div class="col-md-2 col-xs-2 paddingZero">
+										<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.hospmedcertfile );" ng-show="viewArchive.hospmedcertfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 col-xs-12" style="border:1px solid black;height:180px;">
+								<div class="col-md-12 col-xs-12" style="padding:10px 0 0 0" ng-show="viewArchive.reason"><b>Explanation:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.reason">
+									<textarea readonly style="resize: none;border:1px solid #ddd;width:100%;height: 130px;background: white;text-align: justify;" ng-disabled="isSaving" class="form-control txtresize style-15" ng-model="viewArchive.explanation"></textarea>
+								</div>
+							</div>
+
+							<!-- <div class="col-md-6 col-xs-12" style="border:1px solid black;height:60px">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Confirmed by:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 12px"><u>RYAN CARDOZA</u></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 12px">Accounting</div>
+							</div> -->
+							<div class="col-md-12 col-xs-12" style="padding-top:10px"><b>Employee's Undertaking:</b></div>
+							<div class="col-md-12 col-xs-12" style="padding-top:10px"><span>I, <b><u>{{viewArchive.empname}}</u></b>, request a cash advance of</span> <input number-form readonly type="text" ng-model="viewArchive.loanamount" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:80px" placeholder="0.00"> <span>on my salary payable</span></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px"><span>On the payroll date of</span> <input readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="viewArchive.payabledate" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;"><span>If this request is approved, I agree to repay this advance in</span> <input readonly number-form type="text" ng-model="viewArchive.terms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:60px" placeholder="0"> <span>equal semi-monthly salary deductions from the next pay periods immediately following the pay period from which this advance is made. I agree to liquidate my cash advance by submitting required official documents stated above.</span></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;"><span>I also agree that in case of separation from the company prior to total payment of this advance, I authorize the company to deduct any unpaid advance amount from any wages/salary due me at the time of termination of employment.</span></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:30px;text-align: justify;">
+								<div class="col-md-6 col-xs-12 paddingZero"><span><b>Employee Signature: </b>{{viewArchive.empname}}</span></div>
+								<!-- <div class="col-md-6 col-xs-12 paddingZero"><span><b>Date: </b>07/07/2020</span></div> -->
+							</div>
+
+							<div class="col-md-6 col-xs-12" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver1_id">
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver1_status==1"><span><b>Received/Endorsed by:</b></span></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver1_status==2"><span><b>Declined by:</b></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span><u>{{viewArchive.approver1_name}}</u></span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span><u>{{viewArchive.approver1_date}}</u></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver1desig}}</span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-6 col-xs-12" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver2_id">
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver2_status==1"><span><b>Endorsed by:</b></span></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver2_status==2"><span><b>Declined by:</b></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span><u>{{viewArchive.approver2_name}}</u></span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span><u>{{viewArchive.approver2_date}}</u></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver1desig}}</span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="hidden-xs col-md-12 col-xs-12" style="border:1px solid black;height:130px;margin-top:10px;" ng-show="((viewArchive.loanbalance!=''&&viewArchive.loanbalance!=0&&viewArchive.loanbalance!=null)||(viewArchive.newloanamount!=''&&viewArchive.newloanamount!=0&&viewArchive.newloanamount!=null)||(viewArchive.newterms!=0&&viewArchive.newterms!=null)||(viewArchive.newpayabledate!=''&&viewArchive.newpayabledate!=null))">
+								<div class="col-md-12 col-xs-12" style="padding: 5px 0 0 0"><b>Accounting use only:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Amount of outstanding balance from previous advances:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.loanbalance" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Loanable amount:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.newloanamount" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Payment terms semi-monthly:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.newterms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">First payment date:</div>
+									<div class="col-md-6 paddingZero"><input id="newpayabledate" readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="viewArchive.newpayabledate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+								</div>
+							</div>
+
+							<div class="visible-xs col-md-12 col-xs-12" style="border:1px solid black;height:200px;margin-top:10px;" ng-show="((viewArchive.loanbalance!=''&&viewArchive.loanbalance!=0&&viewArchive.loanbalance!=null)||(viewArchive.newloanamount!=''&&viewArchive.newloanamount!=0&&viewArchive.newloanamount!=null)||(viewArchive.newterms!=0&&viewArchive.newterms!=null)||(viewArchive.newpayabledate!=''&&viewArchive.newpayabledate!=null))">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Accounting use only:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Amount of outstanding balance from previous advances:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.loanbalance" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Loanable amount:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.newloanamount" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Payment terms semi-monthly:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.newterms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">First payment date:</div>
+									<div class="col-md-6 paddingZero"><input id="newpayabledate" readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="viewArchive.newpayabledate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+								</div>
+							</div>
+
+							<div class="col-md-6 col-xs-12" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver3_id">
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver3_status==1"><span><b>Confirmed by:</b></span></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver3_status==2"><span><b>Declined by:</b></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span><u>{{viewArchive.approver3_name}}</u></span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span><u>{{viewArchive.approver3_date}}</u></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver3desig}}</span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-6 col-xs-12" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver4_id">
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver4_status==1"><span><b>Approved by:</b></span></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver4_status==2"><span><b>Declined by:</b></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span><u>{{viewArchive.approver4_name}}</u></span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span><u>{{viewArchive.approver4_date}}</u></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver4desig}}</span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-6 col-xs-12" style="padding-top:20px;text-align: justify;" ng-show="viewArchive.approver5_id">
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver5_status==1"><span><b>Approved by:</b></span></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver5_status==2"><span><b>Declined by:</b></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span><u>{{viewArchive.approver5_name}}</u></span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span><u>{{viewArchive.approver5_date}}</u></span></div>
+								<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver5desig}}</span></div>
+								<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:30px;text-align: justify;">
+								<span><b>Note:</b> Please attach supporting documents to facilitate the processing of salary advance requests. Failure to attach supporting documents will suspend your privilege to make cash advance(s) for one (1) year</span>
+							</div>
+
+							<!-- <input id="efdate" autocomplete="off" ng-disabled="isSaving" type="text" ng-model="viewArchive.effectivedate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+
+							<input number-form type="text" ng-model="viewArchive.newlaundryallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="viewArchive.empname && viewArchive.effectivedate" placeholder="0.00" ng-change="totalCashComp()"> -->
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="background: #f39c12 !important; border-color: #f39c12  !important;">
+					<button type="button" class="btn btn-primary btn-small" ng-print print-element-id="form01print"><i class="fa fa-print"></i> Print</button>
+					<button type="button" class="btn btn-danger pull-right" data-dismiss="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal View -->
+
+	<!--Print-->
+	<div id="form01print" class="print-only" style="width: 1000px !important" >
+		<div class="row text-center header">
+			<div class="col-md-6 col-xs-6 paddingZero" style="text-align: left;margin-bottom: 20px;">
+				<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 200px;" />
+			</div>
+			<div class="col-md-6 col-xs-6 paddingZero" style="text-align: right;margin-bottom: 20px;">
+				<img src="assets/images/delsanlogo.png" style="width: 200px;" />
+			</div>
+		</div>
+		<div style="display: table;width: 1000px !important;">
+			<div class="row">
+				<div class="col-xs-6 paddingZero" style="text-align: left;">
+					<span><b>{{viewArchive.refferenceno}}</b></span>
+				</div>
+				<div class="col-xs-6 paddingZero" style="text-align: right;">
+					<span><b>EMPLOYEE SALARY ADVANCE FORM</b></span>
+				</div>
+				<div class="col-xs-8 paddingZero" style="border:1px solid black">
+					<div class="col-xs-3" style="text-align:left;">
+						<span><b>Employee Name</b></span>
+					</div>
+					<div class="col-xs-9"  style="text-align:left;">
+						<span>{{viewArchive.empname}}&nbsp;({{viewArchive.empid}})</span>
+					</div>
+				</div>
+				<div class="col-xs-4 paddingZero" style="border:1px solid black">
+					<div class="col-xs-4" style="text-align:left;">
+						<span><b>Date</b></span>
+					</div>
+					<div class="col-xs-8"  style="text-align:left;">
+						<span>{{viewArchive.datecreated | date : "MMMM dd, y"}}</span>
+					</div>
+				</div>
+				<div class="col-xs-8 paddingZero" style="border:1px solid black">
+					<div class="col-xs-3" style="text-align:left;">
+						<span><b>Position/Dept.</b></span>
+					</div>
+					<div class="col-xs-9"  style="text-align:left;">
+						<span>{{viewArchive.position}} / {{viewArchive.department}}</span>
+					</div>
+				</div>
+				<div class="col-xs-4 paddingZero" style="border:1px solid black">
+					<div class="col-xs-4" style="text-align:left;">
+						<span><b>Date Hired</b></span>
+					</div>
+					<div class="col-xs-8"  style="text-align:left;">
+						<span>{{viewArchive.datehired | date : "MMMM dd, y"}}</span>
+					</div>
+				</div>
+				<div class="col-xs-6 paddingZero" style="border:1px solid black; height:150px">
+					<div class="col-xs-12" style="text-align:left;">
+						<span><b>Reason for Salary Advance (Pls. Check)</b></span>
+					</div>
+					<div class="col-xs-12" style="text-align:left;">
+						<input type="radio" ng-checked="viewArchive.reason == 'Health/Sickness/Medication'" value="Health/Sickness/Medication">
+						<label class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Health/Sickness/Medication</label>
+					</div>
+					<div class="col-xs-12" style="text-align:left;">
+						<input type="radio" ng-checked="viewArchive.reason == 'Education'" value="Education">
+						<label class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Education</label>
+					</div>
+					<div class="col-xs-12" style="text-align:left;">
+						<input type="radio" ng-checked="viewArchive.reason == 'Hospitalization'" value="Hospitalization">
+						<label class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Hospitalization</label>
+					</div>
+				</div>
+				<div class="col-xs-6 paddingZero" style="border:1px solid black; height:150px">
+					<div class="col-xs-12" style="text-align:left;">
+						<span><b>Attach Documents/Required</b></span>
+					</div>
+					<div class="col-xs-12" style="text-align:left;" ng-show="viewArchive.reason=='Health/Sickness/Medication'">
+						<div class="col-xs-12 paddingZero">Health/Sickness/Medication</div>
+						<div class="col-xs-10 paddingZero">
+							<input id="medcert2" type="checkbox" ng-model="viewArchive.medcert" ng-true-value="1" ng-false-value="0">
+							<label for="medcert2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Medical Certificate</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.medcertfile );" ng-show="viewArchive.medcertfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="docpresc2" type="checkbox" ng-model="viewArchive.docpresc" ng-true-value="1" ng-false-value="0">
+							<label for="docpresc2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Doctor's Prescription</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.docprescfile );" ng-show="viewArchive.docprescfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="ormeddoc2" type="checkbox" ng-model="viewArchive.ormeddoc" ng-true-value="1" ng-false-value="0">
+							<label for="ormeddoc2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Official receipt (Medicine/Doctor's Fee)</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.ormeddocfile );" ng-show="viewArchive.ormeddocfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+					</div>
+					<div class="col-xs-12" style="text-align:left;" ng-show="viewArchive.reason=='Education'">
+						<div class="col-xs-12 paddingZero">Education</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="assessform2" type="checkbox" ng-model="viewArchive.assessform" ng-true-value="1" ng-false-value="0">
+							<label for="assessform2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Assessment Form</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.assessformfile );" ng-show="viewArchive.assessformfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="billstate2" type="checkbox" ng-model="viewArchive.billstate" ng-true-value="1" ng-false-value="0">
+							<label for="billstate2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Billing Statement</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.billstatefile );" ng-show="viewArchive.billstatefile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="orsch2" type="checkbox" ng-model="viewArchive.orsch" ng-true-value="1" ng-false-value="0">
+							<label for="orsch2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Official receipt (School Fee)</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.orschfile );" ng-show="viewArchive.orschfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+					</div>
+					<div class="col-xs-12" style="text-align:left;" ng-show="viewArchive.reason=='Hospitalization'">
+						<div class="col-xs-12 paddingZero">Hospitalization</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="pbsor2" type="checkbox" ng-model="viewArchive.pbsor" ng-true-value="1" ng-false-value="0">
+							<label for="pbsor2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Partial Billing Statement or Official Receipt</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.pbsorfile );" ng-show="viewArchive.pbsorfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+						<div class="col-md-10 col-xs-10 paddingZero">
+							<input id="hospmedcert2" type="checkbox" ng-model="viewArchive.hospmedcert" ng-true-value="1" ng-false-value="0">
+							<label for="hospmedcert2" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Medican Certificate</label>
+						</div>
+						<div class="col-md-2 col-xs-2 paddingZero">
+							<button style="padding:1px;" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewArchive.hospmedcertfile );" ng-show="viewArchive.hospmedcertfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="border:1px solid black;">
+					<div class="col-xs-12"><b>Explanation:</b></div>
+					<div class="col-xs-12" style="text-align: justify;"><p ng-bind-html="viewArchive.explanation_print"></p></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="margin-top:20px;font-size:18px">
+					<div class="col-xs-12" style="margin-top:10px"><b>Employee's Undertaking:</b></div>
+					<div class="col-xs-12" style="margin-top:10px">I, <b>{{viewArchive.empname}}</b>, request a cash advance of <b>{{viewArchive.loanamount}}</b> on my salary payable</div>
+					<div class="col-xs-12" style="margin-top:10px">On the payroll date of <b>{{viewArchive.payabledate}}</b></div>
+					<div class="col-xs-12" style="margin-top:10px">If this request is approved, I agree to repay this advance in <b>{{viewArchive.terms}}</b> equal semi-monthly salary deductions from the next pay periods immediately following the pay period from which this advance is made. I agree to liquidate my cash advance by submitting required official documents stated above.</div>
+					<div class="col-xs-12" style="margin-top:10px">I also agree that in case of separation from the company prior to total payment of this advance, I authorize the company to deduct any unpaid advance amount from any wages/salary due me at the time of termination of employment.</div>
+					<div class="col-xs-12" style="margin-top:20px"><b>Employee Signature:</b>&nbsp;{{viewArchive.empname}}</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="margin-top:20px">
+					<div class="col-xs-6" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver1_id">
+						<div class="col-xs-12 paddingZero" ng-show="viewArchive.approver1_status==1"><span><b>Received/Endorsed by:</b></span></div>
+						<div class="col-xs-12 paddingZero" ng-show="viewArchive.approver1_status==2"><span><b>Declined by:</b></span></div>
+						<div class="col-xs-9 paddingZero"><span style="font-size: 16px">{{viewArchive.approver1_name}}</span></div>
+						<div class="col-xs-3 paddingZero"><span style="font-size: 16px">{{viewArchive.approver1_date}}</span></div>
+						<div class="col-xs-9 paddingZero"><span>{{viewArchive.approver1desig}}</span></div>
+						<div class="col-xs-3 paddingZero"><span>Date</span></div>
+					</div>
+					<div class="col-xs-6" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver2_id">
+						<div class="col-xs-12 paddingZero" ng-show="viewArchive.approver2_status==1"><span><b>Endorsed by:</b></span></div>
+						<div class="col-xs-12 paddingZero" ng-show="viewArchive.approver2_status==2"><span><b>Declined by:</b></span></div>
+						<div class="col-xs-9 paddingZero"><span style="font-size: 16px">{{viewArchive.approver2_name}}</span></div>
+						<div class="col-xs-3 paddingZero"><span style="font-size: 16px">{{viewArchive.approver2_date}}</span></div>
+						<div class="col-xs-9 paddingZero"><span>{{viewArchive.approver2desig}}</span></div>
+						<div class="col-xs-3 paddingZero"><span>Date</span></div>
+					</div>
+					<div class="col-xs-12" style="margin-top:10px;text-align: justify;border:1px solid black" ng-show="((viewArchive.loanbalance!=''&&viewArchive.loanbalance!=0&&viewArchive.loanbalance!=null)||(viewArchive.newloanamount!=''&&viewArchive.newloanamount!=0&&viewArchive.newloanamount!=null)||(viewArchive.newterms!=0&&viewArchive.newterms!=null)||(viewArchive.newpayabledate!=''&&viewArchive.newpayabledate!=null))">
+						<div class="col-md-12 col-xs-12 paddingZero"><b>Accounting use only:</b></div>
+						<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+							<div class="col-md-6 paddingZero">Amount of outstanding balance from previous advances:</div>
+							<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.loanbalance" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+						</div>
+						<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+							<div class="col-md-6 paddingZero">Loanable amount:</div>
+							<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.newloanamount" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+						</div>
+						<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+							<div class="col-md-6 paddingZero">Payment terms semi-monthly:</div>
+							<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="viewArchive.newterms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0"></div>
+						</div>
+						<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+							<div class="col-md-6 paddingZero">First payment date:</div>
+							<div class="col-md-6 paddingZero"><input id="newpayabledate" readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="viewArchive.newpayabledate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+						</div>
+					</div>
+					<div class="col-xs-6" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver3_id">
+						<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver3_status==1"><span><b>Confirmed by:</b></span></div>
+						<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver3_status==2"><span><b>Declined by:</b></span></div>
+						<div class="col-md-9 col-xs-6 paddingZero"><span style="font-size: 16px">{{viewArchive.approver3_name}}</span></div>
+						<div class="col-md-3 col-xs-6 paddingZero"><span style="font-size: 16px">{{viewArchive.approver3_date}}</span></div>
+						<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver3desig}}</span></div>
+						<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+					</div>
+					<div class="col-xs-6" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver4_id">
+						<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver4_status==1"><span><b>Approved by:</b></span></div>
+						<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver4_status==2"><span><b>Declined by:</b></span></div>
+						<div class="col-md-9 col-xs-6 paddingZero"><span style="font-size: 16px">{{viewArchive.approver4_name}}</span></div>
+						<div class="col-md-3 col-xs-6 paddingZero"><span style="font-size: 16px">{{viewArchive.approver4_date}}</span></div>
+						<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver4desig}}</span></div>
+						<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+					</div>
+					<div class="col-xs-6" style="padding-top:10px;text-align: justify;" ng-show="viewArchive.approver5_id">
+						<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver5_status==1"><span><b>Approved by:</b></span></div>
+						<div class="col-md-12 col-xs-12 paddingZero" ng-show="viewArchive.approver5_status==2"><span><b>Declined by:</b></span></div>
+						<div class="col-md-9 col-xs-6 paddingZero"><span style="font-size: 16px">{{viewArchive.approver5_name}}</span></div>
+						<div class="col-md-3 col-xs-6 paddingZero"><span style="font-size: 16px">{{viewArchive.approver5_date}}</span></div>
+						<div class="col-md-9 col-xs-6 paddingZero"><span>{{viewArchive.approver5desig}}</span></div>
+						<div class="col-md-3 col-xs-6 paddingZero"><span>Date</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/.Print-->
+
+</div>

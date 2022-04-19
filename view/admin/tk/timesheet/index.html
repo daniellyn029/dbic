@@ -1,0 +1,760 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+   
+    .sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #337ab7 ;  }
+	}
+	@media screen and (max-width: 414px) {
+        .autoh {
+            margin-bottom: 35px !important;
+            height: auto !important;
+        }
+        .wprofile {
+            margin-right: 20px;
+            margin-left: 20px !important;
+        }
+        .wfooter {
+            position: absolute;
+            bottom: 13px !important;
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(116, 89, 89);
+        }
+        .nomargin {
+            margin: 0px !important;
+        }
+
+
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    @media screen and (max-height: 667px) {
+        .bheight {
+            height: 404px !important;
+        }
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1280px) {
+        .bheight {
+            height: 492px !important;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: 325px !important;
+        }
+        html{
+            zoom : 83%;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+
+    }
+
+    @media screen and (max-width: 1366px) {
+        .bheight {
+            height: 395px !important;
+        }
+        .btnwid {
+            width: 210px !important;
+        }
+    }
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#3c8dbc),
+                to(#3c8dbc),
+                color-stop(.6, #3c8dbc))
+    }
+    .background{
+        /* width: 100%; */
+        color:white;
+        background-color: #00a65a;
+        text-align:center
+    }
+    .font11{
+
+        font-size:14px;
+        text-align: center;
+    }
+    .btn-group {
+    
+        padding: 20px 20px 20px 0px !important;
+    }
+    .th {
+        color: black !important;
+        background-color: white !important;
+        border-top: 1px solid rgb(77, 73, 73) !important;
+        border-bottom: 1px solid rgb(77, 73, 73) !important;
+    }
+    .circle {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid red;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+    .csuccess {
+        color: green;
+    }
+    .fw9 {
+        font-weight: 900;
+    }
+    .dot {
+        height: 22px;
+        width: 22px;
+        background-color: green;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(13, 87, 13);
+    }
+    .dot2 {
+        height: 22px;
+        width: 22px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+    .dot3 {
+        height: 22px;
+        width: 22px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+    #bloc1,
+    #bloc2 {
+        display: inline;
+    }
+    .block_container {
+        text-align: center;
+    }
+    .pad5 {
+        padding-left: 5px;
+    }
+    .th {
+        color: black !important;
+        background-color: white !important;
+        border-top: 1px solid rgb(77, 73, 73) !important;
+        border-bottom: 1px solid rgb(77, 73, 73) !important;
+        text-align: center;
+    }
+    .nomargin {
+        margin: 0px !important;
+    }
+    /* .padtop{
+        padding: 5px 0px 0px 0px;
+    } */
+    .headerhit{
+        height: 65px;
+      
+    }
+    .headernsh{
+        margin: 15px;
+    }
+    .f15{
+        font-size:15pt;
+    }
+    
+	.respontext {
+		font-size: 40px;
+	}
+    /* ModalFilter */
+    .select2-container--default .select2-selection--single {
+        border: none !important;
+        border-bottom: 1px solid black !important;
+        height: 30px !important;
+        padding: 1px !important;
+        text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+</style>
+<div class="wrapper" ng-controller="TKTimesheetController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+		<section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            
+			<div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+                    
+					<div class="row">
+						<div class="col-md-6" style="margin-bottom:15px">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/icons/HRIS Dashboard icon Timekeeper.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Timekeeper's Portal</p>
+								<p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">Timesheet Details</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+							<ol class="breadcrumb" style="width: 265px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Timekeeper's Portal</a></li>
+								<li class="active">Timesheet Details</li>
+							</ol>
+						</div>
+					</div>
+            </div>
+        </section>
+
+		<section class="content">
+            <div class="row" style="padding: 0px 20px 0px 20px;">
+                <div class = "col-md-12 col-xs-12" style="margin: 0px 0px 10px 0px; border:1px solid black; border-radius: 7px; background-color: #006ba6; color: #FFF; font-size:15pt;">
+                   <div class="col-md-6 col-xs-6">{{filter}}</div>
+                   <div class="col-md-6 col-xs-6" style="text-align: right; padding:2px"><i class="fa fa-calendar"></i></div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="col-md-9 col-xs-6">&nbsp;</div>
+                    <div class="col-md-3 col-xs-6" style="padding:4px; text-align: left;">
+                        <!-- <div class="col-sm-12"> -->
+                            <div class="col-sm-12">
+                                <div class="col-sm-2"></div>
+                                    <div class="col-sm-10">
+                                        <span style="color: green !important; font-weight: 600 !important;">Cutoff Period: </span>
+                                        <span style="padding-left: 5px; font-weight: 600 !important;">{{dashboard.values.period.pay_start}} to {{dashboard.values.period.pay_end}}</span> 
+                                    </div>
+                               
+                                </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-10">
+                                    <span style="color: green !important; font-weight: 600 !important;">Payroll Period:</span>
+                                    <span style="padding-left: 4px; font-weight: 600 !important;">{{dashboard.values.period.pay_date}}</span>
+                                </div>
+                                
+                            </div>
+                        <!-- </div> -->
+                        
+                    </div>
+                    <!-- <div class="col-md-3 col-xs-6" style="padding:4px; text-align: left; border: 1px solid black;"">
+                        <div>
+                            <span style="color: green !important; font-weight: 600 !important;">Cutoff Period: </span>
+                            <span style="padding-left: 5px; font-weight: 600 !important;">{{dashboard.values.period.pay_start}} to {{dashboard.values.period.pay_end}}</span> 
+                        </div>
+                        <div>
+                            <span style="color: green !important; font-weight: 600 !important;">Payroll Period:</span>
+                            <span style="padding-left: 4px; font-weight: 600 !important;">{{dashboard.values.period.pay_start}}</span>
+                        </div>
+                    </div> -->
+                    
+                </div>
+				<div class = "col-md-12 col-xs-12" style="margin: 10px 0px 10px 0px;">
+                    <div class = "col-md-6 col-xs-12" style="text-align: left; padding:0;">
+                        <button style="background-color: #00a65a; color: #FFF; border-radius: 0; border-width: 1px;" ng-click="cutoffData('1')"><<</button>
+                        <button style="background-color: #00a65a; color: #FFF; border-radius: 0; border-width: 1px;" ng-click="cutoffData('0')"> CutOff Period</button>
+                        <button style="background-color: #00a65a; color: #FFF; border-radius: 0; border-width: 1px;" ng-click="cutoffData('2')">>></button>
+                        <button disabled style="color:white;background-color: #00a65a; border-radius: 0; border-width: 1px;" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Data Parameter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>                 
+                        <input type="text" placeholder="Date from" searchdatepickers ng-model="search_dfrom" maxlength="10" name="search_dfrom" readonly required />
+                        <input type="text" placeholder="Date To" searchdatepickers ng-model="search_dto" maxlength="10" name="search_dto" readonly required />
+                        <button style="color : white;background-color: #00a65a; border-radius: 0; border-width: 1px;" type="button" ng-click="timesheet_details_func()">Apply</button>
+                    </div>
+                    <div class = "col-md-6 col-xs-12" style="text-align: right;">
+                        <button style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px; border-width: 1px;background: black;" ng-click="export();"><i class="fa fa-file-excel-o fa-sm"></i>&nbsp;&nbsp;&nbsp;Export</button>
+                        <button style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px; border-width: 1px;background: black;" title="Search" data-toggle="modal" data-target="#modal-search"><i class="fa fa-search fa-sm"></i>&nbsp;&nbsp;&nbsp;Filter</button>
+                        <button id="btn-refreshh" style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px; border-width: 1px;background: black;" ng-click="reloadData()"><i class="fa fa-refresh fa-sm"></i>&nbsp;&nbsp;&nbsp;Refresh</button>
+                    </div>
+                </div>
+
+				<div class="autoh">
+                    <div class = "col-md-12 col-xs-12" ng-repeat="view in timesheet_view track by $index">
+                        <div class="row style-15" style ="overflow-y: auto;">
+                            <div class="headerhit" style="background-color: #006ba6; border-radius: 7px 7px 0px 0px">
+                                <span style="border: none;"><img
+                                    src="assets/php/admin/hr/employee/pix/{{view.pic}}?1591229368"
+                                    style="height: 40px; border-radius: 50%;" class="user-image headernsh"></span>
+                                <span class="nomargin f15" style="color:#FFF;">{{ view.empname }} - </span>
+                                <span class="nomargin f15" style="color:#FFF;">{{ view.wshift_name }} </span>
+                            </div>
+                            
+                            <table  class="table table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th class = "background" style="width: 50px; padding: 10px 0 10px 0;">Status</th>
+                                        <th class = "background" style="width: 50px; text-align: center">Date</th>
+                                        <th class = "background" style="width: 50px; ">Shift Code</th>
+                                        <th class = "background" style="width: 50px; ">In</th>
+                                        <th class = "background" style="width: 50px; ">Out</th>
+                                        <th class = "background" style="width: 50px; ">Work Hours</th>
+                                        <th class = "background" style="width: 50px; ">Total Work Hours</th>
+                                        <th class = "background" style="width: 50px; ">Excess Work Hours</th>
+                                        <th class = "background" style="width: 50px; ">Late</th>
+                                        <th class = "background" style="width: 50px; ">Undertime</th>
+                                        <th class = "background" style="width: 50px; ">Absent</th>
+                                        <th class = "background" style="width: 50px; ">CS</th>
+                                        <th class = "background" style="width: 100px; ">AA</th>
+                                        <th class = "background" style="width: 50px; ">OT</th>
+                                        <th class = "background" style="width: 100px; ">LV</th>
+                                        <th class = "background" style="width: 50px; ">OB</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="style-15 text-black" style="height:auto;">
+                                    <tr ng-repeat="view_ts in view.getVwTimesheet track by $index">
+                                        <td class="font11" style="height:auto; width: 50px; word-wrap: break-word;">{{ view_ts.status }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;">{{ view_ts.work_date }}</td>
+                                        
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;" ng-if="view_ts.holiday_idtype==null && view_ts.shift !='RD'">{{ view_ts.shift}}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word; color:red" ng-if="view_ts.holiday_idtype!=null">{{ view_ts.shift}}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word; color:green" ng-if="view_ts.shift=='RD'">{{ view_ts.shift}}</td>
+                                        
+                                        <td class="font11" style="width: 50px; word-wrap: break-word; color:red;" ng-if="view_ts.late!='0.00'">{{ view_ts.in }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;" ng-if="view_ts.late=='0.00'">{{ view_ts.in }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word; color:red;" ng-if="view_ts.undertime!='0.00'">{{ view_ts.out }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;" ng-if="view_ts.undertime=='0.00'">{{ view_ts.out }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;">{{ view_ts.work_hours }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;">{{ view_ts.total_work_hours }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;">{{ view_ts.excess_work_hours }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word; color:red;" ng-if="view_ts.late!='0.00'">{{ view_ts.late }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;" ng-if="view_ts.late=='0.00'">{{ view_ts.late }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word; color:red;" ng-if="view_ts.undertime!='0.00'">{{ view_ts.undertime }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;" ng-if="view_ts.undertime=='0.00'">{{ view_ts.undertime }}</td>
+                                        <td class="font11" style="width: 50px; word-wrap: break-word;">{{ view_ts.absent }}</td>
+
+                                        <td>
+                                            <table>
+                                                <tr ng-if="view_ts.getChangeShift.name">
+                                                    <td class="font11 dot block_container" id="bloc1" ng-if="view_ts.getChangeShift.status==1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot2 block_container" id="bloc1" ng-if="view_ts.getChangeShift.status==2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot3 block_container" id="bloc1" ng-if="view_ts.getChangeShift.status==3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td id="bloc2" class="pad5">{{view_ts.getChangeShift.name }}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width: 100px;">
+                                            <table>
+                                                <tr ng-if="view_ts.getAttendanceAdjust.stime || view_ts.getAttendanceAdjust.ftime">
+                                                    <td class="font11 dot block_container" id="bloc1" ng-if="view_ts.getAttendanceAdjust.status==1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot2 block_container" id="bloc1" ng-if="view_ts.getAttendanceAdjust.status==2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot3 block_container" id="bloc1" ng-if="view_ts.getAttendanceAdjust.status==3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td id="bloc2" class="pad5">{{view_ts.getAttendanceAdjust.stime | date: "h:mm a"}} - {{view_ts.getAttendanceAdjust.ftime }}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr ng-if="view_ts.getOvertime.planhrs">
+                                                    <td class="font11 dot block_container" id="bloc1" ng-if="view_ts.getOvertime.status==1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot2 block_container" id="bloc1" ng-if="view_ts.getOvertime.status==2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot3 block_container" id="bloc1" ng-if="view_ts.getOvertime.status==3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td id="bloc2" class="pad5">{{view_ts.getOvertime.planhrs}}hrs</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width: 100px;">
+                                            <table>
+                                                <!-- <tr ng-if="view_ts.getTimesheetLeaves.name || view_ts.getTimesheetLeaves.hrs">
+                                                    <td class="font11 dot block_container" id="bloc1" ng-if="view_ts.getTimesheetLeaves.status==1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot2 block_container" id="bloc1" ng-if="view_ts.getTimesheetLeaves.status==2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot3 block_container" id="bloc1" ng-if="view_ts.getTimesheetLeaves.status==3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td id="bloc2" class="pad5">{{view_ts.getTimesheetLeaves.name}} - {{view_ts.getTimesheetLeaves.hrs}}hrs</td>
+                                                </tr> -->
+                                                <tr ng-repeat="viewzzz in view_ts.getTimesheetLeaves track by $index">
+                                                    <td class="font11 dot block_container" id="bloc1" ng-if="viewzzz.status==1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot2 block_container" id="bloc1" ng-if="viewzzz.status==2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot3 block_container" id="bloc1" ng-if="viewzzz.status==3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td id="bloc2" class="pad5">{{viewzzz.name}} - {{viewzzz.hrs}}hrs</td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+                                                                            
+                                        <td>
+                                            <table>
+                                                <tr ng-if="view_ts.getObTrip.remarks">
+                                                    <td class="font11 dot block_container" id="bloc1" ng-if="view_ts.getObTrip.status==1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot2 block_container" id="bloc1" ng-if="view_ts.getObTrip.status==2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td class="font11 dot3 block_container" id="bloc1" ng-if="view_ts.getObTrip.status==3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                    <td id="bloc2" class="pad5">{{view_ts.getObTrip.remarks}}</td>
+                                                </tr>
+                                            </table>
+                                        </td>                              
+
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="th"></th>
+                                        <th class="th">
+                                            <div class="circle text-center" style=" border: 4px solid green;">
+                                                {{view.getTotalApproved}}</div>
+                                            <p style="margin: 0px;">Aprroved</p>
+                                
+                                        </th>
+                                        <th class="th">
+                                            <div class="circle text-center" style=" border: 4px solid #da3e28;">
+                                                {{view.getTotalDeclined}}</div>
+                                            <p style="margin: 0px;">Declined</p>
+                                        </th>
+                                        <th class="th">
+                                            <div id="block_container">
+                                                <div class="circle text-center" style=" border: 4px solid yellow;">
+                                                    {{view.getTotalPending}}</div>
+                                                <p style="margin: 0px;">Pending</p>
+                                            </div>
+                                        </th>
+                                        <th class="th">Total:</th>
+                                        <th class="th">{{view.twh | number:2}}</th>
+                                        <th class="th">{{view.totalwh | number:2}}</th>
+                                        <th class="th">{{view.totalewh | number:2}}</th>
+    
+                                        <th class="th">{{ view.totallate | number:2}}</th>
+                                        <th class="th">{{ view.totalut | number:2}}</th>
+                                        <th class="th">{{ view.totalabsent | number:2}}</th>
+    
+                                        <th class="th"></th>
+                                        <th class="th"></th>
+                                        <th class="th">{{ totalot }}</th>
+                                        <th class="th">{{ totallvhrs }}</th>
+                                        <th class="th"></th>
+                                       
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);">
+                <!-- Modal dialog-->
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #006ba6 !important; border-color: #006ba6  !important;" >
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Filter</h4>
+                        </div>
+                        <!-- display sa modal design-->
+                        <div class="modal-body" style="background: white !important">     
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-black">
+                                        <label for="employee">Select Employee:</label>
+										<select select2 ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search_acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct track by search_employees.id" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+										</select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group text-black">
+                                        <label for="birthdate_from">Position:</label>
+                                        <select select2 ng-disabled="isSaving" id="search_post" class="form-control" ng-model="search_post" ng-options="search_employees_posi.idpos as search_employees_posi.post for search_employees_posi in dashboard.values.accounts | unique : 'idpos'  | filter: filterAcct track by search_employees_posi.idpos" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										</select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group text-black">
+                                        <label for="short3unit">Classification</label>
+                                        <select id="short3unit" class="form-control" ng-model="department"
+                                            ng-options="dept.id as dept.name for dept in dashboard.values.department | filter: typeLimit track by dept.id" select2 style="text-align-last: center;border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;" >
+                                            <!--option value="">Select Classification</option-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>     
+                        <div class="modal-footer" style="background: #006ba6 !important; border-color: #006ba6  !important;">
+                            <button style="width:100px" ng-click="unitSearch()" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-search"></i> Search</button>
+                            <button style="width:100px" type="button" class="btn btn-danger pull-left" data-dismiss="modal" ng-click="resetsearch()">Reset</button>
+                        </div>
+                    </div>
+                    <!-- /.Modal content-->
+                </div>
+                <!-- /.Modal dialog-->
+                </div>
+                <!-- /.Modal-->
+
+
+
+			</div>
+		</section>
+
+
+
+
+		<!--OLD -->
+        <!-- <section class="content">                
+			<div ng-init="setup_timesheet_functions()">	
+				<div class="box-header">
+					<button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" ng-click="dtInstance.reloadData()" title="Refresh">
+						<i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+					</button>
+					<button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Search" data-toggle="modal" data-target="#modal-search" ng-click="setPayPeriod()"  >
+						<i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+					</button>					
+				</div>
+				
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered">
+					<tfoot class="responsive">
+						<tr>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th>Total: </th>
+							<th> {{ sumhrs.late }} </th>
+							<th> {{ sumhrs.ut }} </th>
+							<th> {{ sumhrs.absent }} </th>
+							<th> {{ sumhrs.leave }} </th>
+							<th> {{ sumhrs.ot }} </th>
+							<th> {{ sumhrs.reg }} </th>
+							<th></th>
+							<th></th>
+						</tr>
+					</tfoot>
+				</table>
+				
+				<div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Search Details</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="search_acct">Employee</label>
+										<select id="search_acct" class="form-control" ng-model="search.acct" ng-options="employees.id as employees.empname for employees in dashboard.values.accounts" required >
+											<option value="">Select Employee</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dfrom">Date From</label>
+										<input type="text" readonly searchdatepickers ng-model="search.datefrom" class="form-control" placeholder="Date from" maxlength="10" id="search_dfrom" name="search_dfrom"  required  />
+									</div>
+								</div>								
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dto">Date To</label>
+										<input type="text" readonly searchdatepickers ng-model="search.dateto" class="form-control" placeholder="Date To" maxlength="10" id="search_dto" name="search_dto" required  />
+									</div>
+								</div>															
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline btn-danger pull-left" ng-click="resetSearch()" data-target="#modal-search" data-toggle="modal">Reset</button>
+							<button type="button" class="btn btn-outline btn-primary" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade modal-info" id="editModal" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">View/Edit Timesheet</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<form ng-hide="mySignUpForm" role="form" name="registerForm2" >									
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="editshift">Shift<span class="req-field"> *</span></label>
+											<select id="editshift" class="form-control" ng-model="edit.idshift" ng-options="editshift.id as editshift.name for editshift in dashboard.values.shifttypes" ng-change="updateShift( edit.idshift )" >
+												<option value="">Select Shift</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label for="editdatein">Date In<span class="req-field"> *</span></label>
+										  <input type="text" placeholder="Date In" class="form-control disable" disabled id="editdatein" name="editdatein" ng-model="edit.date_in" style="background:white !important" />										
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label for="editin">Time In<span class="req-field"> *</span></label>
+										  <input timepick type="text" placeholder="Time In" class="form-control" id="editin" name="editin" ng-model="edit.in" required ng-disabled="isSaving" />										
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label for="editdateout">Date Out<span class="req-field"> *</span></label>
+										  <input datepickers type="text" placeholder="Date Out" class="form-control" id="editdateout" name="editdateout" ng-model="edit.date_out" required ng-disabled="isSaving" />										
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label for="editout">Time Out<span class="req-field"> *</span></label>
+										  <input timepick type="text" placeholder="Time Out" class="form-control" id="editout" name="editout" ng-model="edit.out" required ng-disabled="isSaving" />										
+										</div>
+									</div>						
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button style="width:100px" data-target="#editModal" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving" >Cancel</button>
+							<button style="width:100px" id="btn-unit-edit" type="button" class="btn btn-primary" ng-click="editTimeSheet(edit)" ng-disabled="isSaving" >Update</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+        </section>         -->
+	
+	
+	
+	</div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

@@ -1,0 +1,478 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+	.print-only{
+		display: none;
+	}
+	
+	@@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+   
+    .sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #f7ba5b ;  }
+		25%  { background: #f5b043 ;  }
+		50%  { background: #f4a62a ;  }
+		100% { background: #f39c12 ;  }
+	}
+</style>
+<div class="wrapper" ng-controller="EPProfileController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;">
+				<i class="fa fa-black-tie" style="float: left;color:#00000052"></i>									
+					<div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Employee's Portal</div>
+					<div style="font-size: 15pt;text-indent:15px">Profile</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/emp/dashboard"> Employee's Portal</a></li>
+                <li class="active">Profile</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content">                
+			<div ng-init="profile_functions()">	
+				<div id="form01print" class="print-only" style="color:black" >
+					<div style="display:table;width: 870px !important;">
+						<div style="display:table-cell;width: 870px !important;vertical-align: middle;text-align:center"></div>
+						<div style="display:table-cell;width: 870px !important;text-align: center;font-size:18pt;font-weight: 600;vertical-align: middle"></div>
+						<div style="display:table-cell;width: 870px !important;text-align:center;vertical-align: middle">
+							<div class="row" style="width:100%;text-align:center">
+								<img class="img-thumbnail" ng-src="{{ !view.epicFile ? view.eprof_pic : view.epicFile }}" alt="" style="margin-bottom: 15px;width:175px;height:165px">
+							</div>
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+						<b>PERSONAL INFORMATION</b>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>NAME:</h5><br/>
+							<span style="padding-left:10px">{{ view.lname + ( !view.suffix ? ', ' : ' ' +  view.suffix + ', ') + view.fname + ' ' + view.mname }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>EMAIL:</h5><br/>
+							<span style="padding-left:10px">{{ view.email }}</span> 
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>CONTACT NUMBER:</h5><br/>
+							<span style="padding-left:10px">{{ view.cnumber }}</span>
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+						<h5>PRESENT ADDRESS:</h5><br/>
+						<span style="padding-left:10px">{{ view.addr }}</span> 
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>DATE OF BIRTH:</h5><br/>
+							<span style="padding-left:10px">{{ view.bdate }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>AGE:</h5><br/>
+							<span style="padding-left:10px">{{ view.age + ' YEARS OLD' }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>GENDER:</h5><br/>
+							<span style="padding-left:10px">{{ view.sexstr }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+						<h5>PLACE OF BIRTH:</h5><br/>
+						<span style="padding-left:10px">{{ view.bplace }}</span> 
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>CITIZENSHIP:</h5><br/>
+							<span style="padding-left:10px">{{ view.citizenship }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>RELIGION:</h5><br/>
+							<span style="padding-left:10px">{{ view.religion }}</span>
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>CIVIL STATUS:</h5><br/>
+							<span style="padding-left:10px">{{ view.civil_status }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>SPOUSE:</h5><br/>
+							<span style="padding-left:10px">{{ view.spouse }}</span>
+						</div>
+					</div>					
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>TAX CODE:</h5><br/>
+							<span style="padding-left:10px">{{ view.taxname }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>TIN NUMBER:</h5><br/>
+							<span style="padding-left:10px">{{ view.idtin }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>SSS NUMBER:</h5><br/>
+							<span style="padding-left:10px">{{ view.idsss }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>PHIL HEALTH:</h5><br/>
+							<span style="padding-left:10px">{{ view.idhealth }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>PAG IBIG:</h5><br/>
+							<span style="padding-left:10px">{{ view.idibig }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>PAYROLL ACCOUNT:</h5><br/>
+							<span style="padding-left:10px">{{ view.idpayroll }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+						<b>HRIS DATA</b>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>LABOR TYPE:</h5><br/>
+							<span style="padding-left:10px">{{ view.labor_type }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>EMPLOYMENT TYPE:</h5><br/>
+							<span style="padding-left:10px">{{ view.emp_status }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>BUSINESS UNIT:</h5><br/>
+							<span style="padding-left:10px">{{ view.business_unit }}</span> 
+						</div>
+					</div>					
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>POSITION:</h5><br/>
+							<span style="padding-left:10px">{{ view.post }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>SUPERIOR:</h5><br/>
+							<span style="padding-left:10px">{{ view.superior }}</span> 
+						</div>
+					</div>						
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>JOB LOCATION:</h5><br/>
+							<span style="padding-left:10px">{{ view.job_loc }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>WORK SHIFT:</h5><br/>
+							<span style="padding-left:10px">{{ view.wshift_name }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>SHIFT TYPE:</h5><br/>
+							<span style="padding-left:10px">{{ view.sched }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>PAY GROUP:</h5><br/>
+							<span style="padding-left:10px">{{ view.pay_grp }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>PAY STATUS:</h5><br/>
+							<span style="padding-left:10px">{{ view.pay_status }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>DEPENDENTS:</h5><br/>
+							<span style="padding-left:10px">{{ view.dependent }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>REVENUE TYPE:</h5><br/>
+							<span style="padding-left:10px">{{ view.pay_revenue }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>RELEASE TYPE:</h5><br/>
+							<span style="padding-left:10px">{{ view.pay_release }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>SALARY:</h5><br/>
+							<span style="padding-left:10px">{{ view.salary }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>HIRE DATE:</h5><br/>
+							<span style="padding-left:10px">{{ view.hdate }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>REGULARIZATION DATE:</h5><br/>
+							<span style="padding-left:10px">{{ view.rdate }}</span>
+						</div>
+						<div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+							<h5>SEPERATION DATE:</h5><br/>
+							<span style="padding-left:10px">{{ view.sdate }}</span> 
+						</div>
+					</div>
+					<div style="display:table;width: 870px !important">
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>JOB TENURE:</h5><br/>
+							<span style="padding-left:10px">{{ view.nos_yrs }}</span> 
+						</div>						
+						<div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+							<h5>PREVIOUS EMPLOYER:</h5><br/>
+							<span style="padding-left:10px">{{ view.prev_employer }}</span> 
+						</div>
+					</div>	
+				</div>
+				
+				<div class="row">
+					<form ng-hide="mySignUpForm" role="form" name="registerFormView" >
+						
+						<div class="col-md-12">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<div class="profile-pic" style="padding: 30px;text-align: center;">
+									<img class="img-responsive img-thumbnail img-circle" ngf-thumbnail="!view.epicFile ? view.eprof_pic : view.epicFile" alt="" style="margin-bottom: 15px;width:200px;height:200px;cursor:pointer">							
+								</div>
+							</div>
+							<div class="col-md-3"></div>
+						</div>
+						
+						<div class="col-lg-12" style="padding:0px !important">
+							<div class="col-lg-6" >
+								<table class="table table-sm table-bordered">
+									<tbody>
+										<tr><td class="lbltbl">Name:</td><td class="datatbl" colspan="3">{{ view.lname + ( !view.suffix ? ', ' : ' ' +  view.suffix + ', ') + view.fname + ' ' + view.mname }}</td></tr>
+										<tr><td class="lbltbl">Address:</td><td class="datatbl" colspan="3">{{ view.addr }}</td></tr>
+										<tr><td class="lbltbl">Email:</td><td class="datatbl" colspan="3">{{ view.email }}</td></tr>
+										<tr>
+											<td class="lbltbl">Gender:</td><td class="datatbl" >{{ view.sexstr }}</td>
+											<td class="lbltbl">Contact&nbsp;No.:</td><td class="datatbl">{{ view.cnumber }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Birth&nbsp;Date:</td><td class="datatbl">{{ view.bdate }}</td>
+											<td class="lbltbl">Age:</td><td class="datatbl" >{{ view.age + ' yrs. old' }}</td>															
+										</tr>
+										<tr>
+											<td class="lbltbl">Birth&nbsp;Place:</td><td colspan="3" class="datatbl">{{ view.bplace }}</td>													
+										</tr>
+										<tr>
+											<td class="lbltbl">Citizenship:</td><td class="datatbl">{{ view.citizenship }}</td>
+											<td class="lbltbl">Religion:</td><td class="datatbl">{{ view.religion }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Civil&nbsp;Status:</td><td class="datatbl">{{ view.civil_status }}</td>
+											<td class="lbltbl">Spouse:</td><td class="datatbl">{{ view.spouse }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Tax Code:</td><td class="datatbl">{{ view.taxname }}</td>
+											<td class="lbltbl">Tin:</td><td class="datatbl">{{ view.idtin }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">SSS:</td><td class="datatbl">{{ view.idsss }}</td>
+											<td class="lbltbl">Phil&nbsp;Health:</td><td class="datatbl">{{ view.idhealth }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Pag&nbsp;IBIG:</td><td class="datatbl">{{ view.idibig }}</td>
+											<td class="lbltbl">Payroll:</td><td class="datatbl">{{ view.idpayroll }}</td>
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+							<div class="col-lg-6" >
+								<table class="table table-sm table-bordered">
+									<tbody>
+										<tr>
+											<td class="lbltbl">Labor&nbsp;Type:</td><td class="datatbl">{{ view.labor_type }}</td>
+											<td class="lbltbl">Employment&nbsp;Type:</td><td class="datatbl">{{ view.emp_status }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Business&nbsp;Unit:</td><td class="datatbl">{{ view.business_unit }}</td>
+											<td class="lbltbl">Status:</td><td  class="datatbl">{{ view.etype }}</td>														
+										</tr>
+										<tr>  <td class="lbltbl">Position:</td><td colspan="3" class="datatbl">{{ view.post }}</td> </tr>
+										<tr>
+											<td class="lbltbl">Work&nbsp;Shift:</td><td class="datatbl">{{ view.wshift_name }}</td>
+											<td class="lbltbl">Shift&nbsp;Type:</td><td class="datatbl">{{ view.sched }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Job&nbsp;Location:</td><td class="datatbl">{{ view.job_loc }}</td>
+											<td class="lbltbl">Superior:</td><td class="datatbl">{{ view.superior }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Pay&nbsp;Group:</td><td class="datatbl">{{ view.pay_grp }}</td>
+											<td class="lbltbl">Pay&nbsp;Status:</td><td class="datatbl">{{ view.pay_status }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Revenue&nbsp;Type:</td><td class="datatbl">{{ view.pay_revenue }}</td>
+											<td class="lbltbl">Release&nbsp;Type:</td><td class="datatbl">{{ view.pay_release }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Dependents:</td><td class="datatbl">{{ view.dependent }}</td>
+											<td class="lbltbl">Salary:</td><td class="datatbl">{{ view.salary }}</td>
+										</tr>
+										<tr>														
+											<td class="lbltbl">Job&nbsp;Tenure:</td><td  class="datatbl">{{ view.nos_yrs }}</td>				
+											<td class="lbltbl">Hire&nbsp;Date:</td><td class="datatbl">{{ view.hdate }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Reg&nbsp;Date:</td><td class="datatbl">{{ view.rdate }}</td>
+											<td class="lbltbl">Seperation&nbsp;Date:</td><td class="datatbl">{{ view.sdate }}</td>
+										</tr>
+										<tr>
+											<td class="lbltbl">Prev&nbsp;Employer:</td><td colspan="3" class="datatbl">{{ view.prev_employer }}</td>										
+										</tr>
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</form>
+				</div>
+				
+				
+				
+			</div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

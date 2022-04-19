@@ -1,0 +1,155 @@
+<style>
+	.main-footer {
+		background: #fff;
+		padding: 5px;
+		color: #444;
+		border-top: 1px solid #d2d6de;
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+		z-index: 999;
+	}
+	.content-wrapper{
+		background:white
+	}
+	#example2 th{
+		color:white;
+		background-color: #00a65a;
+	}
+	.info-box {
+		background: #ecf0f5;
+	}
+	.info-box-icon {
+		padding:5px;		
+	}
+	.small-box{
+		cursor: pointer;
+	}
+</style>
+<div class="wrapper" ng-controller="HomeController" ng-init="dashboard.active();">
+	
+     <div class="main-header" ng-include="headerTemplate"></div> 
+     <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+      
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+					<h1>
+						Dashboard
+					</h1>
+					<ol class="breadcrumb">
+						<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+						<li class="active">Dashboard</li>
+					</ol>
+				</section>
+
+        <!-- Main content -->
+        <section class="content">
+					<!-- Info boxes -->
+					<div class="row">
+							
+							<div class="col-lg-3 col-xs-6">
+									<!-- small box -->
+									<div class="small-box bg-red">
+											<div class="inner">
+													<h3 style="font-size: 150% !important">Organizational</h3>
+													<h3 style="font-size: 150% !important">Data</h3>
+											</div>
+											<div class="icon" style="top: 5px !important">
+													<i class="fa fa-cubes"></i>
+											</div>
+											<span class="small-box-footer">
+													More info <i class="fa fa-arrow-circle-right"></i>
+											</span>
+									</div>
+							</div>
+
+							<div class="col-lg-3 col-xs-6">
+									<!-- small box -->
+									<div class="small-box bg-yellow">
+											<div class="inner">
+													<h3 style="font-size: 150% !important">Employee's</h3>
+													<h3 style="font-size: 150% !important">Portal</h3>
+											</div>
+											<div class="icon" style="top: 5px !important">
+													<i class="fa fa-users"></i>
+											</div>
+											<span class="small-box-footer">
+													More info <i class="fa fa-arrow-circle-right"></i>
+											</span>
+									</div>
+							</div>
+
+							<div class="col-lg-3 col-xs-6">
+									<!-- small box -->
+									<div class="small-box bg-green">
+											<div class="inner">
+													<h3 style="font-size: 150% !important">HR</h3>
+													<h3 style="font-size: 150% !important">Portal</h3>
+											</div>
+											<div class="icon" style="top: 5px !important">
+													<i class="fa fa-archive"></i>
+											</div>
+											<span class="small-box-footer">
+													More info <i class="fa fa-arrow-circle-right"></i>
+											</span>
+									</div>
+							</div>
+
+							<div class="col-lg-3 col-xs-6">
+									<!-- small box -->
+									<div class="small-box bg-teal">
+											<div class="inner">
+													<h3 style="font-size: 150% !important">Payroll Master's</h3>
+													<h3 style="font-size: 150% !important">Portal</h3>
+											</div>
+											<div class="icon" style="top: 5px !important">
+													<i class="fa fa-edit"></i>
+											</div>
+											<span class="small-box-footer">
+													More info <i class="fa fa-arrow-circle-right"></i>
+											</span>
+									</div>
+							</div>
+
+							<div class="col-lg-3 col-xs-6">
+									<!-- small box -->
+									<div class="small-box bg-primary">
+											<div class="inner">
+													<h3 style="font-size: 150% !important">Timekeeper's</h3>
+													<h3 style="font-size: 150% !important">Portal</h3>
+											</div>
+											<div class="icon" style="top: 5px !important">
+													<i class="fa fa-clock-o"></i>
+											</div>
+											<a href="#" class="small-box-footer">
+													More info <i class="fa fa-arrow-circle-right"></i>
+											</a>
+									</div>
+							</div>
+
+							<div class="col-lg-3 col-xs-6">
+									<!-- small box -->
+									<div class="small-box bg-aqua">
+											<div class="inner">
+													<h3 style="font-size: 150% !important">Admin's</h3>
+													<h3 style="font-size: 150% !important">Portal</h3>
+											</div>
+											<div class="icon" style="top: 5px !important">
+													<i class="fa fa-black-tie"></i>
+											</div>
+											<a href="#" class="small-box-footer">
+													More info <i class="fa fa-arrow-circle-right"></i>
+											</a>
+									</div>
+							</div>
+							
+					</div>
+        </section>
+        
+      </div>
+  	<div ng-include="footerTemplate"></div>
+
+ </div>  

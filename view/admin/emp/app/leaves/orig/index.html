@@ -1,0 +1,446 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #f7ba5b ;  }
+		25%  { background: #f5b043 ;  }
+		50%  { background: #f4a62a ;  }
+		100% { background: #f39c12 ;  }
+	}
+</style>
+<div class="wrapper" ng-controller="EPAppLeaveController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>		
+		<section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;">
+				<i class="fa fa-black-tie" style="float: left;color:#00000052"></i>									
+					<div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Employee's Portal</div>
+					<div style="font-size: 15pt;text-indent:15px">Leaves Applications</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/emp/dashboard"> Employee's Portal</a></li>
+				<li><a href=".#/admin/emp/app/leaveapp">Applications</a></li>
+                <li class="active">Leaves</li>
+			</ol>
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+		
+
+        <section class="content">                
+			<div ng-init="app_leaves_functions()">				
+				<div class="box-header">
+					<button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" ng-click="dtInstance.reloadData()" title="Refresh">
+						<i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+					</button>
+					<button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Search" data-toggle="modal" data-target="#modal-search"  >
+						<i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+					</button>
+					<button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Create" data-toggle="modal" data-target="#modal-add" ng-click="resetCreateAcct()">
+						<i class="fa fa-plus-circle fa-sm" style="padding:3px"></i>Apply
+					</button>	
+				</div>				
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered"></table>
+				
+				<div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Search Leave</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_acct">Employee</label>
+										<select ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search.acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct" required >
+											<option value="">Select Employee</option>
+										</select>
+									</div>
+								</div>								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_docu">Document Number</label>
+										<input type="text" class="form-control" id="search_docu" name="search_docu" placeholder="Enter Document Number" maxlength="60" ng-model="search.docu">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_docu">Application Status</label>
+										<select class="form-control" id="app_status" name="app_status" ng-model="search.appstat">
+											<option value="">Status</option>
+											<option value="1">Approved</option>
+											<option value="2">Disapproved</option>
+											<option value="3">Pending</option>
+											<option value="4">Canceled</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_leave">Leave Name</label>
+										<select ng-disabled="isSaving" id="search_leave" class="form-control" ng-model="search.leave" ng-options="search_leave.id as search_leave.name for search_leave in dashboard.values.leaves" required >
+											<option value="">Select Leave</option>
+										</select>
+									</div>
+								</div>	
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dfrom">Leave Date From</label>
+										<input type="text" readonly searchdatepickers ng-model="search.datefrom" class="form-control" placeholder="Date from" maxlength="10" id="search_dfrom" name="search_dfrom"  required  />
+									</div>
+								</div>								
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dto">Leave Date To</label>
+										<input type="text" readonly searchdatepickers ng-model="search.dateto" class="form-control" placeholder="Date To" maxlength="10" id="search_dto" name="search_dto" required  />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline btn-danger pull-left" ng-click="resetSearch()" data-target="#modal-search" data-toggle="modal">Reset</button>
+							<button type="button" class="btn btn-outline btn-primary" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade modal-info" id="modal-add" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog" style="min-width:450px !important">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Apply Leave</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+							
+								<form ng-hide="mySignUpForm" role="form" name="registerForm2" >									
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="leave_acct">Employee</label>
+											<select ng-disabled="isSaving" id="leave_acct" class="form-control" ng-model="add.acct" ng-options="add_employees.id as add_employees.empname for add_employees in dashboard.values.accounts | filter: filterAcct" required >
+												<option value="">Select Employee</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="leave_name">Leave Name</label>
+											<select ng-disabled="isSaving" id="leave_name" class="form-control" ng-model="add.idleave" ng-options="add_leave.id as add_leave.name for add_leave in dashboard.values.leaves" required >
+												<option value="">Select Leave</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="leave_start">Date From</label>
+											<input ng-disabled="isSaving" type="text" readonly datepickers ng-model="add.datefrom" class="form-control" placeholder="Date from" maxlength="10" id="leave_start" name="leave_start"  required  />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="leave_end">Date To</label>
+											<input ng-disabled="isSaving" type="text" readonly datepickers ng-model="add.dateto" class="form-control" placeholder="Date To" maxlength="10" id="leave_end" name="leave_end" required  />
+										</div>
+									</div>	
+									
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="leave_remarks">Remarks</label>
+											<textarea id="leave_remarks" name="leave_remarks" ng-disabled="isSaving2" class="form-control txtresize" ng-model="add.remarks"></textarea>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="leave_file">File</label>
+											<input ng-disabled="isSaving2" class="form-control" type="file" ngf-select ngf-multiple="true" ng-model="add.picFile" name="file[]" accept="image/*" />
+										</div>
+									</div>
+									
+									<div class="col-md-12 " style="height:30px">
+										<div class="form-group">
+											<button style="width:100px" class="btn btn-sm btn-success pull-left" ng-click="resetCreateAcct()">Reset</button>
+											<button style="width:100px" class="btn btn-sm btn-success pull-right" ng-click="generateTbl()">Generate</button>
+										</div>
+									</div>
+									
+									<div class="col-md-12">
+										<div class="form-group">
+											<div class="box3" style="height: 150px; ">											
+												<div class="box-body3 table-responsive">
+													<table id="example22" style="width:100%;table-layout: fixed;border-collapse: collapse;" class="tabless table-bordered"  >
+														<thead >
+															<tr style="display: block;">
+																<th style="text-align:center;padding: 5px;width: 140px;"> Date </th>
+																<th style="text-align:center;padding: 5px;width: 140px;"> Shift </th>
+																<th style="text-align:center;padding: 5px;width: 140px;"> Hours </th>
+																<th style="text-align:center;padding: 5px;width: 147px;"> Action </th>
+															</tr>
+														</thead>
+														<tbody style="display:block; width: 100%;overflow-y: scroll;height: 95px;">
+															<tr ng-repeat="(key, value) in add.leave_dates track by $index" >
+																<td style="text-align:center;padding:5px;width: 25%;"> {{ value.date }} </td>
+																<td style="text-align:center;padding:5px;width: 25%;"> {{ value.shift }} </td>	
+																<td style="text-align:center;padding:5px;width: 25%;"> {{ value.hrs }} </td>
+																<td style="text-align:center;padding:5px;width: 23%;"> 
+																	<select ng-change="calcLeavehrs( add.leave_dates[key]['hrs'], add.leave_dates[key]['val'], key )" ng-disabled="isSaving2" class="form-control" ng-model="add.leave_dates[key]['val']" style="color:black;" ng-if="add.leave_dates[key]['val']" >
+																		<option ng-repeat="(key, value) in add.leave_dates[key]['drop'] track by $index" value="{{ value.id }}"> {{ value.valz }} </option>
+																	</select>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div  class="col-md-12"> 
+												<label class="pull-left" ng-show=" add.leave_dates.length > 0 " > Units Applied: {{ total_units }}</label> 
+												<label class="pull-right" ng-show=" add.leave_dates.length > 0 " >Leave Balance: {{ add.leave_dates[0]["bal"] }}</label> 
+											</div>
+										</div>
+									</div>
+									
+								</form>
+								
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button style="width:100px" data-target="#modal-add" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving2">Cancel</button>
+                    		<button style="width:100px" id="btn-unit-add" type="button" class="btn btn-primary" ng-click="addLeave(add.picFile)" ng-disabled="isSaving2 || total_units > add.leave_dates[0]['bal'] " >Save</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade modal-info" id="editModal" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Update Request</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<form ng-hide="mySignUpForm3" role="form" name="registerForm3" >
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="docnum">Document Number</label>
+											<input disabled type="text" readonly  ng-model="edit.docnumber" class=" readonly form-control" placeholder="Document No." maxlength="20" id="docnum" name="docnum"  required  />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="leavename">Leave Type</label>
+											<input disabled type="text" readonly  ng-model="edit.leave_name" class=" readonly form-control" placeholder="Leave Type" maxlength="20" id="leavename" name="leavename"  required  />
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="eleave_acct">Employee</label>
+											<select disabled id="eleave_acct" class="readonly form-control" ng-model="edit.idacct" ng-options="add_employees.id as add_employees.empname for add_employees in dashboard.values.accounts | filter: filterAcct" required >
+												<option value="">Select Employee</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="req_date">Date</label>
+											<input disabled type="text" readonly  ng-model="edit.date" class=" readonly form-control" placeholder="Date" maxlength="10" id="req_date" name="req_date"  required  />
+										</div>
+									</div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="eleave_start">Time From</label>
+											<input disabled type="text" readonly  ng-model="edit.stime" class=" readonly form-control" placeholder="Time from" maxlength="10" id="eleave_start" name="eleave_start"  required  />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="eleave_end">Time To</label>
+											<input disabled type="text" readonly  ng-model="edit.ftime" class="readonly form-control" placeholder="Time To" maxlength="10" id="eleave_end" name="eleave_end" required  />
+										</div>
+									</div>	
+									
+									<div class="col-md-12" ng-if="edit.remarks">
+										<div class="form-group">
+											<label for="eleave_remarks">Remarks</label>
+											<textarea id="eleave_remarks" name="eleave_remarks" disabled class="readonly form-control txtresize" ng-model="edit.remarks"></textarea>
+										</div>
+									</div>
+									
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="ecurrent_status">Current Status</label>
+											<input disabled type="text" readonly  ng-model="edit.leave_status" class=" readonly form-control" maxlength="10" id="ecurrent_status" name="ecurrent_status"  required  />
+										</div>
+									</div>
+									<div class="col-md-12" ng-show=" edit.curr_stat == 3 " >
+										<div class="form-group">
+											<label for="edit_status">Update Status To</label>
+											<select class="form-control" id="edit_status" name="edit_status" ng-model="edit.stat" required >												
+												<option value="">--Select Status--</option>
+												<option value="4">Canceled</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="col-md-12" ng-if="edit.reason">
+										<div class="form-group">
+											<label for="eleave_reason">Reason</label>
+											<textarea id="eleave_reason" name="eleave_reason" class="form-control txtresize" ng-model="edit.reason"></textarea>
+										</div>
+									</div>
+									
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button style="width:100px" data-target="#editModal" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving" >Cancel</button>
+							<button style="width:100px" id="btn-unit-edit" type="button" class="btn btn-primary" ng-click="editreq()" ng-disabled="isSaving" ng-show=" edit.curr_stat == 3 " >Update</button>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

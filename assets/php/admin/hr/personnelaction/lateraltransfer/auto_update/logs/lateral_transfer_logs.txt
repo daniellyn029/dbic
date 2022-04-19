@@ -1,0 +1,378 @@
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-20 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-21 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-22 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-23 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-24 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-25 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-26 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-27 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-28 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-29 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-30 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-08-31 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-01 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-02 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-03 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-04 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-05 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-06 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-07 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-08 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-09 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-10 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-11 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-12 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-13 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-14 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-15 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-16 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-17 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-18 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-19 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-20 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-21 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-22 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-23 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-24 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-25 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-26 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-27 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-28 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-29 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-09-30 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-01 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-02 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-03 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-04 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-05 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-06 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-07 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-08 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-09 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-10 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-11 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-12 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-13 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-14 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-15 TIME: 1:0:00
+1 Rows data updated successfully.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-16 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-17 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-18 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-19 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-20 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************
+
+Warning: PHP Startup: Unable to load dynamic library 'imagick' (tried: c:/wamp64/bin/php/php7.2.10/ext/imagick (The specified module could not be found.), c:/wamp64/bin/php/php7.2.10/ext/php_imagick.dll (The specified module could not be found.)) in Unknown on line 0
+*** AUTO UPDATE 201 LATERAL TRANSFER ***
+DATE: 2020-10-21 TIME: 1:0:00
+No lateral transfer was made.
+**************************** END OF EXECUTION ****************************

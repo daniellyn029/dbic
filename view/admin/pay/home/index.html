@@ -1,0 +1,364 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	
+	progress[value] {
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+	}
+	progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	progress[value]::-webkit-progress-value {
+	  background-image:
+		   -webkit-linear-gradient(-45deg, 
+								   transparent 33%, rgba(0, 0, 0, .1) 33%, 
+								   rgba(0,0, 0, .1) 66%, transparent 66%),
+		   -webkit-linear-gradient(top, 
+								   rgba(255, 255, 255, .25), 
+								   rgba(0, 0, 0, .25)),
+		   -webkit-linear-gradient(left, #09c, #f44);
+
+		border-radius: 2px; 
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #76dcdc ;  }
+		25%  { background: #62d6d6 ;  }
+		50%  { background: #4dd1d1 ;  }
+		100% { background: #39cccc ;  }
+	}
+    .well {
+        border-radius: 0px !important;
+    }
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#0073b7),
+                to(#178dd1),
+                color-stop(.6, #06507a))
+    }
+    .bh {
+        height: 336px;
+    }
+    .respontext {
+        font-size: 40px;
+    }
+
+    .rmndrs {
+        border: 2px solid #0070c0 !important;
+        border-top: 40px solid #0070c0 !important;
+        overflow: auto;
+    }
+    .pygrps{
+        border: 2px solid #0070c0 !important;
+        border-top: 40px solid #0070c0 !important;
+        overflow: auto;
+    }
+    .action{
+        border: 2px solid #0070c0 !important;
+        border-top: 40px solid #0070c0 !important;
+        overflow: auto;
+    }
+    .hgraphs{
+        border: 2px solid #0070c0 !important;
+        border-top: 40px solid #0070c0 !important;
+        overflow: auto;
+    }
+    .trans{
+        border: 2px solid #0070c0 !important;
+        border-top: 40px solid #0070c0 !important;
+        overflow: auto;
+    }
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+    .wfooter {
+        position: absolute;
+        top: 3%;
+        font-size: 20px;
+        color: white;
+        left: 10px;
+    }
+
+    .bot30 {
+        bottom: 30px;
+    }
+    .p5 {
+        padding: 3px;
+    }
+    .center{
+        background-color: #D3D3D3;
+        border-radius: 7px;                
+        margin-bottom:5px;
+    }
+    .centmarg{
+        margin:10px;
+        font-size:14pt;
+        font-family: bold;
+    }
+</style>
+<div class="wrapper" ng-controller="PMHomeController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+
+            <div class="well well-graphic" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none;
+                background-color:#39cccc">
+
+                <div class="row">
+                    <div class="col-md-6" style="margin-bottom:15px">
+                        <a style="color: white !important;" class="">
+                            <img ng-src="assets/images/icons/HRIS Dashboard icon Payroll.png"
+                                style="height: 80px;  border-radius: 50%; margin-right:15px"
+                                class="user-image pull-left" alt="User Image">
+                        </a>
+                        <div>
+                            <p class="respontext"
+                                style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Payroll Master's Portal
+                            </p>
+                            <p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">
+                                Home</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+                        <ol class="breadcrumb" style="width: 250px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+                            <li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i
+                                        class="fa fa-dashboard"></i> Home</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content" id="content" style="padding: 0px 7px 0px 7px !important; margin-top:-7px !important">                
+            <div class="autoh" style="color: white; /*height: 820px;*/ padding-bottom: 2px;  background-color: #FFF;">
+                <div class="row" style="padding: 8px; padding-top: 0px;">
+                    <div class="col-md-12" style="padding: 4px; padding-bottom: 2%; /*background-color: #D3D3D3;*/">
+                        
+                        <div class="col-md-4 p5" style="padding: 0px 5px 5px 0px; ">
+                            <div class="well-lg text-black text-center rmndrs style-15 bh"
+                                style="background-color: #FFF;">
+
+
+                                <div class="wfooter">Reminders</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 p5" style="padding: 0px 5px 5px 0px; ">
+                            <div class="well-lg text-black text-center pygrps style-15 bh" style="background-color: #FFF;">
+                                
+                                <div class="wfooter">Pay Groups & Labor Type</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 p5" style="padding: 0px 5px 5px 0px; ">
+                            <div class="well-lg text-black text-center action style-15 bh" style="background-color: #FFF;">
+                                
+                                <div class="wfooter">Actionable Items</div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 center">
+                            <div class="centmarg text-black">Month of {{date | date:'MMMM'}}</div>
+                        </div>
+
+                        <div class="col-md-6 p5" style="padding: 0px 5px 5px 0px; ">
+                            <div class="well-lg text-black text-center hgraphs style-15 bh" style="background-color: #FFF;">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 p5" style="padding: 0px 5px 5px 0px; ">
+                            <div class="well-lg text-black text-center trans style-15 bh" style="background-color: #FFF;">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>        
+    </div>
+
+
+
+    <footer class="main-footer bg-blue bot30">
+        <h3 class="pull-left" style="margin: 0px; color: white; font-weight: 600;  width: 10%;">Announcement :
+
+        </h3>
+        <h3 style="margin: 0px; color: white; font-weight: 600; width: 90%; text-align: right;">
+            July 18,2020 (image) DBIC Team Building (image)(image)
+        </h3>
+    </footer>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

@@ -1,0 +1,1275 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #00b050;
+        text-align: center;
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .fw9 {
+        font-weight: 900;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    .respontextfiling {
+        font-size: 20px !important;
+    }
+
+
+    @media screen and (max-width: 1366px) {
+        .bheight {
+            height: auto !important;
+        }
+
+        .stafficon1 {
+            margin-right: 5px !important;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+
+        .stafficon2 {
+            margin-right: 4px !important;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+
+        .tld {
+            padding-left: 24px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 11px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .respontextfiling {
+            font-size: 20px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+        .pcomp {
+            font-size: 10px !important;
+        }
+
+        .f1280 {
+            font-size: 12px;
+        }
+
+        table {
+            font-size: 9px !important;
+        }
+
+        .fwidth {
+            width: 173px !important;
+        }
+
+        .dot {
+            height: 16px !important;
+            width: 16px !important;
+        }
+
+        .m9 {
+            width: 73% !important;
+        }
+
+        .m3 {
+            width: 27% !important;
+            padding-left: 0px !important;
+        }
+
+        .h2font {
+            font-size: 24px !important;
+        }
+
+        .h2small {
+            font-size: 15px !important;
+            line-height: 32px !important;
+        }
+
+        .staffimg {
+            height: 30px !important;
+            margin-top: 5px !important;
+            margin-left: 1px !important;
+        }
+
+        /* .staffimg2 {
+
+            margin-top: 25px !important;
+            margin-left: 1px !important;
+        } */
+
+
+        .staffname {
+            /* margin-top: 7px; */
+            margin-left: 18px !important;
+        }
+
+        .staffname2 {
+            margin-top: 7px;
+            margin-left: 1px !important;
+        }
+
+        .staffstat {
+            margin-left: 0px !important;
+            margin-top: 10px;
+        }
+
+        .staffldiv {
+            margin-top: 17px;
+            margin-right: 10px !important;
+        }
+
+        .bh {
+            height: 230px !important;
+        }
+
+        .font20 {
+            font-size: 16px !important;
+        }
+
+        .mar4 {
+            margin-left: 140px !important;
+        }
+
+        .bot30 {
+            bottom: 6px !important;
+        }
+
+        .font8 {
+            font-size: 12px !important;
+        }
+
+        .font12 {
+            font-size: 16px !important;
+        }
+
+        .legend-labels {
+            list-style: none outside none;
+            margin: 0px 0px 0px -6px !important;
+            padding: 0 !important;
+            text-align: center;
+        }
+
+        .plabels {
+            /* display: inline-block; */
+            display: flex;
+            margin: 3px -25px 0px -40px !important;
+            white-space: nowrap;
+            color: black !important;
+        }
+
+        .pad0 {
+            padding-top: 0px !important;
+        }
+
+        .hit {
+            height: 40px !important;
+            width: 275px !important;
+            /* font-size: 13pt; */
+        }
+
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bheight {
+            height: auto !important;
+        }
+
+        .hit {
+            height: 40px !important;
+            width: 200px !important;
+            /* font-size: 13pt; */
+        }
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 10px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .respontextfiling {
+            font-size: 20px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+        .mar4 {
+            margin-left: 15px !important;
+        }
+
+        .font12 {
+            font-size: 12pt;
+        }
+
+        .font8 {
+            font-size: 8pt;
+        }
+
+
+    }
+    @media screen and (max-width: 1440px){
+        .p100lr {
+            padding-left: 50px !important;
+            padding-right: 50px !important;
+        }
+        .fsto {
+            font-size: 20px !important;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .p100lr {
+            padding-left: 50px !important;
+            padding-right: 50px !important;
+        }
+    }
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .respontextfiling {
+            padding-left: 28px;
+            font-size: 20px !important;
+        }
+
+        .autoh {
+            margin-bottom: 60px !important;
+            height: auto !important;
+        }
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .tm {
+            margin-left: 15px !important;
+            margin-right: 0px !important;
+        }
+
+        .ah {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+
+        .td1 {
+            width: 100% !important;
+        }
+
+        .td2 {
+            width: 100% !important;
+        }
+
+
+
+    }
+
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+
+    .bheight {
+        height: auto;
+    }
+
+    .p100lr {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .fsto {
+        font-size: 24px;
+    }
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        text-decoration: underline;
+    }
+
+    .tm {
+        margin-left: 15px;
+        margin-right: 15px;
+
+    }
+
+    .nomargin {
+        margin: 0 !important;
+    }
+
+    .t14px {
+        font-size: 14px;
+    }
+
+    .eh {
+        font-weight: 800;
+        line-height: 16px;
+    }
+
+    .t12px {
+        font-size: 12px;
+    }
+
+    .f11px {
+        font-size: 11px;
+    }
+
+    #calendar-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .dl {
+        cursor: move;
+        z-index: 2;
+    }
+
+    .dot {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        line-height: 18px;
+        margin-right: 3px;
+    }
+
+    .dot2 {
+        height: 22px;
+        width: 22px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+
+    .dot3 {
+        height: 22px;
+        width: 22px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+
+    /* span {
+        margin: 0;
+    } */
+
+    #block_container {
+        height: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    #bloc1,
+    #bloc2 {
+
+        float: left !important;
+    }
+
+    /* .btn-group button {
+
+        background-color: #00b050;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-width: 1px;
+        color: white;
+    }
+
+    .btn-group:after {
+        content: "";
+        clear: both;
+
+    } */
+
+
+    /* */
+
+
+    .btnTD {
+        padding: 0px 18px !important;
+
+    }
+
+    .td1 {
+        padding-top: 13px;
+        width: 10%;
+    }
+
+    .td2 {
+        width: 90%;
+    }
+
+    .btnTD {
+        background-color: rgb(226, 225, 225) !important;
+    }
+
+    .ml-5 {
+        margin-left: 5px !important;
+    }
+
+    .fs25 {
+        font-size: 25px;
+        margin: 0px;
+    }
+
+    .pcomp {
+        font-size: 13px;
+    }
+
+    .btnTDsunit {
+        width: 400px;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+
+    .green {
+        background-color: #00b050;
+    }
+
+    .h2small {
+        font-size: 19px;
+        line-height: 39px;
+        margin: 0px !important;
+    }
+
+    .staffbox {
+        background-color: whitesmoke;
+        height: 45px;
+        /* height: 60px; */
+        margin: 10px;
+        padding: 2px;
+        box-shadow: 1px 1px 7px 3px #888888;
+        color: #444343;
+    }
+
+    .staffimg {
+        height: 30px;
+        border-radius: 50%;
+        margin-top: 3px;
+        margin-left: 6px;
+    }
+
+    /* .staffimg2 {
+        border-radius: 50%;
+        margin-top: 20px;
+        margin-left: 6px;
+    } */
+
+    .nomargin {
+        margin: 0px !important;
+    }
+
+    .staffname {
+        /* margin-top: 10px; */
+        margin-left: 30px;
+    }
+
+    .staffname2 {
+        margin-top: 8px;
+        margin-left: 15px;
+    }
+
+    .staffstat {
+        margin-left: 30px;
+        margin-top: 10px;
+    }
+
+    .stafficon1 {
+        margin-right: 60px;
+        margin-top: 8px;
+        font-size: 25px;
+    }
+
+    /* .stafficon2 {
+        margin-right: 15px;
+        margin-top: 15px;
+        font-size:20px;
+    } */
+
+    .staffldiv {
+        margin-top: 17px;
+        margin-right: 14px;
+    }
+
+    .approved {
+        background-color: green;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .pending {
+        background-color: yellow;
+        border: 2px solid rgb(112, 112, 10);
+    }
+
+    .declined {
+        background-color: red;
+        border: 2px solid rgb(83, 9, 9);
+    }
+
+    .well {
+        border-radius: 0px !important;
+    }
+
+    #bar {
+        height: 258px !important;
+    }
+
+    /* #pie {
+        height: 290px !important;
+    } */
+
+    #barh {
+        height: 200px !important;
+    }
+
+    h4 {
+        margin-top: 0px !important;
+    }
+
+    .staffbox:hover {
+        background-color: rgb(190, 190, 252);
+    }
+
+    .underline {
+        border-bottom: 1px solid black !important;
+        width: 100%;
+        display: block;
+    }
+
+    .cgreen {
+        color: #00b050;
+    }
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#0073b7),
+                to(#178dd1),
+                color-stop(.6, #06507a))
+    }
+
+
+    .marquee {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        text-align: center;
+        -moz-transform: translateX(50%);
+        -webkit-transform: translateX(50%);
+        transform: translateX(50%);
+        -moz-animation: scroll-left 2s linear infinite;
+        -webkit-animation: scroll-left 2s linear infinite;
+        animation: scroll-left 20s linear infinite;
+    }
+
+    @-moz-keyframes scroll-left {
+        0% {
+            -moz-transform: translateX(100%);
+        }
+
+        100% {
+            -moz-transform: translateX(-100%);
+        }
+    }
+
+    @-webkit-keyframes scroll-left {
+        0% {
+            -webkit-transform: translateX(100%);
+        }
+
+        100% {
+            -webkit-transform: translateX(-100%);
+        }
+    }
+
+    @keyframes scroll-left {
+        0% {
+            -moz-transform: translateX(100%);
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+        }
+
+        100% {
+            -moz-transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+    }
+
+    .legend-labels {
+        list-style: none outside none;
+        margin: 0px 0px 0px 22px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .plabels {
+        /* display: inline-block; */
+        display: flex;
+        margin: 10px 10px 0px -40px;
+        white-space: nowrap;
+        color: black !important;
+    }
+
+    .boxl {
+        height: 20px;
+        width: 30px;
+        padding: 0px 10px 0px 10px;
+        margin-right: 4px;
+    }
+
+    /* .compre{
+        font-size: 15pt;
+        width: 460px;
+        height: 45px;
+        background: #1B5BD3;
+        border-radius: 7px;
+        color: white;
+    } */
+    .wpn {
+        border: 2px solid #0070c0 !important;
+        border-top: 40px solid #0070c0 !important;
+        overflow: auto;
+    }
+
+    .wpntime {
+        border: 2px solid #43bda7 !important;
+        border-top: 40px solid #43bda7 !important;
+        overflow: auto;
+    }
+
+    .wpnnoti {
+        border: 2px solid #44a3c0 !important;
+        border-top: 40px solid #44a3c0 !important;
+        overflow: auto;
+    }
+
+    .wpnreso {
+        border: 2px solid orange !important;
+        border-top: 40px solid orange !important;
+        overflow: auto;
+    }
+
+    .wpnyear {
+        border: 2px solid green !important;
+        border-top: 40px solid green !important;
+        overflow: auto;
+    }
+
+    .bh {
+        height: 362px;
+    }
+
+    .wfooter {
+        position: absolute;
+        top: 3%;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+
+    .well1 {
+        margin: 0px;
+    }
+
+    .empbox {
+        font-size: 64pt;
+        font-weight: normal;
+        margin-bottom: 5px;
+        text-align: center;
+        width: auto;
+        height: 130px;
+        margin-right: auto;
+        margin-left: auto;
+        background: #0070c0;
+        vertical-align: middle;
+
+        border-radius: 15px;
+        color: white;
+    }
+
+    .p5 {
+        padding: 3px;
+    }
+
+    .pt5 {
+        padding-top: 8px;
+    }
+
+    .h31280 {
+        margin-top: 0px !important;
+    }
+
+    .tm {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .spania {
+        margin: 0px 0px 0px -64px !important;
+    }
+
+    .mar4 {
+        margin-left: 370px;
+    }
+
+    .font20 {
+        font-size: 20pt;
+    }
+
+    .bot30 {
+        bottom: 30px;
+    }
+
+    .fa-birthday-cake {
+        font-size: 26px;
+    }
+
+    .fagift {
+        font-size: 26px;
+    }
+     .p15 {
+		padding-top: 15px;
+    }
+    .pieleave{
+        display: block;
+        width: 570px;
+        height: 200px !important;
+    }
+    .boxl {
+        height: 20px;
+        width: 20px;
+        padding: 0px 10px 0px 10px;
+        margin-right: 4px;
+    }
+    .plabels1 {
+        display: inline;
+        margin: 0 10px;
+    }
+    .legend-labels{
+        padding-top:15px;
+    }
+    .fOThit{
+        height: 650px;
+    }
+    .graphs1{
+        display: block;
+        width: 570px;
+        height: 180px !important;
+    }
+    .graphs2{
+        display: block;
+        width: 570px;
+        height: 215px !important;
+    }
+    .graphs3{
+        display: block;
+        width: 570px;
+        height: 240px !important;
+    }
+</style>
+
+<div class="wrapper" ng-controller="MNGHomeController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+
+        <section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+
+            <div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+
+                <div class="row">
+                    <div class="col-md-6" style="margin-bottom:15px">
+                        <a style="color: white !important;" class="">
+                            <img ng-src="assets/images/icons/HRIS Dashboard icon Manager.png"
+                                style="height: 80px;  border-radius: 50%; margin-right:15px"
+                                class="user-image pull-left" alt="User Image">
+                        </a>
+                        <div>
+                            <p class="respontext"
+                                style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Manager's Portal
+                            </p>
+                            <p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">
+                                Home</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+                        <ol class="breadcrumb" style="width: 250px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+                            <li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i
+                                        class="fa fa-dashboard"></i> Home</a></li>
+                            <li style="color:black !important"><a href=".#/admin/emp/dashboard"
+                                    style="color:black !important">Manager's Portal</a></li>
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="content" class="content" style="padding: 0px 7px 0px 7px !important; margin-top:-7px !important">
+            <div class="autoh" style="color: white; height: 820px; padding-bottom: 2px;  background-color: #FFF;">
+                <div class="row" ng-init="myteam();" style="padding: 8px; padding-top: 0px;">
+
+
+                    <div class="col-md-12" style="padding: 4px; padding-bottom: 2%; background-color: #D3D3D3;">
+                        <!--ATTENDANCE TODAY-->
+                        <div class="col-md-5 p5" style="padding: 0px 5px 5px 0px; border-radius: 14px;">
+                            <div class="well1 well-lg text-black text-center wpn style-15 text-center bh"
+                                style="background-color: #FFF;">
+                                <div class="col-md-5">
+                                    <h3 class="nomargin">{{today | date:'MMM dd, yyyy'}}</h3>
+                                    <p>{{ today | date:'EEEE'}}</p>
+                                    <a href="#/admin/mng/comprehensive/attendancetoday">
+                                        <p class="empbox">
+                                            <img src="assets/images/totalemployees.png"
+                                                style="height: 40px; border-radius: 50%; cursor: pointer;"
+                                                class="user-image">
+                                            {{length}}</p>
+                                    </a>
+                                    <p class="text-black"> Who's In</p>
+                                </div>
+                                <div class="col-md-7">
+                                    <a href="#/admin/mng/comprehensive/myteam" style="color: #FFF;">
+                                        <button class="btn btn-lg btn-block hit"
+                                            style="background: #44a3c0; margin-bottom: 5px; border-radius: 7px;">
+                                            <img src="assets/images/headcount.png" style="height: 24px;"
+                                                class="user-image pull-left">
+                                            My Team
+                                    </a>
+                                    </button>
+                                    <button class="btn btn-lg btn-block hit" ng-click="viewcontent('leaves')"
+                                        style="background: #43bda7; color: white;  margin-bottom: 5px; border-radius: 7px;">
+                                        <img src="assets/images/leaves.png" style="height: 24px;"
+                                            class="user-image pull-left">
+                                        On-Leave & OB Trips
+                                    </button>
+                                    <button class="btn btn-lg btn-block hit" ng-click="viewcontent('overtime')"
+                                        style="background: #46b246; color: white;  margin-bottom: 5px; border-radius: 7px;">
+                                        <img src="assets/images/overtime.png" style="height: 24px;"
+                                            class="user-image pull-left">
+                                        Applied Overtime
+                                    </button>
+                                    <button class="btn btn-lg btn-block hit" ng-click="viewcontent('lates')"
+                                        style="background: lightcoral; color: white;  margin-bottom: 5px; border-radius: 7px;">
+                                        <img src="assets/images/lates.png" style="height: 24px;"
+                                            class="user-image pull-left">
+                                        Tardiness
+                                    </button>
+                                    <a href="#/admin/mng/report/resocent" style="color: #FFF;">
+                                        <button class="btn btn-lg btn-block hit"
+                                            style="background: orange; color: white;  margin-bottom: 5px; border-radius: 7px;">
+                                            <img src="assets/images/lates.png" style="height: 24px;"
+                                                class="user-image pull-left">
+                                            Resolution Center
+                                        </button>
+                                    </a>
+
+                                </div>
+                                <div class="wfooter">
+                                    Attendance Today
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--TIMEKEEPING APPLICATION-->
+                        <div class="col-md-4 p5 pad0" style="padding: 0px 5px 5px 0px; border-radius: 14px;">
+                            <div class="well-lg text-black text-center wpntime style-15 bh"
+                                style="background-color: #FFF;">
+                                <table class="table" style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <div style="margin-top: 12px !important; height: auto;">
+                                                <div>
+                                                    <h4 class="nomargin font20">Pending For Approval</h4>
+                                                    <p class="nomargin">Cutoff Period
+                                                        {{ pie_pay_start | date:"MM-dd-yyyy"}} -
+                                                        {{pie_pay_end | date:"MM-dd-yyyy"}}</p>
+                                                </div>
+                                                <div class="well-lg text-black bheight text-center tm"
+                                                    ng-init="piechartdiv()" style="margin-bottom: 5px;">
+
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-4" style="padding:0;">
+                                                            <span class="legend-scale"></span>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <canvas id="pie" class="chart chart-pie chart-xs"
+                                                                chart-data="pie_data" chart-labels="pie_labels"
+                                                                chart-colors="pie_colour" chart-options="pie_options"
+                                                                legend="true" style="height: 150px;"></canvas>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <div class="wfooter">Timekeeping Application</div>
+                            </div>
+                        </div>
+
+                        <!--NOTIFICATION-->
+                        <div class="col-md-3 p5" style="padding: 0px 5px 5px 0px; border-radius: 14px;">
+                            <div class="well-lg text-black text-center wpnnoti style-15 text-center bh pt5"
+                                ng-init="notifications()" style="background-color: #FFF;">
+                                <table class="table fw6 text-left">
+                                    <tbody>
+                                        <tr ng-repeat="n in noti">
+                                            <td style="border: none;"><img
+                                                    src="assets/php/admin/hr/employee/pix/{{n.id}}.jpg?1591229368"
+                                                    style="height: 40px; border-radius: 50%;" class="user-image">
+                                            </td>
+                                            <td style="border: none;">
+                                                <h4 class="nomargin font12" style="color:black">{{ n.name }}</h4>
+                                                <p class="nomargin font8" style="color:black"
+                                                    ng-bind-html="n.empactiontaken"></p>
+                                                <p class="nomargin font8" style="color:black">{{ n.req }}</p>
+                                                <p class="nomargin font8" style="color:black">{{ n.bdate }}</p>
+                                                <p class="nomargin font8" style="color:black">{{ n.req2 }}</p>
+                                            </td>
+                                            <td style="width: 10%;">
+                                                <i ng-if="n.req.includes('Birthday Celebrant') || n.bdate.includes('Birthday Celebrant')"
+                                                    style="color: #d73925;" class="fa fa-birthday-cake"
+                                                    aria-hidden="true"></i>
+                                                <i ng-if="n.req2.includes('Anniversary')" style="color:goldenrod;"
+                                                    class="fagift fa fa-gift" aria-hidden="true"></i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="wfooter">Notifications</div>
+                            </div>
+                        </div>
+
+                        <!--RESOLUTION CENTER-->
+                        <div class="col-md-5 p5" style="padding: 0px 5px 5px 0px; border-radius: 14px;">
+                            <div class="well-lg text-black text-center wpnreso style-15 text-center bh pt5"
+                                ng-init="resolutions()" style="background-color: #FFF;">
+                                <table class="table fw6 text-left">
+                                    <tbody>
+                                        <tr ng-repeat="view in reso">
+                                            <td style="border: none;">
+                                                <h4 class="nomargin" style="color:black">{{ view.work_date }}</h4>
+                                            </td>
+                                            <td style="border: none;">
+                                                <h4 class="nomargin" style="color:black">{{ view.name }}</h4>
+
+                                            </td>
+                                            <td style="border: none;">
+                                                <h4 class="nomargin" style="color:black">{{ view.no_in }}</h4>
+                                                <h4 class="nomargin" style="color:black">{{ view.no_out }}</h4>
+                                                <h4 class="nomargin" style="color:black">{{ view.late }}</h4>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="wfooter" style="width:96%">
+                                    <span class="col-xs-6 paddingZero" style="text-align:left">Resolution Center</span>
+                                    <span class="col-xs-6 text-right">{{reso[0].pay_start | date: "MM/dd/yyyy"}} -
+                                        {{reso[0].pay_end | date: "MM/dd/yyyy"}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--YEAR TO DATE-->
+                        <div class="col-md-7 p5" style="padding: 0px 5px 5px 0px; border-radius: 14px;">
+                            <div class="well-lg text-black text-center wpnyear style-15 text-center bh pt5"
+                                style="background-color: #FFF;">
+                                <h3 class="h31280" id="tardylbl">Calendar Year: {{ date | date: "yyyy"}}</h3>
+                                <div style="width:100%" ng-init="barchartdiv()"><canvas id="bar" class="chart-bar"
+                                        style="height: 200px;"></canvas></div>
+
+                                <div class="col-md-12" style="margin-top:20px;">
+                                    <div class="col-md-6" ng-init="latetop5()">
+                                        <h3 class="h31280" id="latelbl">Top 5 Lates</h3>
+                                        <canvas id="lates5" class="chart-bar"></canvas>
+                                    </div>
+                                    <div class="col-md-6" ng-init="uttop5()">
+                                        <h3 class="h31280" id="utlbl">Top 5 Undertime</h3>
+                                        <canvas id="ut5" class="chart-bar"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:20px;">
+                                    <div class="col-md-6" ng-init="absenttop5()">
+                                        <h3 class="h31280" id="absntlbl">Top 5 Absent</h3>
+                                        <canvas id="absent5" class="chart-bar"></canvas>
+                                    </div>
+                                    <div class="col-md-6" ng-init="lvtop5()">
+                                        <h3 class="h31280" id="lvlbl">Top 5 Leaves</h3>
+                                        <canvas id="lv5" class="chart-bar"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12" style="margin-top:20px;">
+                                    <div class="col-md-6" ng-init="ottop5()">
+                                        <h3 class="h31280" id="otlbl">Top 5 Overtime</h3>
+                                        <canvas id="ot5" class="chart-bar"></canvas>
+                                    </div>
+                                    <div class="col-md-6" ng-init="aatop5()">
+                                        <h3 class="h31280" id="aalbl">Top 5 Attendance Adjustment</h3>
+                                        <canvas id="aa5" class="chart-bar"></canvas>
+                                    </div>
+                                </div>
+
+                                <div class="wfooter">Year To Date Attendance Statistics Report</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <footer class="main-footer bg-blue bot30" ng-init="announcement()">
+        <h3 class="pull-left" style="margin: 0px; color: white; font-weight: 600;  width: 10%;">Announcement :
+
+        </h3>
+        <h3 class="pull-left" style="margin: 0px; color: white; font-weight: 600; width: 90%;">
+            <marquee>
+                <span ng-repeat="al in announcelist" style="margin-left: 100px;">{{al.start | date:'MMMM dd, yyyy'}} -
+                    {{al.title}} - {{al.description}}</span>
+            </marquee>
+        </h3>
+    </footer>
+    <div ng-include="footerTemplate">
+
+    </div>
+</div>

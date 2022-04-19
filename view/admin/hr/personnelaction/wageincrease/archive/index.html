@@ -1,0 +1,856 @@
+<style>
+  .main-footer {
+      background: #fff;
+      padding: 5px;
+      color: #444;
+      border-top: 1px solid #d2d6de;
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: 999;
+  }
+  .content-wrapper{
+      background:white
+  }
+  .example2 th{
+      color:white;
+      background-color: #006ba6;
+      text-align:center
+  }
+  .btnTD{
+      text-align:center;
+  }
+  .info{
+      font-weight: bold;
+  }
+  .ui-widget-header {
+      border: 1px solid green;
+      background: #008d4c;
+      color:black;
+  }
+  .lightbox-modal{
+      z-index:99999 !important;
+  }
+  .bder{
+      border:0px solid black;
+  }
+  .table-striped>tbody>tr:nth-child(odd)>td, 
+  .table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #d9e5f3;
+  }
+  table.dataTable>tbody>tr.child ul li {
+      border-bottom: 0px solid #efefef !important;
+  }	
+  .req-field {
+      color: red;
+  }
+  .paddingZero{
+      padding: 0px !important;
+  }
+  .fixwidth {
+    width: 50px !important;
+  }
+  .lbltbl{
+    font-weight:bold;
+    font-size:10pt;	
+    text-align:right;
+    padding:5px !important;
+    width:140px !important;
+  }
+  .datatbl{
+    text-indent:5px;
+    padding:5px !important;
+    font-size:9pt;
+    width:210px !important;
+  }
+  .print-only{
+    display: none;
+  }
+
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    .print-only{
+      display: block;
+    }
+  }
+
+
+  .sec-head{
+    overflow:hidden;
+    animation: bgColor 8s normal forwards;
+  }	
+  .bgPulse{
+    width: 100%;
+    height: 100%;
+  }	
+  .bgPulse span{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    
+  }	
+  .bgPulse span:nth-child(2n+1){
+    background: transparent;
+    border: 5px solid #fff;
+  }	
+  .bgPulse span:nth-child(1){
+    border-radius:12px;
+    top: 30%;
+    left: 30%;
+    animation: animate 10s linear infinite;
+  }	
+  .bgPulse span:nth-child(2){
+    top: 20%;
+    left: 50%;
+    animation: animate 15s linear infinite;
+  }	
+  .bgPulse span:nth-child(3){
+    top: 40%;
+    left: 70%;
+    animation: animate 20s linear infinite;
+  }	
+  .bgPulse span:nth-child(4){
+    border-radius:12px;
+    top: 60%;
+    left: 80%;
+    animation: animate 12s linear infinite;
+  }
+  .bgPulse span:nth-child(5){
+    top: 60%;
+    left: 40%;
+    animation: animate 17s linear infinite;
+  }
+  .bgPulse span:nth-child(6){
+    border-radius:12px;
+    top: 60%;
+    left: 60%;
+    animation: animate 22s linear infinite;
+  }
+  .bgPulse span:nth-child(7){
+    top: 60%;
+    left: 20%;
+    animation: animate 17s linear infinite;
+  }	
+  @keyframes animate{
+    0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.4; }
+    100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+  }
+  @keyframes bgColor{
+    0%   { background: #00f383 ;  }
+    25%  { background: #00d976 ;  }
+    50%  { background: #00c068 ;  }
+    100% { background: #00a65a ;  }
+  }
+
+  #archivelist th{
+		color: white;
+		background: #00a65a;
+		height: auto !important;
+	}
+
+	.buttons{
+		margin-right: 0px;
+	}
+
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+    label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+  
+</style>
+<div class="wrapper" ng-controller="HRWageIncreaseController" ng-init="dashboard.active();">
+
+  <div class="main-header" ng-include="headerTemplate"></div> 
+  <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+  <div ng-include="entryModalTemplate"></div>
+  <div class="content-wrapper">
+      <spinner name="form01spinner" ng-cloak="">
+          <div class="overlay"></div>
+          <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+          </div>
+          <div class="please-wait">Please Wait...</div>
+      </spinner>
+      <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+    <div style="font-size: 9em;/*color: #00a65a !important;*/">
+		<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>																					
+        <div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Wage Increase</div>
+        <div style="font-size: 15pt; text-indent:15px">Archive</div>		
+    </div>
+    <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+      <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href=".#/admin/hr/dashboard"> HR Portal</a></li>
+              <li class="active">Personnel Action</li>
+              <li class="active">Wage Increase</li>
+              <li class="active">Archive</li>
+    </ol>	
+    <div class="bgPulse hidden-xs">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+      </section>
+
+      <section class="content">
+        <div ng-init="archiveTable()">
+			<!-- <div class="box-header">
+				<button id="btn-refresh-archive" style="margin-right:3px;" class="btn btn-flat btn-success pull-right" ng-click="dtInstanceArchive.reloadData()" title="Refresh">
+				<i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+				</button>
+				<button style="margin-right:3px;" class="btn btn-flat btn-success pull-right" title="Search" data-toggle="modal" data-target="#modal-search-archive"  >
+				<i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+				</button>
+			</div> -->
+
+			<table id="archivelist" datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstanceArchive" class="example2 row-border hover table-striped table-bordered"></table>
+		  
+			<!-- kini sir -->
+			<div class="modal fade modal-success" id="modal-search-archive" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+				<div class="modal-dialog">
+					<div class="modal-header" style="background: #00a65a !important; border-color: #00a65a  !important;">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Filter</h4>
+					</div>
+					<div class="modal-body" style="background: white !important">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="search_acct_archive">Employee</label>
+									<select select2 ng-disabled="isSaving" id="search_acct_archive" class="form-control" ng-model="searchArchive.acct" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										<!-- <option value="">Select Employee</option> -->
+										<option ng-repeat="data in dashboard.values.accounts track by $index" value="{{data.id}}">{{data.empid}}&nbsp;{{data.empname}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="search_dfrom_archive">Create Date</label>
+									<input type="text" readonly searchdatepickers ng-model="searchArchive.datecreate" class="form-control" maxlength="10" id="search_dfrom_archive" name="search_dfrom_archive"  required style="border:none;border-bottom:1px solid black !important;background-color: white;"/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="search_dto_archive">Effectivity Date</label>
+									<input type="text" readonly searchdatepickers ng-model="searchArchive.effdate" class="form-control" maxlength="10" id="search_dto_archive" name="search_dto_archive" required style="border:none;border-bottom:1px solid black !important;background-color: white;"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="background: #00a65a !important; border-color: #00a65a  !important;">
+						<button type="button" class="btn btn-danger pull-left" ng-click="resetSearchArchive()" >Reset</button>
+						<button type="button" class="btn btn-primary" ng-click="unitSearchArchive()" data-toggle="modal">Search</button>
+					</div>
+				</div>
+			</div>
+          
+        </div>
+      </section>        
+      
+  </div>
+
+  <div ng-include="footerTemplate"></div>
+
+  <!-- Modal View -->
+	<div class="modal fade" id="WageIncreaseViewArchive" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important;z-index: 1049 !important" >
+		<div class="modal-dialog modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row paddingZero">
+						<div class="col-md-12" style="text-align: left;padding-bottom: 5px;">
+							<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;">
+							<div class="col-md-6 col-xs-6" style="padding-bottom: 5px;">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">DELSAN BUSINESS INNOVATIONS CORPORATION</p>
+							</div>
+							<div class="col-md-6 col-xs-6" style="padding-bottom: 5px;">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: right;">Document ID: {{viewArchive.refferenceno}}</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: left;">
+							<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">Human Resources Department</p>
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">PERSONNEL ACTION REPORT</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;overflow: auto; ">
+							
+							<div class="col-md-12" style="margin-top:15px" >
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="empname" style="font-size: 12px;    padding-top: 3px;">Employee</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<span style="font-size:12px;">{{viewArchive.empname}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-4 paddingZero" style="font-size: 12px;">
+											<label for="effectivedate" style="font-size: 12px;    padding-top: 3px;">Date Created</label>
+										</div>
+										<div class="col-md-8" style="font-size:12pt;padding-right: 0px; padding-left: 0px;">
+											<span style="font-size:12px;">{{viewArchive.datecreated | date : "MMMM dd, y"}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-12"  >
+								<div class="col-md-6 hidden">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="empid" style="font-size: 12px;    padding-top: 3px;">Employee ID</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<input type="text" numbersOnly id="empid" placeholder="Employee ID" maxlength="4" ng-model="viewArchive.empid" ng-change="autoFillEmpID()" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%">
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-12" >
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="actiontaken" style="font-size: 12px;    padding-top: 3px;">Employment Action Taken</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<span style="font-size:12px;">{{viewArchive.actiontaken}}</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-4 paddingZero" style="font-size: 12px;">
+											<label for="effectivedate" style="font-size: 12px;    padding-top: 3px;">Effective Date</label>
+										</div>
+										<div class="col-md-8" style="font-size:12pt;padding-right: 0px; padding-left: 0px;">
+											<span style="font-size:12px;">{{viewArchive.effectivedate | date : "MMMM dd, y"}}</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
+						
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0">
+							<div class="col-xs-3" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">&nbsp;</h5>
+							</div>
+							<div class="col-xs-4" style="text-align: left;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">CURRENT</h5>
+							</div>
+							<div class="col-xs-5" style="text-align: left;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">NEW</h5>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" style="margin-top:15px" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Department Name</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Dept. Name</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentdeptname}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentdeptname | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Department Manager</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Dept.&nbsp;Mngr.</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentdeptmanager}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentdeptmanager | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Section</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentsection}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentsection | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;"> 
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Immediate Supervisor</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Supervisor</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentimmediatesupervisor}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentimmediatesupervisor | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Employment Status</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Emp Status</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentempstatus}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentempstatus | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Job Code</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentjobcode}}</span>
+								<!-- <input class="readonly" disabled type="text" id="currentjobcode" ng-value="viewArchive.currentjobcode" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Position Title</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Position</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentpositiontitle}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentpositiontitle | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Job Level</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentjoblevel}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentjoblevel | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Pay Group</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentpaygroup}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentpaygroup | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Labor Type</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentlabortype}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentlabortype | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0">
+							<div class="col-xs-12" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">COMPENSATION DETAILS</h5>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" style="margin-top:15px" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Base Pay</label>
+							</div>
+							<div class="col-xs-4" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currentbasepay}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currentbasepay" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+							<div class="col-xs-5" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.newbasepay}}</span>
+								<!-- <input number-float readonly type="text" ng-model="viewArchive.newbasepay" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" ng-show="viewArchive.currentbasepay"> -->
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-12" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">De Minimis</label>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" ng-repeat="(key, value) in viewArchive.allowance">
+							<div class="col-xs-3" style="font-size:12pt;" >
+								<label style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">{{value.description}}<br></label>
+							</div>
+							<div class="col-xs-4" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{value.current_amt}}</span>
+							</div>
+							<div class="col-xs-5" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{value.new_amt}}</span>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Total Cash Compensation</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Total</label>
+							</div>
+							<div class="col-xs-4" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.currenttotalcashcomp}}</span>
+								<!-- <input class="readonly" disabled type="text" ng-value="viewArchive.currenttotalcashcomp" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" > -->
+							</div>
+							<div class="col-xs-5" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<span style="font-size:12px;">{{viewArchive.newtotalcashcomp}}</span>
+								<!-- <input number-float readonly type="text" ng-model="viewArchive.newtotalcashcomp" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" ng-show="viewArchive.currenttotalcashcomp"> -->
+							</div>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0" ng-show="viewArchive.remarks" >
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">REMARKS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="margin-top:15px" ng-show="viewArchive.remarks" >
+							<span style="font-size:12px;">{{viewArchive.remarks}}</span>
+						</div>
+
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">APPROVALS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 10px 0 0 0;margin-top:15px">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewArchive.approver1stat==1">Verified by:</p>
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewArchive.approver1stat==2">Disapproved by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewArchive.approver2stat==1">Evaluated by:</p>
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewArchive.approver2stat==2">Disapproved by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewArchive.approver3stat==1">Approved by:</p>
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewArchive.approver3stat==2">Disapproved by:</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 20px 0 0 0;">
+							<div class="col-md-4 col-xs-4">
+								<p ng-bind-html="viewArchive.approver1sign" style="text-align: center;margin-bottom: 0px"></p>
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;" ng-bind-html="viewArchive.approver1_name" ></p>
+								<div style="text-align: center;font-size: 10px;">{{viewArchive.approver1desig}}</div>
+								<div style="text-align: center;font-size: 9px;">{{viewArchive.approver1_date}}&nbsp;{{viewArchive.approver1_time}}</div>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p ng-bind-html="viewArchive.approver2sign" style="text-align: center;margin-bottom: 0px"></p>
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;" ng-bind-html="viewArchive.approver2_name" ></p>
+								<div style="text-align: center;font-size: 10px;">{{viewArchive.approver2desig}}</div>
+								<div style="text-align: center;font-size: 9px;">{{viewArchive.approver2_date}}&nbsp;{{viewArchive.approver2_time}}</div>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p ng-bind-html="viewArchive.approver3sign" style="text-align: center;margin-bottom: 0px"></p>
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;" ng-bind-html="viewArchive.approver3_name"></p>
+								<div style="text-align: center;font-size: 10px;">{{viewArchive.approver3desig}}</div>
+								<div style="text-align: center;font-size: 9px;">{{viewArchive.approver3_date}}&nbsp;{{viewArchive.approver3_time}}</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" style="padding: 30px 0 10px 5px">
+							<p style="font-size: 13px;font-weight: bold;margin: 0 0 0;"><span style="padding-right: 30px;">CONFORME:</span> <i>{{viewArchive.empname}}</i></p>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" style="    padding: 15px; border-top: 1px black solid; margin-top: 15px;"> 
+							<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">Note: Department Manager to mark &nbsp;<i class="fa  fa-check-square-o"></i>&nbsp; for documents recieved by the new hiree/employee. Leave blank if not applicable.</p>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 5px 0 0 0">
+							
+							<div class="col-xs-12" style="margin-bottom: 15px;">
+								<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+									<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+										<div class="col-md-5 col-xs-7 paddingZero">
+											<input type="checkbox" id="iddoc1archive" ng-model="viewArchive.doc_job_desc" ng-true-value="1" ng-false-value="0" ><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Job&nbsp;Description</span>
+										</div>
+										<div class="col-md-7 col-xs-5 paddingZero">
+											<button type="button" class="btn-primary" ng-click="files2( viewArchive.jobdescfile );" ng-show="viewArchive.jobdescfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+										</div>
+										<!-- <label class="radio-inline" style="font-size: 10pt !important">
+											<input type="checkbox" id="iddoc1archive" ng-model="viewArchive.doc_job_desc" ng-true-value="1" ng-false-value="0" ><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Job&nbsp;Description</span>
+										</label>  
+	
+										<div style="padding:5px 15px 10px 15px">
+
+											<button type="button" class="btn-primary" ng-click="files2( viewArchive.jobdescfile );" ng-show="viewArchive.jobdescfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+										</div> -->
+	
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+									<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" > 
+										<div class="col-md-7 col-xs-7 paddingZero">
+											<input type="checkbox" id="iddoc2archive" ng-model="viewArchive.doc_perf_appr" ng-true-value="1" ng-false-value="0" ><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Performance&nbsp;Appraisal</span>
+										</div>
+										<div class="col-md-5 col-xs-5 paddingZero">
+											<button type="button" class="btn-primary" ng-click="files2( viewArchive.perfapprfile );" ng-show="viewArchive.perfapprfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+										</div> 
+										<!-- <label class="radio-inline" style="font-size: 10pt !important">
+											<input type="checkbox" id="iddoc2archive" ng-model="viewArchive.doc_perf_appr" ng-true-value="1" ng-false-value="0" ><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Performance&nbsp;Appraisal</span>
+										</label>  
+	
+										<div style="padding:5px 15px 10px 15px">
+
+											<button type="button" class="btn-primary" ng-click="files2( viewArchive.perfapprfile );" ng-show="viewArchive.perfapprfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+										</div> -->
+	
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+									<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+										<div class="col-md-6 col-xs-7 paddingZero">
+											<input type="checkbox" id="iddoc3archive" ng-model="viewArchive.doc_promotion" ng-true-value="1" ng-false-value="0" ><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Promotion&nbsp;Request</span>
+										</div>
+										<div class="col-md-6 col-xs-5 paddingZero">
+											<button type="button" class="btn-primary" ng-click="files2( viewArchive.promfile );" ng-show="viewArchive.promfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+										</div>
+										<!-- <label class="radio-inline" style="font-size: 10pt !important">
+											<input type="checkbox" id="iddoc3archive" ng-model="viewArchive.doc_promotion" ng-true-value="1" ng-false-value="0" ><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Promotion&nbsp;Request</span>
+										</label>  
+	
+										<div style="padding:5px 15px 10px 15px">
+
+											<button type="button" class="btn-primary" ng-click="files2( viewArchive.promfile );" ng-show="viewArchive.promfile"><i class="fa  fa-download" aria-hidden="true"></i></button>
+										</div> -->
+	
+									</div>
+								</div>
+							</div>	
+							
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">PRIVATE AND CONFIDENTIAL</h5>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-primary" ng-click="updateEntryLateralTransfer( viewArchive.picFile );">Save</button> -->
+					<button type="button" class="btn btn-primary btn-small" ng-print print-element-id="form02print"><i class="fa fa-print"></i> Print</button>
+					<button type="button" class="btn btn-danger pull-right" data-dismiss="modal" >Close</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+  <!-- Modal View -->
+
+  	<!-- Modal View Attachment -->
+	<div class="modal fade" id="archive_view_image" style="display:none">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4><i class="fa fa-file-zip-o"></i> Attachment</h4>
+				</div>
+				<div class="modal-body" style="text-align: center;">
+					<img ngf-src="picFileArchive" style="width: 100%; text-align: center;"/>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="cols-xs-12 btn btn-small btn-danger pull-right" data-dismiss="modal" data-toggle="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal View Attachment -->
+
+	<!--Print-->
+	<div id="form02print" class="print-only" style="width: 1000px !important" >
+		<div class="row text-center header">
+			<div class="col-xs-12 paddingZero" style="text-align: left;padding-bottom: 20px;">
+				<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 250px;" />
+			</div>
+			<div class="col-xs-6 paddingZero" style="text-align:left;padding-bottom: 20px;">
+				<span style="font-size: 13pt;">Human Resources Department</span>
+			</div>
+			<div class="col-xs-6 paddingZero" style="text-align:right;padding-bottom: 20px;">
+				<span style="font-size: 13pt;">Document ID: {{viewArchive.refferenceno}}</span>
+			</div>
+		</div>
+		<div style="display: table;width: 1000px !important;">
+			<div class="row">
+				<div class="col-xs-12 paddingZero" style="text-align: center;background-color:#00a65a !important;">
+					<span style="font-weight:bold;font-size: 13pt;color: white !important">PERSONNEL ACTION REPORT</span>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px">
+					<div class="col-xs-6 paddingZero" style="font-size:13pt">
+						<div class="col-xs-6 paddingZero"><span style="font-weight: bold;padding-right:10px">Employee</span></div>
+						<div class="col-xs-6 paddingZero"><span>{{viewArchive.empid}} {{viewArchive.empname}}</span></div>
+					</div>
+					<div class="col-xs-6 paddingZero" style="font-size:13pt">
+						<div class="col-xs-6 paddingZero"><span style="font-weight: bold;padding-right:10px">Date Created</span></div>
+						<div class="col-xs-6 paddingZero"><span>{{viewArchive.datecreated | date : "MMMM dd, y"}}</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px">
+					<div class="col-xs-6 paddingZero" style="font-size:13pt">
+						<div class="col-xs-6 paddingZero"><span style="font-weight: bold;padding-right:10px">Employment Action Taken</span></div>
+						<div class="col-xs-6 paddingZero"><span>{{viewArchive.actiontaken}}</span></div>
+					</div>
+					<div class="col-xs-6 paddingZero" style="font-size:13pt">
+						<div class="col-xs-6 paddingZero"><span style="font-weight: bold;padding-right:10px">Effective Date</span></div>
+						<div class="col-xs-6 paddingZero"><span>{{viewArchive.effectivedate | date : "MMMM dd, y"}}</span></div>
+					</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="text-align: left;background-color:#00a65a !important;margin-top:10px">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"></div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt">
+						<span style="font-weight:bold;font-size: 13pt;color: white !important">CURRENT</span>
+					</div>
+					<div class="col-xs-5 paddingZero" style="font-size:13pt">
+						<span style="font-weight:bold;font-size: 13pt;color: white !important">NEW</span>
+					</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Department Name</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentdeptname}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Department Manager</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentdeptmanager}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Section</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentsection}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Immediate Supervisor</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentimmediatesupervisor}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Job Code</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentjobcode}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Position Title</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentpositiontitle}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Job Level</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentjoblevel}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Employment Status</span></div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentempstatus}}</span></div>
+					<div class="col-xs-5 paddingZero" style="font-size:13pt"><span>{{viewArchive.newempstatus}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Pay Group</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentpaygroup}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Labor Type</span></div>
+					<div class="col-xs-9 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentlabortype}}</span></div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="text-align: center;background-color:#00a65a !important;margin-top:10px">
+					<span style="font-weight:bold;font-size: 13pt;color: white !important">COMPENSATION DETAILS</span>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Base Pay</span></div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt"><span>{{viewArchive.currentbasepay}}</span></div>
+					<div class="col-xs-5 paddingZero" style="font-size:13pt"><span>{{viewArchive.newbasepay}}</span></div>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">De Minimis</span></div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt"><span></span></div>
+					<div class="col-xs-5 paddingZero" style="font-size:13pt"><span></span></div>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left;" ng-repeat="(key, value) in viewArchive.allowance">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px;margin-left:10px">{{value.description}}</span></div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt"><span>{{value.current_amt}}</span></div>
+					<div class="col-xs-5 paddingZero" style="font-size:13pt"><span>{{value.new_amt}}</span></div>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left">
+					<div class="col-xs-3 paddingZero" style="font-size:13pt"><span style="font-weight: bold;padding-right:10px">Total Cash Compensation</span></div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt"><span>{{viewArchive.currenttotalcashcomp}}</span></div>
+					<div class="col-xs-5 paddingZero" style="font-size:13pt"><span>{{viewArchive.newtotalcashcomp}}</span></div>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="text-align: center;background-color:#00a65a !important;margin-top:10px" ng-show="viewArchive.remarks">
+					<span style="font-weight:bold;font-size: 13pt;color: white !important">REMARKS</span>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: left" style="font-size:13pt" ng-show="viewArchive.remarks">
+					<span>{{viewArchive.remarks}}</span>
+				</div>
+
+				<div class="col-xs-12 paddingZero" style="text-align: center;background-color:#00a65a !important;margin-top:10px">
+					<span style="font-weight:bold;font-size: 13pt;color: white !important">APPROVALS</span>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: center;">
+					<div class="col-xs-4 paddingZero" style="font-size:13pt">
+						<span style="font-weight: bold;" ng-show="viewArchive.approver1stat==1">Verified by:</span>
+						<span style="font-weight: bold;" ng-show="viewArchive.approver1stat==2">Disapproved by:</span>
+					</div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt">
+						<span style="font-weight: bold;" ng-show="viewArchive.approver2stat==1">Evaluated by:</span>
+						<span style="font-weight: bold;" ng-show="viewArchive.approver2stat==2">Disapproved by:</span>
+					</div>
+					<div class="col-xs-4 paddingZero" style="font-size:13pt">
+						<span style="font-weight: bold;" ng-show="viewArchive.approver3stat==1">Approved by:</span>
+						<span style="font-weight: bold;" ng-show="viewArchive.approver3stat==2">Disapproved by:</span>
+					</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="padding:0px;text-align: center;">
+					<div class="col-xs-4 paddingZero">
+						<span ng-bind-html="viewArchive.approver1sign" style="text-align: center;margin-bottom: 0px"></span><br>
+						<span ng-bind-html="viewArchive.approver1_name" style="text-align: center;margin-bottom: 0px;font-size:13pt;font-weight: bold;"></span><br>
+						<span style="font-size:12pt">{{viewArchive.approver1desig}}</span><br>
+						<span style="font-size:11pt">{{viewArchive.approver1_date}}&nbsp;{{viewArchive.approver1_time}}</span>
+					</div>
+					<div class="col-xs-4 paddingZero">
+						<span ng-bind-html="viewArchive.approver2sign" style="text-align: center;margin-bottom: 0px"></span><br>
+						<span ng-bind-html="viewArchive.approver2_name" style="text-align: center;margin-bottom: 0px;font-size:13pt;font-weight: bold;"></span><br>
+						<span style="font-size:12pt">{{viewArchive.approver2desig}}</span><br>
+						<span style="font-size:11pt">{{viewArchive.approver2_date}}&nbsp;{{viewArchive.approver2_time}}</span>
+					</div>
+					<div class="col-xs-4 paddingZero">
+						<span ng-bind-html="viewArchive.approver3sign" style="text-align: center;margin-bottom: 0px"></span><br>
+						<span ng-bind-html="viewArchive.approver3_name" style="text-align: center;margin-bottom: 0px;font-size:13pt;font-weight: bold;"></span><br>
+						<span style="font-size:12pt">{{viewArchive.approver3desig}}</span><br>
+						<span style="font-size:11pt">{{viewArchive.approver3_date}}&nbsp;{{viewArchive.approver3_time}}</span>
+					</div>
+				</div>
+				<div class="col-xs-12 paddingZero" style="font-size:14pt;font-weight: bold;margin-top:20px"><span>CONFORME:&nbsp;&nbsp;&nbsp;{{viewArchive.empname}}</span></div>
+				<div class="col-xs-12 paddingZer" style="border-top: 1px black solid; margin-top: 15px;font-size:12pt"> 
+					<span>Note: Department Manager to mark &nbsp;<i class="fa  fa-check-square-o"></i>&nbsp; for documents recieved by the new hiree/employee. Leave blank if not applicable.</span>
+				</div>
+				<div class="col-xs-12 paddingZero" style="font-size:13pt">
+					<div class="col-xs-4 paddingZero">
+						<input type="checkbox" id="iddoc1archive" ng-model="viewArchive.doc_job_desc" ng-true-value="1" ng-false-value="0" ><span class="docname" style="position: absolute;padding-left:5px">Job&nbsp;Description</span>
+					</div>
+					<div class="col-xs-4 paddingZero">
+						<input type="checkbox" id="iddoc2archive" ng-model="viewArchive.doc_perf_appr" ng-true-value="1" ng-false-value="0" ><span class="docname" style="position: absolute;padding-left:5px">Performance&nbsp;Appraisal</span>
+					</div>
+					<div class="col-xs-4 paddingZero">
+						<input type="checkbox" id="iddoc3archive" ng-model="viewArchive.doc_promotion" ng-true-value="1" ng-false-value="0" ><span class="docname" style="position: absolute;padding-left:5px">Promotion&nbsp;Request</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/.Print-->
+
+</div>

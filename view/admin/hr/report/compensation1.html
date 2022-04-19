@@ -1,0 +1,527 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #00f383 ;  }
+		25%  { background: #00d976 ;  }
+		50%  { background: #00c068 ;  }
+		100% { background: #00a65a ;  }
+	}
+    .background{
+        /* width: 100%; */
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+
+    table.sortable #sortEmployeeName:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+        content: " \25B4\25BE";
+        
+    }
+    table.sortable #sortSalary:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+        content: " \25B4\25BE";
+        
+    }
+    table.sortable #sortMonthlyCompensation:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+        content: " \25B4\25BE";
+        
+    }
+
+/* freeze Header */
+tbody {
+    display:block;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+
+</style>
+<div class="wrapper" ng-controller="HRCompensationController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+                <div style="font-size: 20pt;padding-top: 15px;text-indent:15px">HR Portal</div>
+                <div style="font-size: 15pt;text-indent:15px">Compensation & Benefits Report</div>    
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/tk/timesheet"> HR Portal</a></li>
+                <li><a href=".#/admin/tk/report/rptsheet">Reports</a></li>
+                <li class="active">Compensation & Benefits</li>
+            </ol>
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+        <section class="content">
+            <div class="row" style="padding: 10px 50px 0 50px;">
+                <div class = "col-md-12 col-xs-12" style = " padding: 0;">
+                    <!--Visible and hidden function-->
+                    <div class = "hidden-xs" style = "text-align:right; padding: 0;">
+                        <button id="btn-refreshh" class="btn btn-flat btn-primary pull-right" ng-click="reloadData()" title="Refresh"><i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+                        </button>
+                        <button class="btn-primary btn btn-flat btn-primary pull-right" data-toggle="modal" data-target="#myModal" title="Search"  style = "margin-right:3px;"> <i class="fa fa-search fa-sm"></i> Filter </button>
+                        <button id="btn-export" class="btn btn-flat btn-primary pull-right" onclick="angular.element(this).scope().exportReportToExcel('sortableView')" title="Export to Excel" style = "margin-right:3px;"><i class="fa fa-file-excel-o fa-sm" style="padding:3px"></i>Export</button>
+                    </div>
+                    <div class = "visible-xs" style = "text-align:center; padding: 0;">
+                        <button id="btn-refreshh" class="btn btn-flat btn-primary" ng-click="dtInstance.reloadData()" title="Refresh"><i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+                        </button>
+                        <button class="btn-primary btn btn-flat btn-primary" data-toggle="modal" data-target="#myModal" title="Search"> <i class="fa fa-search fa-sm"></i> Filter </button>
+                        <button id="btn-export" class="btn btn-flat btn-primary" onclick="angular.element(this).scope().exportReportToExcel('sortableView')" title="Export to Excel"><i class="fa fa-file-excel-o fa-sm" style="padding:3px"></i>Export</button>
+                    </div>
+                </div>
+                <div class = "col-md-12 col-xs-12">
+                    <div id="compensation_companyName" style="font-size:18pt; text-align:center; font-weight: bold;">{{compensationCompanyName.company_name}}</div>
+                    <div id="compensation_benefits_txt" style="font-size:15pt; text-align:center; font-weight: bold;">Compensation & Benefits Report</div>
+                    <div id="compensation_benefits_report" style="font-size:11pt; text-align:center;" ng-show="filter">Filtered per - {{filter}}</span></div>
+                    <div id="compensation_date" style="font-size:11pt; text-align:center; padding-bottom:20px;">Report Generated on {{compensationDate}} {{compensationTime}}</div>
+                </div>
+                <div class = "col-md-12 col-xs-12">
+                    <div class="search-input-wrapper">
+                        <div class="btn-toolbar">
+                            <label>Show
+                                <select class="" ng-model="dashboard.values.pageSize">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-12 col-xs-12">
+                    <div class="row" style ="overflow-y: auto;">
+                        <table id="sortableView" class="sortable table-striped" ng-init="viewCompensationReport();" >
+                            <thead>
+                                <tr>
+                                    <th class = "background" style="width:80px; border: 1px solid black;" >
+                                        <div style = " font-size:11pt; text-align: center;">Emp ID</div>
+                                    </th>
+                                    <th class = "background" style="width:190px;  border: 1px solid black;" onclick="w3.sortHTML('#sortableView', '.item', 'td:nth-child(2)')" style="cursor:pointer">
+                                        <div id = "sortEmployeeName"  style = "font-size:11pt; text-align: center;">Name</div>
+                                    </th>
+                                    <th class = "background" style="width:136px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Position</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Job Level</div>
+                                    </th>
+                                    <th class = "background" style="width:80px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Pay Group</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid black;"> 
+                                        <div style = "font-size:11pt; text-align: center;">Labor Type</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Hire Date</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Reg Date</div>
+                                    </th>
+                                    <th class = "background" style="width:130px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Department</div>
+                                    </th>
+                                    <th class = "background" style="width:80px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Section</div>
+                                    </th>
+                                    <th class = "background" style="width:100px;  border: 1px solid black;" onclick="w3.sortHTML('#sortableView', '.item', 'td:nth-child(11)')" style="cursor:pointer">
+                                        <div id = "sortSalary"  style = "font-size:11pt; text-align: center;">Salary</div>
+                                    </th>
+                                    <th class = "background" style="width:300px; border: 1px solid black;">
+                                        <table style = "width: 100%; ">
+                                            <tr>
+                                                <th style = "text-align: center;" colspan = "3"> 
+                                                <div style = "font-size:11pt; text-align: center;">Allowances</div>
+                                                </th>
+                                            </tr>
+                                            <tbody style="overflow:hidden !important">
+                                                <tr>
+                                                    <th style ="border-right:1px solid black; border-top:1px solid black">
+                                                        <div style = "width:100px; font-size:11pt; text-align: center;">Clothing</div>
+                                                    </th>
+                                                    <th style ="border-right:1px solid black; border-top:1px solid black">
+                                                        <div style = "width:100px; font-size:11pt; text-align: center;">Laundry</div>
+                                                    </th>
+                                                    <th style ="border-top:1px solid black">
+                                                        <div style = "width:100px; font-size:11pt; text-align: center;">Rice</div>
+                                                    </th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </th>
+                                    <th class = "background" style="width:130px;  padding-left: 5px; border: 1px solid black;" onclick="w3.sortHTML('#sortableView', '.item', 'td:nth-child(14)')" style="cursor:pointer">
+                                        <div id = "sortMonthlyCompensation"  style = "font-size:11pt; text-align: left;">Total Monthly Compensation</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid black;">
+                                        <div style = "font-size:11pt; text-align: center;">Annual Gross Income</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody style="height:445px">
+                                <tr class="item" dir-paginate="view in compensationView | itemsPerPage: dashboard.values.pageSize" current-page="dashboard.values.compensationPage" ng-show="compensationView.length > 0">
+                                    <td style="height:50px; width:80px; word-wrap: break-word; ">
+                                        <div style = "font-size:11pt; text-align: center;">{{ view.empid }}</div>
+                                    </td>
+                                    <td style="height:50px;  word-wrap: break-word; width:190px; font-size:11pt;">
+                                        <div style = " text-align: left;">{{ view.empname }}</div>
+                                    </td>
+                                    <td style="height:50px; width:136px; word-wrap: break-word; font-size:11pt;">
+                                        <div style = " text-align: left;">{{ view.post }}</div>
+                                    </td>
+                                    <td style="height:50px; width:100px; word-wrap: break-word; font-size:11pt;">
+                                        <div style = " text-align: left;">{{ view.job_lvl }}</div>
+                                    </td>
+                                    <td style="height:50px; width:80px; word-wrap: break-word; font-size:11pt;">
+                                        <div style = " text-align: left;">{{ view.pay_grp }}</div>
+                                    </td>
+                                    <td style="height:50px; width:100px; word-wrap: break-word; font-size:11pt;">
+                                        <div style = " text-align: left;">{{ view.labor_type }}</div>
+                                    </td>
+                                    <td style="height:50px; width:100px; word-wrap: break-word;">
+                                        <div style = "font-size:11pt; text-align: right;">{{ view.hire_date }}</div>
+                                    </td>
+                                    <td style="height:50px; width:100px; word-wrap: break-word;">
+                                        <div style = "font-size:11pt; text-align: center;">{{ view.reg_date }}</div>
+                                    </td>
+                                    <td style="height:50px; width:130px; word-wrap: break-word;">
+                                        <div style = "font-size:11pt; text-align: left; padding-left:10px;">{{ view.dept }}</div>
+                                    </td>
+                                    <td style="height:50px; width:80px; word-wrap: break-word;">
+                                        <div style = "font-size:11pt; text-align: center;"></div>
+                                    </td>
+                                    <td style="height:50px; width:100px; word-wrap: break-word;">
+                                        <div style = "font-size:11pt; text-align: right;">{{ view.salary }}</div>
+                                    </td>
+                                    <td style="height:50px; width:300px; word-wrap: break-word;">
+                                        <table style = "width: 100%;">
+                                            <tr>
+                                                <td style ="width:100px;">
+                                                    <div style = "font-size:11pt; text-align: right;"> {{view.clothing}} </div>
+                                                </td>
+                                                <td style ="width:100px;">
+                                                    <div style = "font-size:11pt; text-align: right;"> {{view.laundry}} </div>
+                                                </td>
+                                                <td style ="width:100px;">
+                                                    <div style = "font-size:11pt; text-align: right;"> {{view.rice}} </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="height:50px; width:130px; word-wrap: break-word;">
+                                        <div style =" font-size:11pt; text-align: right;"> {{ view.total_compensation | number : 2}} </div>
+                                    </td>
+                                    <td style="height:50px; width:100px; word-wrap: break-word;">
+                                        <div style =" font-size:11pt; text-align: right;"> {{view.annual_gross_income | number : 2}} </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.Row-->                    
+                </div>
+                
+                <!-- Pagination -->
+                <div class="text-right">
+                    <dir-pagination-controls boundary-links="true" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+                </div>
+                <!-- /.pagination -->
+     
+                <!-- Modal -->
+                <div class="modal fade modal-info" id="myModal" role="dialog" style="background: rgba(0, 0, 0, 0.8);">
+                    <!-- Modal dialog-->
+                    <div class="modal-dialog modal-lg">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Filter</h4>
+                            </div>
+                            <!-- display sa modal design-->
+                            <div class="modal-body" style="background: #083f50de !important">    
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="employee">Employee:</label>
+                                            <select select2 ng-model="emp" placeholder="Employee Name & ID" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <option ng-repeat="data in getAllEmployeeReport track by $index" value="{{data.empid}}">{{data.empid}}&nbsp;{{data.fullname}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="short3unit">Classification</label>
+                                           <select id="short3unit" class="form-control" ng-model="department"
+                                           ng-options="dept.id as dept.name for dept in dashboard.values.department | filter: typeLimit track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" >
+                                                
+                                            </select>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="short3unit">Classification</label>
+											<select id="short3unit" class="form-control" ng-model="department"
+                                                ng-options="dept.id as dept.name for dept in dashboard.values.department | filter: typeLimit track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" >
+                                                <!--option value="">Select Classification</option-->
+                                            </select>
+                                        </div>
+                                    </div>
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="group">Labor Type:</label>
+											<select select2 ng-model="search_labor_type" placeholder="Select Type" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+												<option value="Direct Labor">Direct Labor</option>
+												<option value="Fixed Labor">Fixed Labor</option>
+												<option value="G & A">G & A</option>
+												<option value="Indirect Labor">Indirect Labor</option>
+											</select>
+										</div>
+									</div>
+									
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="ptitle">Position Title:</label>
+                                            <select select2 ng-model="post_title" placeholder="Position Title" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <option ng-repeat="data in allEmployeePositionTitle track by $index" value="{{data.position_title}}">{{data.position_title}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="paygroup">Pay Group:</label>
+                                            <select select2 ng-model="pay_grp" placeholder="Pay Group" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <option value="MONTHLIES">MONTHLIES</option>
+                                            <option value="DAILIES">DAILIES</option>
+                                            <option value="EXECUTIVE">EXECUTIVE</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="joblevel">Job Level:</label>
+                                            <select select2 ng-model="job_level" placeholder="Job Level" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+												<option ng-repeat="data in dashboard.values.joblvl track by $index" value="{{data.id}}">{{data.lvllbl}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+									
+									
+                                    <div class="col-md-6 hidden">
+                                        <div class="form-group">
+                                            <label for="section">Section:</label>
+                                            <input type="text" ng-model="search_section" placeholder = "not yet included" class="form-control" id="search_section_id" name="search_section_name" disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 hidden">
+                                        <div class="form-group">
+                                            <label for="monthlyComp">Total Monthly Compensation Range:</label>
+                                            <input type="text" ng-model="search_monthly_compensation" placeholder = "not yet included" class="form-control" id="search_monthly_compensation_id" name="search_monthly_compensation_name" disabled/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="hired_rom">Hired Date From:</label>
+                                            <input type="text" readonly searchdatepickers ng-model="search_hired_date_from" class="form-control" maxlength="10" id="search_hired_date_from_id" name="search_hired_date_from_name" required  />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="hired_to">Hired Date To:</label>
+                                            <input type="text" readonly searchdatepickers ng-model="search_hired_date_to" class="form-control" maxlength="10" id="search_hired_date_to_id" name="search_hired_date_to_name" required  />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="regularization">Regularization Date From:</label>
+                                            <input type="text" readonly searchdatepickers ng-model="search_reg_date_from" class="form-control" maxlength="10" id="search_reg_date_from_id" name="search_reg_date_from_name" required  />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="regularization">Regularization Date To:</label>
+                                            <input type="text" readonly searchdatepickers ng-model="search_reg_date_to" class="form-control" maxlength="10" id="search_reg_date_to_id" name="search_reg_date_to_name" required  />
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>     
+                            <div class="modal-footer">
+                                <button ng-click="searchCompensation()" class="btn btn-outline btn-primary" data-dismiss="modal"><i class="fa fa-search"></i> Search</button>
+                                <button type="button" class="btn btn-outline btn-danger pull-left" data-dismiss="modal" ng-click="resetsearch()">Reset</button>
+                            </div>
+                        </div>
+                        <!-- /.Modal content-->
+                    </div>
+                    <!-- /.Modal dialog-->
+                </div>
+                <!-- /.Modal-->
+
+            </div>
+        </section>
+    </div>
+    <!--/.Content Wrapper-->
+    <div ng-include="footerTemplate"></div>
+</div>
+<!--/.Wrapper-->

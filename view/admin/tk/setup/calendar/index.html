@@ -1,0 +1,433 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+	
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #337ab7 ;  }
+	}
+	.respontext {
+		font-size: 40px;
+	}
+	/* ModalFilter */
+	.select2-container--default .select2-selection--single {
+	border: none !important;
+	border-bottom: 1px solid black !important;
+	height: 30px !important;
+	padding: 1px !important;
+	text-align-last: center !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 30px !important;
+    }
+
+    label {
+        color: black !important;
+        font-weight: 400;
+        font-size: 10pt;
+        margin-bottom: 0px;
+    }
+   
+</style>
+<div class="wrapper" ng-controller="TKSetupCalendarController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+		<spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            
+			<div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+                    
+				<div class="row">
+					<div class="col-md-6" style="margin-bottom:15px">
+						<a style="color: white !important;" class="">
+							<img ng-src="assets/images/icons/HRIS Dashboard icon Timekeeper.png"
+								style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+								alt="User Image">
+						</a>
+						<div >
+							<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Timekeeper's Portal</p>
+							<p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">Calendar Setup</p>
+						</div>
+					</div>
+					<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+						<ol class="breadcrumb" style="width: 330px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+							<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+							<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Manager's Portal</a></li>
+							<li class="active">Calendar Setup</li>
+						</ol>
+					</div>
+				</div>
+            </div>
+        </section>
+		<!-- <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-clock-o" style="float: left;color:#00000052"></i>									
+				<div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Timekeeper's Portal</div>
+				<div style="font-size: 15pt;text-indent:15px">Calendar Set Up</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/tk/dashboard"> Timekeeper's Portal</a></li>
+				<li><a href=".#/admin/tk/setup/leaves"> Set Up</a></li>
+                <li class="active">Calendar</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section> -->
+
+        <section class="content">                
+			<div ng-init="setup_calendar_functions()">	
+				<!-- <div class="box-header">
+					<button id="btn-refreshh" ng-click="dtInstance.reloadData()" style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;"><i class="fa fa-refresh fa-sm"></i>&nbsp;&nbsp;&nbsp;Refresh</button>
+
+					<button style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;" title="Search" data-toggle="modal" data-target="#myModal"><i class="fa fa-search fa-sm"></i>&nbsp;&nbsp;&nbsp;Filter</button>
+
+					
+					<button style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;" ng-click="export()"><i class="fa fa-file-excel-o fa-sm"></i>&nbsp;&nbsp;&nbsp;Export</button>
+					<button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Create" data-toggle="modal" data-target="#modal-add" ng-click="resetCreateAcct()">
+						<i class="fa fa-plus-circle fa-sm" style="padding:3px"></i>Add
+					</button>	
+				</div> -->
+				
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered"></table>
+
+				<div class="modal fade modal-info" id="modal-add" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog">
+						<div class="modal-header" style="background-color: #0073B7 !important;">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Add Calendar</h4>
+						</div>
+						<div class="modal-body" style="background: #FFF !important">
+							<div class="row">
+								<form ng-hide="mySignUpForm" role="form" name="registerForm" >
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label for="calname">Name<span class="req-field"> *</span></label>
+										  <input type="text" class="form-control" id="calname" name="calname" placeholder="Calendar Name" maxlength="60" ng-model="add.name" required ng-disabled="isSaving" style="text-align-last: center;border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;" />
+										</div>
+									</div>
+
+
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="sunshift">Sunday Shift<span class="req-field"> *</span></label>
+											<select id="sunshift" class="form-control" ng-model="add.shiftsun" ng-options="add_sunshift.id as add_sunshift.name for add_sunshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="monshift">Monday Shift<span class="req-field"> *</span></label>
+											<select id="monshift" class="form-control" ng-model="add.shiftmon" ng-options="add_monshift.id as add_monshift.name for add_monshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>		
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="tueshift">Tuesday Shift<span class="req-field"> *</span></label>
+											<select id="tueshift" class="form-control" ng-model="add.shifttue" ng-options="add_tueshift.id as add_tueshift.name for add_tueshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="wedshift">Wednesday Shift<span class="req-field"> *</span></label>
+											<select id="wedshift" class="form-control" ng-model="add.shiftwed" ng-options="add_wedshift.id as add_wedshift.name for add_wedshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="thushift">Thursday Shift<span class="req-field"> *</span></label>
+											<select id="thushift" class="form-control" ng-model="add.shiftthu" ng-options="add_thushift.id as add_thushift.name for add_thushift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="frishift">Friday Shift<span class="req-field"> *</span></label>
+											<select id="frishift" class="form-control" ng-model="add.shiftfri" ng-options="add_frishift.id as add_frishift.name for add_frishift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="satshift">Saturday Shift<span class="req-field"> *</span></label>
+											<select id="satshift" class="form-control" ng-model="add.shiftsat" ng-options="add_satshift.id as add_satshift.name for add_satshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer" style="background-color: #0073B7 !important;">
+							<button style="width:100px" data-target="#modal-add" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving">Cancel</button>
+                    		<button style="width:100px" id="btn-unit-add" type="button" class="btn btn-primary" ng-click="addCalendar( )" ng-disabled="isSaving" ><i class="fa fa-plus-circle fa-sm"></i>&nbsp;&nbsp;&nbsp;Add</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade modal-info" id="editModal" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog">
+						<div class="modal-header" style="background-color: #0073B7 !important;">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Edit Calendar</h4>
+						</div>
+						<div class="modal-body" style="background: #FFF !important">
+							<div class="row">
+								<form ng-hide="mySignUpForm" role="form" name="registerForm2" >
+									<div class="col-md-6">
+										<div class="form-group">
+										  <label for="calname2">Name<span class="req-field"> *</span></label>
+										  <input type="text" class="form-control" id="calname2" name="calname2" placeholder="Calendar Name" maxlength="60" ng-model="edit.name" required ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;"/>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="sunshift2">Sunday Shift<span class="req-field"> *</span></label>
+											<select id="sunshift2" class="form-control" ng-model="edit.shiftsun" ng-options="edit_sunshift.id as edit_sunshift.name for edit_sunshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="monshift2">Monday Shift<span class="req-field"> *</span></label>
+											<select id="monshift2" class="form-control" ng-model="edit.shiftmon" ng-options="edit_monshift.id as edit_monshift.name for edit_monshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>		
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="tueshift2">Tuesday Shift<span class="req-field"> *</span></label>
+											<select id="tueshift2" class="form-control" ng-model="edit.shifttue" ng-options="edit_tueshift.id as edit_tueshift.name for edit_tueshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="wedshift2">Wednesday Shift<span class="req-field"> *</span></label>
+											<select id="wedshift2" class="form-control" ng-model="edit.shiftwed" ng-options="edit_wedshift.id as edit_wedshift.name for edit_wedshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="thushift2">Thursday Shift<span class="req-field"> *</span></label>
+											<select id="thushift2" class="form-control" ng-model="edit.shiftthu" ng-options="edit_thushift.id as edit_thushift.name for edit_thushift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="frishift2">Friday Shift<span class="req-field"> *</span></label>
+											<select id="frishift2" class="form-control" ng-model="edit.shiftfri" ng-options="edit_frishift.id as edit_frishift.name for edit_frishift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="satshift2">Saturday Shift<span class="req-field"> *</span></label>
+											<select id="satshift2" class="form-control" ng-model="edit.shiftsat" ng-options="edit_satshift.id as edit_satshift.name for edit_satshift in dashboard.values.shifttypes" style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+												<option value="">Select Type</option>
+											</select>
+										</div>
+									</div>							
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer" style="background-color: #0073B7 !important;">
+							<button style="width:100px" data-target="#editModal" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving" >Cancel</button>
+							<button style="width:100px" id="btn-unit-edit" type="button" class="btn btn-primary" ng-click="editCalendar()" ng-disabled="isSaving" >Update</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade modal-info" id="searchModal" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog">
+						<div class="modal-header" style="background-color: #0073B7 !important;">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Filter Leave Records</h4>
+						</div>
+						<div class="modal-body" style="background: #FFF !important">
+							<div class="row">
+								<form ng-hide="mySignUpForm" role="form" name="registerForm2" >
+									<div class="col-md-12">
+										<div class="form-group">
+										  <label for="name">Select Shift Name</label>
+											<select select2 ng-disabled="isSaving" id="search_shift_name" class="form-control" ng-model="search_shift_name" ng-options="search_shift.id as search_shift.name for search_shift in dashboard.values.workshifts | filter: filterAcct track by search_shift.id" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white; padding-top: 0px;padding-bottom: 0px;">
+											</select>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer" style="background-color: #0073B7 !important;">
+							<button style="width:100px" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-click="resetSearch()" >Cancel</button>
+							<button style="width:100px" id="btn-unit-edit" type="button" class="btn btn-primary" ng-click="unitSearch()"  data-dismiss="modal"> <i class="fa fa-search fa-sm"></i>Search</button>
+						</div>
+					</div>
+				</div>
+                
+
+
+			</div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

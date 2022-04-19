@@ -1,0 +1,418 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    #example2 th {
+        color: white;
+        background-color: #00a65a;
+    }
+
+    .info-box {
+        background: #ecf0f5;
+    }
+
+    .info-box-icon {
+        padding: 5px;
+    }
+
+    .small-box {
+        cursor: pointer;
+    }
+
+    .small-box-footer {
+        visibility: hidden;
+    }
+
+    h3 {
+        font-weight: 400 !important;
+    }
+
+
+    .bg-red {
+        border-bottom: 6px solid #ca4735;
+        border-right: 4px solid #ca4735;
+    }
+
+    .bg-red:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #ca4735;
+        border-right: 6px solid #ca4735;
+        margin-bottom: 15px;
+    }
+
+    .bg-yellow {
+        border-bottom: 6px solid #df8f10;
+        border-right: 4px solid #df8f10;
+    }
+
+    .bg-yellow:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #df8f10;
+        border-right: 6px solid #df8f10;
+        margin-bottom: 15px;
+    }
+
+    .bg-primary {
+        border-bottom: 6px solid #2b6699;
+        border-right: 4px solid #2b6699;
+    }
+
+    .bg-primary:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #2b6699;
+        border-right: 6px solid #2b6699;
+        margin-bottom: 15px;
+    }
+
+    .bg-blue {
+        border-bottom: 6px solid #02649c;
+        border-right: 4px solid #02649c;
+    }
+
+    .bg-blue:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #02649c;
+        border-right: 6px solid #02649c;
+        margin-bottom: 15px;
+    }
+
+    .bg-green {
+        border-bottom: 6px solid #02884c;
+        border-right: 4px solid #02884c;
+    }
+
+    .bg-green:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #02884c;
+        border-right: 6px solid #02884c;
+        margin-bottom: 16px;
+    }
+
+    .bg-teal {
+        border-bottom: 6px solid #2fa5a5;
+        border-right: 4px solid #2fa5a5;
+    }
+
+    .bg-teal:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #2fa5a5;
+        border-right: 6px solid #2fa5a5;
+        margin-bottom: 15px;
+    }
+
+    .bg-aqua {
+        border-bottom: 6px solid #01a5ce;
+        border-right: 4px solid #01a5ce;
+    }
+
+    .bg-aqua:hover {
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.34), 0 17px 50px 0 rgba(0, 0, 0, 0.39);
+        border-bottom: 10px solid #01a5ce;
+        border-right: 6px solid #01a5ce;
+        margin-bottom: 15px;
+    }
+</style>
+<div class="wrapper" ng-controller="AdmHomeController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Dashboard
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.orgdata == '1' ">
+                    <a href="./#/admin/org/struct">
+                        <!-- small box -->
+                        <div class="small-box bg-red">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Organizational</h3>
+                                <h3 style="font-size: 150% !important">Data</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Organization.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.empportal == '1' ">
+                    <a href="./#/admin/emp/dashboard">
+                        <!-- small box -->
+                        <div class="small-box bg-yellow">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Employee's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Employee.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.mngrportal == '1' ">
+                    <!--a href="./#/admin/mng/dashboard" ng-if="dashboard.values.userInformation.undersecretary==''"> 
+										<div class="small-box bg-blue">
+												<div class="inner">
+														<h3 style="font-size: 150% !important">Manager's</h3>
+														<h3 style="font-size: 150% !important">Portal</h3>
+												</div>
+												<div class="icon" style="top: 5px !important">
+														<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon Manager.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+												</div>
+												<span class="small-box-footer">
+														More info <i class="fa fa-arrow-circle-right"></i>
+												</span>
+										</div>
+									</a>
+									<a href="./#/admin/mng/scheduler/shiftsched" ng-if="dashboard.values.userInformation.undersecretary!=''"> 
+										<div class="small-box bg-blue">
+												<div class="inner">
+														<h3 style="font-size: 150% !important">Manager's</h3>
+														<h3 style="font-size: 150% !important">Portal</h3>
+												</div>
+												<div class="icon" style="top: 5px !important">
+														<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon Manager.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+												</div>
+												<span class="small-box-footer">
+														More info <i class="fa fa-arrow-circle-right"></i>
+												</span>
+										</div>
+									</a-->
+                    <a href="./#/admin/mng/dashboard"
+                        ng-if="dashboard.values.userInformation.type == 'MANAGER' || dashboard.values.userInformation.type == 'SYSADMIN'">
+                        <!-- small box -->
+                        <div class="small-box bg-blue">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Manager's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Manager.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                    <a href="./#/admin/mng/scheduler/shiftsched"
+                        ng-if="dashboard.values.userInformation.undersecretary !='' && dashboard.values.userInformation.deputymtrx.length == 0  && dashboard.values.userInformation.type != 'MANAGER' && dashboard.values.userInformation.type != 'SYSADMIN' ">
+                        <!-- small box -->
+                        <div class="small-box bg-blue">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Manager's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Manager.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+
+                    <a href="./#/admin/mng/app/timekeeping/changeshiftapp"
+                        ng-if=" (dashboard.values.userInformation.undersecretary !='' || dashboard.values.userInformation.undersecretary =='') && dashboard.values.userInformation.deputymtrx.length > 0 && dashboard.values.userInformation.type != 'MANAGER' && dashboard.values.userInformation.type != 'SYSADMIN' ">
+                        <!-- small box -->
+                        <div class="small-box bg-blue">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Manager's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Manager.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.hrportal == '1' ">
+                    <!--Dan
+									<a href="./#/admin/hr/dashboard" ng-if="dashboard.values.userInformation.promotion_approver == '0'">
+										<div class="small-box bg-green">
+												<div class="inner">
+														<h3 style="font-size: 150% !important">HR</h3>
+														<h3 style="font-size: 150% !important">Portal</h3>
+												</div>
+												<div class="icon" style="top: 5px !important">
+														<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+												</div>
+												<span class="small-box-footer">
+														More info <i class="fa fa-arrow-circle-right"></i>
+												</span>
+										</div>
+									</a>
+									<a href="./#/promotion-and-upgradation---current---" ng-if="dashboard.values.userInformation.promotion_approver == '1'">
+										<div class="small-box bg-green">
+												<div class="inner">
+														<h3 style="font-size: 150% !important">HR</h3>
+														<h3 style="font-size: 150% !important">Portal</h3>
+												</div>
+												<div class="icon" style="top: 5px !important">
+														<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+												</div>
+												<span class="small-box-footer">
+														More info <i class="fa fa-arrow-circle-right"></i>
+												</span>
+										</div>
+									</a-->
+                    <a href="./#/admin/hr/dashboard"
+                        ng-if="(dashboard.values.userInformation.promotion_approver == '1' || dashboard.values.userInformation.lateral_transfer_approver == '1' || dashboard.values.userInformation.wage_increase_approver == '1') && (dashboard.values.userInformation.type == 'SYSADMIN' || dashboard.values.userInformation.type == 'HR')">
+
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">HR</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                    <a href="./#/admin/hr/dashboard"
+                        ng-if="(dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.lateral_transfer_approver == '0' && dashboard.values.userInformation.wage_increase_approver == '0') && (dashboard.values.userInformation.type == 'SYSADMIN' || dashboard.values.userInformation.type == 'HR')">
+
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">HR</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                    <a href="./#/admin/hr/dashboard"
+                        ng-if="(dashboard.values.userInformation.promotion_approver == '1' || dashboard.values.userInformation.lateral_transfer_approver == '1' || dashboard.values.userInformation.wage_increase_approver == '1') && (dashboard.values.userInformation.type != 'SYSADMIN' && dashboard.values.userInformation.type != 'HR')">
+
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">HR</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.timeportal == '1' ">
+                    <a href="./#/admin/tk/dashboard">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Timekeeper's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Timekeeper.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.payportal == '1' ">
+                    <a href="./#/admin/pay/home">
+                        <!-- small box -->
+                        <div class="small-box bg-teal">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Payroll Master's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Payroll.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-xs-6" ng-show=" dashboard.values.userInformation.admportal == '1' ">
+                    <a href="#">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3 style="font-size: 150% !important">Admin's</h3>
+                                <h3 style="font-size: 150% !important">Portal</h3>
+                            </div>
+                            <div class="icon" style="top: 5px !important">
+                                <i class="fa"
+                                    style="background: url('assets/images/icons/HRIS Dashboard icon Admin.png');background-repeat: no-repeat;background-size: 100px;color: transparent;width: 95px;">sss</i>
+                            </div>
+                            <span class="small-box-footer">
+                                More info <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    <div ng-include="footerTemplate"></div>
+
+</div>

@@ -1,0 +1,347 @@
+<style>
+   .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #e8867a ;  }
+		25%  { background: #e47365 ;  }
+		50%  { background: #e15f4f ;  }
+		100%  { background: #dd4b39 ; }
+	}
+	
+	.fc-day-grid-container{
+		overflow: hidden auto !important;
+		min-height: 340px !important;
+	}
+	.fc-view-container {
+		border: 1px solid #ddd;
+	}
+	.fc-today-button{
+		visibility: hidden
+	}
+	.gi-2x{font-size: 2em;}
+	.gi-3x{font-size: 3em;}
+	.gi-4x{font-size: 4em;}
+	.gi-5x{font-size: 5em;}
+	
+	
+	.fc-week {
+        height: 96px !important;
+    }
+
+    .fc-scroller {
+        height: auto !important;
+    }
+
+    .content {
+        padding-top: 17px !important;
+    }
+
+    @media screen and (max-width: 1280px) {
+        .fc-week {
+            height: 20px !important;
+        }
+
+        .fc-scroller {
+            height: auto !important;
+        }
+
+        .content {
+            padding-top: 10px !important;
+        }
+
+        .fc-toolbar {
+
+            padding-bottom: 0px !important;
+        }
+
+        .content-header {
+            height: 133px !important;
+            padding: 2px 14px 0 13px !important;
+        }
+
+        .fc-day-number {
+            font-size: 13px !important;
+        }
+    }
+	
+</style>
+<div class="wrapper" ng-controller="CompanyController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color:#dd4b39 !important*/">
+				<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon Organization.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>							
+					<div style="font-size: 12pt;padding-top: 15px;">{{ dashboard.values.userInformation.dbcompany }}</div>		
+					<div style="font-size: 20pt;">Organizational Data</div>
+					<div style="font-size: 15pt;">Company Activities</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:160px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/org/struct"> Organizational Data</a></li>
+                <li class="active">Company Activities</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content" style="padding:50px">                
+            <div class="row" >
+				<div class="col-md-12" >
+					<button hidden id="addEvent" ng-click="addEventz()"></button>
+					<!--div class="col-md-4 hidden-xs center-block" style="padding:0px; " ></div-->
+					<div class="col-md-12 center-block" style="padding:0px;" >
+						<div id="calendar1" fc fc-options="calendarOptions" ng-model="events" class="calendar"> </div>						
+					</div>
+					<!--div class="col-md-4 hidden-xs center-block" style="padding:0px; " ></div-->
+				</div>
+			</div>
+			
+			
+			<div class="modal fade modal-info" id="modal-events" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+				<div class="modal-dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Add Event</h4>
+					</div>
+					<div class="modal-body" style="background: #38b3d894 !important">
+						<div class="row">
+							
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="event_activity">Title</label>
+									<input type="text" class="form-control" id="event_activity" maxlength="200" ng-model="eventz.event_title" required ng-disabled="isSaving" />
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="event_efrom">Date Start</label>
+									<input type="text" readonly datepickers ng-model="eventz.efrom" class="form-control" maxlength="10" id="event_efrom" name="event_efrom" required ng-disabled="isSaving" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="event_eto">Date End</label>
+									<input type="text" readonly datepickers ng-model="eventz.eto" class="form-control" maxlength="10" id="event_eto" name="event_eto" required ng-disabled="isSaving" />
+								</div>
+							</div>
+							
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="event_desc">Description</label>
+									<textarea rows="4" id="event_desc" name="event_desc" class="form-control" ng-model="eventz.desc" style="resize:none" ></textarea>
+								</div>
+							</div>
+							
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="file">File Upload</label>
+									<input class="form-control" type="file" ngf-select ng-model="eventz.picFile" id="file" name="file" accept="image/*" ng-disabled="isSaving" />	
+								</div>
+							</div>							
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline btn-danger pull-left" data-target="#modal-events" data-toggle="modal">Close</button>
+						<button type="button" class="btn btn-outline btn-warning" ng-click="resetEventz()" >Reset</button>
+						<button type="button" class="btn btn-outline btn-primary" ng-click="addEventz( eventz.picFile )" >Save</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade modal-info" id="modal-eventz" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+				<div class="modal-dialog">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Update Event</h4>
+					</div>
+					<div class="modal-body" style="background: #38b3d894 !important">
+						<div class="row">
+							
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="event_activity2">Title</label>
+									<input type="text" class="form-control" id="event_activity2" maxlength="200" ng-model="eventz_update.title" required ng-disabled="isSaving" />
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="event_efrom2">Date Start</label>
+									<input type="text" readonly ng-model="eventz_update.start" class="form-control" maxlength="10" id="event_efrom2" name="event_efrom2" required ng-disabled="isSaving" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="event_eto2">Date End</label>
+									<input type="text" readonly datepickers ng-model="eventz_update.end" class="form-control" maxlength="10" id="event_eto2" name="event_eto2" required ng-disabled="isSaving" />
+								</div>
+							</div>
+							
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="event_desc2">Description</label>
+									<textarea rows="4" id="event_desc2" name="event_desc2" class="form-control" ng-model="eventz_update.desc" style="resize:none" ></textarea>
+								</div>
+							</div>
+							
+							<div class="col-md-12" ng-show=" global_branch == '1' " >
+								<div class="form-group">
+									<label for="file">File Upload</label>
+									<div class="input-group">
+										<input class="form-control" type="file" ngf-select ng-model="eventz_update.picFile" id="file" name="file" accept="image/*" ng-disabled="isSaving" />	
+										<span class="input-group-btn">
+											<button style="z-index:9;padding:9px" class="btn btn-primary btn-flat" type="button" ng-click="files2( eventz_update.id );" ng-disabled="isSaving || eventz_update.pix == 0  " >
+												<i class="fa fa-lg fa-download" aria-hidden="true"  ></i> 
+											</button>
+										</span>
+									</div>
+								</div>
+							</div>	
+							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline btn-danger pull-left" data-target="#modal-eventz" data-toggle="modal">Close</button>
+						<button type="button" class="btn btn-outline btn-warning" data-target="#modal-eventz" data-toggle="modal" ng-click="deleteEventz()" ng-show=" global_branch == '1' " >Delete</button>
+						<button type="button" class="btn btn-outline btn-primary" ng-click="editEventz( eventz_update.picFile )" ng-show=" global_branch == '1' " >Update</button>
+					</div>
+				</div>
+			</div>
+			
+			
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

@@ -1,0 +1,420 @@
+<style type="text/css">
+	.paddingZero{ padding:0}
+	.headerShade{ background:#00a65a}
+	.border{ border:1px solid #E1E1E1}
+	/* .margin{ margin-bottom: 1%;} */
+	.ng-binding img{
+		width:100px;
+	}
+	
+	.ng-binding .txtname{
+		position:relative;
+		left:5px;
+		top:-30px
+	}
+	.disable{
+		background: white !important;
+	}
+	.readonly{
+		background: white;
+	}
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 20px !important;
+		font-size: 12px;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 10px !important;
+	}
+	.wordwrap { 
+	   white-space: pre-wrap;      /* CSS3 */   
+	   white-space: -moz-pre-wrap; /* Firefox */    
+	   white-space: -pre-wrap;     /* Opera <7 */   
+	   white-space: -o-pre-wrap;   /* Opera 7 */    
+	   word-wrap: break-word;      /* IE */
+	}
+	.angular-with-newlines {
+		white-space: pre-wrap;
+	}
+	.inputBorders{border-bottom: none; border-right: none; border-top: none; }
+	.inputcolor::-webkit-input-placeholder{color: #000 !important; font-family:Georgia, "Times New Roman", Times, serif; font-weight:bold}
+	.txtresize{ resize:vertical; }	
+    </style>
+<div ng-controller="HRLateralTransferController">	
+
+	<!-- Modal -->
+	<div class="modal fade entryfrm" id="LateralTransferEntry" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important;z-index: 1049 !important" >
+		<div class="modal-dialog modal-lg">
+		
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row paddingZero">
+						<div class="col-md-12" style="text-align: left;padding-bottom: 5px;">
+							<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;">
+							<div class="col-md-6 col-xs-6" style="padding-bottom: 5px;">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">DELSAN BUSINESS INNOVATIONS CORPORATION</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: left;">
+							<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">Human Resources Department</p>
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">PERSONNEL ACTION REPORT</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;overflow: auto; ">
+							
+							<div class="col-md-12" style="margin-top:15px" >
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="empname" style="font-size: 12px;    padding-top: 3px;">Employee</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<select select2 ng-model="entry.empname" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-change="autoFillEmpName()">
+												<option ng-repeat="data in allEmployee track by $index" value="{{data.fullname | titlecase}}">{{  data.empid + ' ' + data.fullname | titlecase}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-4 paddingZero" style="font-size: 12px;">
+											<label for="effectivedate" style="font-size: 12px;    padding-top: 3px;">Effective Date</label>
+										</div>
+										<div class="col-md-8" style="font-size:12pt;padding-right: 0px; padding-left: 0px;">
+											<input id="efdate" autocomplete="off" ng-disabled="isSaving" type="text" ng-model="entry.effectivedate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-12"  >
+								<div class="col-md-6 hidden">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="empid" style="font-size: 12px;    padding-top: 3px;">Employee ID</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<input type="text" numbersOnly id="empid" placeholder="Employee ID" maxlength="4" ng-model="entry.empid" ng-change="autoFillEmpID()" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%">
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-12" >
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="actiontaken" style="font-size: 12px;    padding-top: 3px;">Employment Action Taken</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<input class="readonly" disabled type="text" id="actiontaken" ng-model="entry.actiontaken" value="Lateral Transfer" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
+						
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0">
+							<div class="col-xs-3" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">&nbsp;</h5>
+							</div>
+							<div class="col-xs-3" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">CURRENT</h5>
+							</div>
+							<div class="col-xs-6" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">NEW</h5>
+							</div>
+						</div>
+
+
+
+						
+						<div class="col-md-12 col-xs-12" style="margin-top:15px" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Department Name</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Dept. Name</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" ng-value="entry.currentdeptname | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select id="f1" ng-model="entry.newdeptname" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-change="newdepartment( entry.newdeptname )" ng-show="entry.empname && entry.effectivedate">
+									<option value=""> -- Select Department -- </option>
+									<option ng-repeat="datadept in allDepartment track by $index" value="{{ datadept.id }}">{{datadept.departmentname | titlecase}}</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Department Manager</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Dept.&nbsp;Mngr.</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentdeptmanager" ng-value="entry.currentdeptmanager | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<!--input class="readonly" disabled type="text" id="newdeptmanager" ng-value="entry.newdeptmanager | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" -->
+								<select id="f2" ng-model="entry.newdeptmanager" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-disabled=" emanager.length == 0 || manger " ng-show="entry.empname && entry.effectivedate">
+									<option value=""> -- Select Manager -- </option>
+									<option ng-repeat="datamngr in emanager track by $index" value="{{datamngr.id}}">{{datamngr.shead | titlecase}}</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Section</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentsection" ng-value="entry.currentsection | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select id="f3" ng-model="entry.newsection" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-change="newsection( entry.newsection )" ng-disabled=" esection.length == 0  " ng-show="entry.empname && entry.effectivedate">
+									<option value=""> -- Select Section -- </option>
+									<option ng-repeat="datasec in esection track by $index" value="{{datasec.id }}">{{datasec.departmentname | titlecase}}</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;"> 
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Immediate Supervisor</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Supervisor</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentimmediatesupervisor" ng-value="entry.currentimmediatesupervisor | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select id="f4" ng-model="entry.newimmediatesupervisor" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" disabled ng-show="entry.empname && entry.effectivedate">
+									<option value=""> -- Select Supervisor -- </option>
+									<option ng-repeat="datavisor in allEmployee track by $index" value="{{datavisor.id}}">{{datavisor.fname | titlecase}} {{datavisor.lname | titlecase}}</option>
+								</select>
+							</div>
+						</div>
+
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Job Code</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentjobcode" ng-value="entry.currentjobcode" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select ng-model="entry.newjobcode" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-disabled=" !entry.newdeptname " ng-change=" generatePosition( entry.newjobcode ) " ng-show="entry.empname && entry.effectivedate">
+									<option value=""> -- Select Job Code -- </option>
+									<option ng-repeat="data in jcode track by $index" value="{{data.alias}}">{{data.alias}} {{data.name}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Position Title</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Position</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentpositiontitle" ng-value="entry.currentpositiontitle | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;/*padding-top:3px;*/">
+								<input class="readonly" disabled type="text" id="newpositiontitle" ng-value="entry.newpositiontitle | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" ng-show="entry.empname && entry.effectivedate">
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Job Level</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentjoblevel" ng-value="entry.currentjoblevel | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select ng-model="entry.newjoblevel" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-show="entry.empname && entry.effectivedate" >
+									<option value=""> -- Select Job Level -- </option>
+									<option ng-repeat="data in dashboard.values.joblvl track by $index" value="{{data.lvl}}">{{data.lvl}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Employment Status</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Emp Status</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentempstatus" ng-value="entry.currentempstatus | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select ng-model="entry.newempstatus" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-show="entry.empname && entry.effectivedate" >
+									<option value=""> -- Select Employment Status -- </option>
+									<option ng-repeat="data in dashboard.values.empstatus track by $index" value="{{data.stat}}">{{data.stat}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Pay Group</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentpaygroup" ng-value="entry.currentpaygroup | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select ng-model="entry.newpaygroup" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-show="entry.empname && entry.effectivedate" >
+									<option value=""> -- Select Pay Group -- </option>
+									<option ng-repeat="data in dashboard.values.paygrps track by $index" value="{{data.name}}">{{data.name}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Labor Type</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;">
+								<input class="readonly" disabled type="text" id="currentlabortype" ng-value="entry.currentlabortype | titlecase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;padding-top:3px;">
+								<select ng-model="entry.newlabortype" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" ng-show="entry.empname && entry.effectivedate" >
+									<option value=""> -- Select Labor Type -- </option>
+									<option ng-repeat="data in dashboard.values.labors track by $index" value="{{data.type}}">{{data.type}}</option>
+								</select>
+							</div>
+						</div>
+						
+						
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">REMARKS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="margin-top:15px">
+							<textarea ng-model="entry.remarks" style="border: 1px black solid;font-size:12px;width: 230px;width: 100%;resize: vertical;min-height: 100px;"></textarea>
+						</div>
+						
+						<!--div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">APPROVALS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 10px 0 0 0;margin-top:15px">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;">Verified by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;">Evaluated by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;">Approved by:</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 20px 0 0 0;">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">Jeanie Lyn Teodor</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">Brian Ortiz</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">Jose Canete</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">HR Manager</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">SoftDev Manager</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">General Manager</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 30px 0 10px 5px">
+							<p style="font-size: 13px;font-weight: bold;margin: 0 0 0;"><span style="padding-right: 30px;">CONFORME:</span> <i>{{entry.empname}}</i></p>
+						</div-->
+						
+						<div class="col-md-12 col-xs-12" style="    padding: 15px; border-top: 1px black solid; margin-top: 15px;"> 
+							<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">Note: Department Manager to mark &nbsp;<i class="fa  fa-check-square-o"></i>&nbsp; for documents recieved by the new hiree/employee. Leave blank if not applicable.</p>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 5px 0 0 0">
+							
+							<!-- <div class="col-xs-12" style="margin-bottom: 15px;">
+								<div class="form-group">
+									<div class="col-xs-2 paddingZero" style="font-size:12pt;">
+										<label style="font-size: 12px;    padding-top: 5px;">File Upload</label>
+									</div>
+									<div class="col-xs-10 paddingZero" style="font-size:12pt;">
+										<input class="form-control" type="file" ngf-select ng-model="entry.picFile" id="file" name="file" accept="image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;" />	
+									</div>
+								</div>
+							</div>							 -->
+							
+							<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+								<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+									<label class="radio-inline" style="font-size: 10pt !important">
+										<input type="checkbox" ng-model="entry.doc_job_desc" ng-true-value="1" ng-false-value="0" ng-change="job_description_ngChange()"><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Job&nbsp;Description</span>
+									</label>  
+
+									<div style="padding:5px 15px 10px 15px">
+										<input type="file" ngf-select ng-model="entry.picFile[0]" id="file[0]" name="file[0]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="entry.doc_job_desc==1" />
+									</div>
+
+								</div>
+							</div>
+							<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+								<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+									<label class="radio-inline" style="font-size: 10pt !important">
+										<input type="checkbox" ng-model="entry.doc_perf_appr" ng-true-value="1" ng-false-value="0" ng-change="perf_appr_ngChange()"><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Performance&nbsp;Appraisal</span>
+									</label>  
+
+									<div style="padding:5px 15px 10px 15px">
+										<input type="file" ngf-select ng-model="entry.picFile[1]" id="file[1]" name="file[1]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="entry.doc_perf_appr==1" />
+									</div>
+
+								</div>
+							</div>
+							<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+								<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+									<label class="radio-inline" style="font-size: 10pt !important">
+										<input type="checkbox" ng-model="entry.doc_promotion" ng-true-value="1" ng-false-value="0" ng-change="prom_ngChange()"><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Promotion&nbsp;Request</span>
+									</label>  
+
+									<div style="padding:5px 15px 10px 15px">
+										<input type="file" ngf-select ng-model="entry.picFile[2]" id="file[2]" name="file[2]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="entry.doc_promotion==1" />
+									</div>
+
+								</div>
+							</div>
+							
+							
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">PRIVATE AND CONFIDENTIAL</h5>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="saveEntryLateralTransfer( entry.picFile );">Save</button>
+					<button type="button" class="btn btn-danger pull-left" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+</div>
+
+<!-- <script>
+	// $(document).ready(function(){
+	// 	$('#birth-date').mask('00/00/0000');
+	// 	$('#phone-number').mask('0000-0000');
+	// 	$('#card-number').mask('0000-0000-0000-0000');
+	// });
+</script> -->
+ 
+ 

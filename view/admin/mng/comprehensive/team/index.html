@@ -1,0 +1,473 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #0073b7 ;  }
+	}
+    @media screen and (max-width: 414px) {
+        .autoh {
+            margin-bottom: 35px !important;
+            height: auto !important;
+        }
+        .wprofile {
+            margin-right: 20px;
+            margin-left: 20px !important;
+        }
+        .wfooter {
+            position: absolute;
+            bottom: 13px !important;
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(116, 89, 89);
+        }
+        .nomargin {
+            margin: 0px !important;
+        }
+
+
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    @media screen and (max-height: 667px) {
+        .bheight {
+            height: 404px !important;
+        }
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1280px) {
+        .bheight {
+            height: 492px !important;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: 325px !important;
+        }
+        html{
+            zoom : 83%;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+
+    }
+
+    @media screen and (max-width: 1366px) {
+        .bheight {
+            height: 395px !important;
+        }
+        .btnwid {
+            width: 210px !important;
+        }
+    }
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#3c8dbc),
+                to(#3c8dbc),
+                color-stop(.6, #3c8dbc))
+    }
+    .wfooter {
+        position: absolute;
+        top: 3%;
+        font-size: 28px;
+        font-weight: lighter;
+        /* font-weight: 600; */
+        color: white;
+    }
+    .table {
+        border: none;
+        font-size: 14px;
+        margin-bottom: 0px !important;
+    }
+    .fw6 {
+        font-weight: 600;
+    }
+    .autoh {
+        margin-bottom: 35px !important;
+        height: auto !important;
+    }
+    .well {
+        margin-bottom: 10px !important;
+    }
+    .bheight {
+        height: 365px;
+    }
+    .u {
+        /*text-decoration: underline;*/
+        border-bottom: 1px solid black;
+    }
+
+    .well-lg1 {
+        border-radius: 14px 14px 0px 0px !important;
+    }
+    .wpnyear {
+        border: 2px solid #3c8dbc  !important;
+        border-bottom: 40px solid #3c8dbc  !important;
+        overflow: auto;
+    }
+    .pt51 {
+        padding-top: 7px;
+    }
+    
+    .fw61 {
+        font-weight: 600;
+    }
+    .p51 {
+        padding: 3px;
+    }
+    .nomargin1 {
+        margin: 0px !important;
+    }
+    .wfooter1 {
+        position: absolute;
+        top: 3%;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+    .wheader1 {
+        position: absolute;
+        bottom: 5%;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+    .btnwid{
+
+        width: 250px;
+    }
+
+    .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+        padding: 0px 0px 0px 7px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        /* border-top: 1px solid #ddd; */
+    }
+    .nomargin {
+        margin: 0px !important;
+    }
+
+	.respontext {
+		font-size: 40px;
+	}
+    /* ModalFilter */
+    .select2-container--default .select2-selection--single {
+        border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+
+
+</style>
+<div class="wrapper" ng-controller="MNGMyTeamController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            
+			<div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+                    
+					<div class="row">
+						<div class="col-md-6" style="margin-bottom:15px">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/icons/HRIS Dashboard icon Manager.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Staff Management</p>
+								<p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">myTeam 201 Records</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+							<ol class="breadcrumb" style="width: 310px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/mng/dashboard" style="color:black !important">Manager's Portal</a></li>
+								<li class="active">myTeam 201 Records</li>
+							</ol>
+						</div>
+					</div>
+            </div>
+        </section>
+
+        <section class="content" style="padding-top: 5px; padding: 5px !important;">
+            <div class="autoh" style=" background-color: #FFF !important; color: white; height: 820px;" ng-init="myTeam_func()">
+                
+                <div class="row" style="padding: 20px; padding-top: 0px; padding-bottom: 0px;">
+                    <div class = "col-md-12 col-xs-12" style="text-align: right; margin: 10px 0px 10px 0px;">
+                        <button style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px;border-width: 1px;background: black;" ng-click="export()"><i class="fa fa-file-excel-o fa-sm"></i>&nbsp;&nbsp;&nbsp;Export</button>
+                        <button style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px;border-width: 1px;background: black;" title="Search" data-toggle="modal" data-target="#modal-search"><i class="fa fa-search fa-sm"></i>&nbsp;&nbsp;&nbsp;Filter</button>
+                        <button id="btn-refreshh" style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px;border-width: 1px;background: black;" ng-click="reloadData()"><i class="fa fa-refresh fa-sm"></i>&nbsp;&nbsp;&nbsp;Refresh</button>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <button class="btn btn-lg btn-block btnwid pull-right" style="background: #0070c0; color: white; margin-bottom: 5px; border-radius: 7px;">
+                            <img src="assets/images/headcount.png" style="height: 24px;"
+                                class="user-image pull-left">
+                           Total Headcount: {{length}}
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-xs-12 p51" style="padding: 0px 5px 5px 0px; border-radius: 14px;" ng-repeat="view in myteam_view track by $index">
+                        <div class="well-lg1 well text-black text-center wpnyear text-center bheight pt51" style="background-color: #f5f5f5;">
+                            <table class="table fw61 text-left style-15">
+                                <tbody>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-size: 16px; padding-top:70px">Home Address</td>
+                                        <td class="text-left u" style="font-size: 16px; padding-top:70px">{{ view.home_add }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-size: 16px;">Email Address</td>
+                                        <td class="text-left u" style="font-size: 16px">{{ view.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-size: 16px;">Phone Number</td>
+                                        <td class="text-left u" style="font-size: 16px">{{ view.pnumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-size: 16px;">FAX Number</td>
+                                        <td class="text-left u" style="font-size: 16px">{{ view.fnumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-size: 16px;">Mobile Number</td>
+                                        <td class="text-left u" style="font-size: 16px">{{ view.cnumber }}</td>
+                                    </tr>
+                                        <tr>
+                                        <td width="120px" style="text-align:left;font-size: 16px;">Emergency Contact</td>
+                                        <td class="text-left u" style="font-size: 16px">{{ view.emergency_name }} <br>{{view.emergency_number}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <div class="wheader1" >
+                                <a href="#/admin/emp/staffprofile" ng-click="staff_profile(view.staff_id)" style="color:#FFF">View 201 Records</a>
+                            </div>
+                            <div class="wfooter1 text-black"> 
+                                <table class="table fw6 text-left">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: none;"><img
+                                                    src="assets/php/admin/hr/employee/pix/{{view.pic}}?1591229368"
+                                                    style="height: 40px; border-radius: 50%;" class="user-image">
+                                            </td>
+                                            <td style="border: none;">
+                                                <h4 class="nomargin" style="color:black">{{ view.empname }}</h4>
+                                                <p class="nomargin" style="color:black">{{ view.post }}</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                             
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);">
+                <!-- Modal dialog-->
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #006ba6 !important; border-color: #006ba6  !important;" >
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Filter</h4>
+                        </div>
+                        <!-- display sa modal design-->
+                        <div class="modal-body" style="background: white !important">     
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-black">
+                                        <label for="employee">Select Employee:</label>
+										<select select2 ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search_acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct track by search_employees.id" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										</select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group text-black">
+                                        <label for="birthdate_from">Position:</label>
+                                        <select select2 ng-disabled="isSaving" id="search_post" class="form-control" ng-model="search_post" ng-options="search_employees_posi.idpos as search_employees_posi.post for search_employees_posi in dashboard.values.accounts | unique : 'idpos'  | filter: filterAcct track by search_employees_posi.idpos" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										</select>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>     
+                        <div class="modal-footer" style="background: #006ba6 !important; border-color: #006ba6  !important;">
+                            <button style="width:100px" ng-click="unitSearch()" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-search"></i> Search</button>
+                            <button style="width:100px" type="button" class="btn btn-danger pull-left" data-dismiss="modal" ng-click="resetsearch()">Reset</button>
+                        </div>
+                    </div>
+                    <!-- /.Modal content-->
+                </div>
+                <!-- /.Modal dialog-->
+            </div>
+            <!-- /.Modal-->
+
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

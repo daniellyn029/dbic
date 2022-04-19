@@ -1,0 +1,77 @@
+
+<aside class="main-sidebar">	
+    
+	<section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img ng-src="{{ dashboard.values.userInformation.pic }}" style="width:25px" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ dashboard.values.userInformation.fname + ' ' + dashboard.values.userInformation.lname }}</p>
+        </div>
+      </div>
+     
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu" ng-init="activeclass()">        
+			<li class="header">MAIN NAVIGATION</li>
+			<li id="current" >
+				<a id="curr_page" href="#/promotion-and-upgradation---current---" >
+					<i class="fa fa-cube"></i> <span>Current</span>        
+				</a>
+			</li>
+			<li id="archive" >
+				<a id="arch_page" href="#/promotion-and-upgradation---archive---" >
+					<i class="fa fa-cube"></i> <span>Archive</span>        
+				</a>
+			</li>
+			<li data-target="#PromotionEntry" data-toggle="modal"  ng-click="showPromotionEntryModal();" ng-if="(dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type == 'SYSADMIN') || (dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.type == 'SYSADMIN') || dashboard.values.userInformation.hrunit.length > 0">
+				<a style="cursor: pointer">
+					<i class="fa fa-book"></i> <span>Entry</span>
+				</a>
+			</li>
+			<li data-target="#PromotionEntry" data-toggle="modal"  ng-click="showPromotionEntryModal();" ng-if="(dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type == 'HR') || (dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.type == 'HR')">
+				<a style="cursor: pointer">
+					<i class="fa fa-book"></i> <span>Entry</span>
+				</a>
+			</li>
+			
+
+
+			
+			<li id="approversetup" ng-if="(dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type == 'SYSADMIN') || (dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.type == 'SYSADMIN')">
+				<a id="appr_page" href="#/promotion-and-upgradation---approversetup---">
+					<i class="fa fa-cogs"></i> <span>Approver Setup</span>
+				</a>
+			</li>
+
+			<li id="approversetup" ng-if="(dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type == 'HR') || (dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.type == 'HR')">
+				<a id="appr_page" href="#/promotion-and-upgradation---approversetup---">
+					<i class="fa fa-cogs"></i> <span>Approver Setup</span>
+				</a>
+			</li>
+			
+			<li id="report" ng-if="(dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type == 'SYSADMIN') || (dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.type == 'SYSADMIN')">
+				<a href="#/admin/hr/dashboard">
+					<i class="fa fa-arrow-circle-left"></i> <span>Back</span>        
+				</a>
+			</li>
+			<li id="report" ng-if="(dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type == 'HR') || (dashboard.values.userInformation.promotion_approver == '0' && dashboard.values.userInformation.type == 'HR')">
+				<a href="#/admin/hr/dashboard">
+					<i class="fa fa-arrow-circle-left"></i> <span>Back</span>        
+				</a>
+			</li>
+			<li id="report" ng-if="dashboard.values.userInformation.promotion_approver == '1' && dashboard.values.userInformation.type != 'SYSADMIN' && dashboard.values.userInformation.type != 'HR'">
+				<a href="#/admin/home">
+					<i class="fa fa-arrow-circle-left"></i> <span>Back</span>        
+				</a>
+			</li>
+
+
+		</ul>
+    </section>
+	<!-- /.sidebar -->
+	</aside>
+
+	
+  

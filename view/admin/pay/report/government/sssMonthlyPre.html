@@ -1,0 +1,461 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	
+	progress[value] {
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+	}
+	progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	progress[value]::-webkit-progress-value {
+	  background-image:
+		   -webkit-linear-gradient(-45deg, 
+								   transparent 33%, rgba(0, 0, 0, .1) 33%, 
+								   rgba(0,0, 0, .1) 66%, transparent 66%),
+		   -webkit-linear-gradient(top, 
+								   rgba(255, 255, 255, .25), 
+								   rgba(0, 0, 0, .25)),
+		   -webkit-linear-gradient(left, #09c, #f44);
+
+		border-radius: 2px; 
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #76dcdc ;  }
+		25%  { background: #62d6d6 ;  }
+		50%  { background: #4dd1d1 ;  }
+		100% { background: #39cccc ;  }
+	}
+    	/* HeaderBackground */
+	.background{
+        color:white;
+        background-color: #39cccc;
+        text-align:center
+    }
+    /* freeze Header */
+	tbody{
+		display:block;
+        overflow:auto; 
+	}
+	thead, tbody tr {
+		display:table;
+		width:100%;
+		table-layout:fixed;
+	}
+	/* CostumizeScrollBar */
+    .style-1::-webkit-scrollbar{
+        height:10px;
+        width:4px;
+        border-radius: 4px;
+        background: transparent;
+        transition: all 0.3s ease;
+        }
+    .style-1::-webkit-scrollbar:hover{
+        background: #c6c7ca;
+    }
+    .style-1::-webkit-scrollbar-thumb{
+        background: #777779;
+        border-radius: 4px;
+    }
+    /* ModalFilter */
+    .select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+    label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+    
+    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #39cccc;
+        border-color: #39cccc;
+    }
+
+</style>
+<div class="wrapper" ng-controller="PMMonthlyConController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+			<div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-edit" style="float: left;color:#00000052"></i>									
+                <div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+                <div style="font-size: 15pt; text-indent:15px">SSS Monthly Premium</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/pay/process"> Payroll Master's Portal</a></li>
+				 <li><a href=".#/admin/pay/report/register">Government Reports</a></li>
+                <li class="active">SSS Monthly Premium</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+        <section class="content">
+            <div class="row" style="padding: 0 50px 0 50px;">
+                <div class = "col-md-12 col-xs-12">
+                    <div id="awardsR_companyName" style="font-size:18pt; text-align:center; font-weight: bold;">Delsan Business Innovation Company</div>
+                    <div id="awardsR_txt" style="font-size:15pt; text-align:center; font-weight: bold;">MEMBER PREMIUM CONTRIBUTION DEPARTMENT</div>
+                    <div style="font-size:11pt; text-align:center">Transmittal List</div>
+                    <!-- <div id="awardsR_filter" style="font-size:11pt; text-align:center;" ng-show="filter">Filtered per - {{filter | titlecase}}</span></div> -->
+                    <!-- <div id="awardsR_date" style="font-size:11pt; text-align:center; padding-bottom:20px;">For the Month of January 2020</div> -->
+                </div>
+                <div id="container" style="width: 1400px !important; margin-left:auto; margin-right:auto; height: 100% !important;"> 
+                    <div class="col-md-12 col-xs-12" style="text-align:justify;">
+                        <div class="col-md-4 col-xs-4"></div>
+                        <div class="col-md-8 col-xs-8">
+                            <h5 style = "font-weight: bold;">Diskette/Tape Number
+                                <span style="padding: 0 0 0 70px">:&nbsp;&nbsp;0123456789</span>
+                            </h5>
+                            <h5 style = "font-weight: bold; ">Employer Name
+                                <span style="padding: 0 0 0 110px">:&nbsp;&nbsp;Delsan Business Innovation Company</span>
+                            </h5>
+                            <h5 style = "font-weight: bold;">ER ID Number
+                                <span style="padding: 0 0 0 123px">:&nbsp;&nbsp;0033001100220077</span>
+                            </h5>
+                            <h5 style = "font-weight: bold;">Applicable quarter
+                                <span style="padding: 0 0 0 93px">:&nbsp;&nbsp;0033001100220077</span>
+                            </h5>
+                            <h5 style = "font-weight: bold;">Specific Month
+                                <span style="padding: 0 0 0 116px">:&nbsp;&nbsp;04/07/1997</span>
+                            </h5>
+                            <h5 style = "font-weight: bold;">Total Number of EES
+                                <span style="padding: 0 0 0 83px">:&nbsp;&nbsp;25460</span>
+                            </h5>
+                            <h5 style = "font-weight: bold;">Total Amount
+                                <span style="padding: 0 0 0 124px">:&nbsp;&nbsp;20,20000</span>
+                            </h5>
+                        </div> 
+                    </div>
+                    <div class="col-md-12 col-xs-12" style="text-align:justify;">
+                        <div class="col-md-4 col-xs-4"></div>
+                        <div class="col-md-8 col-xs-8" >
+                            <div style="padding: 5px 0 5px 0">
+                                <h5 style = "font-weight: bold; font-size:11pt;">
+                                    <span style="padding: 0 0 0 210px">&nbsp;&nbsp;REMITTANCE</span>
+                                </h5>
+                            </div>
+                            <div>
+                                <h5 style = "font-weight: bold; ">Amount
+                                    <span style="padding: 0 0 0 50px">-&nbsp;SSS</span>
+                                    <span style="padding: 0 0 0 78px">:&nbsp;&nbsp;0000 777 789 126</span>
+                                </h5>
+                            </div>
+                            <div>
+                                <h5 style = "font-weight: bold;">
+                                    <span style="padding: 0 0 0 102px">-&nbsp;ECC</span>
+                                    <span style="padding: 0 0 0 78px">:&nbsp;&nbsp;1111 222 333 444</span>
+                                </h5>
+                            </div>
+                            <div>
+                                <h5 style = "font-weight: bold;">
+                                    <span style="padding: 0 0 0 102px">TOTAL</span>
+                                    <span style="padding: 0 0 0 70px">:&nbsp;&nbsp;7777 4456 777 6868</span>
+                                </h5>
+                            </div>
+                            <h5 style = "font-weight: bold;">Trans/SBR No.(attach xerox copy)
+                                <span style="padding: 0 0 0 6px">:&nbsp;&nbsp;0033001100220077</span>
+                            </h5>
+                            <h5 style = "font-weight: bold;">Date Paid
+                                <span style="padding: 0 0 0 153px">:&nbsp;&nbsp;04/07/1997</span>
+                            </h5>
+                        </div> 
+                    </div>
+                    <div class="col-md-12 col-xs-12" style="text-align:justify;">
+                        <div class="col-md-4 col-xs-4"></div>
+                        <div class="col-md-8 col-xs-8" >
+                            <div style="padding: 5px 0 5px 0">
+                                <h5 style = "font-size:11pt;">
+                                    <span style="padding: 0 0 0 210px">&nbsp;&nbsp;Certified Correct:</span>
+                                </h5>
+                            </div>
+                            <div style="padding: 5px 0 5px 0">
+                                <h5 style = "font-size:11pt;">
+                                    <span style="padding: 0 0 0 210px">&nbsp;&nbsp;Co. Authorized Representative</span>
+                                </h5>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class ="col-md-12">
+                        <div class = "col-sm-4"></div>
+                        <div class = "col-sm-4" style = "border-bottom:1px solid black"></div>
+                        <div class = "col-sm-4"></div>
+                    </div>
+                    <div class="col-md-12 col-xs-12" style="text-align:justify;">
+                        <div class="col-md-4 col-xs-4"></div>
+                        <div class="col-md-8 col-xs-8">
+                            <h5 style = "font-weight: bold;">Received By
+                                <span style="padding: 0 0 0 135px">:&nbsp;&nbsp;Daniellyn Camocamo</span>
+                            </h5>
+                            <h5 style = "font-weight: bold; ">Date Received
+                                <span style="padding: 0 0 0 122px">:&nbsp;&nbsp;04/07/1997</span>
+                            </h5>
+                        </div> 
+                    </div>
+                    <div class="col-md-12 col-xs-12" style="padding-top:20px; text-align:justify;">
+                        <div class="col-md-4 col-xs-4"></div>
+                        <div class="col-md-8 col-xs-8">
+                            <div class = "col-sm-1" style = "font-weight: bold;"> Remarks:</div>
+                            <div class = "col-sm-7">This feature is behind the Enable Experimental Web Platform Features preference (needs to be set to Enabled). To change preferences in Chrome: type in "chrome://flags" in the Chrome browser. To change preferences in Opera: type in "flags" in the Opera browser.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class = "col-md-12 col-xs-12" style ="padding:20px 0 0 0;">
+                    <div id="awardsR_companyName" style="font-size:18pt; text-align:center; font-weight: bold;">Delsan Business Innovation Company</div>
+                    <div id="awardsR_txt" style="font-size:15pt; text-align:center; font-weight: bold;">SSS Premium Remittance</div>
+                    <!-- <div id="awardsR_filter" style="font-size:11pt; text-align:center;" ng-show="filter">Filtered per - {{filter | titlecase}}</span></div> -->
+                    <div id="awardsR_date" style="font-size:11pt; text-align:center; padding-bottom:20px;">For the Month of January 2020</div>
+                </div>
+                <div class = "col-md-6 col-xs-12">
+                    <div class="search-input-wrapper">
+                        <div class="btn-toolbar">
+                            <label>Show
+                                <select class="" ng-model="dashboard.values.pageSize">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-12 col-xs-12">
+                    <div class="row style-1" style ="overflow-y: auto;">
+                        <table id="sortableView" class="sortable table-striped"  >
+                            <thead >
+                                <tr>
+                                    <th class = "background" style="height:40px; width:100px; border: 1px solid white;" >
+                                        <div style = " font-size:11pt; text-align: center;">Name</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;">SSS ID</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;">Employee SSS</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;">Employer SSS</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;">Total ECC Contribution</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;">Grand Total</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class = "style-1" style="height:400px">
+                                <td style="height:40px; width:100px; word-wrap: break-word; vertical-align: top;">
+                                        <div style = " font-size:11pt; text-align: center;">Daniellyn Camocamo</div>
+                                </td>
+                                <td style="width:100px; word-wrap: break-word; vertical-align: top;">
+                                    <div style = "font-size:11pt; text-align: center;">000-111-111</div>
+                                </td>
+                                <td style="width:100px; word-wrap: break-word; vertical-align: top;">
+                                    <div style = "font-size:11pt; text-align: center;">1113-44-444</div>
+                                </td>
+                                <td style="width:100px; word-wrap: break-word; vertical-align: top;">
+                                    <div style = "font-size:11pt; text-align: center;">123-555-888</div>
+                                </td>
+                                <td style="width:100px; word-wrap: break-word; vertical-align: top;">
+                                    <div style = "font-size:11pt; text-align: center;">5,000</div>
+                                </td>
+                                <td style="width:100px; word-wrap: break-word; vertical-align: top;">
+                                    <div style = "font-size:11pt; text-align: center;">15,000</div>
+                                </td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="text-right">
+                    <dir-pagination-controls boundary-links="true" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+                </div>
+                <!-- /.pagination -->
+
+            </div>
+        </section>
+
+    </div>
+    <!--/.content wrapper-->
+    <div ng-include="footerTemplate"></div>
+
+</div>

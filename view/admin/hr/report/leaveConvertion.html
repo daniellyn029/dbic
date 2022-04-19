@@ -1,0 +1,280 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #00f383 ;  }
+		25%  { background: #00d976 ;  }
+		50%  { background: #00c068 ;  }
+		100% { background: #00a65a ;  }
+	}
+</style>
+<div class="wrapper" ng-controller="HRleaveConvertionController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+                <div style="font-size: 20pt;padding-top: 15px;text-indent:15px">HR Portal</div>
+                <div style="font-size: 15pt;text-indent:15px">Leave Convertion Report</div>    
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/tk/timesheet"> HR Portal</a></li>
+                <li><a href=".#/admin/tk/report/rptsheet">Reports</a></li>
+                <li class="active">Leave Convertion Report</li>
+            </ol>
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+        <section class="content">
+            <div class="row" style="padding: 10px 100px 0 100px;">
+                <!-- table -->
+                <table>
+                    <tr>
+                        <div style="font-size:18pt; text-align:center"><strong>DANIELLYN'S INTERNATIONAL HOTEL</strong></div>
+                        <div style="font-size:15pt; text-align:center; font-weight: bold;">Leave Convertion Report</div>
+                        <div style="font-size:11pt; text-align:center; padding-bottom:20px;"><i>Report Generated on 1/20/2020</i></div>
+                    </tr>
+                </table>
+                <div class = "row">
+                    <div class = "col-md-12" style = "padding: 0 0 0 0;">
+                        <table style="width:100%">
+                            <td style="width:10%; border: 1px solid black;">
+                                <div style = "font-size:11pt; text-align: center;">Employee</div>
+                                <div style = "font-size:11pt; text-align: center; line-height: 11pt;">Number</div>
+                            </td>
+                            <td style="width:10%; border: 1px solid black; font-size:11pt; text-align: center;">Last Name</td>
+                            <td style="width:10%; border: 1px solid black; font-size:11pt; text-align: center;">First Name</td>
+                            <td style="width:10%; border: 1px solid black; font-size:11pt; text-align: center;">Job Level</td>
+                            <td style="width:10%; border: 1px solid black; font-size:11pt; text-align: center;">Hire Date</td>
+                            <td style="width:10%; border: 1px solid black;">
+                                <div style = "font-size:11pt; text-align: center;">Regularization</div>
+                                <div style = "font-size:11pt; text-align: center; line-height: 11pt;">Date</div>
+                            </td>
+                            <td style="width:10%; border: 1px solid black; font-size:11pt; text-align: center;">Month</td>
+                            <td style="width:10%; border: 1px solid black; font-size:11pt; text-align: center;">Pay Group</td>
+                            <td style="width:10%; font-size:11pt;border: 1px solid black; text-align: center;">
+                                <table style = "width: 100%;">
+                                    <tr>
+                                        <td style = "text-align: center;"></td>
+                                        <td style = "font-size:11pt; text-align: center; padding: 5px 0 0 0;">VL</td>
+                                    </tr>
+                                    <tr>
+                                        <td style ="width:10%; font-size:11pt; padding: 0 5px 0 5px; border-right:1px solid black; border-top:1px solid black">Credit</td>
+                                        <td style ="width:10%; font-size:11pt; padding: 0 5px 0 5px; border-right:1px solid black; border-top:1px solid black">Availment</td>
+                                        <td style ="width:10%; font-size:11pt; padding: 0 5px 0 5px; border-top:1px solid black">Balance</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:10%; font-size:11pt; text-align: center; border: 1px solid black;">
+                                <table style = "width: 100%;">
+                                    <tr>
+                                        <td style = "text-align: center;"></td>
+                                        <td style = "font-size:11pt; text-align: center; padding: 5px 0 0 0;">SL</td>
+                                    </tr>
+                                    <tr>
+                                        <td style ="width:10%; font-size:11pt; padding: 0 5px 0 5px; border-right:1px solid black; border-top:1px solid black">Credit</td>
+                                        <td style ="width:10%; font-size:11pt; padding: 0 5px 0 5px; border-right:1px solid black; border-top:1px solid black">Availment</td>
+                                        <td style ="width:10%; font-size:11pt; padding: 0 5px 0 5px; border-top:1px solid black">Balance</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </table>
+                    </div>
+                    <div class="col-md-12" style="padding: 10px 0 0 0; ">
+                        <table style="width:100%;">
+                            <tbody>
+                            <tr>
+                                <td style="width: 9%;font-size:9pt;text-align: center;">000000</td>
+                                <td style="width:10%; font-size:9pt; text-align: center;">Camocamo</td>
+                                <td style="width:10%; font-size:9pt; text-align: center;">Daniellyn</td>
+                                <td style="width:10%; font-size:9pt; text-align: center;">L5</td>
+                                <td style="width:10%; font-size:9pt; text-align: center;">04/07/2020</td>
+                                <td style="width:10%; font-size:9pt; text-align: center;">04/06/0110</td>
+                                <td style="width: 9%;font-size:9pt;text-align: center;">June</td>
+                                <td style="width: 10%;font-size:9pt;text-align: center;">Monthlies</td>
+                                <td style="width: 22%;font-size:9pt;text-align: center;">
+                                    <table style="width: 100%;">
+                                        <tbody><tr>
+                                            <td style="width:10%; font-size:9pt; text-align: center;">0.00</td>
+                                            <td style="width:10%; font-size:9pt; text-align: center;">0.00</td>
+                                            <td style="width:10%; font-size:9pt; text-align: center;">0.00</td>
+                                            <td style="width:10%; font-size:9pt; text-align: center;">0.00</td>
+                                            <td style="width:10%; font-size:9pt; text-align: center;">0.00</td>
+                                            <td style="width:10%; font-size:9pt; text-align: center;">0.00</td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                        </tr></tbody></table>
+                    </div>
+
+                </div>
+                <!--/.Row-->
+            </div>
+                <!--/.Row-->
+        </section>
+
+    
+
+
+    </div>
+    <!--/.Content Wrapper-->
+    <div ng-include="footerTemplate"></div>
+</div>
+<!--/.Wrapper-->
+    

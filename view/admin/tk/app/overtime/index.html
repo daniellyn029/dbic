@@ -1,0 +1,501 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    /* .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    } */
+	.example2 th{
+        background-color: #C0C0C0;
+		text-align: center;
+		color: #666;
+		padding-left:0px;
+		padding-right:0px;
+		font-size:13pt;
+		border:0px solid !important;
+		font-weight: 400 !important;
+    }
+	.btnTD{
+        text-align:left;
+    }
+	.btnTDC{
+        text-align:center;
+		/* color:green; */
+		font-weight:400 !important;
+    }
+	.btnTDR{
+		border-right: none !important;
+	}
+	.btnTDL{
+		border-left: none !important;
+		text-align: right;
+	}
+    /* .btnTD{
+        text-align:center;
+    } */
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #337ab7 ;  }
+	}
+	.title_table {
+        margin: 0px;
+        clear: both;
+    }
+
+    .cutoffinfo {
+        margin: 0px;
+        clear: both;
+        text-indent: 10px;
+    }
+
+    /* ModalFilter */
+    .select2-container--default .select2-selection--single {
+        border: none !important;
+        border-bottom: 1px solid black !important;
+        height: 30px !important;
+        padding: 1px !important;
+        text-align-last: center !important;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 30px !important;
+    }
+
+    label {
+        color: black !important;
+        font-weight: 400;
+        font-size: 10pt;
+        margin-bottom: 0px;
+    }
+
+    table.dataTable,
+    table.dataTable.no-footer {
+        margin: 0;
+    }
+
+    .buttons {
+        margin-top: 5px;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        padding-top: 0px;
+    }
+
+    .foot_con {
+        display: table;
+        width: 100%;
+        background: #C0C0C0;
+        padding: 5px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+        color: white !important;
+        font-weight: 700 !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        color: white !important;
+        font-weight: 700 !important;
+    }
+
+    @media screen and (max-width: 767px) {
+
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            float: none !important;
+            text-align: center;
+        }
+
+        table.dataTable thead .sorting,
+        table.dataTable thead .sorting_asc,
+        table.dataTable thead .sorting_desc,
+        table.dataTable thead .sorting_asc_disabled,
+        table.dataTable thead .sorting_desc_disabled {
+            background-repeat: no-repeat;
+            background-position: bottom right;
+        }
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        float: left;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        float: right;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    .btn-group button {
+        background-color: green;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-width: 1px;
+        color: white;
+    }
+	.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+		color: #585858;
+		padding-bottom: 3px;
+	}
+</style>
+<div class="wrapper" ng-controller="TKAppOvertimeController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+		<section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            
+			<div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+                    
+					<div class="row">
+						<div class="col-md-6" style="margin-bottom:15px">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/icons/HRIS Dashboard icon Timekeeper.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Timekeeper's Portal</p>
+								<p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">Attendance Adjustment Applications</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+							<ol class="breadcrumb" style="width: 325px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/tk/dashboard" style="color:black !important">Timekeeper's Portal</a></li>
+								<li class="active">Attendance Adjustment</li>
+							</ol>
+						</div>
+					</div>
+            </div>
+        </section>
+        <!-- <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-clock-o" style="float: left;color:#00000052"></i>									
+				<div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Timekeeper's Portal</div>
+				<div style="font-size: 15pt;text-indent:15px">Overtime Applications</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/tk/dashboard"> Timekeeper's Portal</a></li>
+				<li><a href=".#/admin/tk/app/leaveapp"> Applications</a></li>
+                <li class="active">Overtime</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section> -->
+
+        <section class="content">                
+			<div ng-init="app_overtime_functions()">		
+				
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered"></table>
+				
+					<!--Modal-->
+					<div class="modal fade modal-info" id="modal-search" role="dialog"style="background: rgba(0, 0, 0, 0.8);">
+						<div class="modal-dialog">
+							<div class="modal-header" style="background: #0073b7 !important; border-color: #0073b7  !important;" >
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Filter</h4>
+							</div>
+							<!-- display sa modal design-->
+							<div class="modal-body" style="background: white !important">     
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group text-black">
+											<label for="employee">Select Employee:</label>
+											<select select2 ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search_acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct track by search_employees.id" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="_from">Date From:</label>
+											<input type="text" readonly searchdatepickers ng-model="search_dfrom" class="form-control" maxlength="10" id="_from_id" name="_from_name" required style="text-align-last: center;border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;"  />
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="_to">Date To:</label>
+											<input type="text" readonly searchdatepickers ng-model="search_dto" class="form-control" maxlength="10" id="_to_id" name="_to_name" required style="text-align-last: center;border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;"  />
+										</div>
+									</div>
+								</div>   
+							</div>     
+							<div class="modal-footer" style="background: #0073b7 !important; border-color: #0073b7  !important;">
+								<button style="width:100px" type="button" class="btn btn-danger pull-left" ng-click="resetSearch()">Reset</button>
+								<button style="width:100px" type="button" class="btn btn-primary" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+							</div>
+						</div>
+					</div>
+					<!--/.Modal-->
+
+
+				<!-- <div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Search Adjustment</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="search_acct">Employee</label>
+										<select ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search.acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts" required >
+											<option value="">Select Employee</option>
+										</select>
+									</div>
+								</div>								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_docu">Document Number</label>
+										<input type="text" class="form-control" id="search_docu" name="search_docu" placeholder="Enter Document Number" maxlength="60" ng-model="search.docu">
+									</div>
+								</div>	
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_docu">Application Status</label>
+										<select class="form-control" id="app_status" name="app_status" ng-model="search.appstat">
+											<option value="">Status</option>
+											<option value="1">Approved</option>
+											<option value="2">Disapproved</option>
+											<option value="3">Pending</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dfrom">OT Date From</label>
+										<input type="text" readonly searchdatepickers ng-model="search.datefrom" class="form-control" placeholder="Date from" maxlength="10" id="search_dfrom" name="search_dfrom"  required  />
+									</div>
+								</div>								
+								
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="search_dto">OT Date To</label>
+										<input type="text" readonly searchdatepickers ng-model="search.dateto" class="form-control" placeholder="Date To" maxlength="10" id="search_dto" name="search_dto" required  />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline btn-danger pull-left" ng-click="resetSearch()" data-target="#modal-search" data-toggle="modal">Reset</button>
+							<button type="button" class="btn btn-outline btn-primary" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+						</div>
+					</div>
+				</div>
+				 -->
+				<!-- <div class="modal fade modal-info" id="modal-add" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important" >
+					<div class="modal-dialog" style="min-width:450px !important">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Apply Overtime</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+							
+								<form ng-hide="mySignUpForm" role="form" name="registerForm2" >									
+									
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="ot_acct">Employee</label>
+											<select ng-disabled="isSaving" id="ot_acct" class="form-control" ng-model="add.acct" ng-options="add_employees.id as add_employees.empname for add_employees in dashboard.values.accounts" required >
+												<option value="">Select Employee</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="ot_shift">Shift Date</label>
+											<input ng-disabled="isSaving" type="text" readonly datepickersot1 ng-model="add.otdate" class="form-control" placeholder="Shift Date" maxlength="10" id="ot_shift" name="ot_shift"  required  ng-change="changeOTStart()" />
+										</div>
+									</div>
+									
+									
+									<div class="col-md-6" ng-show="add.otdate.length > 1">
+										<div class="form-group">
+											<label for="ot_dstart">Start Date</label>
+											<input ng-disabled="isSaving" type="text" readonly datepickersot2 ng-model="add.otsdate" class="form-control" placeholder="Start Date" maxlength="10" id="ot_dstart" name="ot_dstart"  required ng-change="changeOTEnd()"  />
+										</div>
+									</div>
+									<div class="col-md-6" ng-show="add.otdate.length > 1">
+										<div class="form-group">
+										  <label for="ot_start">Start Time</label>
+										  <input timepick type="text" placeholder="Start" class="form-control" id="ot_start" name="ot_start" ng-model="add.start_time" required ng-disabled="isSaving" />										
+										</div>
+									</div>
+									
+									<div class="col-md-6" ng-show="add.otsdate.length > 1">
+										<div class="form-group">
+											<label for="ot_dend">End Date</label>
+											<input ng-disabled="isSaving" type="text" readonly datepickersot3 ng-model="add.otfdate" class="form-control" placeholder="End Date" maxlength="10" id="ot_dend" name="ot_dend"  required  />
+										</div>
+									</div>
+									<div class="col-md-6" ng-show="add.otsdate.length > 1">
+										<div class="form-group">
+										  <label for="ot_end">End Time</label>
+										  <input timepick type="text" placeholder="End" class="form-control" id="ot_end" name="ot_end" ng-model="add.end_time" required ng-disabled="isSaving" />
+										</div>
+									</div>
+									
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="ot_remarks">Remarks</label>
+											<textarea id="ot_remarks" name="ot_remarks" ng-disabled="isSaving" class="form-control txtresize" ng-model="add.remarks"></textarea>
+										</div>
+									</div>
+									
+								</form>
+								
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button style="width:100px" data-target="#modal-add" data-dismiss="modal" type="button" class="btn btn-default pull-left" data-dismiss="modal" ng-disabled="isSaving">Cancel</button>
+                    		<button style="width:100px" id="btn-unit-add" type="button" class="btn btn-primary" ng-click="addOt()" ng-disabled="isSaving " >Save</button>
+						</div>
+					</div>
+				</div>
+				
+				 -->
+			</div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

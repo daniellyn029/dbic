@@ -1,0 +1,1157 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #39cccc;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    table.dataTable thead th,
+    table.dataTable thead td {
+        padding: 1px 10px !important;
+        border-bottom: 1px solid #111;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .fixwidth {
+        width: 50px !important;
+    }
+
+    .lbltbl {
+        font-weight: bold;
+        font-size: 10pt;
+        text-align: right;
+        padding: 5px !important;
+        width: 140px !important;
+    }
+
+    .datatbl {
+        text-indent: 5px;
+        padding: 5px !important;
+        font-size: 9pt;
+        width: 210px !important;
+    }
+
+    .print-only {
+        display: none;
+    }
+
+    @@media print {
+        .no-print {
+            display: none;
+        }
+
+        .print-only {
+            display: block;
+        }
+    }
+
+
+    progress[value] {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+        appearance: none;
+
+        width: 250px;
+        height: 20px;
+    }
+
+    progress[value]::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+
+    progress[value]::-webkit-progress-value {
+        background-image:
+            -webkit-linear-gradient(-45deg,
+                transparent 33%, rgba(0, 0, 0, .1) 33%,
+                rgba(0, 0, 0, .1) 66%, transparent 66%),
+            -webkit-linear-gradient(top,
+                rgba(255, 255, 255, .25),
+                rgba(0, 0, 0, .25)),
+            -webkit-linear-gradient(left, #09c, #f44);
+
+        border-radius: 2px;
+        background-size: 35px 20px, 100% 100%, 100% 100%;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #76dcdc;
+        }
+
+        25% {
+            background: #62d6d6;
+        }
+
+        50% {
+            background: #4dd1d1;
+        }
+
+        100% {
+            background: #39cccc;
+        }
+    }
+
+    .wizard {
+        margin: -45px auto;
+        background: #fff;
+    }
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #39cccc;
+        border-bottom-width: 35px;
+    }
+
+    .wizard>div.wizard-inner {
+        position: relative;
+    }
+
+    .connecting-line {
+        height: 2px;
+        /* background: #2fa5a5; */
+        border-top: dotted;
+        border-color: #2fa5a5;
+        position: absolute;
+        width: 90%;
+        margin: -32px auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        z-index: 1;
+    }
+
+    .wizard .nav-tabs>li.active>a,
+    .wizard .nav-tabs>li.active>a:hover,
+    .wizard .nav-tabs>li.active>a:focus {
+        color: #555555;
+        cursor: default;
+        border: 0;
+        border-bottom-color: transparent;
+    }
+
+    span.round-tab {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        display: inline-block;
+        border-radius: 100px;
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    span.round-tab i {
+        color: #555555;
+    }
+
+    .wizard li.active span.round-tab {
+        background: #fff;
+        border: 2px solid #2fa5a5;
+
+    }
+
+    .wizard li.active span.round-tab i {
+        color: #2fa5a5;
+    }
+
+    span.round-tab:hover {
+        color: #333;
+        border: 2px solid #333;
+    }
+
+    .wizard .nav-tabs>li {
+        width: 9.09090909091%;
+    }
+
+    .wizard li:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 0;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 5px solid transparent;
+        border-bottom-color: #5bc0de;
+        transition: 0.1s ease-in-out;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 1;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 10px solid transparent;
+        border-bottom-color: #5bc0de;
+    }
+
+    .wizard .nav-tabs>li a {
+        width: 70px;
+        height: 70px;
+        margin: 15px auto;
+        border-radius: 100%;
+        padding: 0;
+    }
+
+    .wizard .nav-tabs>li a:hover {
+        background: transparent;
+    }
+
+    .wizard .tab-pane {
+        position: relative;
+        padding-top: 50px;
+    }
+
+    .wizard h3 {
+        margin-top: 0;
+    }
+
+    .ipos {
+        top: 18px !important;
+    }
+
+    .arrow {
+        border: solid #2fa5a5;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        margin-top: 30.5px;
+        margin-left: -10px;
+        z-index: -1;
+    }
+
+    .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
+
+    .ts {
+        bottom: -28%;
+        position: absolute;
+        color: white;
+        font-weight: 500 !important;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    @media screen and (max-width: 1366px) {
+        .connecting-line {
+            margin: -42px auto !important;
+        }
+
+        .ts {
+            bottom: -24% !important;
+        }
+    }
+
+    .nav-tabs-custom>.nav-tabs>li.active {
+        border-top-color: #00a65a;
+    }
+
+    .ui-widget-header {
+        border: none;
+        background: none;
+        color: none;
+    }
+
+    .triangle-right {
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-left: 14px solid #2fa5a5;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        margin-left: -12px;
+        margin-top: 28px;
+    }
+    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #00a65a;
+        border-color: #00a65a;
+    }
+    /* CostumizeScrollBar */
+    .style-1::-webkit-scrollbar{
+        height:10px;
+        width:4px;
+        border-radius: 4px;
+        background: transparent;
+        transition: all 0.3s ease;
+        }
+    .style-1::-webkit-scrollbar:hover{
+        background: #c6c7ca;
+    }
+    .style-1::-webkit-scrollbar-thumb{
+        background: #777779;
+        border-radius: 4px;
+    }
+    .background{
+        background-color: #39CCCC
+    }
+    .font11{
+        font-size: 11px;
+    }
+</style>
+<div class="wrapper" ng-controller="PMPayrollRegisterController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head"
+            style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa"
+                    style="background: url('assets/images/icons/HRIS Dashboard icon Payroll.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+                <div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+                <div style="font-size: 15pt; text-indent:15px">Payroll Processing Routines</div>
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li> <a href="#/admin/pay/entries/timesheetsummary"> Payroll Master's Portal</a></li>
+                <li class="active">Timesheet Summary</li>
+            </ol>
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/1 Timesheet Summary.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Timesheet Summary</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/batchentries">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;" src="assets/images/icons/payroll/2 Batch Entries.png"
+                                        alt=" " width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Batch Entries</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/recurring">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/3 Recurring Transactions.png" alt=" "
+                                        width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Recurring Transactions</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/servicecharge">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/4 Service Charge.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Service Charge</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/employeeloans">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/5 Employee Loans.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Employee Loans</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/bonuses">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;" src="assets/images/icons/payroll/6 Bonuses.png"
+                                        alt=" " width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Bonuses</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/7 Payroll Processing.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Payroll Processing</p>
+                        </li>
+                        <li role="presentation" class="active">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/8 Payroll Register.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Payroll Register</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/9 Bank Remittance.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Bank Remittance</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/10 Payroll Closing.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Payroll Closing</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/11 Distribution To Ledger.png" alt=" "
+                                        width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Distribution to Ledger</p>
+                        </li>
+                        <h4 class="text-center ts">
+                            Timesheet Summary</h4>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <div id="tab" class="nav-tabs-custom ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#overall" data-toggle="tab" aria-expanded="true"
+                                ng-click="overall()">Payroll Progress</a></li>
+
+                    </ul>
+                    <div class="tab-content no-padding">
+                        <div class="chart tab-pane active" id="overall" style=" position: relative; height: auto; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                            padding: 15px; margin-bottom: 20px;">
+                           
+                                <label>Pay Date</label>
+                                <input type="text" placeholder="Date from" searchdatepickers ng-model="search_dfrom" maxlength="10" name="search_dfrom" readonly required />
+                                <button style="color : white;background-color: #00a65a; border-radius: 0; border-width: 1px;" type="button" ng-click="timesheet_details_f">Apply</button>
+                            
+                            <div class = "col-md-12" style="margin: 5px 0px 10px 5px; padding:0;">
+                                <div class = "col-md-6 col-xs-6" style="text-align: left; padding:0;">
+                                    <div class="search-input-wrapper">
+                                        <div class="btn-toolbar">
+                                            <label>Show
+                                                <select class="" ng-model="dashboard.values.pageSize">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                                entries
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-6" style="text-align: right; padding:0;">
+                                    <button style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;" ng-click="export();"><i class="fa fa-file-excel-o fa-sm"></i>&nbsp;&nbsp;&nbsp;Export</button>
+                                    <button style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;" title="Search" data-toggle="modal" data-target="#myModal"><i class="fa fa-search fa-sm"></i>&nbsp;&nbsp;&nbsp;Filter</button>
+                                    <button id="btn-refreshh" ng-click="refresh();" style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;"><i class="fa fa-refresh fa-sm"></i>&nbsp;&nbsp;&nbsp;Refresh</button>
+                                </div>
+                            </div>
+
+                            <div class = "col-md-12 col-xs-12">
+                                <div class="row style-1" style ="overflow: auto;">
+                                    <table id="sortableView" class="sortable table-striped" ng-init="resocenter_fun" >
+                                        <thead>
+                                            <tr>
+                                                <th class = "background" style="height:40px; width:100px; border: 1px solid white;" >
+                                                    <div class="font11" tyle = "text-align: center;padding:0px 5px 0px 5px">Emp No.</div>
+                                                </th>
+                                                <th class = "background" style="width:250px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Name</div>
+                                                </th>
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Monthly Rate</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Basic Pay</div>
+                                                </th>
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Daily Rate</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Tardy Minutes</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Tardy Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">UT Minutes</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">UT Amount</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Absent Days</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Absent Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular OT Hours</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular OT Amount</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Day-off OT Hours</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Day-off OT Amount</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Hours</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Hours ></div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Amount ></div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Hours</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Hours ></div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Amount ></div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special NP Hours</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special NP Amount</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Legal NP Hours</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Legal NP Amount</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Night Diff Hours</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Night Diff Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Vacation Leave Days</div>
+                                                </th> 
+                                                     <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Vacation Leave Amt</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Sick Leave Days</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Sick Leave Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Other Leaves Days</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Other Leaves Amount</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Service Charge</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Allowance TX</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Allowance NTX</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Other Allowance NTX</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Other Alowance TX</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Tardy Minutes Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Tardy Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">UT Minutes Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">UT Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Absent Days Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Absent Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular OT Hours Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular OT Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Day-off OT Hours Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Day-off OT Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Hours Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special HolOT Hrs > Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Special Hol OT Amount > Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Hours Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular HolOT Hours > Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Regular Hol OT Amount > Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Night Diff Hours Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Night Diff Amount Adj</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Adjustment TX</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Gross Pay</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">SSS Contribution</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">PhilHealth Contribution</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Pag-ibig Contribution</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Witholding</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Others Loans</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">SSS Loans</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Pag-ibig Loans</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Employee Meal</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Intellicare</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Employee's Ledger</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Other Deductions</div>
+                                                </th> 
+                                                <th class = "background" style="width:100px; border: 1px solid white;">
+                                                    <div class="font11" style = "text-align: center;padding:0px 5px 0px 5px">Net Pay</div>
+                                                </th> 
+
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody class="style-1" style="height:400px;">
+                                            <tr>
+                                            <!-- <tr dir-paginate="view in resocenter_view | itemsPerPage: dashboard.values.pageSize" current-page="dashboard.values.ResoCentPage" ng-show="resocenter_view.length > 0"> -->
+                                                <td style="height:40px; width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" tyle = " text-align: left;padding:0px 5px 0px 5px;">0653</div>
+                                                </td>
+                                                <td style="width:250px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">Daniellyn Zozobrado Camocamo</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">15,000</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">7,500</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">585</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">5</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">20</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                                  <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                                    <div class="font11" style = "text-align: left;padding:0px 5px 0px 5px;">0</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--/.Row-->                    
+                            </div>
+
+                            <!-- Pagination -->
+                            <div class="text-right">
+                                <dir-pagination-controls boundary-links="true" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+                            </div>
+                            <!-- /.pagination -->
+
+                            <!--Modal-->
+                            <div class="modal fade modal-info" id="myModal" role="dialog"style="background: rgba(0, 0, 0, 0.8);">
+                                <div class="modal-dialog">
+                                    <div class="modal-header" style="background: #39CCCC !important; border-color: #39CCCC  !important;" >
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Filter</h4>
+                                    </div>
+                                    <!-- display sa modal design-->
+                                    <div class="modal-body" style="background: white !important">     
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group text-black">
+                                                    <label for="employee">Select Employee:</label>
+                                                    <select select2 ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search_acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct track by search_employees.id" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>     
+                                    <div class="modal-footer" style="background: #39CCCC !important; border-color: #39CCCC  !important;">
+                                        <button style="width:100px" type="button" class="btn btn-danger pull-left" ng-click="resetSearch()" data-dismiss = "modal">Reset</button>
+                                        <button style="width:100px" type="button" class="btn btn-primary" data-dismiss = "modal" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Modal-->
+
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+    <div ng-include="footerTemplate"></div>
+</div>

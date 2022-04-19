@@ -1,0 +1,766 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .fw9 {
+        font-weight: 900;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1280px) {
+        .bheight {
+            height: 492px !important;
+        }
+
+    }
+
+    @media screen and (max-height: 667px) {
+        .bheight {
+            height: 404px !important;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: auto !important;
+        }
+
+        td {
+            padding: 8px !important;
+        }
+
+        .tld {
+            padding-left: 24px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 11px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+        .evh {
+            height: 180px !important;
+            overflow-x: auto !important;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 10px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+    }
+
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .autoh {
+            margin-bottom: 60px !important;
+            height: auto !important;
+        }
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .tm {
+            margin-left: 15px !important;
+            margin-right: 0px !important;
+        }
+
+        .ah {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+    }
+
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+
+    .bheight {
+        height: auto;
+    }
+
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        text-decoration: underline;
+    }
+
+    .tm {
+        margin-left: 5px;
+        margin-right: 5px;
+
+    }
+
+    .nomargin {
+        margin: 0 !important;
+    }
+
+    .t14px {
+        font-size: 14px;
+    }
+
+    .eh {
+        font-weight: 800;
+        line-height: 16px;
+    }
+
+    .t12px {
+        font-size: 12px;
+    }
+
+    .f11px {
+        font-size: 11px;
+    }
+
+    #calendar-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .dl {
+        cursor: move;
+        z-index: 2;
+        text-align: left !important;
+        ;
+    }
+
+    .dot {
+        height: 22px;
+        width: 22px;
+        background-color: green;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .dot2 {
+        height: 22px;
+        width: 22px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+
+    .dot3 {
+        height: 22px;
+        width: 22px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+
+    span {
+        margin-left: 5px;
+    }
+
+    #block_container {
+        text-align: center;
+    }
+
+    #bloc1,
+    #bloc2 {
+        display: inline;
+    }
+
+    .mt-0 {
+        margin-top: 0px;
+    }
+
+    .mt-10 {
+        margin-top: 10px;
+    }
+
+    .evh {
+        height: 250px;
+        overflow-x: auto;
+    }
+
+    .evh2 {
+        height: 180px;
+    }
+
+    .circle1 {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid red;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+
+    .circle2 {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid #47bff0;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+
+    .circle3 {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid #f4a42c;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+
+    .circle4 {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid #27a462;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+
+    .circle5 {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid #3082c3;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+
+    .circle6 {
+        display: inline-block;
+        background-color: #fff;
+        border: 4px solid #0e0e0e;
+        height: 30px;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        width: 30px;
+    }
+
+    td {
+        padding: 12px;
+    }
+
+    .danger {
+        color: red;
+    }
+
+    i {
+        cursor: pointer;
+
+    }
+
+    .todrop {
+        width: auto;
+        background-color: black !important;
+    }
+
+    .dw {
+        width: 150px !important;
+    }
+
+    .fc-week {
+        height: 95px !important;
+    }
+
+    .fc-scroller {
+        height: auto !important;
+    }
+</style>
+<div class="wrapper" ng-controller="EPPlannerController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+
+        <section class="content"
+            style="padding-top : 5px; padding-left: 5px !important; padding-right: 5px !important;">
+            <div class="autoh"
+                style=" background-color: #c3c7ca !important; color: white; height: 820px; padding-bottom: 2px;">
+
+                <div class="well well-graphic bg-yellow" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px;">
+                    <!--div style="display: inline-block; margin-left: 10px;">
+                        <a href="#/admin/emp/profile" style="color: white !important;" class="">
+                            <img ng-src="assets/images/payslip.png" style="height: 60px; border-radius: 50%;"
+                                class="user-image pull-left" alt="User Image">
+                        </a>
+                        <div class="pull-left" style="padding-left: 10px;">
+                            <p class="respontext" style="
+                            margin: 0 0 -5px !important; font-weight: 600 ;">Planner
+                            </p>
+                        </div>
+                    </div-->
+					<div class="row">
+						<div class="col-md-6">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/icon planner 2.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Planner</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+							<ol class="breadcrumb" style="width: 250px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Employee's Portal</a></li>
+								<li class="active">Planner</li>
+							</ol>
+						</div>
+					</div>
+                </div>
+
+                <div class="row" ng-init="geteventlist()">
+                    <div class="col-md-12" style="padding-left: 15px;">
+                        <div class="well well-lg text-black bheight text-center tm " style="padding: 0px !important;">
+                            <div class="well well-graphic ah scrollable-element style-15"
+                                style="overflow: auto;  margin: 0px !important;">
+                                <div id='calendar-container' style="height: 665px;" class="fcheight " ng-init="plans()">
+                                    <div id="planevents" fc="" fc-options="calendarOptions" ng-model="events"
+                                        class="calendar ng-pristine ng-untouched ng-valid ng-isolate-scope fc fc-unthemed fc-ltr ng-not-empty">
+                                    </div>
+                                </div>
+                                <!-- <div style="height: 665px !important;" ng-init="plans()">
+                                    <div id="planevents" fc="" fc-options="calendarOptions" ng-model="events"
+                                        class="calendar ng-pristine ng-untouched ng-valid ng-isolate-scope fc fc-unthemed fc-ltr ng-not-empty">
+                                    </div>
+
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div id="eventCreate" class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog"
+style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header" style="background-color: #44ce82 !important;">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">New Plan</h4>
+        </div>
+        <div class="modal-body form-group" style="color:black !important;background:white !important">
+            <div style="display: none;">start :
+                <input type="text" name="event_title" class="form-control" id="startd" style="display: none;">
+            </div>
+            <div style="display: none;">end :
+                <input type="text" name="event_title" class="form-control" id="endd">
+            </div>
+            <div>Plan :
+                <input type="text" name="event_title" class="form-control" ng-model="event_title">
+            </div>
+            <div>Color :
+                <!-- <input type="color" name="favcolor" class="form-control" value="#ccc" ng-model="event_color"> -->
+                <p class="text-left">
+                    <button type="button" class="btn btn-sm mt-10" style="background-color:#d83f22 ;"
+                    ng-click="btncolor('#d83f22')">&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-sm mt-10" style="background-color:#ea9408;"
+                    ng-click="btncolor('#ea9408')">&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-sm mt-10" style="background-color:#2d80b5;"
+                    ng-click="btncolor('#2d80b5')">&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-sm mt-10" style="background-color:#03b9f6;"
+                        ng-click="btncolor('#03b9f6')">&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-sm mt-10" style="background-color:#109a4e ;"
+                    ng-click="btncolor('#109a4e')">&nbsp;&nbsp;
+                    </button>
+                    <button type="button" class="btn btn-sm mt-10" style="background-color:#02082a ;"
+                    ng-click="btncolor('#02082a')">&nbsp;&nbsp;
+                    </button>
+                </p>
+            </div>
+            <div>Viewers :
+                <select id="tags" type="text" select2 multiple name="event_tags" class="form-control"
+                    style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                    ng-model="event_tags">
+                    <option ng-repeat="ae in allEmployee" value="{{ae.id}}"
+                        ng-if="ae.id != dashboard.values.accountid">{{ae.fullname}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="modal-footer" style="background-color: #44ce82 !important;">
+            <button type="button" class="btn btn-default btn-raised" data-target="#eventCreate"
+                data-toggle="modal">Cancel</button>
+            <button id="mh" type="button" class="btn btn-primary btn-raised" ng-click="addPlan()">Save</button>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+    </div>
+
+    <div id="editPlanmodal" class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog"
+    style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #44ce82 !important;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Edit Plan</h4>
+            </div>
+            <div class="modal-body form-group" style="color:black !important;background:white !important">
+                <div style="display: none;">ID :
+                    <input type="text" name="event_title" class="form-control" id="eventid">
+                </div>
+                <div>Plan :
+                    <input type="text" name="event_title" class="form-control" ng-model="editplantitle"
+                        id="eventtitle">
+                </div>
+                <div>Color :
+                    <!-- <input type="color" name="favcolor" class="form-control" value="#ccc" ng-model="editplantype"
+                        id="bgcolor"> -->
+                        <p class="text-left">
+                            <button type="button" class="btn btn-sm mt-10" style="background-color:#d83f22 ;"
+                            ng-click="btncolor1('#d83f22')">&nbsp;&nbsp;
+                            </button>
+                            <button type="button" class="btn btn-sm mt-10" style="background-color:#ea9408;"
+                            ng-click="btncolor1('#ea9408')">&nbsp;&nbsp;
+                            </button>
+                            <button type="button" class="btn btn-sm mt-10" style="background-color:#2d80b5;"
+                            ng-click="btncolor1('#2d80b5')">&nbsp;&nbsp;
+                            </button>
+                            <button type="button" class="btn btn-sm mt-10" style="background-color:#03b9f6;"
+                                ng-click="btncolor1('#03b9f6')">&nbsp;&nbsp;
+                            </button>
+                            <button type="button" class="btn btn-sm mt-10" style="background-color:#109a4e ;"
+                            ng-click="btncolor1('#109a4e')">&nbsp;&nbsp;
+                            </button>
+                            <button type="button" class="btn btn-sm mt-10" style="background-color:#02082a ;"
+                            ng-click="btncolor1('#02082a')">&nbsp;&nbsp;
+                            </button>
+                        </p>
+                </div>
+                <div>Viewers :
+                    <select id="edittags" type="text" select2 multiple name="editevent_tags" class="form-control"
+                        style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                        ng-model="editevent_tags">
+                        <option ng-repeat="ae in allEmployee" value="{{ae.id}}"
+                            ng-if="ae.id != dashboard.values.accountid">{{ae.fullname}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #44ce82 !important;">
+                <button type="button" class="btn btn-default btn-raised" data-target="#editPlanmodal"
+                    data-toggle="modal">Cancel</button>
+                <button id="mh2" type="button" class="btn btn-primary btn-raised" ng-click="editPlan('modal')">Save</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
+
+    <!-- /.modal-dialog -->
+    </div>
+
+    <div id="viewPlanmodal" class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog"
+    style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #44ce82 !important;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">View Plan</h4>
+            </div>
+            <div class="modal-body form-group" style="color:black !important;background:white !important">
+                <div style="display: none;">ID :
+                    <input type="text" name="event_title" class="form-control" id="eventid" readonly>
+                </div>
+                <div>Plan :
+                    <input type="text" name="event_title" class="form-control" ng-model="editplantitle"
+                        id="eventtitleviewer" readonly>
+                </div>
+                <div>Plan Creator:
+
+                    <select id="editcreatorviewer" type="text" select2 multiple name="editevent_creatorviewer"
+                        class="form-control"
+                        style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                        ng-model="editevent_creatorviewer" disabled>
+                        <option ng-repeat="ae in allEmployee" value="{{ae.id}}">{{ae.fullname}}</option>
+                    </select>
+                </div>
+                <div>Color :
+                    <input type="color" name="favcolor" class="form-control" value="#ccc" ng-model="editplantype"
+                        id="bgcolorviewer" readonly>
+
+
+                </div>
+                <div>Viewers :
+                    <select id="edittagsviewer" type="text" select2 multiple name="editevent_tagsviewer"
+                        class="form-control"
+                        style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                        ng-model="editevent_tagsviewer" disabled>
+                        <option ng-repeat="ae in allEmployee" value="{{ae.id}}"
+                            ng-if="ae.id != dashboard.values.accountid">{{ae.fullname}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer" style="background-color: #44ce82 !important;">
+                <button type="button" class="btn btn-default btn-raised" data-target="#viewPlanmodal"
+                    data-toggle="modal">Close</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    </div>
+
+</div>
+
+
+</section>
+</div>
+
+<div ng-include="footerTemplate"></div>
+
+
+</div>

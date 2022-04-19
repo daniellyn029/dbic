@@ -1,0 +1,322 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #00a65a;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #00f383 ;  }
+		25%  { background: #00d976 ;  }
+		50%  { background: #00c068 ;  }
+		100% { background: #00a65a ;  }
+	}
+	label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+	.modal-dialog{
+		min-width: 450px;
+	}
+	.sorting_asc{
+		background-image: none !important;
+	}
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+	table.dataTable.dtr-inline.collapsed.compact>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed.compact>tbody>tr>th:first-child:before {
+		background-color: #00a65a;
+		text-indent: 0px;
+	}
+	.buttons{
+		margin-right: 0px;
+	}
+</style>
+<div class="wrapper" ng-controller="HRReportController" ng-init="dashboard.active();">
+      <div class="main-header" ng-include="headerTemplate"></div> 
+      <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+  <div class="content-wrapper">
+    <spinner name="form01spinner" ng-cloak="">
+        <div class="overlay"></div>
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div class="please-wait">Please Wait...</div>
+    </spinner>
+    <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+    	<div style="font-size: 9em;/*color: #00a65a !important;*/">
+    		<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">sss</i>
+    			<div style="font-size: 20pt;padding-top: 15px; text-indent:15px">HR Portal</div>
+    			<div style="font-size: 15pt; text-indent:15px">Employees Report</div>		
+    	</div>
+    	<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+    		<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/hr/dashboard"> HR Portal</a></li>
+                <li class="active">Employee Report</li>
+    	</ol>	
+		<div class="bgPulse hidden-xs">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+    </section>
+      <section class="content">                
+    <div ng-init="employees_report_functions()" style="margin-bottom: 20px" >
+  			<!--div class="box-header">
+    				<button id="btn-refreshh" style="margin-right:3px;background: #00a65a; border: 1px solid #00a65a;" class="btn btn-flat btn-primary pull-right" ng-click="dtInstance.reloadData()" title="Refresh"><i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+    				</button>
+            <button class="btn-primary btn btn-flat btn-primary pull-right" data-toggle="modal" data-target="#myModal" style="margin-right:3px;background: #00a65a; border: 1px solid #00a65a;" title="Search"> <i class="fa fa-search fa-sm"></i> Filter </button>
+             <button id="btn-export" style="margin-right:3px;background: #00a65a; border: 1px solid #00a65a;" class="btn btn-flat btn-primary pull-right" ng-click="export()" title="Export to Excel"><i class="fa fa-file-excel-o fa-sm" style="padding:3px"></i>Export</button>
+  			</div-->	
+         <!-- Modal -->
+        <div class="modal fade modal-info" id="myModal" role="dialog" style="background: rgba(0, 0, 0, 0.8);">
+          <!-- Modal dialog-->
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="background: #00a65a !important; border-color: #00a65a  !important;" >
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Filter</h4>
+              </div>
+                <!-- display sa modal design-->
+                <div class="modal-body" style="background: white !important"> 
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="employee">Employee:</label>
+                        <select select2 ng-model="emp" placeholder="Employee Name & ID" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option ng-repeat="data in getAllEmployeeReport track by data.empid" value="{{data.empid}}">{{data.empid}}&nbsp;{{data.fullname}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="empid">Classification:</label>
+                        <select select2 ng-model="dept" placeholder="Classification" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option ng-repeat="datas in allEmployeeDepartmentName track by datas.idunit" value="{{datas.idunit}}">{{datas.department}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="ptitle">Position Title:</label> 
+                        <select select2 ng-model="post_title" placeholder="Position Title" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option ng-repeat="data in allEmployeePositionTitle track by data.position_title" value="{{data.position_title}}">{{data.position_title}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="paygroup">Pay Group:</label>
+                        <select select2 ng-model="pay_grp" placeholder="Pay Group" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option value="Monthlies">Monthlies</option>
+                          <option value="Dailies">Dailies</option>
+                          <option value="Executive">Executive</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="paystat">Position Status:</label>
+                        <select select2 ng-model="pay_stat" placeholder="Position Status" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option value="Monthly">Monthly</option>
+                          <option value="Daily">Daily</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="emptype">Account Type:</label>
+                        <select select2 ng-model="emp_type" placeholder="Employment Type" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option value="Active">Active</option>
+                          <option value="Inactive">Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="poststat">Employment Type:</label>
+                        <select select2 ng-model="emp_stat" placeholder="Employment Status" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                          <option ng-repeat="data in allEmploymentStatus track by data.employment_status" value="{{data.employment_status}}">{{data.employment_status}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>   
+                </div>     
+                <div class="modal-footer" style="background: #00a65a !important; border-color: #00a65a  !important;">
+                    <button style="width:100px" ng-click="search12()" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-search"></i> Search</button>
+                    <button style="width:100px" type="button" class="btn btn-danger pull-left" ng-click="resetsearch()">Reset</button>
+                </div>
+            </div>
+             <!-- /.Modal content-->
+          </div>
+          <!-- /.Modal dialog-->
+        </div>
+        <!-- /.Modal-->
+		
+		<div class = "col-md-12 col-xs-12">
+			<div id="compensation_companyName" style="font-size:18pt; text-align:center; font-weight: bold;">{{compensationCompanyName.company_name}}</div>
+			<div id="compensation_benefits_txt" style="font-size:15pt; text-align:center; font-weight: bold;">Employees Report</div>
+			<div id="compensation_benefits_report" style="font-size:11pt; text-align:center;" ></div>
+			<div id="compensation_date" style="font-size:11pt; text-align:center; padding-bottom:20px;"></div>
+		</div>
+		
+        <div ng-init="tablefunc()">
+          <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered compact"></table>
+        </div>
+		
+		
+    </div>        
+  </div>
+  <!--/.content wrapper-->
+      <div ng-include="footerTemplate"></div>
+</div> <!--/.wrapper-->

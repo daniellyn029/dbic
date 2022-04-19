@@ -1,0 +1,754 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #39cccc;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    table.dataTable thead th,
+    table.dataTable thead td {
+        padding: 1px 10px !important;
+        border-bottom: 1px solid #111;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .fixwidth {
+        width: 50px !important;
+    }
+
+    .lbltbl {
+        font-weight: bold;
+        font-size: 10pt;
+        text-align: right;
+        padding: 5px !important;
+        width: 140px !important;
+    }
+
+    .datatbl {
+        text-indent: 5px;
+        padding: 5px !important;
+        font-size: 9pt;
+        width: 210px !important;
+    }
+
+    .print-only {
+        display: none;
+    }
+
+    @@media print {
+        .no-print {
+            display: none;
+        }
+
+        .print-only {
+            display: block;
+        }
+    }
+
+
+    progress[value] {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+        appearance: none;
+
+        width: 250px;
+        height: 20px;
+    }
+
+    progress[value]::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+
+    progress[value]::-webkit-progress-value {
+        background-image:
+            -webkit-linear-gradient(-45deg,
+                transparent 33%, rgba(0, 0, 0, .1) 33%,
+                rgba(0, 0, 0, .1) 66%, transparent 66%),
+            -webkit-linear-gradient(top,
+                rgba(255, 255, 255, .25),
+                rgba(0, 0, 0, .25)),
+            -webkit-linear-gradient(left, #09c, #f44);
+
+        border-radius: 2px;
+        background-size: 35px 20px, 100% 100%, 100% 100%;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #76dcdc;
+        }
+
+        25% {
+            background: #62d6d6;
+        }
+
+        50% {
+            background: #4dd1d1;
+        }
+
+        100% {
+            background: #39cccc;
+        }
+    }
+
+    .wizard {
+        margin: -45px auto;
+        background: #fff;
+    }
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #39cccc;
+        border-bottom-width: 35px;
+    }
+
+    .wizard>div.wizard-inner {
+        position: relative;
+    }
+
+    .connecting-line {
+        height: 2px;
+        /* background: #2fa5a5; */
+        border-top: dotted;
+        border-color: #2fa5a5;
+        position: absolute;
+        width: 90%;
+        margin: -32px auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        z-index: 1;
+    }
+
+    .wizard .nav-tabs>li.active>a,
+    .wizard .nav-tabs>li.active>a:hover,
+    .wizard .nav-tabs>li.active>a:focus {
+        color: #555555;
+        cursor: default;
+        border: 0;
+        border-bottom-color: transparent;
+    }
+
+    span.round-tab {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        display: inline-block;
+        border-radius: 100px;
+        background: #fff;
+        border: 2px solid #e0e0e0;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    span.round-tab i {
+        color: #555555;
+    }
+
+    .wizard li.active span.round-tab {
+        background: #fff;
+        border: 2px solid #2fa5a5;
+
+    }
+
+    .wizard li.active span.round-tab i {
+        color: #2fa5a5;
+    }
+
+    span.round-tab:hover {
+        color: #333;
+        border: 2px solid #333;
+    }
+
+    .wizard .nav-tabs>li {
+        width: 9.09090909091%;
+    }
+
+    .wizard li:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 0;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 5px solid transparent;
+        border-bottom-color: #5bc0de;
+        transition: 0.1s ease-in-out;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 46%;
+        opacity: 1;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 10px solid transparent;
+        border-bottom-color: #5bc0de;
+    }
+
+    .wizard .nav-tabs>li a {
+        width: 70px;
+        height: 70px;
+        margin: 15px auto;
+        border-radius: 100%;
+        padding: 0;
+    }
+
+    .wizard .nav-tabs>li a:hover {
+        background: transparent;
+    }
+
+    .wizard .tab-pane {
+        position: relative;
+        padding-top: 50px;
+    }
+
+    .wizard h3 {
+        margin-top: 0;
+    }
+
+    .ipos {
+        top: 18px !important;
+    }
+
+    .arrow {
+        border: solid #2fa5a5;
+        border-width: 0 3px 3px 0;
+        display: inline-block;
+        padding: 3px;
+        margin-top: 30.5px;
+        margin-left: -10px;
+        z-index: -1;
+    }
+
+    .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    }
+
+    .ts {
+        bottom: -28%;
+        position: absolute;
+        color: white;
+        font-weight: 500 !important;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    @media screen and (max-width: 1366px) {
+        .connecting-line {
+            margin: -42px auto !important;
+        }
+
+        .ts {
+            bottom: -24% !important;
+        }
+    }
+
+    .nav-tabs-custom>.nav-tabs>li.active {
+        border-top-color: #00a65a;
+    }
+
+    .ui-widget-header {
+        border: none;
+        background: none;
+        color: none;
+    }
+
+    .triangle-right {
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-left: 14px solid #2fa5a5;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        margin-left: -12px;
+        margin-top: 28px;
+    }
+</style>
+<div class="wrapper" ng-controller="PMPayrollProcessController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head"
+            style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa"
+                    style="background: url('assets/images/icons/HRIS Dashboard icon Payroll.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+                <div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+                <div style="font-size: 15pt; text-indent:15px">Payroll Processing Routines</div>
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li> <a href="#/admin/pay/entries/timesheetsummary"> Payroll Master's Portal</a></li>
+                <li class="active">Timesheet Summary</li>
+            </ol>
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="wizard">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/timesheetsummary">
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/1 Timesheet Summary.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Timesheet Summary</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/batchentries">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;" src="assets/images/icons/payroll/2 Batch Entries.png"
+                                        alt=" " width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Batch Entries</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/recurring">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/3 Recurring Transactions.png" alt=" "
+                                        width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Recurring Transactions</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/servicecharge">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/4 Service Charge.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Service Charge</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/employeeloans">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/5 Employee Loans.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Employee Loans</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/bonuses">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;" src="assets/images/icons/payroll/6 Bonuses.png"
+                                        alt=" " width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Bonuses</p>
+                        </li>
+                        <li role="presentation" class="active">
+                            <a href="#/admin/pay/entries/payrollprocess">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/7 Payroll Processing.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Payroll Processing</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/payrollregister">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/8 Payroll Register.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Payroll Register</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/bankremittance">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/9 Bank Remittance.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Bank Remittance</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/payrollclosing">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/10 Payroll Closing.png" alt=" " width="40"
+                                        height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Payroll Closing</p>
+                        </li>
+                        <li role="presentation">
+                            <a href="#/admin/pay/entries/distribution">
+                                <div class="triangle-right"></div>
+                                <span class="round-tab">
+                                    <img style="margin-top: 12px;"
+                                        src="assets/images/icons/payroll/11 Distribution To Ledger.png" alt=" "
+                                        width="40" height="40">
+                                </span>
+                            </a>
+                            <p class="text-center" style="word-break: break-word;">Distribution to Ledger</p>
+                        </li>
+                        <h4 class="text-center ts">
+                            Timesheet Summary</h4>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <div id="tab" class="nav-tabs-custom ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#overall" data-toggle="tab" aria-expanded="true"
+                                ng-click="overall()">Payroll Processing Routines</a></li>
+
+                    </ul>
+                    <div class="tab-content no-padding">
+                        <div class="chart tab-pane active" id="overall" style=" position: relative; height: auto; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                            padding-top: 20px; margin-bottom: 20px;">
+                            <div class="row" style="margin: 3px;">
+                                <div class="col-md-5">
+                                    <div class="col-md-12">
+                                        <div class=" col-md-4">
+                                            <div class="form-group">
+                                                <input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                                                <label> Payroll Processing</label><br>
+                                            </div>
+                                        </div>
+                                        <div class=" col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                                                    <label> Recompute Netpay</label><br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class=" col-md-4">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <input type="radio" id="vehicle1" name="vehicle1" value="Bike">
+                                                    <label> Special Processing</label><br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Start Date</label>
+                                                <input type="text" class="form-control" datepickers required
+                                                    ng-model="paydate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>End Date</label>
+                                                <input type="text" class="form-control" datepickers required
+                                                    ng-model="paydate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Pay Date</label>
+                                                <input type="text" class="form-control" datepickers required
+                                                    ng-model="paydate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Select Pay Period</label>
+                                                <select id="template" name="Type" class="form-control" select2
+                                                    style=" text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                                                    ng-model="issued.template">
+                                                    <option value=""></option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Select Pay Group</label>
+                                                <select id="template" name="Type" class="form-control" select2
+                                                    style=" text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                                                    ng-model="issued.template">
+                                                    <option value=""></option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Select Employees</label>
+                                                <select id="template" name="Type" class="form-control" select2
+                                                    style=" text-align: center;font-size:12px;width: 100%;text-align-last: center;"
+                                                    ng-model="issued.template">
+                                                    <option value=""></option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <button style="margin-right:5px; background-color: black; color: white;"
+                                            type="submit" class="btn btn-flat" title="Refresh">Clear
+                                        </button>
+                                        <button style="margin-right:5px;" type="submit" class="btn btn-flat btn-danger"
+                                            title="Refresh">Cancel
+                                        </button>
+                                        <button style="margin-right:5px;" type="submit" class="btn btn-flat btn-success"
+                                            title="Refresh">Process
+                                        </button>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Progress Bar</label>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar"
+                                                    aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width:70%">
+                                                    70%
+                                                </div>
+                                            </div>
+                                            <small class="pull-right">Total Headcount : </small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div style="height: 355px; overflow: auto; width: 100%;">
+                                        <table
+                                            class="example2 row-border hover table-striped table-bordered ng-isolate-scope dataTable no-footer dtr-inline">
+                                            <thead>
+                                                <tr>
+                                                    <th>emp_id</th>
+                                                    <th>dept_id</th>
+                                                    <th>tran_id</th>
+                                                    <th>class</th>
+                                                    <th>pay_date</th>
+                                                    <th>priority</th>
+                                                    <th>job_id</th>
+                                                    <th>units</th>
+                                                    <th>unitamt</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </div>
+    <div ng-include="footerTemplate"></div>
+</div>

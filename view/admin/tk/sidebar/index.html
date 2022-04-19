@@ -1,0 +1,257 @@
+<!-- Left side column. contains the logo and sidebar -->
+<style>
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#4D9C41),
+                to(#19911D),
+                color-stop(.6, #54DE5D))
+    }
+	.sidebar1280 {
+		overflow: auto;
+		height: 100vh;
+		padding-bottom:160px;
+	}
+	.content {
+		padding-bottom: 100px;
+	}
+</style>
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar style-15">
+		<!-- Sidebar user panel -->
+		<div class="user-panel">
+			<div class="pull-left image">
+			<img ng-src="{{ dashboard.values.userInformation.pic }}" style="width:25px" class="img-circle" alt="User Image">
+			</div>
+			<div class="pull-left info">
+			<p>{{ dashboard.values.userInformation.fname + ' ' + dashboard.values.userInformation.lname }}</p>
+			</div>
+		</div>
+     
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu" ng-init="activeclass()">  
+		
+		<li class="header">MAIN NAVIGATION</li>
+		<li id="home" >
+			<a href="#/admin/home" >
+			<i class="fa fa-dashboard"></i> <span>Back To Dashboard</span>        
+			</a>
+		</li>	
+		<li id="dashboard">
+			<a id="dashboard" href="#/admin/tk/dashboard" >
+			<i class="fa fa-home"></i> <span>Home</span>        
+			</a>
+		</li>
+		<li class="header">PROCESSES</li>
+		<li id="link" >
+			<a href="#/admin/tk/link" >
+			<i class="fa fa-calculator"></i> <span>Timesheet Link</span>        
+			</a>
+		</li>
+		<li id="timeprocess" >
+			<a href="#/admin/tk/timeprocess" >
+			<i class="fa fa-calculator"></i> <span>Timesheet Processing</span>        
+			</a>
+		</li>
+		<li id="timeclosing" >
+			<a href="#/admin/tk/timeclosing" >
+			<i class="fa fa-calculator"></i> <span>Timesheet Closing</span>        
+			</a>
+		</li>
+		<!--li id="timesheet" >
+			<a href="#/admin/tk/timesheet" >
+			<i class="fa fa-clock-o"></i> <span>Timesheet Details</span>        
+			</a>
+		</li>	
+		<li id="timeprocess" >
+			<a href="#/admin/tk/timeprocess" >
+			<i class="fa fa-calculator"></i> <span>Timesheet Process</span>        
+			</a>
+		</li-->	
+		
+		<li class="header">APPLICATIONS</li>
+		<li id="leaveapp" >
+			<a href="#/admin/tk/app/leaveapp" >
+				<i class="fa fa-universal-access"></i> <span>Leaves</span>
+			</a>
+		</li>
+		<li id="adjustapp" >
+			<a href="#/admin/tk/app/adjustapp" >
+				<i class="fa fa-universal-access"></i> <span>Attendance Adjustment</span>
+			</a>
+		</li>
+		<li id="overtimeapp" >
+			<a href="#/admin/tk/app/overtimeapp" >
+				<i class="fa fa-universal-access"></i> <span>Overtime</span>
+			</a>
+		</li>
+		<li id="changeshiftapp" >
+			<a href="#/admin/tk/app/changeshiftapp" >
+				<i class="fa fa-universal-access"></i> <span>Change Shift</span>
+			</a>
+		</li>
+		<li id="obtripapp" >
+			<a href="#/admin/tk/app/obtripapp" >
+				<i class="fa fa-universal-access"></i> <span>Official Business Trip</span>
+			</a>
+		</li>
+		<li id="dutyroster">
+            <a href="#/admin/tk/app/dutyroster">
+                <i class="fa fa-universal-access"></i> <span>Duty Roster</span>
+            </a>
+        </li>
+		<li class="header">MANAGE</li>
+		<li id="timesheet" >
+			<a href="#/admin/tk/timesheet" >
+				<i class="fa fa-clock-o"></i> <span>Timesheet Details</span>
+			</a>
+		</li>
+		
+		<li class="header">REPORT</li>
+		<li id="rptsheet" >
+			<a href="#/admin/tk/report/rptsheet" >
+				<i class="fa fa-bar-chart"></i> <span>Timesheet Summary</span>        
+			</a>
+		</li>
+		<li class="treeview" id="header-esetting">
+			<a href="">
+				<i class="fa fa-cube"></i><span>Time Attendance</span><i class="fa fa-angle-left pull-right"></i>
+			</a>
+			<ul id="esetting" class="treeview-menu">
+				<li id="absences" >
+					<a href="#/admin/tk/report/absences" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Absences</span>        
+					</a>
+				</li>
+				<li id="absenteeism" >
+					<a href="#/admin/tk/report/absenteeism" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Absenteeism</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/admin/tk/report/leaveBalance" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Leave Balance</span>        
+					</a>
+				</li>
+				<li id="overtimeHours" >
+					<a href="#/admin/tk/report/overtimeHours" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Overtime Hours</span>        
+					</a>
+				</li>
+				<li id="overtimeRates" >
+					<a href="#/admin/tk/report/overtimeRates" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Overtime Rates</span>        
+					</a>
+				</li>
+				<li id="perfectAttendance" >
+					<a href="#/admin/tk/report/perfectAttendance" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Perfect Attendance</span>        
+					</a>
+				</li>
+				<li id="tardinessDetail" >
+					<a href="#/admin/tk/report/tardinessDetail" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Tardiness Detail</span>        
+					</a>
+				</li>
+				<li id="tardinessSummary" >
+					<a href="#/admin/tk/report/tardinessSummary" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Tardiness Summary</span>        
+					</a>
+				</li>
+				<!-- <li id="timesheetSummary" >
+					<a href="#/admin/tk/report/timesheetSummary" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Timesheet Summary</span>        
+					</a>
+				</li> -->
+				<li id="totalAvailableHours" >
+					<a href="#/admin/tk/report/totalAvailableHours" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Total Available Hours</span>        
+					</a>
+				</li>
+				<!-- <li id="weeklyHeadcount" >
+					<a href="#/admin/tk/report/weeklyHeadcount" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Weekly Headcount</span>        
+					</a>
+				</li> -->
+			</ul>
+		</li>
+		
+		<li class="header">MAINTENANCE</li>
+		<li id="calendarmain" >
+			<a href="#/admin/tk/setup/calendars" >
+				<i class="fa fa-universal-access"></i> <span>Calendar Schedule</span>
+			</a>
+		</li>
+		<li id="holidaysmain" >
+			<a href="#/admin/tk/setup/holidays" >
+				<i class="fa fa-universal-access"></i> <span>Holidays</span>
+			</a>
+		</li>
+		<li id="leavemain" >
+			<a href="#/admin/tk/setup/leaverecords/leavemain" >
+				<i class="fa fa-universal-access"></i> <span>Leave Records</span>
+			</a>
+		</li>
+		
+		<li class="header">SETUP</li>
+        <li id="shifts">
+            <a href="#/admin/tk/setup/shifts">
+                <i class="fa fa-cube"></i> <span>Shifts</span>
+            </a>
+        </li>
+        <li id="leavemaster">
+            <a href="#/admin/tk/setup/leavemaster">
+                <i class="fa fa-cube"></i> <span>Leave Master</span>
+            </a>
+        </li>
+        <li id="overtimerates">
+            <a href="#/admin/tk/setup/overtimerates">
+                <i class="fa fa-cube"></i> <span>Overtime Rates</span>
+            </a>
+        </li>
+        <li id="nightdiff">
+            <a href="#/admin/tk/setup/nightdiff">
+                <i class="fa fa-cube"></i> <span>Night Differentials</span>
+            </a>
+        </li>
+        <li id="premiumclass">
+            <a href="#/admin/tk/setup/premiumclass">
+                <i class="fa fa-cube"></i> <span>Premium Class</span>
+            </a>
+        </li>
+        <li id="preferences" >
+			<a href="#/admin/tk/setup/preferences" >
+				<i class="fa fa-cube"></i> <span>Preferences</span>        
+			</a>
+		</li>
+        <li id="recorder" >
+			<a href="#/admin/tk/setup/recorder" >
+				<i class="fa fa-cube"></i> <span>Time Recorder</span>        
+			</a>
+		</li>
+        <li class="header">YEAR END PROCESSING</li>
+        <li id="leaveconversion">
+            <a href="#/admin/tk/setup/leaveconversion">
+                <i class="fa fa-cube"></i> <span>Leave Conversion</span>
+            </a>
+        </li>
+
+
+		</ul>
+	</section>
+	<!-- /.sidebar -->
+  

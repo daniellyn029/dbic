@@ -1,0 +1,834 @@
+<style>
+  .main-footer {
+      background: #fff;
+      padding: 5px;
+      color: #444;
+      border-top: 1px solid #d2d6de;
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      right: 0;
+      z-index: 999;
+  }
+  .content-wrapper{
+      background:white
+  }
+  .example2 th{
+      color:white;
+      background-color: #006ba6;
+      text-align:center
+  }
+  .btnTD{
+      text-align:center;
+  }
+  .info{
+      font-weight: bold;
+  }
+  .ui-widget-header {
+      border: 1px solid green;
+      background: #008d4c;
+      color:black;
+  }
+  .lightbox-modal{
+      z-index:99999 !important;
+  }
+  .bder{
+      border:0px solid black;
+  }
+  .table-striped>tbody>tr:nth-child(odd)>td, 
+  .table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #d9e5f3;
+  }
+  table.dataTable>tbody>tr.child ul li {
+      border-bottom: 0px solid #efefef !important;
+  }	
+  .req-field {
+      color: red;
+  }
+  .paddingZero{
+      padding: 0px !important;
+  }
+  .fixwidth {
+    width: 50px !important;
+  }
+  .lbltbl{
+    font-weight:bold;
+    font-size:10pt;	
+    text-align:right;
+    padding:5px !important;
+    width:140px !important;
+  }
+  .datatbl{
+    text-indent:5px;
+    padding:5px !important;
+    font-size:9pt;
+    width:210px !important;
+  }
+  .print-only{
+    display: none;
+  }
+
+  @media print {
+    .no-print {
+      display: none;
+    }
+
+    .print-only{
+      display: block;
+    }
+  }
+
+
+  .sec-head{
+    overflow:hidden;
+    animation: bgColor 8s normal forwards;
+  }	
+  .bgPulse{
+    width: 100%;
+    height: 100%;
+  }	
+  .bgPulse span{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    
+  }	
+  .bgPulse span:nth-child(2n+1){
+    background: transparent;
+    border: 5px solid #fff;
+  }	
+  .bgPulse span:nth-child(1){
+    border-radius:12px;
+    top: 30%;
+    left: 30%;
+    animation: animate 10s linear infinite;
+  }	
+  .bgPulse span:nth-child(2){
+    top: 20%;
+    left: 50%;
+    animation: animate 15s linear infinite;
+  }	
+  .bgPulse span:nth-child(3){
+    top: 40%;
+    left: 70%;
+    animation: animate 20s linear infinite;
+  }	
+  .bgPulse span:nth-child(4){
+    border-radius:12px;
+    top: 60%;
+    left: 80%;
+    animation: animate 12s linear infinite;
+  }
+  .bgPulse span:nth-child(5){
+    top: 60%;
+    left: 40%;
+    animation: animate 17s linear infinite;
+  }
+  .bgPulse span:nth-child(6){
+    border-radius:12px;
+    top: 60%;
+    left: 60%;
+    animation: animate 22s linear infinite;
+  }
+  .bgPulse span:nth-child(7){
+    top: 60%;
+    left: 20%;
+    animation: animate 17s linear infinite;
+  }	
+  @keyframes animate{
+    0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.4; }
+    100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+  }
+  @keyframes bgColor{
+    0%   { background: #00f383 ;  }
+    25%  { background: #00d976 ;  }
+    50%  { background: #00c068 ;  }
+    100% { background: #00a65a ;  }
+  }
+
+  	#currentlist th{
+		color: white;
+		background: #00a65a;
+		height: auto !important;
+	}
+
+	.buttons{
+		margin-right: 0px;
+	}
+
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+    label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+  
+</style>
+<div class="wrapper" ng-controller="HRWageIncreaseController" ng-init="dashboard.active();">
+
+  <div class="main-header" ng-include="headerTemplate"></div> 
+  <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+  <div ng-include="entryModalTemplate"></div>
+  <div class="content-wrapper">
+      <spinner name="form01spinner" ng-cloak="">
+          <div class="overlay"></div>
+          <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+          </div>
+          <div class="please-wait">Please Wait...</div>
+      </spinner>
+      <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+    <div style="font-size: 9em;/*color: #00a65a !important;*/">
+		<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>																								
+        <div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Wage Increase</div>
+        <div style="font-size: 15pt; text-indent:15px">Current</div>		
+    </div>
+    <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+      <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+              <li><a href=".#/admin/hr/dashboard"> HR Portal</a></li>
+              <li class="active">Personnel Action</li>
+              <li class="active">Wage Increase</li>
+              <li class="active">Current</li>
+    </ol>	
+    <div class="bgPulse hidden-xs">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+      </section>
+
+      <section class="content">
+        <div ng-init="currentTable()">
+			<!-- <div class="box-header">
+				<button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-success pull-right" ng-click="dtInstance.reloadData()" title="Refresh">
+				  <i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+				</button>
+				<button style="margin-right:3px;" class="btn btn-flat btn-success pull-right" title="Search" data-toggle="modal" data-target="#modal-search"  >
+				  <i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+				</button>
+			</div> -->
+			
+			<table id="currentlist" datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered" ></table>
+			
+			<div class="modal fade modal-success" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+				<div class="modal-dialog">
+					<div class="modal-header" style="background: #00a65a !important; border-color: #00a65a  !important;">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Filter</h4>
+					</div>
+					<div class="modal-body" style="background: white !important">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="search_acct">Employee</label>
+									<select select2 ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search.acct" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										<!-- <option value="">Select Employee</option> -->
+										<option ng-repeat="data in dashboard.values.accounts track by $index" value="{{data.id}}">{{data.empid}}&nbsp;{{data.empname}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="search_dfrom">Create Date</label>
+									<input type="text" readonly searchdatepickers ng-model="search.datecreate" class="form-control" maxlength="10" id="search_dfrom" name="search_dfrom"  required  style="border:none;border-bottom:1px solid black !important;background-color: white;"/>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="search_dfrom">Effectivity Date</label>
+									<input type="text" readonly searchdatepickers ng-model="search.effdate" class="form-control" maxlength="10" id="search_dto" name="search_dto" required style="border:none;border-bottom:1px solid black !important;background-color: white;"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style="background: #00a65a !important; border-color: #00a65a  !important;">
+						<button type="button" class="btn btn-danger pull-left" ng-click="resetSearch()"  >Reset</button>
+						<button type="button" class="btn btn-primary" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+      </section>        
+      
+  </div>
+
+  <div ng-include="footerTemplate"></div>
+  
+  	<!-- Modal View -->
+	<div class="modal fade" id="WageIncreaseView" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important;z-index: 1049 !important" >
+		<div class="modal-dialog modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row paddingZero">
+						<div class="col-md-12" style="text-align: left;padding-bottom: 5px;">
+							<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;">
+							<div class="col-md-6 col-xs-6" style="padding-bottom: 5px;">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">DELSAN BUSINESS INNOVATIONS CORPORATION</p>
+							</div>
+							<div class="col-md-6 col-xs-6" style="padding-bottom: 5px;">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: right;">Document ID: {{viewCurrent.refferenceno}}</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: left;">
+							<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">Human Resources Department</p>
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">PERSONNEL ACTION REPORT</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;overflow: auto; ">
+							
+							<div class="col-md-12" style="margin-top:15px" >
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="empname" style="font-size: 12px;    padding-top: 3px;">Employee</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<select select2 ng-model="viewCurrent.empname" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" disabled>
+												<option ng-repeat="data in allEmployee track by $index" value="{{data.fullname | titlecase}}">{{  data.empid + ' ' + data.fullname | titlecase}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-4 paddingZero" style="font-size: 12px;">
+											<label for="effectivedate" style="font-size: 12px;    padding-top: 3px;">Date Created</label>
+										</div>
+										<div class="col-md-8" style="font-size:12pt;padding-right: 0px; padding-left: 0px;">
+											<input type="text" ng-model="viewCurrent.datecreated" datepickers style="background-color: #ddd;border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-12"  >
+								<div class="col-md-6 hidden">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="empid" style="font-size: 12px;    padding-top: 3px;">Employee ID</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<input type="text" numbersOnly id="empid" placeholder="Employee ID" maxlength="4" ng-model="viewCurrent.empid" ng-change="autoFillEmpID()" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%">
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-12" >
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-6 paddingZero" style="font-size: 12px;">
+											<label for="actiontaken" style="font-size: 12px;    padding-top: 3px;">Employment Action Taken</label>
+										</div>
+										<div class="col-md-6 paddingZero" style="font-size:12pt;">
+											<input class="readonly" disabled type="text" id="actiontaken" ng-model="viewCurrent.actiontaken" value="Wage Increase" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="col-md-4 paddingZero" style="font-size: 12px;">
+											<label for="effectivedate" style="font-size: 12px;    padding-top: 3px;">Effective Date</label>
+										</div>
+										<div class="col-md-8" style="font-size:12pt;padding-right: 0px; padding-left: 0px;">
+											<input  ng-disabled="isSaving" type="text" ng-model="viewCurrent.effectivedate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						
+						
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0">
+							<div class="col-xs-12" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">COMPENSATION DETAILS</h5>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="margin-top:15px" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Department Name</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Dept. Name</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentdeptname | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Department Manager</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Dept.&nbsp;Mngr.</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentdeptmanager | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Section</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentsection | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;"> 
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Immediate Supervisor</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Supervisor</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentimmediatesupervisor | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Employment Status</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Emp Status</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentempstatus | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Job Code</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" id="currentjobcode" ng-value="viewCurrent.currentjobcode" style="border:none;border-bottom: 1px black solid;text-align: centeleftr;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;">Position Title</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;">Position</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentpositiontitle | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Job Level</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentjoblevel | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Pay Group</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentpaygroup | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Labor Type</label>
+							</div>
+							<div class="col-xs-9" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: left">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentlabortype | titlecase" style="border:none;border-bottom: 1px black solid;text-align: left;font-size:12px;width:100%" >
+							</div>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0">
+							<div class="col-xs-3" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">&nbsp;</h5>
+							</div>
+							<div class="col-xs-3" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">CURRENT</h5>
+							</div>
+							<div class="col-xs-6" style="text-align: center;padding: 0 0 0 0;">
+								<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px;padding: 5px">NEW</h5>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" style="margin-top:15px" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Base Pay</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentbasepay" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input number-form type="text" ng-model="viewCurrent.newbasepay" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="viewCurrent.currentbasepay" placeholder="0.00" ng-change="totalCashCompEdit()">
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-12" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">De Minimis</label>
+							</div>
+						</div>
+
+						<!-- <div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">Rice Allowance</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">Rice</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentriceallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input number-form type="text" ng-model="viewCurrent.newriceallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="viewCurrent.currentriceallowance" placeholder="0.00" ng-change="totalCashCompEdit()">
+							</div>
+						</div> -->
+
+						<div class="col-md-12 col-xs-12" ng-repeat="(key, value) in viewCurrent.allowance">
+							<div class="col-xs-3" style="font-size:12pt;" >
+								<label style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">{{value.description}}<br></label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input class="readonly" disabled type="text" ng-value="value.current_amt" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input number-form type="text" ng-model="viewCurrent.allowance[key].new_amt" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="viewCurrent.empname && viewCurrent.effectivedate" placeholder="0.00" ng-change="totalCashCompEdit()"><!-- Jerald 13072020 -->
+							</div>
+						</div>
+
+						<!-- <div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">Clothing Allowance</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">Clothing</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentclothingallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input number-form type="text" ng-model="viewCurrent.newclothingallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="viewCurrent.currentclothingallowance" placeholder="0.00" ng-change="totalCashCompEdit()">
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label class="hidden-xs"  style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">Laundry Allowance</label>
+								<label class="visible-xs" style="font-size: 12px;    padding-top: 5px;	padding-left: 15px">Laundry</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currentlaundryallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input number-form type="text" ng-model="viewCurrent.newlaundryallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="viewCurrent.currentlaundryallowance" placeholder="0.00" ng-change="totalCashCompEdit()">
+							</div>
+						</div> -->
+
+						<div class="col-md-12 col-xs-12" >
+							<div class="col-xs-3" style="font-size:12pt;">
+								<label style="font-size: 12px;    padding-top: 5px;">Total Cash Compensation</label>
+							</div>
+							<div class="col-xs-3" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input class="readonly" disabled type="text" ng-value="viewCurrent.currenttotalcashcomp" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" >
+							</div>
+							<div class="col-xs-6" style="font-size:12pt;font-size:12pt;padding-left: 0px;text-align: right">
+								<input number-form readonly type="text" ng-model="viewCurrent.newtotalcashcomp" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" placeholder="0.00" ng-show="viewCurrent.currenttotalcashcomp">
+							</div>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">REMARKS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="margin-top:15px">
+							<textarea ng-model="viewCurrent.remarks" style="border: 1px black solid;font-size:12px;width: 230px;width: 100%;resize: vertical;min-height: 100px;"></textarea>
+						</div>
+						
+						<!--div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">APPROVALS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 10px 0 0 0;margin-top:15px">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;">Verified by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;">Evaluated by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;">Approved by:</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 20px 0 0 0;">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">Jeanie Lyn Teodor</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">Brian Ortiz</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">Jose Canete</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 0 0 0 0;">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">HR Manager</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">SoftDev Manager</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;">General Manager</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 30px 0 10px 5px">
+							<p style="font-size: 13px;font-weight: bold;margin: 0 0 0;"><span style="padding-right: 30px;">CONFORME:</span> <i>{{viewCurrent.empname}}</i></p>
+						</div-->
+
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">APPROVALS</h5>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 10px 0 0 0;margin-top:15px">
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewCurrent.approver1_id">Verified by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewCurrent.approver2_id">Evaluated by:</p>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;text-align: center;" ng-show="viewCurrent.approver3_id">Approved by:</p>
+							</div>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 20px 0 0 0;">
+							<div class="col-md-4 col-xs-4">
+								<p ng-bind-html="viewCurrent.approver1sign" style="text-align: center;margin-bottom: 0px"></p>
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;" ng-bind-html="viewCurrent.approver1_name" ></p>
+								<div style="text-align: center;font-size: 10px;">{{viewCurrent.approver1desig}}</div>
+								<div style="text-align: center;font-size: 9px;">{{viewCurrent.approver1_date}}&nbsp;{{viewCurrent.approver1_time}}</div>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p ng-bind-html="viewCurrent.approver2sign" style="text-align: center;margin-bottom: 0px"></p>
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;" ng-bind-html="viewCurrent.approver2_name" ></p>
+								<div style="text-align: center;font-size: 10px;">{{viewCurrent.approver2desig}}</div>
+								<div style="text-align: center;font-size: 9px;">{{viewCurrent.approver2_date}}&nbsp;{{viewCurrent.approver2_time}}</div>
+							</div>
+							<div class="col-md-4 col-xs-4">
+								<p ng-bind-html="viewCurrent.approver3sign" style="text-align: center;margin-bottom: 0px"></p>
+								<p style="font-size: 12px;margin: 0 0 0;text-align: center;" ng-bind-html="viewCurrent.approver3_name"></p>
+								<div style="text-align: center;font-size: 10px;">{{viewCurrent.approver3desig}}</div>
+								<div style="text-align: center;font-size: 9px;">{{viewCurrent.approver3_date}}&nbsp;{{viewCurrent.approver3_time}}</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-xs-12" style="padding: 30px 0 10px 5px">
+							<p style="font-size: 13px;font-weight: bold;margin: 0 0 0;"><span style="padding-right: 30px;">CONFORME:</span> <i>{{viewCurrent.empname}}</i></p>
+						</div>
+						
+						<div class="col-md-12 col-xs-12" style="    padding: 15px; border-top: 1px black solid; margin-top: 15px;"> 
+							<p style="font-size: 12px;font-weight: bold;margin: 0 0 0;">Note: Department Manager to mark &nbsp;<i class="fa  fa-check-square-o"></i>&nbsp; for documents recieved by the new hiree/employee. Leave blank if not applicable.</p>
+						</div>
+						<div class="col-md-12 col-xs-12" style="padding: 5px 0 0 0">
+							
+							<div class="col-xs-12" style="margin-bottom: 15px;">
+								<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+									<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+										<label class="radio-inline" style="font-size: 10pt !important">
+											<input type="checkbox" id="iddoc1current" ng-model="viewCurrent.doc_job_desc" ng-true-value="1" ng-false-value="0" ng-change="job_description_ngChangeview()"><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Job&nbsp;Description</span>
+										</label>  
+	
+										<div style="padding:5px 15px 10px 15px">
+											<!-- <input type="file" ngf-select ng-model="viewCurrent.picFile[0]" id="file[0]" name="file[0]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="viewCurrent.doc_job_desc==1" />
+
+											<button type="button" class="btn-primary" ng-click="files2( viewCurrent.jobdescfile );" ng-show="viewCurrent.jobdescfile&&viewCurrent.doc_job_desc==1"><i class="fa  fa-download" aria-hidden="true"></i></button> -->
+											<div class="input-group">
+												<input type="file" ngf-select ng-model="viewCurrent.picFile[0]" id="file[0]" name="file[0]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="viewCurrent.doc_job_desc==1" />
+												<span class="input-group-btn">
+													<button style="padding:1px" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewCurrent.jobdescfile );" ng-show="viewCurrent.jobdescfile&&viewCurrent.doc_job_desc==1"><i class="fa  fa-download" aria-hidden="true"></i></button>
+												</span>
+											</div>
+										</div>
+	
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+									<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+										<label class="radio-inline" style="font-size: 10pt !important">
+											<input type="checkbox" id="iddoc2current" ng-model="viewCurrent.doc_perf_appr" ng-true-value="1" ng-false-value="0" ng-change="perf_appr_ngChangeview()"><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Performance&nbsp;Appraisal</span>
+										</label>  
+	
+										<div style="padding:5px 15px 10px 15px">
+											<!-- <input type="file" ngf-select ng-model="viewCurrent.picFile[1]" id="file[1]" name="file[1]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="viewCurrent.doc_perf_appr==1" />
+
+											<button type="button" class="btn-primary" ng-click="files2( viewCurrent.perfapprfile );" ng-show="viewCurrent.perfapprfile&&viewCurrent.doc_perf_appr==1"><i class="fa  fa-download" aria-hidden="true"></i></button> -->
+											<div class="input-group">
+												<input type="file" ngf-select ng-model="viewCurrent.picFile[1]" id="file[1]" name="file[1]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="viewCurrent.doc_perf_appr==1" />
+												<span class="input-group-btn">
+													<button style="padding:1px" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewCurrent.perfapprfile );" ng-show="viewCurrent.perfapprfile&&viewCurrent.doc_perf_appr==1"><i class="fa  fa-download" aria-hidden="true"></i></button>
+												</span>
+											</div>
+										</div>
+	
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-12 custom-control custom-checkbox" style="padding: 0px;">
+									<div class="form-group col-xs-12" style="padding: 0px;margin: 0px;" >  
+										<label class="radio-inline" style="font-size: 10pt !important">
+											<input type="checkbox" id="iddoc3current" ng-model="viewCurrent.doc_promotion" ng-true-value="1" ng-false-value="0" ng-change="prom_ngChangeview()"><span class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Promotion&nbsp;Request</span>
+										</label>  
+	
+										<div style="padding:5px 15px 10px 15px">
+											<!-- <input type="file" ngf-select ng-model="viewCurrent.picFile[2]" id="file[2]" name="file[2]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="viewCurrent.doc_promotion==1" />
+
+											<button type="button" class="btn-primary" ng-click="files2( viewCurrent.promfile );" ng-show="viewCurrent.promfile&&viewCurrent.doc_promotion==1"><i class="fa  fa-download" aria-hidden="true"></i></button> -->
+											<div class="input-group">
+												<input type="file" ngf-select ng-model="viewCurrent.picFile[2]" id="file[2]" name="file[2]" accept="application/pdf" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;" ng-show="viewCurrent.doc_promotion==1" />
+												<span class="input-group-btn">
+													<button style="padding:1px" type="button" class="btn btn-primary btn-flat" ng-click="files2( viewCurrent.promfile );" ng-show="viewCurrent.promfile&&viewCurrent.doc_promotion==1"><i class="fa  fa-download" aria-hidden="true"></i></button>
+												</span>
+											</div>
+										</div>
+	
+									</div>
+								</div>
+							</div>
+							
+							
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: center;padding: 0 0 0 0">
+							<h5 style="background-color:#00a65a;color: white;margin-bottom: 0px; padding: 5px">PRIVATE AND CONFIDENTIAL</h5>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- FOR NOT CREATOR NOT APPROVER --> 
+					<div class="col-xs-12 paddingZero" ng-show=" viewCurrent.createdbyid != dashboard.values.accountid && !viewCurrent.isApprover " >
+						<div class="col-xs-6 text-left">
+							<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+						</div>
+						<div class="col-xs-6 text-right"></div>
+					</div>
+					<!-- FOR CREATOR NOT APPROVER --> 
+					<div class="col-xs-12 paddingZero" ng-show=" viewCurrent.createdbyid == dashboard.values.accountid && !viewCurrent.isApprover " >
+						<div class="col-xs-6 text-left">
+							<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+						</div>
+						<div class="col-xs-6 text-right">
+							<button style="width:95px;margin-top:3px" type="button" class="btn btn-primary" ng-click="updateEntryWageIncrease( viewCurrent.picFile );">Save</button>
+						</div>
+					</div>
+					<!-- FOR CREATOR AND APPROVER --> 
+					<div class="col-xs-12 paddingZero" ng-show=" viewCurrent.isApprover " >
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.createdbyid == dashboard.values.accountid" >
+							<div class="col-xs-6 text-left">
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 text-right">
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-primary" ng-click="updateEntryWageIncrease( viewCurrent.picFile );">Save</button>
+							</div>
+						</div>
+						<!-- Approver 1 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 1" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve1();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove1();" >Decline</button>
+							</div>
+						</div>
+						<!-- Approver 2 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 2" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve2();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove2();" >Decline</button>
+							</div>
+						</div>
+						<!-- Approver 3 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 3" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve3();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove3();" >Decline</button>
+							</div>
+						</div>
+						<!-- Approver 4 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 4" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve4();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove4();" >Decline</button>
+							</div>
+						</div>
+						<!-- Approver 5 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 5" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve5();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove5();" >Decline</button>
+							</div>
+						</div>
+						<!-- Approver 6 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 6" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve6();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove6();" >Decline</button>
+							</div>
+						</div>
+						<!-- Approver 7 -->
+						<div class="col-xs-12 paddingZero" ng-show="viewCurrent.pending == 7" >
+							<div class="col-xs-6 text-left" ng-show="viewCurrent.createdbyid != dashboard.values.accountid" >
+								<button style="width:95px;margin-top:3px" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="resetSelection()" >Close</button>
+							</div>
+							<div class="col-xs-6 pull-right">
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="approve7();"    >Approve</button>
+								<button style="width:95px;margin-top:3px"  type="button" class="btn btn-primary" ng-click="disapprove7();" >Decline</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Modal View -->
+
+	<!-- Modal View Attachment -->
+	<div class="modal fade" id="current_view_image" style="display:none">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4><i class="fa fa-file-zip-o"></i> Attachment</h4>
+				</div>
+				<div class="modal-body" style="text-align: center;">
+					<img ngf-src="picFile" style="width: 100%; text-align: center;"/>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="cols-xs-12 btn btn-small btn-danger pull-right" data-dismiss="modal" data-toggle="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal View Attachment -->
+
+</div>

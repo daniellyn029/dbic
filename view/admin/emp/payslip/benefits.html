@@ -1,0 +1,679 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #00b050;
+        text-align: center;
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .fw9 {
+        font-weight: 900;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 24px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 11px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+        .pcomp {
+            font-size: 10px !important;
+        }
+
+        .f1280 {
+            font-size: 12px;
+        }
+
+        table {
+            font-size: 9px !important;
+        }
+
+        .fwidth {
+            width: 173px !important;
+        }
+
+        .dot {
+            height: 16px !important;
+            width: 16px !important;
+        }
+
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 10px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+
+    }
+
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .autoh {
+            margin-bottom: 60px !important;
+            height: auto !important;
+        }
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .tm {
+            margin-left: 15px !important;
+            margin-right: 0px !important;
+        }
+
+        .ah {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+
+        .td1 {
+            width: 100% !important;
+        }
+
+        .td2 {
+            width: 100% !important;
+        }
+
+
+
+    }
+
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+
+    .bheight {
+        display: flex;
+        height: auto;
+    }
+
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        text-decoration: underline;
+    }
+
+    .tm {
+        margin-left: 15px;
+        margin-right: 15px;
+
+    }
+
+    .nomargin {
+        margin: 0 !important;
+    }
+
+    .t14px {
+        font-size: 14px;
+    }
+
+    .eh {
+        font-weight: 800;
+        line-height: 16px;
+    }
+
+    .t12px {
+        font-size: 12px;
+    }
+
+    .f11px {
+        font-size: 11px;
+    }
+
+    #calendar-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .dl {
+        cursor: move;
+        z-index: 2;
+    }
+
+    .dot {
+        height: 22px;
+        width: 22px;
+        background-color: green;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .dot2 {
+        height: 22px;
+        width: 22px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+
+    .dot3 {
+        height: 22px;
+        width: 22px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+
+    span {
+        margin-left: 5px;
+    }
+
+    #block_container {
+        height: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    #bloc1,
+    #bloc2 {
+
+        float: left !important;
+    }
+
+    /* .btn-group button {
+
+        background-color: #00b050;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-width: 1px;
+        color: white;
+    }
+
+    .btn-group:after {
+        content: "";
+        clear: both;
+
+    } */
+
+
+    /* */
+
+
+    .btnTD {
+        padding: 0px 18px !important;
+
+    }
+
+    .td1 {
+        padding-top: 13px;
+        width: 10%;
+    }
+
+    .td2 {
+        width: 90%;
+    }
+
+    .btnTD {
+        background-color: rgb(226, 225, 225) !important;
+    }
+
+    .ml-5 {
+        margin-left: 5px !important;
+    }
+
+    .fs25 {
+        font-size: 25px;
+        margin: 0px;
+    }
+
+    .pcomp {
+        font-size: 13px;
+    }
+
+    .btnTDsunit {
+        width: 400px;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+</style>
+
+<div class="wrapper" ng-controller="EPPayslipController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+
+        <section class="content">
+            <div class="autoh"
+                style=" background-color: #c3c7ca !important; color: white; height: 820px; padding-bottom: 2px;">
+                <div class="well well-graphic"
+                    style=" height: 95px !important; background-color: #f39c12  !important; margin-bottom: 11px !important;">
+                    <!-- 
+					<div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-1 col-xs-2">
+                        <div class="imgauto">
+                            <img ng-src="assets/images/lwop.png" style="height: 70px; border-radius: 50%;"
+                                class="user-image" alt="User Image">
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-9 col-lg-11  col-xs-10">
+                        <div class="well-text well-color text-left">
+                            <p class="respontext" style="
+                            margin: 0 0 -5px !important; font-weight: 600 !important;">Compensation
+                            </p>
+                        </div>
+                    </div>
+					-->
+					<div class="row">
+						<div class="col-md-6">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/lwop.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: 600 ; font-size:28pt">Compensation</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;">
+							<ol class="breadcrumb" style="width: 345px;font-size: 9pt;margin-bottom: 0px;">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Employee's Portal</a></li>
+								<li style="color:black !important">Compensation</li>
+								<li class="active">Benefits</li>
+							</ol>
+						</div>
+					</div>
+                </div>
+
+
+
+
+                <div class="row" ng-init="setup_last()">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="well well-lg text-black bheight text-center tm " style="padding: 10px !important;">
+                            <div style="width: 100%;">
+                                <div class="btn-group pull-left" style="margin-top: 2px;width:150px">
+                                    <a href="" class="btn" ng-click="prevc()"
+                                        style="background-color: #f39c12; color: white; padding: 0px !important; border:1px solid black;width:15%">&nbsp;<i
+                                            class="fa fa-angle-double-left"></i></a>
+                                    <a href="" class="btn"
+                                        style="background-color: #f39c12; color: white;  padding: 0px !important; border:1px solid black;width:70%">&nbsp;&nbsp;&nbsp;&nbsp;Month&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                    <a href="" class="btn" ng-click="nextc()"
+                                        style="background-color: #f39c12; color: white;  padding: 0px !important; border:1px solid black;width:15%"><i
+                                            class="fa fa-angle-double-right"></i>&nbsp;</a>
+                                </div>
+                                <div class="pull-right"><input type="text"></div>
+
+                                <div class="content">
+                                    <div class="content" style="padding: 55px !important;">
+                                        <style>
+                                            table {
+                                                font-family: arial, sans-serif;
+                                                border-collapse: collapse;
+                                                width: 100%;
+                                                font-size: 12px;
+                                            }
+
+                                            td,
+                                            th {
+                                                border: 1px solid #dddddd;
+                                                text-align: left;
+                                                padding: 8px;
+                                            }
+
+                                            .grey {
+                                                background-color: #dddddd;
+                                            }
+
+                                            .green {
+                                                background-color: #f39c12;
+                                                color: white;
+
+                                            }
+
+                                            .dgreen {
+                                                background-color: #548235;
+                                                color: white;
+
+                                            }
+
+                                            .noborder {
+                                                background-color: #f5f5f5 !important;
+                                                border: 0px !important;
+                                            }
+
+                                            .fwidth {
+                                                width: 250px;
+                                            }
+                                        </style>
+                                        <h3 class="pull-left" style="margin: 0px !important;">BENEFITS</h3>
+                                        <img ng-src="assets/images/compensation.png"
+                                            style="height: 28px; margin-bottom: 4px;" class="user-image pull-right alt="
+                                            User Image">
+                                        <table>
+                                            <tr class="grey">
+                                                <th class="fwidth"></th>
+                                                <th>Pay item</th>
+                                                <th>Method</th>
+                                                <th>Amount</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Pay Period</th>
+
+                                            </tr>
+                                            <tr class="green">
+                                                <th style="font-size: 14px;">Deminimis</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+
+                                            </tr>
+
+                                            <tr>
+                                                <th class="noborder"></th>
+                                                <th>Rice</th>
+                                                <th>Fixed</th>
+                                                <th>2,500.00</th>
+                                                <th>01-01-2020</th>
+                                                <th>12-31-2020</th>
+                                                <th>01-15-2020</th>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="noborder"></th>
+                                                <th>Clothing</th>
+                                                <th>Fixed</th>
+                                                <th>1,500.00</th>
+                                                <th>01-01-2020</th>
+                                                <th>12-31-2020</th>
+                                                <th>01-15-2020</th>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="noborder"></th>
+                                                <th>Laundry</th>
+                                                <th>Fixed</th>
+                                                <th>500.00</th>
+                                                <th>01-01-2020</th>
+                                                <th>12-31-2020</th>
+                                                <th>01-15-2020</th>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="noborder"></th>
+                                                <th>Food</th>
+                                                <th>Fixed</th>
+                                                <th>3,000.00</th>
+                                                <th>01-01-2020</th>
+                                                <th>12-31-2020</th>
+                                                <th>01-15-2020</th>
+                                            </tr>
+                                            <tr>
+
+                                                <th class="noborder"></th>
+                                                <th class="noborder"></th>
+                                                <th class="text-black">TOTAL PAYMENT</th>
+                                                <th>7,500.00</th>
+                                                <th class="noborder"></th>
+                                                <th class="noborder"></th>
+
+                                                <th class="noborder"></th>
+                                            </tr>
+
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+            </div>
+    </div>
+</div>
+
+</section>
+</div>
+
+<div ng-include="footerTemplate"></div>
+
+</div>

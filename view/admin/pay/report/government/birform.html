@@ -1,0 +1,1472 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	
+	progress[value] {
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+	}
+	progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	progress[value]::-webkit-progress-value {
+	  background-image:
+		   -webkit-linear-gradient(-45deg, 
+								   transparent 33%, rgba(0, 0, 0, .1) 33%, 
+								   rgba(0,0, 0, .1) 66%, transparent 66%),
+		   -webkit-linear-gradient(top, 
+								   rgba(255, 255, 255, .25), 
+								   rgba(0, 0, 0, .25)),
+		   -webkit-linear-gradient(left, #09c, #f44);
+
+		border-radius: 2px; 
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #76dcdc ;  }
+		25%  { background: #62d6d6 ;  }
+		50%  { background: #4dd1d1 ;  }
+		100% { background: #39cccc ;  }
+	}
+    .mybox {
+		  background-image: linear-gradient(black, black);
+		  background-repeat: no-repeat;
+		  background-size: 1px 50%, calc(100% - 4px) 100%;
+		  background-position: right bottom, 1px 0;		  
+		  display: table-cell;
+		  text-align:center;
+		  vertical-align:middle;
+    }
+    .boxlast{
+        display: table-cell;
+        text-align:center;
+        vertical-align:middle;
+    }
+    .tin{
+        width: 40px;
+    }
+
+</style>
+<div class="wrapper" ng-controller="PMMonthlyConController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+			<div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-edit" style="float: left;color:#00000052"></i>									
+					<div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+					<div style="font-size: 15pt; text-indent:15px">BIR 2316 Form</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/pay/process"> Payroll Master's Portal</a></li>
+				 <li><a href=".#/admin/pay/report/register">Government Reports</a></li>
+                <li class="active">BIR 2316 Form</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+        <section class = "content">
+            <div class = "row">
+                <table>
+                    <tr>
+                        <td style="padding-left: 750px;">
+                            <div><img src="assets/images/birlogo1.png"/></div>  
+                        </td>
+                        <td style="line-height: normal;">
+                            <div style="font-size:9pt; margin-left:10px;">Republika ng Pilipinas</div>
+                            <div style="font-size:9pt; margin-left:10px;">Department of Finance</div>
+                            <div style="font-size:9pt; margin-left:10px;">Bureau of Internal Revenue</div>
+                        </td>
+                    </tr>
+                </table>
+                <div id="container" style="width: 1125px !important; margin-left:auto; margin-right:auto;height: 200vh !important;">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="text-align:center; width:15%; border-bottom:1px solid black; border-left:1px solid black; border-top:1px solid black; border-right:1px solid black">
+                                <div style="font-size:10pt">BIR Form No.</div>
+                                <div style="font-size:22pt; font-weight: 900;">2316</div>
+                                <div style="font-size:10pt">January 2018 (ENCS)</div>
+                            </td>
+                            <td style="text-align:center; width:60%; border-bottom:1px solid black; border-top:1px solid black; border-right:1px solid black">
+                                <div style="font-size:16pt">Certificate of Compensation<div style="font-size:16pt">
+                                <div style="font-size:16pt">Payment/Tax Withheld</div>
+                                <div style="font-size:10pt">For Compensation Payment With or Without Tax Withheld</div>
+                            </td>
+                            <td style="width:25%; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black">
+                                <div style="text-align:center;"><img src="assets/images/images.png" style="width:100%;height:60px" /></div>
+                                <div style="font-size:10pt;text-align:right">2316 01/18ENCS</div>
+                            </td>
+                        </tr>
+                        <tr style ="border-left:1px solid black; border-right:1px solid black;">
+                            <td colspan="3">
+                                <div style="font-size:9pt;text-indent:5px">Fill in all applicable spaces. Mark all appropriate boxes with an "X"</div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table border="1" style="width:100%;border:1px solid black;">
+                        <tr>
+                            <td style="width:50%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:35%"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">1</span>
+                                                <span style="margin-left: 20px;">For this Year</span>
+                                            </div>
+                                            <div style="text-indent: 40px;">(YYYY)</div>
+                                        </td>
+                                        <td style="width:60%"> 
+                                            <div style="border:1px solid black;padding:3px;width:160px;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">1</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:50%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:25%;"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">2</span>
+                                                <span style="margin-left: 5px;">For the Period</span>
+                                            </div>
+                                            <div style="text-indent: 20px;">From (<i>MM/DD</i>)</div>
+                                        </td>
+                                        <td style="width: 25%;">                  
+                                            <div style="border:1px solid black;padding:3px;width:160px;display:table-cell">
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid black;padding:3px;width:160px;display:table-cell">
+                                                <div class="tin mybox">1</div>
+                                                <div class="tin boxlast">1</div>
+                                            </div>
+                                        </td>
+                                        <td style="width:25%"> 
+                                            <div> </div>
+                                            <div style="text-indent: 35px;">To (<i>MM/DD</i>)</div>
+                                        </td>
+                                        <td style="width:25%"> 
+                                            <div style="border:1px solid black;padding:3px;width:65px;display:table-cell">
+                                                <div class="tin mybox">1</div>
+                                                <div class="tin boxlast">1</div>
+                                            </div>
+                                            <div style="border:1px solid black;padding:3px;width:65px;display:table-cell">
+                                                <div class="tin mybox">1</div>
+                                                <div class="tin boxlast">1</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;font-size:9pt;"> Part I - Employee Information</td>
+                            <td style="text-align:center;font-size:9pt;"> Part IV-B Details of Compensation Income & Tax Withheld from Present Employer</td>
+                        </tr>
+                    </table>
+                    <table border="1" style="width:100%;border:1px solid black;">
+                        <tr>
+                            <td style="width:50%; vertical-align:top">
+                                <table style="width:100%;">
+                                    <tr>							
+                                        <td style="width:25%"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">3</span>
+                                                <span style="margin-left: 20px;">TIN</span>
+                                            </div>
+                                            <div style="height:15px"></div>
+                                        </td>
+                                        <td style="width:75%"> 
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:120px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                        </td>								
+                                    </tr>
+                                    
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell"> 
+                                                <span style="margin-left: 10px;">4</span>
+                                                <span style="margin-left: 20px;">Employee's Name <i>(Last Name, First Name, Middle Name)</i></span>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <span style="margin-left: 70px;">5</span>
+                                                <span style="margin-left: 10px;">RDO Code</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;float:left"> 									
+                                                <div style="margin-left: 40px;width:375px;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px"></div>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <div style="margin-left: 25px;border:1px solid black;padding:3px;width:105px;margin-bottom:5px">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>									
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">6</span>
+                                                <span style="margin-left: 20px;">Registered Address</span>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <span style="margin-left: 41px;">6A</span>
+                                                <span style="margin-left: 5px;">ZIP Code</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;float:left"> 									
+                                                <div style="margin-left: 40px;width:375px;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px"></div>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <div style="margin-left: 25px;border:1px solid black;padding:3px;width:105px;margin-bottom:5px">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>	
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">6B</span>
+                                                <span style="margin-left: 10px;">Local Home Address</span>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <span style="margin-left: 41px;">6C</span>
+                                                <span style="margin-left: 5px;">ZIP Code</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;float:left"> 									
+                                                <div style="margin-left: 40px;width:375px;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px"></div>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <div style="margin-left: 25px;border:1px solid black;padding:3px;width:105px;margin-bottom:5px">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">6D</span>
+                                                <span style="margin-left: 10px;">Foreign Address</span>
+                                            </div>								
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" > 
+                                            <div> 									
+                                                <div style="margin-left: 40px;width:90%;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px">asdasdasdasdklaslkdaskldlasdlajsdljasldjalsjdlasjdljasdjlasjkldlasdjk </div>
+                                            </div>								
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:450px; border-right:1px solid black"> 
+                                                <span style="margin-left: 10px;">7</span>
+                                                <span style="margin-left: 20px;">Date of Birth <i>(MM/DD/YYYY)</i></span>
+                                            </div>	
+                                            <div style="display:table-cell;width:450px;"> 
+                                                <span style="margin-left: 10px;">8</span>
+                                                <span style="margin-left: 10px;">Contact NUmber</span>
+                                            </div>	
+                                        </td>							
+                                    </tr>						
+                                    <tr>
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px; border-right:1px solid black"> 
+                                                <div style="margin-left: 40px;width:235px">
+                                                    <div style="border:1px solid black;padding:3px;width:65px;display:table-cell">
+                                                        <div class="tin mybox">1</div>
+                                                        <div class="tin boxlast">1</div>
+                                                    </div>
+                                                    <div style="border:1px solid black;padding:3px;width:65px;display:table-cell">
+                                                        <div class="tin mybox">1</div>
+                                                        <div class="tin boxlast">1</div>
+                                                    </div>	
+                                                    <div style="border:1px solid black;padding:3px;width:105px;display:table-cell">
+                                                        <div class="tin mybox">1</div>
+                                                        <div class="tin mybox">1</div>
+                                                        <div class="tin mybox">1</div>
+                                                        <div class="tin boxlast">1</div>
+                                                    </div>	
+                                                </div>
+                                            </div>	
+                                            <div style="display:table-cell;width:450px;"> 
+                                                <div style="margin-left: 25px;border:1px solid black;padding:3px;width:230px;margin-bottom:5px">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>	
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black;">
+                                        <td colspan="2" style= "padding-top: 4px; padding-bottom: 4px; "> 
+                                                
+                                            <div style="display:table-cell;width:290px; vertical-align: top; padding-top: 4px;"> 
+                                                <span style="margin-left: 10px; ">9</span>
+                                                <span style="margin-left: 20px;">Statutory Minimum Wage rate per day</span>
+                                            </div>	
+                                            <div style="display:table-cell;vertical-align: top; width:250px;"> 
+                                                <div style="margin-left: 21px;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;">askldjaskldjl asdaskldjasdasd askld asdlkas dalkd adklas dalskd  </div>
+                                            </div>	
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black;">
+                                        <td colspan="2" style= "padding-top: 4px; padding-bottom: 4px; "> 
+                                                
+                                            <div style="display:table-cell;width:290px; vertical-align: top; padding-top: 4px;"> 
+                                                <span style="margin-left: 10px; ">10</span>
+                                                <span style="margin-left: 10px;">Statutory Minimum Wage rate per month</span>
+                                            </div>	
+                                            <div style="display:table-cell;vertical-align: top; width:250px;"> 
+                                                <div style="margin-left: 21px; min-height:27px; word-wrap: break-word; border:1px solid black; font-size:9pt; overflow:hidden;">asdljkasdlkasjdlakd alsd asld alaj lda dlkasdj laskd alsdkj alsdkj asldk alsd asld asda sdlk</div>
+                                            </div>	
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell; "> 
+                                                <span style="margin-left:10px; ">11</span>
+                                            </div>	
+                                            <div style="display:table-cell; width:40px; padding-top: 4px;"> 
+                                                <div style="margin-left:15px; text-align:center; word-wrap: break-word; border:1px solid black; font-size:13pt;overflow:hidden;">X</div>
+                                            </div>	
+                                            <div style="display:table-cell;"> 
+                                                <span style="margin-left: 3px;">Minimum Wage Earner (MWE) whose compensation is exempt from</span>							
+                                            </div>
+                                            <div>
+                                                <span style="margin-left: 67px;">witholding tax and not subject to income tax</span>							
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;"> 
+                                                <span style="margin-left: 190px; font-size:9pt;">Part II - Employer Information <i>(Present)</i></span>							
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black;">							
+                                        <td style="width:70%"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">12</span>
+                                                <span style="margin-left: 20px;">TIN</span>
+                                            </div>
+                                            <div style="height:15px"></div>
+                                        </td>
+                                        <td style="width:30%"> 
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:120px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                        </td>								
+                                    </tr> 
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">13</span>
+                                                <span style="margin-left: 10px;">Employer's Name</span>
+                                            </div>								
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" > 
+                                            <div> 									
+                                                <div style="margin-left: 40px;width:90%;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px">asdasdasdasdklaslkdaskldlasdlajsdljasldjalsjdlasjdljasdjlasjkldlasdjk </div>
+                                            </div>								
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">14</span>
+                                                <span style="margin-left: 10px;">Registered Address</span>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <span style="margin-left: 41px;">14A</span>
+                                                <span style="margin-left: 5px;">ZIP Code</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;float:left"> 									
+                                                <div style="margin-left: 40px;width:375px;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px"></div>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <!--div style="margin-left: 25px;width:105px;min-height:27px;word-wrap: break-word;border:1px solid grey; font-size:9pt;overflow:hidden;margin-bottom:5px"></div-->
+                                                <div style="margin-left: 25px;border:1px solid black;padding:3px;width:105px;margin-bottom:5px">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-top:1px solid black;">
+                                        <td colspan="2" style="padding-bottom:4px"> 
+                                            <div style="display:table-cell; "> 
+                                                <span style="margin-left:10px; ">15 Type of Employer</span>
+                                            </div>	
+                                            <div style="display:table-cell; width:40px; padding-top: 4px;"> 
+                                                <div style="margin-left:15px; text-align:center; word-wrap: break-word; border:1px solid black; font-size:13pt;overflow:hidden;">X</div>
+                                            </div>	
+                                            <div style="display:table-cell;"> 
+                                                <span style="margin-left: 3px;">Main Employer</span>							
+                                            </div>
+                                            <div style="display:table-cell; width:40px; padding-top: 4px;"> 
+                                                <div style="margin-left:15px; text-align:center; word-wrap: break-word; border:1px solid black; font-size:13pt;overflow:hidden;">X</div>
+                                            </div>
+                                            <div style="display:table-cell;"> 
+                                                <span style="margin-left: 3px;">Secondary Employer</span>							
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;"> 
+                                                <span style="margin-left: 190px; font-size:9pt;">Part III - Employer Information <i>(Previous)</i></span>							
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-top:1px solid black;">							
+                                        <td style="width:25%"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">16</span>
+                                                <span style="margin-left: 20px;">TIN</span>
+                                            </div>
+                                            <div style="height:15px"></div>
+                                        </td>
+                                        <td style="width:280%"> 
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                            <div style="border:1px solid #D3D3D3;display:table-cell;text-align:center;vertical-align:middle;background:#D3D3D3;width:25px;border-right: 0px;">-</div>
+                                            <div style="border:1px solid black;padding:3px;width:120px;display:table-cell;">
+                                                <div class="tin mybox">2</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin mybox">0</div>
+                                                <div class="tin boxlast">9</div>
+                                            </div>
+                                        </td>								
+                                    </tr>
+
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">17</span>
+                                                <span style="margin-left: 10px;">Employer's Name</span>
+                                            </div>								
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" > 
+                                            <div> 									
+                                                <div style="margin-left: 40px;width:90%;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px">asdasdasdasdklaslkdaskldlasdlajsdljasldjalsjdlasjdljasdjlasjkldlasdjk </div>
+                                            </div>								
+                                        </td>
+                                    </tr>
+                                    <tr style="border-top:1px solid black">
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;width:400px"> 
+                                                <span style="margin-left: 10px;">18</span>
+                                                <span style="margin-left: 10px;">Registered Address</span>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <span style="margin-left: 41px;">18A</span>
+                                                <span style="margin-left: 5px;">ZIP Code</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2" > 
+                                            <div style="display:table-cell;float:left"> 									
+                                                <div style="margin-left: 40px;width:375px;min-height:27px;word-wrap: break-word;border:1px solid black; font-size:9pt;overflow:hidden;margin-bottom:5px"></div>
+                                            </div>
+                                            <div style="display:table-cell">  
+                                                <!--div style="margin-left: 25px;width:105px;min-height:27px;word-wrap: break-word;border:1px solid grey; font-size:9pt;overflow:hidden;margin-bottom:5px"></div-->
+                                                <div style="margin-left: 25px;border:1px solid black;padding:3px;width:105px;margin-bottom:5px">
+                                                    <div class="tin mybox">2</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr> 
+                                        <tr style="border-top:1px solid black;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;"> 
+                                                <span style="margin-left: 190px; font-size:9pt;">Part IVA - Summary</span>							
+                                            </div>
+                                        </td>
+                                    </tr>  
+
+                                    <tr style="border-top:1px solid black; font-size:10pt;">
+                                        <td colspan="2" style="padding-top: 10px;"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">19 Gross Compensation Income From Present</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;">Employer <i>(Sum of Items 36 and 50)</i></span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">20 Less: Total Non-Taxable/Exempt Compensation</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;">Income from Present Employer <i>(From Item 36)</i></span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;width: 281px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">21 Taxable Compensation Income from Present</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;">Employer <i>(Item 19 Less Item 20) (From Item 50)</i></span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">22 Add: Taxable Compensation Income From</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;">Previous Employer. If applicable</span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">23 Gross Taxable Compensation Income</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;"><i>(Sum of Items 21 and 22)</i></span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">24 Tax Due</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;"></span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">25 Amount of Taxes Withheld</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;">25A Present Employer</span>									
+                                                </div>		
+                                                <div> 
+                                                    <span style="margin-left: 20px;">25B Previous Employer, If applicable</span>									
+                                                </div>				
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black; margin-bottom: 2px; padding-bottom: 20px;">
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr style="font-size:10pt;">
+                                        <td colspan="2" style="padding-top: 5px;"> 
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <div> 
+                                                    <span style="margin-left: 3px;">26 Total Amount of Taxes Withheld as adjusted</span>									
+                                                </div>			
+                                                <div> 
+                                                    <span style="margin-left: 20px;"><i>(Sum of Items 25A and 25B)</i></span>									
+                                                </div>						
+                                            </div>
+                                            <div style="display:table-cell;width: 280px;"> 
+                                                <input type="text" style="margin-left: 100px; height:30px;border:1px solid black;">					
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            
+                            <td style="width:50%; vertical-align:top">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">A.</span>
+                                                <span >NON-TAXABLE/EXEMPT COMPENSATION INCOME</span>
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <div> AMOUNT</div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">27 Basic Salary (Including the exempt P250,000 & below)</span>									
+                                            </div>
+                                            <div> 
+                                                <span style="margin-left: 25px;">or the Statutory minimum Wage of the MWE</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">28 Holiday Pay (MWE)</span>									
+                                            </div>								
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">29 Overtimes Pay (MWE)</span>									
+                                            </div>								
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">30 Night Shift Differential (MWE)</span>									
+                                            </div>								
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">31 Hazard Pay (MWE)</span>									
+                                            </div>								
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">32 13th Month Pay and Other Benifits</span>									
+                                            </div>
+                                            <div> 
+                                                <span style="margin-left: 25px;"><i>(maximum of P90,000)</i></span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">33 De Minimis Benifits</span>									
+                                            </div>								
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">34 SSS, GSIS, PHIC & PAG-IBIG Contributions</span>									
+                                            </div>
+                                            <div> 
+                                                <span style="margin-left: 25px;">and Union Dues <i>(Employee share only)</i></span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">35 Salaries and Other Forms of Compensation</span>									
+                                            </div>
+                                            <div> 
+                                                <span style="margin-left: 25px;">and Union Dues</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">36 Total Non-Taxable/Exempt Compensation</span>									
+                                            </div>
+                                            <div> 
+                                                <span style="margin-left: 25px;">Income <i>(Sum of Itens 27 to 35)</i></span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;"><strong>B. TAXABLE COMPENSATION INCOME REGULAR</strong></span>									
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">37 Basic Salary</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:17px"> 
+                                                <span style="margin-left: 3px;">38 Representation</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:17px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:15px"> 
+                                                <span style="margin-left: 3px;">39 Transportation</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:17px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">40 Cost of Living Allowance (COLA)</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">41 Fixed Housing Allowance</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-3px"> 
+                                                <span style="margin-left: 3px;">42 Others <i>(specify)</i></span>									
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:30%"> 
+                                            <div style="display:table-cell; margin-top:-3px"> 
+                                                <span style="margin-left: 20px;">42A </span>									
+                                            </div>
+                                            <div style="display:table-cell;"> 
+                                                <input type="text" style="width: 150px; height:30px;  margin-left:5px " />									
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td style="width:30%"> 
+                                            <div style="display:table-cell; margin-top:3px"> 
+                                                <span style="margin-left: 20px;">42B </span>									
+                                            </div>
+                                            <div style="display:table-cell;"> 
+                                                <input type="text" style="width: 150px; height:30px; margin-left:5px; margin-top: -6px; " />									
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center; padding-top:2px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:30%"> 
+                                            <div style="display:table-cell; margin-top:3px"> 
+                                                <span style="margin-left: 20px;"><strong>SUPPLEMENTARY</strong></span>									
+                                            </div>
+                                            </td>
+                                    </tr>   
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">43 Commission</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">44 Profit Sharing</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">45 Fees Including Director's Fees</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">46 Taxable 13th Month Benefits</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">47 Hazard Pay</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%"> 
+                                            <div style="margin-top:-5px"> 
+                                                <span style="margin-left: 3px;">48 Overtime Pay</span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width:70%; padding-top:5px;"> 
+                                            <div style="margin-top:-3px"> 
+                                                <span style="margin-left: 3px;">49 Others <i>(specify)</i></span>									
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:30%"> 
+                                            <div style="display:table-cell; margin-top:-3px"> 
+                                                <span style="margin-left: 20px;">49A </span>									
+                                            </div>
+                                            <div style="display:table-cell;"> 
+                                                <input type="text" style="width: 150px; height:30px;  margin-left:5px " />									
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center; padding-top:8px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>   
+                                    <tr>
+                                        <td style="width:30%"> 
+                                            <div style="display:table-cell; margin-top:3px"> 
+                                                <span style="margin-left: 20px;">49B </span>									
+                                            </div>
+                                            <div style="display:table-cell;"> 
+                                                <input type="text" style="width: 150px; height:30px; margin-left:5px; margin-top: -6px; " />									
+                                            </div>
+                                        </td>
+                                        <td style="text-align:center; padding-top:2px;"> 
+                                            <input type="text" style="width: 150px;height:30px" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:70%; padding-top:15px;"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">50 Total Taxable Compensation Income</span>									
+                                            </div>
+                                            <div> 
+                                                <span style="margin-left: 25px;"><i>(Sum of Items 37 to 49B)</i></span>									
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;text-align:center;padding-top:5px;"> 
+                                            <input type="text" style="width: 150px;height:30px;" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <table style="width:100%; text-align: middle;">
+                        <tr style = "border-left:1px solid black; border-right:1px solid black;">
+                            <td colspan="1">
+                                <div> 
+                                    <span style="margin-left: 30px; font-size:10pt;text-indent:5px">I/We declare, under the penalties of perjury that this certificate has been made in good faith, verified by me/us, and to the best of my/our knowledge and belief, is true and correct, pursuant to</span>				
+                                </div>
+                                <div> 
+                                    <span style="margin-left: 20px; font-size:10pt;text-indent:5px">the provisions of the National Internal Revenue Code, as amended, and the regulations issued under authority thereof. Further, I/we give my/our consent to the processing of my/our information</span>									
+                                </div>
+                                <div> 
+                                    <span style="margin-left: 20px; font-size:10pt;text-indent:5px">as contemplated under the *Data Privacy Act of 2012 (R.A No. 10173) for legitimate and lawful purposes.</span>									
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table border="1" style="width:100%; text-align: middle;">
+                        <tr>
+                            <td colspan="2" style = "padding-top:20px;"> 
+                                <table style="width:100%">
+                                    <tr>
+                                        <td>
+                                            <div style="display:table-cell; width: 280px;"> 									
+                                                <span style="margin-left: 20px;">51</span>
+                                                <div style="margin-left:40px;width:375px;min-height:27px;word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;margin-bottom:5px; text-align:center;">Present Employer/Authorized Agent Signature over Printed Name</div>
+                                                <span><strong>CONFORME:</strong></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display:table-cell; width: 420px;"> 									
+                                                <!-- <span style="margin-left: 20px;">51</span> -->
+                                                <div style="display:table-cell;text-align:center;vertical-align:middle;width:100px;">Date Asigned</div>
+                                                <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                                <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                                <div style="border:1px solid black;padding:3px;width:120px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div style="display:table-cell; width: 280px;"> 									
+                                                <span style="margin-left: 20px;">52</span>
+                                                <div style="margin-left:40px;width:375px;min-height:27px;word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden;margin-bottom:5px; text-align:center;">Employer Signature over Printed Name</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="display:table-cell; width: 420px;"> 									
+                                                <!-- <span style="margin-left: 20px;">51</span> -->
+                                                <div style="display:table-cell;text-align:center;vertical-align:middle;width:100px;">Date Asigned</div>
+                                                <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                                <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                                <div style="border:1px solid black;padding:3px;width:120px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div style="display:table-cell;"> 									
+                                                <div style="display:table-cell">CTC/Valid ID No. <br>
+                                                of Employee</div>
+                                                <div style="padding:3px;display:table-cell;">
+                                                    <input type="text" style="margin-left: 20px; height:30px;border:1px solid black;">
+                                                </div>
+                                                <div style="display:table-cell; padding-left:10px;">Place of<br>
+                                                    Issue</div>
+                                                <div style="padding:3px;display:table-cell;">
+                                                    <input type="text" style="margin-left: 20px; height:30px;border:1px solid black;">
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div style="display:table-cell; width: 420px;"> 									
+                                                <div style="display:table-cell;text-align:center;vertical-align:middle;width:100px;">Date Asigned</div>
+                                                <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                                <div style="border:1px solid black;padding:3px;width:70px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                                <div style="border:1px solid black;padding:3px;width:120px;display:table-cell;">
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin mybox">0</div>
+                                                    <div class="tin boxlast">9</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div style="width: 115px;"> 			
+                                                <span>Amount Paid, if CTC</span>
+                                                <div>
+                                                    <input type="text" style=" width:60px; margin-left: 20px; margin-bottom:5px; height:30px;border:1px solid black;">
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%;">
+                        <tr style ="border-left:1px solid black; border-right:1px solid black;">
+                            <td colspan="1">
+                                <div> 
+                                    <span style="margin-left:450px; font-size:10pt;"><strong>To be accomplished under substituted filing</strong></span>				
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table border="1" style="width:100%; text-align: middle;">
+                            <tr>
+                                <td style = "vertical-align: top;"> 
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td>
+                                                <div style="display:table-cell; width:750px; font-size:9pt;"> 									
+                                                    <div> 
+                                                        <span style="margin-left:85px;">I declare, under the penalties of perjury that the information herein stated are</span>	
+                                                    </div>			
+                                                    <div> 
+                                                        <span style="margin-left:75px;">reported under BIR Form No. 1604-C which has been filed with the Bureau of</span>		
+                                                    </div>	
+                                                    <div> 
+                                                        <span style="margin-left:75px;">Internal Revenue.</span>									
+                                                    </div>	
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style = "padding-top:20px;"> 									
+                                                    <span style="margin-left: 75px;">53</span>
+                                                    <div style="margin-left:95px; width:375px; min-height:27px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden; margin-bottom:5px; text-align:center;">Present Employer/Authorized Agent Signature over Printed Name <br> (Head of Accounting/Human Resource or Authorized Representative)</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td colspan="2" > 
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td>
+                                                <div style="display:table-cell; width:750px; font-size:8pt;"> 									
+                                                    <div> 
+                                                        <span style="margin-left:50px;">I declare, under the penalties of perjury that I am qualified under substituted filing of Income Tax Return</span>	
+                                                    </div>			
+                                                    <div> 
+                                                        <span style="margin-left:30px;">(BIR Form No. 1700), since I received purely compensation income from only one employer in the Philippines</span>		
+                                                    </div>	
+                                                    <div> 
+                                                        <span style="margin-left:30px;">for the calendar year; that taxes have been correctly withheld by my employer (teax due equals tax withheld; that)</span>									
+                                                    </div>	
+                                                    <div> 
+                                                        <span style="margin-left:30px;">the BIR Form No. 1604-C filed by my employer to the BIR shall constitute as my income tax return; and that BIR</span>									
+                                                    </div>
+                                                    <div> 
+                                                        <span style="margin-left:30px;">Form No.2316 shall serve the same purpose as if BIR Form No. 1700 has been filed pursuant to the provisions</span>									
+                                                    </div>
+                                                    <div> 
+                                                        <span style="margin-left:30px;">of Revenue Regulations (RR) No. 3-2002, as amended.</span>									
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style = "padding-top:20px;"> 									
+                                                    <span style="margin-left: 75px;">54</span>
+                                                    <div style="margin-left:95px; width:375px; min-height:27px; word-wrap: break-word; border-top:1px solid black; font-size:9pt; overflow:hidden; margin-bottom:5px; text-align:center;">Employee Signature over Printed Name</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                    </table>
+                    <tr>
+                        <span>*NOTE: The BIR Data Privacy is in the BIR website (www.bir.gov.ph)</span>	
+                    </tr>
+                </div>
+                <!--/.Container-->
+            </div>
+        </section>
+
+
+    </div>
+    <!--/.content wrapper-->
+    <div ng-include="footerTemplate"></div>
+
+</div>

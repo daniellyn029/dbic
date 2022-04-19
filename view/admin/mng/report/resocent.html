@@ -1,0 +1,413 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black; 
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #0073b7 ;  }
+	}
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+    }
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+        .respontext {
+            font-size: 40px;
+        }
+    }
+    @media screen and (max-width: 1366px) {
+        .respontext {
+            font-size: 30px !important;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        .respontext {
+            font-size: 30px !important;
+        }
+
+
+    }
+    .well {
+        border-radius: 0px !important;
+    }
+
+    .breadcrumb {
+        padding: 8px 3px;
+        margin-bottom: 20px;
+        list-style: none;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+    }
+    /* HeaderBackground */
+    .background{
+        color:white;
+        background-color: #00a65a;
+        text-align:center
+    }
+
+    /* freeze Header */
+	tbody{
+		display:block;
+        overflow:auto; 
+	}
+	thead, tbody tr {
+		display:table;
+		width:100%;
+		table-layout:fixed;
+	} 
+
+    /* CostumizeScrollBar */
+    .style-1::-webkit-scrollbar{
+        height:10px;
+        width:4px;
+        border-radius: 4px;
+        background: transparent;
+        transition: all 0.3s ease;
+        }
+    .style-1::-webkit-scrollbar:hover{
+        background: #c6c7ca;
+    }
+    .style-1::-webkit-scrollbar-thumb{
+        background: #777779;
+        border-radius: 4px;
+    }
+    /* ModalFilter */
+    .select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	}
+    label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+    
+    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #00a65a;
+        border-color: #00a65a;
+    }
+    .padtop10{
+        padding-top: 10px;
+    }
+    .headd{
+        font-size: 15pt;
+        height: 30px;
+        text-align: right;
+    }
+    .headdpad{
+        padding:5px;
+    }
+    
+
+	
+</style>
+<div class="wrapper" ng-controller="MNGResoCenterController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        
+        <section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            
+			<div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+                    
+					<div class="row">
+						<div class="col-md-6" style="margin-bottom:15px">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/icons/HRIS Dashboard icon Manager.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Staff Management</p>
+								<p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">Resolution Center Report</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+							<ol class="breadcrumb" style="width: 300px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Manager's Portal</a></li>
+								<li class="active">Resolution Center Report</li>
+							</ol>
+						</div>
+					</div>
+            </div>
+
+        </section>
+	
+	
+        <section class="content">
+            <div class="row" style="padding: 10px 50px 0 50px;">
+                <div class = "col-md-12 col-xs-12" style="padding:0;">
+                    <div style="font-size:25pt; text-align:left; font-weight: bold;">Resolution Center</div>
+                    <div style="font-size:11pt; text-align:left; padding-bottom:20px; color:black" >CutoffPeriod From {{dashboard.values.period.pay_start | date:"MM/dd/yyyy"}} to {{dashboard.values.period.pay_end | date:"MM/dd/yyyy"}}</div>
+                </div>
+                <div class = "col-md-12" style="text-align: left; margin: 10px 0px 10px 0px; padding:0;">
+                    <div class = "col-md-6 col-xs-12" style="text-align: left; padding:0;">
+                        <div class="search-input-wrapper">
+                            <div class="btn-toolbar">
+                                <label>Show
+                                    <select class="" ng-model="dashboard.values.pageSize">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                    entries
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-12" style="text-align: right; padding:0;">
+                        <button style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;" ng-click="export();"><i class="fa fa-file-excel-o fa-sm"></i>&nbsp;&nbsp;&nbsp;Export</button>
+                        <button style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;" title="Search" data-toggle="modal" data-target="#myModal"><i class="fa fa-search fa-sm"></i>&nbsp;&nbsp;&nbsp;Filter</button>
+                        <button id="btn-refreshh" ng-click="refresh();" style="width:100px; margin: 0 3px 0 3px; color: white; border-radius: 5px;border-width: 1px;background: black;"><i class="fa fa-refresh fa-sm"></i>&nbsp;&nbsp;&nbsp;Refresh</button>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 headd"style="background-color: #c6c7ca;padding:0;">
+                    <span class="headdpad"></span>
+                   
+                </div>
+                <div class = "col-md-12 col-xs-12">
+                    <div class="row style-1" style ="overflow: auto;">
+                        <table id="sortableView" class="sortable table-striped" ng-init="resocenter_func();" >
+                            <thead>
+                                <tr>
+                                    <th class = "background" style="height:40px; width:200px; border: 1px solid white;" >
+                                        <div style = " font-size:11pt; text-align: left;padding:0px 5px 0px 5px">Name</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;padding:0px 5px 0px 5px">Date</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;padding:0px 5px 0px 5px">Shift</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;padding:0px 5px 0px 5px">Time IN</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;padding:0px 5px 0px 5px">Time OUT</div>
+                                    </th>
+                                    <th class = "background" style="width:100px; border: 1px solid white;">
+                                        <div style = "font-size:11pt; text-align: center;padding:0px 5px 0px 5px">Remarks</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="style-1" style="height:400px;">
+                                <tr dir-paginate="view in resocenter_view | itemsPerPage: dashboard.values.pageSize" current-page="dashboard.values.ResoCentPage" ng-show="resocenter_view.length > 0">
+                                    <td style="height:40px; width:200px; word-wrap: break-word;vertical-align: top;">
+                                        <div style = " font-size:11pt; text-align: left;padding:0px 5px 0px 5px;">{{view.empname}}</div>
+                                    </td>
+                                    <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                        <div style = "font-size:11pt; text-align: left;padding:0px 5px 0px 5px;">{{view.reso_date}}</div>
+                                    </td>
+                                    <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                        <div style = "font-size:11pt; text-align: left;padding:0px 5px 0px 5px;">{{view.shift}}</div>
+                                    </td>
+                                    <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                        <div style = "font-size:11pt; text-align: left;padding:0px 5px 0px 5px;">{{view.timein}}</div>
+                                    </td>
+                                    <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                        <div style = "font-size:11pt; text-align: left;padding:0px 5px 0px 5px;">{{view.timeout}}</div>
+                                    </td>
+                                    <td style="width:100px; word-wrap: break-word;vertical-align: top;">
+                                        <div style = "font-size:11pt; text-align: left;padding:0px 5px 0px 5px;">{{view.reso_txt}}</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.Row-->                    
+                </div>
+                <!-- Pagination -->
+                <div class="text-right">
+                    <dir-pagination-controls boundary-links="true" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+                </div>
+                <!-- /.pagination -->
+                
+                <!--Modal-->
+                <div class="modal fade modal-info" id="myModal" role="dialog"style="background: rgba(0, 0, 0, 0.8);">
+					<div class="modal-dialog">
+						<div class="modal-header" style="background: #0073b7 !important; border-color: #0073b7  !important;" >
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+									aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Filter</h4>
+						</div>
+						<!-- display sa modal design-->
+                        <div class="modal-body" style="background: white !important">     
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-black">
+                                        <label for="employee">Select Employee:</label>
+										<select select2 ng-disabled="isSaving" id="search_acct" class="form-control" ng-model="search_acct" ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct track by search_employees.id" required style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+										</select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="_from">From:</label>
+                                        <input type="text" readonly searchdatepickers ng-model="_from" class="form-control" maxlength="10" id="_from_id" name="_from_name" required style="text-align-last: center;border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;"  />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="_to">To:</label>
+                                        <input type="text" readonly searchdatepickers ng-model="_to" class="form-control" maxlength="10" id="_to_id" name="_to_name" required style="text-align-last: center;border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;"  />
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>     
+						<div class="modal-footer" style="background: #0073b7 !important; border-color: #0073b7  !important;">
+							<button style="width:100px" type="button" class="btn btn-danger pull-left" ng-click="resetSearch()" data-dismiss = "modal">Reset</button>
+							<button style="width:100px" type="button" class="btn btn-primary" data-dismiss = "modal" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+						</div>
+					</div>
+                </div>
+				<!--/.Modal-->
+                
+            </div>
+        </section>
+
+
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

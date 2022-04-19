@@ -1,0 +1,313 @@
+<style type="text/css">
+	.paddingZero{ padding:0}
+	.headerShade{ background:#00a65a}
+	.border{ border:1px solid #E1E1E1}
+	/* .margin{ margin-bottom: 1%;} */
+	.ng-binding img{
+		width:100px;
+	}
+	
+	.ng-binding .txtname{
+		position:relative;
+		left:5px;
+		top:-30px
+	}
+	.disable{
+		background: white !important;
+	}
+	.readonly{
+		background: white;
+	}
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		border-bottom: 1px solid black !important;
+		height: 20px !important;
+		font-size: 12px;
+		padding: 1px !important;
+		text-align-last: center !important;
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 10px !important;
+	}
+	.wordwrap { 
+	   white-space: pre-wrap;      /* CSS3 */   
+	   white-space: -moz-pre-wrap; /* Firefox */    
+	   white-space: -pre-wrap;     /* Opera <7 */   
+	   white-space: -o-pre-wrap;   /* Opera 7 */    
+	   word-wrap: break-word;      /* IE */
+	}
+	.angular-with-newlines {
+		white-space: pre-wrap;
+	}
+	.inputBorders{border-bottom: none; border-right: none; border-top: none; }
+	.inputcolor::-webkit-input-placeholder{color: #000 !important; font-family:Georgia, "Times New Roman", Times, serif; font-weight:bold}
+	.txtresize{ resize:vertical; }	
+
+	.style-15::-webkit-scrollbar{
+		height:10px;
+		width:4px;
+		border-radius: 4px;
+		background: transparent;
+		transition: all 0.3s ease;
+	}
+	.style-15::-webkit-scrollbar:hover{
+		background: #c6c7ca;
+	}
+	.style-15::-webkit-scrollbar-thumb{
+		background: #777779;
+		border-radius: 4px;
+	}
+    </style>
+<div ng-controller="EPCashAdvanceController">	
+
+	<!-- Modal -->
+	<div class="modal fade entryfrm" id="CashAdvanceEntry" data-backdrop="static" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important;z-index: 1049 !important" >
+		<div class="modal-dialog modal-lg">
+		
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row paddingZero">
+						<div class="col-md-6 col-xs-6" style="text-align: left;padding-bottom: 5px;">
+							<img src="assets/images/Delsan Business Solution GREEN2.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-6 col-xs-6" style="text-align: right;padding-bottom: 5px;">
+							<img src="assets/images/delsanlogo.png" style="width: 200px;" />
+						</div>
+						<div class="col-md-12 col-xs-12" style="text-align: right;padding: 20px 15px 0px 15px">
+                            <span><b>EMPLOYEE SALARY ADVANCE FORM</b></span>
+						</div>
+						<div class="col-md-12 col-xs-12">
+							<div class="col-md-8 col-xs-12" style="border:1px solid black">
+								<div class="col-md-3 col-xs-4 paddingZero"><b>Employee Name</b></div>
+								<div class="col-md-9 col-xs-8 paddingZero">{{entry.empname}}&nbsp;({{entry.empid}})</div>
+							</div>
+							<div class="col-md-4 col-xs-12" style="border:1px solid black">
+								<div class="col-md-4 col-xs-4 paddingZero">&nbsp;</div>
+								<div class="col-md-8 col-xs-8 paddingZero">&nbsp;</div>
+							</div>
+							<div class="col-md-8 col-xs-12" style="border:1px solid black">
+								<div class="col-md-3 col-xs-4 paddingZero"><b>Position/Dept.</b></div>
+								<div class="col-md-9 col-xs-8 paddingZero">{{entry.position}} / {{entry.department}}</div>
+							</div>
+							<div class="col-md-4 col-xs-12" style="border:1px solid black">
+								<div class="col-md-4 col-xs-4 paddingZero"><b>Date Hired</b></div>
+								<div class="col-md-8 col-xs-8 paddingZero">{{entry.datehired | date : "MMMM dd, y"}}</div>
+							</div>
+							<div class="col-md-6 col-xs-12" style="border:1px solid black;height:180px">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Reason for Salary Advance (Pls. Check)</b></div>
+								<div class="col-md-12 col-xs-12">
+									<input id="health" type="radio" ng-model="entry.reason" value="Health/Sickness/Medication" ng-change="reasonChange();">
+									<label for="health" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Health/Sickness/Medication</label>
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<input id="educ" type="radio" ng-model="entry.reason" value="Education" ng-change="reasonChange();">
+									<label for="educ" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Education</label>
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<input id="hosp" type="radio" ng-model="entry.reason" value="Hospitalization" ng-change="reasonChange();">
+									<label for="hosp" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Hospitalization</label>
+								</div>
+							</div>
+							<div class="col-md-6 col-xs-12" style="border:1px solid black;height:180px">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Attach Documents/Required</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="entry.reason=='Health/Sickness/Medication'">Health/Sickness/Medication</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Health/Sickness/Medication'">
+									<input id="medcert" type="checkbox" ng-model="entry.medcert" ng-true-value="1" ng-false-value="0">
+									<label for="medcert" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Medical Certificate</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Health/Sickness/Medication'">
+									<input type="file" ngf-select ng-model="entry.aFile[0]" id="file[0]" name="file[0]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.medcert==1" />
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Health/Sickness/Medication'">
+									<input id="docpresc" type="checkbox" ng-model="entry.docpresc" ng-true-value="1" ng-false-value="0">
+									<label for="docpresc" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Doctor's Prescription</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Health/Sickness/Medication'">
+									<input type="file" ngf-select ng-model="entry.aFile[1]" id="file[1]" name="file[1]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.docpresc==1" />
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Health/Sickness/Medication'">
+									<input id="ormeddoc" type="checkbox" ng-model="entry.ormeddoc" ng-true-value="1" ng-false-value="0">
+									<label for="ormeddoc" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Official receipt (Medicine/Doctor's Fee)</label>
+								</div>
+								<div class="col-md-12 col-xs-12">
+									<input type="file" ngf-select ng-model="entry.aFile[2]" id="file[2]" name="file[2]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.ormeddoc==1" />
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="entry.reason=='Education'">Education</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Education'">
+									<input id="assessform" type="checkbox" ng-model="entry.assessform" ng-true-value="1" ng-false-value="0">
+									<label for="assessform" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Assessment Form</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Education'">
+									<input type="file" ngf-select ng-model="entry.aFile[3]" id="file[3]" name="file[3]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.assessform==1" />
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Education'">
+									<input id="billstate" type="checkbox" ng-model="entry.billstate" ng-true-value="1" ng-false-value="0">
+									<label for="billstate" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Billing Statement</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Education'">
+									<input type="file" ngf-select ng-model="entry.aFile[4]" id="file[4]" name="file[4]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.billstate==1" />
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Education'">
+									<input id="orsch" type="checkbox" ng-model="entry.orsch" ng-true-value="1" ng-false-value="0">
+									<label for="orsch" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Official receipt (School Fee)</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Education'">
+									<input type="file" ngf-select ng-model="entry.aFile[5]" id="file[5]" name="file[5]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.orsch==1" />
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="entry.reason=='Hospitalization'">Hospitalization</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Hospitalization'">
+									<input id="pbsor" type="checkbox" ng-model="entry.pbsor" ng-true-value="1" ng-false-value="0">
+									<label for="pbsor" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Partial Billing Statement or Official Receipt</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Hospitalization'">
+									<input type="file" ngf-select ng-model="entry.aFile[6]" id="file[6]" name="file[6]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.pbsor==1" />
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Hospitalization'">
+									<input id="hospmedcert" type="checkbox" ng-model="entry.hospmedcert" ng-true-value="1" ng-false-value="0">
+									<label for="hospmedcert" class="docname" style="margin-top: 1px;position: absolute;padding-left:5px">Medican Certificate</label>
+								</div>
+								<div class="col-md-12 col-xs-12" ng-show="entry.reason=='Hospitalization'">
+									<input type="file" ngf-select ng-model="entry.aFile[7]" id="file[7]" name="file[7]" accept="application/pdf,image/*" ng-disabled="isSaving" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:10px;width: 100%;margin-bottom:5px" ng-show="entry.hospmedcert==1" />
+								</div>
+							</div>
+
+							<div class="col-md-12 col-xs-12" style="border:1px solid black;height:180px;">
+								<div class="col-md-12 col-xs-12" style="padding:10px 0 0 0" ng-show="entry.reason"><b>Explanation:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" ng-show="entry.reason">
+									<textarea style="resize: none;border:1px solid #ddd;width:100%;height: 130px;background: white;text-align: justify;" ng-disabled="isSaving" class="form-control txtresize style-15" ng-model="entry.explanation"></textarea>
+								</div>
+							</div>
+
+							<!-- <div class="col-md-6 col-xs-12" style="border:1px solid black;height:60px">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Confirmed by:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 12px"><u>RYAN CARDOZA</u></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 12px">Accounting</div>
+							</div> -->
+							<div class="col-md-12 col-xs-12" style="padding-top:10px"><b>Employee's Undertaking:</b></div>
+							<div class="col-md-12 col-xs-12" style="padding-top:10px"><span>I, <b><u>{{entry.empname}}</u></b>, request a cash advance of</span> <input number-form type="text" ng-model="entry.loanamount" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:80px" placeholder="0.00"> <span>on my salary payable</span></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px"><span>On the payroll date of</span> <input id="payabledate" readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="entry.payabledate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;"><span>If this request is approved, I agree to repay this advance in</span> <input number-form type="text" ng-model="entry.terms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:60px" placeholder="0"> <span>equal semi-monthly salary deductions from the next pay periods immediately following the pay period from which this advance is made. I agree to liquidate my cash advance by submitting required official documents stated above.</span></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;"><span>I also agree that in case of separation from the company prior to total payment of this advance, I authorize the company to deduct any unpaid advance amount from any wages/salary due me at the time of termination of employment.</span></div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:30px;text-align: justify;">
+								<div class="col-md-6 col-xs-12 paddingZero"><span><b>Employee Signature: </b>{{entry.empname}}</span></div>
+								<!-- <div class="col-md-6 col-xs-12 paddingZero"><span><b>Date: </b>07/07/2020</span></div> -->
+							</div>
+
+							<!-- <div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;">
+								<div class="col-md-12 col-xs-12 paddingZero"><span><b>Received/Endorsed by:</b></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span><u>Jerald Joshua Echavia</u></span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span><u>07/07/2020</u></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span>HR Officer</span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;">
+								<div class="col-md-12 col-xs-12 paddingZero"><span><b>Endorsed by:</b></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span><u>Ryan Cardoza</u></span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span><u>07/07/2020</u></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span>Accounting</span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="hidden-xs col-md-12 col-xs-12" style="border:1px solid black;height:130px;margin-top:10px;">
+								<div class="col-md-12 col-xs-12" style="padding: 5px 0 0 0"><b>Accounting use only:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Amount of outstanding balance from previous advances:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="entry.bal" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Loanable amount:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="entry.loanable" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Payment terms semi-monthly:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="entry.payterms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">First payment date:</div>
+									<div class="col-md-6 paddingZero"><input id="firstpaydate" readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="entry.firstpaydate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+								</div>
+							</div>
+
+							<div class="visible-xs col-md-12 col-xs-12" style="border:1px solid black;height:200px;margin-top:10px;">
+								<div class="col-md-12 col-xs-12 paddingZero"><b>Accounting use only:</b></div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Amount of outstanding balance from previous advances:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="entry.bal" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Loanable amount:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="entry.loanable" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0.00"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">Payment terms semi-monthly:</div>
+									<div class="col-md-6 paddingZero"><input number-form type="text" ng-model="entry.payterms" style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" placeholder="0"></div>
+								</div>
+								<div class="col-md-12 col-xs-12 paddingZero" style="font-size: 13px;margin-bottom:5px">
+									<div class="col-md-6 paddingZero">First payment date:</div>
+									<div class="col-md-6 paddingZero"><input id="firstpaydate" readonly autocomplete="off" ng-disabled="isSaving" type="text" ng-model="entry.firstpaydate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100px" ></div>
+								</div>
+							</div>
+
+
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;">
+								<div class="col-md-12 col-xs-12 paddingZero"><span><b>Confirmed by:</b></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span><u>Jerald Joshua Echavia</u></span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span><u>07/07/2020</u></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span>Web Developer</span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:10px;text-align: justify;">
+								<div class="col-md-12 col-xs-12 paddingZero"><span><b>Approved by:</b></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span><u>Jerald Joshua Echavia</u></span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span><u>07/07/2020</u></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span>General Manager</span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span>Date</span></div>
+							</div>
+
+							<div class="col-md-12 col-xs-12" style="padding-top:20px;text-align: justify;">
+								<div class="col-md-12 col-xs-12 paddingZero"><span><b>Approved by:</b></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span><u>Ryan Cardoza</u></span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span><u>07/07/2020</u></span></div>
+								<div class="col-md-5 col-xs-6 paddingZero"><span>Accounting</span></div>
+								<div class="col-md-7 col-xs-6 paddingZero"><span>Date</span></div>
+							</div> -->
+
+							<div class="col-md-12 col-xs-12" style="padding-top:30px;text-align: justify;">
+								<span><b>Note:</b> Please attach supporting documents to facilitate the processing of salary advance requests. Failure to attach supporting documents will suspend your privilege to make cash advance(s) for one (1) year</span>
+							</div>
+
+							<!-- <input id="efdate" autocomplete="off" ng-disabled="isSaving" type="text" ng-model="entry.effectivedate" datepickers style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width:100%" >
+
+							<input number-form type="text" ng-model="entry.newlaundryallowance" style="border:none;border-bottom: 1px black solid;text-align: right;font-size:12px;width:100%" ng-show="entry.empname && entry.effectivedate" placeholder="0.00" ng-change="totalCashComp()"> -->
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="background: #f39c12 !important; border-color: #f39c12  !important;">
+					<button type="button" class="btn btn-primary" ng-click="saveEntryCashAdvance( entry.aFile );">Apply</button>
+					<button type="button" class="btn btn-danger pull-left" data-dismiss="modal" >Close</button>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+
+</div>
+
+<!-- <script>
+	// $(document).ready(function(){
+	// 	$('#birth-date').mask('00/00/0000');
+	// 	$('#phone-number').mask('0000-0000');
+	// 	$('#card-number').mask('0000-0000-0000-0000');
+	// });
+</script> -->
+ 
+ 

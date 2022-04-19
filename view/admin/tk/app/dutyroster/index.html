@@ -1,0 +1,310 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #63a0d4;
+        }
+
+        25% {
+            background: #4f93ce;
+        }
+
+        50% {
+            background: #3b87c8;
+        }
+
+        100% {
+            background: #337ab7;
+        }
+    }
+</style>
+<div class="wrapper" ng-controller="TKAppDutyRosterController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head"
+            style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa fa-clock-o" style="float: left;color:#00000052"></i>
+                <div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Timekeeper's Portal</div>
+                <div style="font-size: 15pt;text-indent:15px">Duty Roster Approval</div>
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/tk/dashboard"> Timekeeper's Portal</a></li>
+                <li><a href=".#/admin/tk/app/leaveapp"> Applications</a></li>
+                <li class="active">Duty Roster Approval</li>
+            </ol>
+
+            <button class="pull-right" ng-click="print()"
+                style="margin-right: 10px; width:100px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;">
+                <i class="fa fa-print"></i> Print</button>
+            <button class="pull-right" ng-click="resetSearch()"
+                style="margin-right: 10px; width:100px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;">
+                <i class="fa fa-refresh fa-sm"></i> Refresh</button>
+            <button class="pull-right" data-toggle="modal" data-target="#modal-search" ng-click="filter()"
+                style="margin-right: 10px; width:100px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;">
+                <i class="fa fa-search"></i> Filter</button>
+            <button class="pull-right" ng-click="xport()"
+                style="margin-right: 10px; width:100px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;">
+                <i class="fa fa-file-excel-o fa-sm"></i> Export</button>
+
+
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <section class="content">
+            <div ng-init="dutyroster()" id="xport">
+                <table ng-repeat="d in departments | orderBy: 'departmentname' | filter : department" class=" table table-bordered table-condensed
+                    text-center">
+                    <thead>
+                        <tr>
+                            <th class="firstr"
+                                style="border:1px solid white;background-color:#0073b7;color:white;width:200px !important">
+                                Status</th>
+                            <th
+                                style="border:1px solid white;background-color:#0073b7;color:white;width:200px !important">
+                                Department</th>
+                            <th
+                                style="border:1px solid white;background-color:#0073b7;color:white;width:200px !important">
+                                Employee's Name</th>
+                            <th style="border:1px solid white;background-color:#0073b7;color:white"
+                                ng-repeat="wd in d.workdate">
+                                {{ wd | date:"EEEE" }}<br>{{wd | date : "M/dd/y"}}</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="e in d.employees">
+                            <td ng-show="$first" class="firstr">
+                                <i class="fa fa-unlock" ng-click="lock(1,d.id,d.idpayperiod,d.departmentname)"
+                                    aria-hidden="true" title="Lock Duty Roster"
+                                    style="font-size: 30px; cursor: pointer;" ng-if="d.drlock == 0">
+                                </i>
+                                <i class="fa fa-lock" ng-click="lock(0,d.id,d.idpayperiod,d.departmentname)"
+                                    aria-hidden="true" title="Unlock Duty Roster"
+                                    style="font-size: 30px; cursor: pointer;" ng-if="d.drlock == 1">
+                                </i>
+                            </td>
+                            <td ng-show="!$first" class="removetd"></td>
+                            <td ng-show="$first">{{d.departmentname}}</td>
+                            <td ng-show="!$first" class="removetd"></td>
+                            <td>
+                                {{  e.empid + ' ' + e.fullname | titlecase}}
+                            </td>
+                            <td ng-repeat=" s in d.sched[$index]">
+                                <div class="tblack"
+                                    style="border-radius:3px;min-height: 20px !important;text-align:center;background-color:{{s.bg}};color:white">
+                                    {{s.shift_status}}
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);">
+            <div class="modal-dialog">
+                <div class="modal-header" style="background: #006ba6 !important; border-color: #006ba6  !important;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Filter</h4>
+                </div>
+                <div class="modal-body" style="background: white !important; color: black !important;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="employee">Select Department:</label>
+                                <select id="filterd" select2 ng-disabled="isSaving" ng-model="search"
+                                    style="border:none;border-bottom: 1px black solid;width:100%;height: 30px;background: white;    padding-top: 0px;padding-bottom: 0px;">
+                                    <option value=""></option>
+                                    <option ng-repeat="d in departments | orderBy: 'departmentname'"
+                                        value="{{d.departmentname}}">
+                                        {{d.departmentname}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="background: #006ba6 !important; border-color: #006ba6  !important;">
+                    <button style="width:100px" type="button" class="btn btn-danger pull-left" data-dismiss="modal"
+                        ng-click="resetSearch()">Reset</button>
+                    <button style="width:100px" type="button" class="btn btn-primary" ng-click="unitSearch()"
+                        data-dismiss="modal"><i class="fa fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

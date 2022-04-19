@@ -1,0 +1,1431 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .print-only {
+        display: none;
+    }
+
+    @@media print {
+        .no-print {
+            display: none;
+        }
+
+        .print-only {
+            display: block;
+        }
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1280px) {
+        .bheight {
+            height: 492px !important;
+        }
+    }
+
+    @media screen and (max-height: 667px) {
+        .bheight {
+            height: 404px !important;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: 325px !important;
+        }
+        html{
+            zoom : 83%;
+        }
+    }
+
+
+    @media screen and (max-width: 414px) {
+        .wfooter {
+            position: absolute;
+            bottom: 13px !important;
+            font-size: 20px;
+            font-weight: 600;
+            color: rgb(116, 89, 89);
+        }
+
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .wprofile {
+            margin-right: 20px;
+            margin-left: 20px !important;
+        }
+
+        .autoh {
+            margin-bottom: 35px !important;
+            height: auto !important;
+        }
+
+    }
+
+    .bheight {
+        height: 365px;
+    }
+
+    .wfooter {
+        position: absolute;
+        top: 3%;
+        font-size: 28px;
+        font-weight: lighter;
+        /* font-weight: 600; */
+        color: white;
+    }
+
+    .wprofile {
+        /*margin-left: 20px;*/
+        overflow: auto;
+        border-top: 60px solid #f39c12 !important;
+    }
+
+    .wpc {
+        border: 2px solid #3fa6be !important;
+        border-top: 50px solid #3fa6be !important;
+    }
+
+    .wpp {
+        border: 2px solid #3fc0ac !important;
+        border-top: 50px solid #3fc0ac !important;
+    }
+
+    .wpn {
+        border: 2px solid #44ba71 !important;
+        border-top: 50px solid #44ba71 !important;
+    }
+
+    .wpa {
+        border: 2px solid #47b145 !important;
+        border-top: 50px solid #47b145 !important;
+    }
+
+    .wpcn {
+        border: 2px solid #ff4d4d !important;
+        border-top: 50px solid #ff4d4d !important;
+    }
+    /* .wpbb {
+        border: 2px solid #a64dff !important;
+        border-top: 50px solid #a64dff !important;
+    } */
+    
+    .wpd {
+        border: 2px solid #71ac48 !important;
+        border-top: 50px solid #71ac48 !important;
+    }
+
+    .autoh {
+        margin-bottom: 35px !important;
+        height: auto !important;
+    }
+
+    .table {
+        border: none;
+        font-size: 14px;
+        margin-bottom: 0px !important;
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        /*text-decoration: underline;*/
+        border-bottom: 1px solid black;
+    }
+
+    td {
+        padding: 0px !important;
+        padding-top: 5px !important;
+    }
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#f39c12),
+                to(#f39c12),
+                color-stop(.6, #f39c12))
+    }
+
+    .well {
+        margin-bottom: 10px !important;
+    }
+
+    .well-lg {
+        border-radius: 14px !important;
+    }
+
+    .well-lg-pad0{
+        padding: 10px !important;
+    }
+
+</style>
+<div class="wrapper" ng-controller="EPProfileController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <section class="content" ng-init="profile_functions()" style="padding-top: 5px; padding: 5px !important;">
+            <div class="autoh" style=" background-color: #c3c7ca !important; color: white; height: 820px;">
+
+                <div class="well well-graphic bg-yellow " style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px;">
+					
+					<div class="row">
+						<div class="col-md-6">
+							<a style="color: white !important;" class="">
+								<img ng-src="{{ dashboard.values.userInformation.pic }}"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important;font-weight: lighter;"> Employee Information</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;">
+							<ol class="breadcrumb" style="width: 420px;font-size: 9pt;margin-bottom: 0px;">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Employee's Portal</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/profile" style="color:black !important">Employee Profile</a></li>
+								<li class="active">Employee Information</li>
+							</ol>
+							<button style="width:200px; margin-top: 10px;" type="button" class="btn btn-primary pull-right"  data-target="#modal-compben" data-toggle="modal" ng-show="!display"><span>View Compensation & Benefits</span></button>
+							<button style="width:200px; margin-top: 10px;" type="button" class="btn btn-primary pull-right" ng-show="display" ng-click="hideCompBen()"><span>Hide Compensation & Benefits</span></button>
+						</div>
+					</div>
+				</div>
+				
+                <div class="row" style="padding: 20px; padding-top: 0px; padding-bottom: 0px;">
+                    <div class="col-md-3" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15">
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-weight: lighter;font-size: 16px">Employee ID</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.empid }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Salutation</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.salutaion }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Firstname</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.fname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Middle Name</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.mname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Last Name</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.lname }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Suffix</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.suffix }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Nickname</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.nickname }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="wfooter ">Name</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15"
+                            style=" margin-left: 0px;">
+
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td width="160px" style="text-align:left;font-weight: lighter;font-size: 16px">Home</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.addr }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Email</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Phone</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.pnumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Fax</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.fnumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Mobile</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.cnumber }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Emergency</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.emergency_name + ' ' + view.emergency_number }}
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <div class="wfooter ">Contact</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15"
+                            style="margin-right: 0px; margin-left: 0px ;">
+
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td width="120px" style="text-align:left;font-weight: lighter;font-size: 16px">Gender</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.sexstr }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Birthday</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.bdate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Age</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.age + ' Years Old' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Birthplace</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.bplace }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Marital Status</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.civil_status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Citizenship</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.citizenship }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Religion</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.religion }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Blood Type</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.bloodtype }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" >Dependents</td>
+                                        <td>
+                                            <table ng-if="view.getdep!=''">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:60% !important; font-weight: lighter;font-size: 16px">Name</th>
+                                                        <th style="font-weight: lighter;font-size: 16px">Birthdate</th>
+                                                        <th style="font-weight: lighter;font-size: 16px">Age</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="viewwz in view.getdep track by $index" >
+                                                        <td style="width:50% !important; font-weight: lighter;font-size: 16px">
+                                                            <div style="text-align: left; border-bottom: 1px solid black">  {{viewwz.name}}  </div>
+                                                        </td>
+                                                        <td style="width:50% !important; font-weight: lighter;font-size: 16px">
+                                                            <div style="text-align: left; border-bottom: 1px solid black"> {{viewwz.bdate | date : "M-dd-y"}} </div>
+                                                        </td>
+                                                        <td style="width:50% !important; font-weight: lighter;font-size: 16px">
+                                                            <div style="text-align: left; border-bottom: 1px solid black"> {{viewwz.age}} </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="wfooter ">Personal</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-center" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15"
+                            style=" margin-left: 0px;">
+
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="160px">Designation</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.post }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Business Unit</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.business_unit }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Reporting To</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.superior }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Employment Status</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.emp_status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Location</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.job_loc }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Region</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.job_region }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Labor Type</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.labor_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Date Hired</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.hdate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Work Shift</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.wshift_name }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="wfooter ">Assignment</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 20px; padding-top: 0px; padding-bottom: 0px;">
+
+                    <!-- <div class="col-md-3 text-center" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg text-black bheight text-center wprofile style-15"
+                            style=" margin-left: 0px;">
+
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px" width="160px">Designation</td>
+                                        <td class="text-left u">{{ view.post }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Business Unit</td>
+                                        <td class="text-left u">{{ view.business_unit }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Reporting To</td>
+                                        <td class="text-left u">{{ view.superior }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Employment Status</td>
+                                        <td class="text-left u">{{ view.emp_status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Location</td>
+                                        <td class="text-left u">{{ view.job_loc }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Region</td>
+                                        <td class="text-left u">{{ view.job_region }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Labor Type</td>
+                                        <td class="text-left u">{{ view.labor_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Date Hired</td>
+                                        <td class="text-left u">{{ view.hdate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;text-indent:25px">Work Shift</td>
+                                        <td class="text-left u">{{ view.wshift_name }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="wfooter ">Assignment</div>
+                        </div>
+                    </div> -->
+                    <div class="col-md-3" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15">
+
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="130px">TIN</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.idtin }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">SSS ID</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.idsss }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">HDMF</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.idibig }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Philhealth</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.idhealth }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Bank Account</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.idpayroll }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Passport Number</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.idpassport }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Driver's License</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.license_drive }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">PRC License</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{ view.license_prc }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <div class="wfooter ">National IDs</div>
+                        </div>
+                    </div>
+                    <div class="col-md-9 text-center" style="padding-right:5px; padding-left : 5px;">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15"
+                            style="margin-right: 0px; margin-left: 0px ;">
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="180px">Educational
+                                            Background</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">
+                                            <table ng-if="view.eb" class="ng-scope" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="width:30% !important;padding:5px">Attainment</td>
+                                                        <td style="width:50% !important;padding:5px">School</td>
+                                                        <td style="width:10% !important;padding:5px">From</td>
+                                                        <td style="width:10% !important;padding:5px">To</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="eb in view.eb" class="ng-scope">
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eb.attainment}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eb.school}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eb.dfrom | date : "M-dd-y"}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eb.dto | date : "M-dd-y"}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Employment History</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">
+                                            <table ng-if="view.eh" class="ng-scope" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="width:30% !important;padding:5px">Position</td>
+                                                        <td style="width:50% !important;padding:5px">Company</td>
+                                                        <td style="width:10% !important;padding:5px">From</td>
+                                                        <td style="width:10% !important;padding:5px">To</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="eh in view.eh" class="ng-scope">
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eh.attainment}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eh.school}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eh.dfrom | date : "M-dd-y"}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{eh.dto | date : "M-dd-y"}}
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Exams Taken</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">
+                                            <table ng-if="view.et" class="ng-scope" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="width:30% !important;padding:5px">Exam</td>
+                                                        <td style="width:20% !important;padding:5px">Issuing
+                                                            Organization</td>
+                                                        <td style="width:20% !important;padding:5px">Facilitator</td>
+                                                        <td style="width:20% !important;padding:5px">Location</td>
+                                                        <td style="width:10% !important;padding:5px">Date</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="et in view.et" class="ng-scope">
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{et.et}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{et.issueorg}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{et.facilitator}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{et.location}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{et.date | date : "M-dd-y"}}
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Trainings Taken</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">
+                                            <table ng-if="view.tt" class="ng-scope" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="width:30% !important;padding:5px">Training</td>
+                                                        <td style="width:20% !important;padding:5px">Issuing
+                                                            Organization</td>
+                                                        <td style="width:20% !important;padding:5px">Facilitator</td>
+                                                        <td style="width:20% !important;padding:5px">Location</td>
+                                                        <td style="width:10% !important;padding:5px">Date</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="tt in view.tt" class="ng-scope">
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{tt.et}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{tt.issueorg}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{tt.facilitator}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{tt.location}}
+                                                        </td>
+                                                        <td style="padding:5px;vertical-align: top;">
+                                                            {{tt.date | date : "M-dd-y"}}
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Employee Movement</td>
+                                        <td class="text-left u">{{ }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Property Accountability</td>
+                                        <td class="text-left u">{{  }}</td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Performance Appraisal</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Medical Records</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{  }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px">Attachments</td>
+                                        <td style="font-weight: lighter;font-size: 16px">
+                                            <table ng-if="view.getDocType!=''">
+                                                <thead>
+                                                    <tr>
+                                                        <td style="width:100% !important; font-size:9pt;">Filename</td>
+                                                        <td style="font-size:9pt;">Document Type</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="doct in view.getDocType track by $index">
+                                                        <td>
+                                                            <div style="text-align: left; border-bottom: 1px solid black; padding-top:14px;"> {{doct.docu}} </div>
+                                                        </td>
+                                                        <td>
+                                                            <div style="text-align: left; border-bottom: 1px solid black">
+                                                            	<span class="input-group-btn">
+																	<i title="Download" ng-click="files2( doct.doc )" class="btn" style="background: url('assets/images/Attachment.png');background-repeat: no-repeat; background-size: 30px; color:transparent; padding-left: 0px; padding-right: 15px;" >&nbsp;&nbsp;&nbsp;</i> 
+                                                                </span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="wfooter ">Details</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row" style="padding: 20px; padding-top: 0px; padding-bottom: 0px;" ng-if="display">
+                    <div class="col-md-6" style="padding-right:5px; padding-left : 5px; ">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15" style=" margin-left: 0px;">
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Salary</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.salary}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Bank Account No</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.getCompensation.idpayroll}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Remaining Period</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px"> {{view.remain_period}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Pay Group</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.getCompensation.paygroup}}</td>
+                                    </tr> 
+                                    
+                                    <!-- <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Basic Pay</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.getCompensation.basicpay}}</td>
+                                    </tr> -->
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Absences</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Days in a Month</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.getCompensation.daysmonth}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Lates</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="140px">Undertime</td>
+                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" >Contribution</td>
+                                        <td style="font-weight: lighter;font-size: 16px">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th style="font-weight: lighter;font-size: 16px">Type</th>
+                                                        <th style="font-weight: lighter;font-size: 16px">Amount</th>                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-left u" style="width:100% !important; font-weight: lighter;font-size: 16px">SSS</td>
+                                                        <td class="text-left u" style="width:50% !important; font-weight: lighter;font-size: 16px">{{view.getCompensation.sss_amt}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">Pagibig</td>
+                                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.getCompensation.ibig_amt}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">Philhealth</td>
+                                                        <td class="text-left u" style="font-weight: lighter;font-size: 16px">{{view.getCompensation.health_amt}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            
+                            </table>
+                            <div class="wfooter ">Compensation</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="padding-right:5px; padding-left : 5px; ">
+                        <div class="well well-lg well-lg-pad0 text-black bheight text-center wprofile style-15" style=" margin-left: 0px;">
+                            <table class="table fw6">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align:left;font-weight: lighter;font-size: 16px" width="160px">Benefits</td>
+                                        <td>
+                                            <table ng-if="view.getBenefits">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="font-weight: lighter;font-size: 16px">Non Taxable</th>
+                                                        <!-- <th style="font-weight: lighter;font-size: 16px">Method</th> -->
+                                                        <th style="font-weight: lighter;font-size: 16px">Amount</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat = "ben in view.getBenefits track by $index">
+                                                        <td style="width:100% !important; font-weight: lighter;font-size: 16px">
+                                                            <div style="text-align: left; border-bottom: 1px solid black">  {{ben.description}}  </div>
+                                                        </td>
+                                                        <!-- <td style="width:40% !important; font-weight: lighter;font-size: 16px">
+                                                            <div style="text-align: left; border-bottom: 1px solid black"> {{view.getBenefits.method}} </div>
+                                                        </td> -->
+                                                        <td style="width:20% !important; font-weight: lighter;font-size: 16px">
+                                                            <div style="text-align: left; border-bottom: 1px solid black"> {{ben.amount}} </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+										<td style="text-align:left;font-weight: lighter;font-size: 16px">Leaves</td>
+										<td>
+											<table ng-if="view.getAccountLeaves">
+												<thead>
+													<tr>
+														<th style="font-weight: lighter;font-size: 16px">Leaves</th>
+														<th style="font-weight: lighter;font-size: 16px">Entitlement(Hours)</th>
+														<th style="font-weight: lighter;font-size: 16px">Used(Hours)</th>
+														<th style="font-weight: lighter;font-size: 16px">Balance(Hours)</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr ng-repeat="leav in view.getAccountLeaves track by $index">
+														<td style="width:25% !important; font-weight: lighter;font-size: 16px">
+															<div style="text-align: left; border-bottom: 1px solid black"> {{leav.name}} </div>
+														</td>
+														<td style="width:20% !important; font-weight: lighter;font-size: 16px">
+															<div style="text-align: left; border-bottom: 1px solid black"> {{leav.entitle}} </div>
+														</td>
+														<td style="width:20% !important; font-weight: lighter;font-size: 16px">
+															<div style="text-align: left; border-bottom: 1px solid black"> {{leav.used}} </div>
+														</td>
+														<td style="width:10% !important; font-weight: lighter;font-size: 16px">
+															<div style="text-align: left; border-bottom: 1px solid black"> {{leav.balance}} </div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+                                    <!-- <tr>
+                                        <td style="text-align:left;text-indent:25px" width="160px">Rice Allowance</td>
+                                        <td class="text-left u">{{  }}</td>
+                                    </tr> -->
+                                </tbody>
+                            
+                            </table>
+                            <div class="wfooter ">Benefits</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- <div ng-init="profile_functions()">
+                <div id="form01print" class="print-only" style="color:black">
+                    <div style="display:table;width: 870px !important;">
+                        <div
+                            style="display:table-cell;width: 870px !important;vertical-align: middle;text-align:center">
+                        </div>
+                        <div
+                            style="display:table-cell;width: 870px !important;text-align: center;font-size:18pt;font-weight: 600;vertical-align: middle">
+                        </div>
+                        <div
+                            style="display:table-cell;width: 870px !important;text-align:center;vertical-align: middle">
+                            <div class="row" style="width:100%;text-align:center">
+                                <img class="img-thumbnail"
+                                    ng-src="{{ !view.epicFile ? view.eprof_pic : view.epicFile }}" alt=""
+                                    style="margin-bottom: 15px;width:175px;height:165px">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>PERSONAL INFORMATION</b>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>NAME:</h5><br />
+                            <span
+                                style="padding-left:10px">{{ view.lname + ( !view.suffix ? ', ' : ' ' +  view.suffix + ', ') + view.fname + ' ' + view.mname }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>EMAIL:</h5><br />
+                            <span style="padding-left:10px">{{ view.email }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>CONTACT NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.cnumber }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+                        <h5>PRESENT ADDRESS:</h5><br />
+                        <span style="padding-left:10px">{{ view.addr }}</span>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DATE OF BIRTH:</h5><br />
+                            <span style="padding-left:10px">{{ view.bdate }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>AGE:</h5><br />
+                            <span style="padding-left:10px">{{ view.age + ' YEARS OLD' }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>GENDER:</h5><br />
+                            <span style="padding-left:10px">{{ view.sexstr }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+                        <h5>PLACE OF BIRTH:</h5><br />
+                        <span style="padding-left:10px">{{ view.bplace }}</span>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>CITIZENSHIP:</h5><br />
+                            <span style="padding-left:10px">{{ view.citizenship }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>RELIGION:</h5><br />
+                            <span style="padding-left:10px">{{ view.religion }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>CIVIL STATUS:</h5><br />
+                            <span style="padding-left:10px">{{ view.civil_status }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>SPOUSE:</h5><br />
+                            <span style="padding-left:10px">{{ view.spouse }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>TAX CODE:</h5><br />
+                            <span style="padding-left:10px">{{ view.taxname }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>TIN NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.idtin }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SSS NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.idsss }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PHIL HEALTH:</h5><br />
+                            <span style="padding-left:10px">{{ view.idhealth }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAG IBIG:</h5><br />
+                            <span style="padding-left:10px">{{ view.idibig }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAYROLL ACCOUNT:</h5><br />
+                            <span style="padding-left:10px">{{ view.idpayroll }}</span>
+                        </div>
+                    </div>
+                    <div
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>HRIS DATA</b>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>LABOR TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.labor_type }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>EMPLOYMENT TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.emp_status }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>BUSINESS UNIT:</h5><br />
+                            <span style="padding-left:10px">{{ view.business_unit }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>POSITION:</h5><br />
+                            <span style="padding-left:10px">{{ view.post }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>SUPERIOR:</h5><br />
+                            <span style="padding-left:10px">{{ view.superior }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>JOB LOCATION:</h5><br />
+                            <span style="padding-left:10px">{{ view.job_loc }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>WORK SHIFT:</h5><br />
+                            <span style="padding-left:10px">{{ view.wshift_name }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SHIFT TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.sched }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAY GROUP:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_grp }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAY STATUS:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_status }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DEPENDENTS:</h5><br />
+                            <span style="padding-left:10px">{{ view.dependent }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>REVENUE TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_revenue }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>RELEASE TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_release }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SALARY:</h5><br />
+                            <span style="padding-left:10px">{{ view.salary }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>HIRE DATE:</h5><br />
+                            <span style="padding-left:10px">{{ view.hdate }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>REGULARIZATION DATE:</h5><br />
+                            <span style="padding-left:10px">{{ view.rdate }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SEPERATION DATE:</h5><br />
+                            <span style="padding-left:10px">{{ view.sdate }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>JOB TENURE:</h5><br />
+                            <span style="padding-left:10px">{{ view.nos_yrs }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>PREVIOUS EMPLOYER:</h5><br />
+                            <span style="padding-left:10px">{{ view.prev_employer }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <form ng-hide="mySignUpForm" role="form" name="registerFormView">
+
+                        <div class="col-md-12">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="profile-pic" style="padding: 30px;text-align: center;">
+                                    <img class="img-responsive img-thumbnail img-circle"
+                                        ngf-thumbnail="!view.epicFile ? view.eprof_pic : view.epicFile" alt=""
+                                        style="margin-bottom: 15px;width:200px;height:200px;cursor:pointer">
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+
+                        <div class="col-lg-12" style="padding:0px !important">
+                            <div class="col-lg-6">
+                                <table class="table table-sm table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="lbltbl">Name:</td>
+                                            <td class="datatbl" colspan="3">
+                                                {{ view.lname + ( !view.suffix ? ', ' : ' ' +  view.suffix + ', ') + view.fname + ' ' + view.mname }}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Address:</td>
+                                            <td class="datatbl" colspan="3">{{ view.addr }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Email:</td>
+                                            <td class="datatbl" colspan="3">{{ view.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Gender:</td>
+                                            <td class="datatbl">{{ view.sexstr }}</td>
+                                            <td class="lbltbl">Contact&nbsp;No.:</td>
+                                            <td class="datatbl">{{ view.cnumber }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Birth&nbsp;Date:</td>
+                                            <td class="datatbl">{{ view.bdate }}</td>
+                                            <td class="lbltbl">Age:</td>
+                                            <td class="datatbl">{{ view.age + ' yrs. old' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Birth&nbsp;Place:</td>
+                                            <td colspan="3" class="datatbl">{{ view.bplace }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Citizenship:</td>
+                                            <td class="datatbl">{{ view.citizenship }}</td>
+                                            <td class="lbltbl">Religion:</td>
+                                            <td class="datatbl">{{ view.religion }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Civil&nbsp;Status:</td>
+                                            <td class="datatbl">{{ view.civil_status }}</td>
+                                            <td class="lbltbl">Spouse:</td>
+                                            <td class="datatbl">{{ view.spouse }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Tax Code:</td>
+                                            <td class="datatbl">{{ view.taxname }}</td>
+                                            <td class="lbltbl">Tin:</td>
+                                            <td class="datatbl">{{ view.idtin }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">SSS:</td>
+                                            <td class="datatbl">{{ view.idsss }}</td>
+                                            <td class="lbltbl">Phil&nbsp;Health:</td>
+                                            <td class="datatbl">{{ view.idhealth }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Pag&nbsp;IBIG:</td>
+                                            <td class="datatbl">{{ view.idibig }}</td>
+                                            <td class="lbltbl">Payroll:</td>
+                                            <td class="datatbl">{{ view.idpayroll }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-lg-6">
+                                <table class="table table-sm table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td class="lbltbl">Labor&nbsp;Type:</td>
+                                            <td class="datatbl">{{ view.labor_type }}</td>
+                                            <td class="lbltbl">Employment&nbsp;Type:</td>
+                                            <td class="datatbl">{{ view.emp_status }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Business&nbsp;Unit:</td>
+                                            <td class="datatbl">{{ view.business_unit }}</td>
+                                            <td class="lbltbl">Status:</td>
+                                            <td class="datatbl">{{ view.etype }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Position:</td>
+                                            <td colspan="3" class="datatbl">{{ view.post }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Work&nbsp;Shift:</td>
+                                            <td class="datatbl">{{ view.wshift_name }}</td>
+                                            <td class="lbltbl">Shift&nbsp;Type:</td>
+                                            <td class="datatbl">{{ view.sched }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Job&nbsp;Location:</td>
+                                            <td class="datatbl">{{ view.job_loc }}</td>
+                                            <td class="lbltbl">Superior:</td>
+                                            <td class="datatbl">{{ view.superior }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Pay&nbsp;Group:</td>
+                                            <td class="datatbl">{{ view.pay_grp }}</td>
+                                            <td class="lbltbl">Pay&nbsp;Status:</td>
+                                            <td class="datatbl">{{ view.pay_status }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Revenue&nbsp;Type:</td>
+                                            <td class="datatbl">{{ view.pay_revenue }}</td>
+                                            <td class="lbltbl">Release&nbsp;Type:</td>
+                                            <td class="datatbl">{{ view.pay_release }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Dependents:</td>
+                                            <td class="datatbl">{{ view.dependent }}</td>
+                                            <td class="lbltbl">Salary:</td>
+                                            <td class="datatbl">{{ view.salary }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Job&nbsp;Tenure:</td>
+                                            <td class="datatbl">{{ view.nos_yrs }}</td>
+                                            <td class="lbltbl">Hire&nbsp;Date:</td>
+                                            <td class="datatbl">{{ view.hdate }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Reg&nbsp;Date:</td>
+                                            <td class="datatbl">{{ view.rdate }}</td>
+                                            <td class="lbltbl">Seperation&nbsp;Date:</td>
+                                            <td class="datatbl">{{ view.sdate }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="lbltbl">Prev&nbsp;Employer:</td>
+                                            <td colspan="3" class="datatbl">{{ view.prev_employer }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div> -->
+
+            <div class="modal fade modal-info" id="modal-compben" role="dialog"
+                style="background: rgba(0, 0, 0, 0.8);">
+                <div class="modal-dialog">
+                    <div class="modal-header" style="background: #f39c12  !important; border-color: #f39c12   !important;" >
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:white; opacity: 1;"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">View Compensation & Benefits Information</h4>
+                    </div>
+                    <div class="modal-body" style="background: white !important">
+                        <div class="row">
+                            <div class = "col-md-12 col-xs-12">
+                                <div class = "col-md-3">
+                                    <div style = "color:black; font-weight: bold;" >Password:</div>
+                                </div>
+                                <div class = "col-md-6">
+                                    <input type="password" class="form-control" id="compben_pass_id" name="compben_name" ng-model="compben_pass" required="" ng-disabled="isSaving" style="border-top: none; border-right: none; border-left: none; border-image: initial; border-bottom: 1px solid black; width: 100%; height: 30px; background: white; padding-top: 0px; padding-bottom: 0px;" autocomplete="off">
+                                </div>
+                                <div class = "col-md-2">
+                                    
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background: white  !important; border-color: white   !important;">
+                        <button id="myBtn" style="width:100px" type="button" class="btn btn-success" data-target="#modal-dependent" data-toggle="modal" ng-click="confirmPassCompBen()">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </section>
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+	
+<script>
+var input = document.getElementById("compben_pass_id");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("myBtn").click();
+  }
+});
+</script>
+	
+</div>

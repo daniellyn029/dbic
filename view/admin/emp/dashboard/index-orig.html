@@ -1,0 +1,1146 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    .tableemp {
+        min-width: 380px;
+        max-width: 380px;
+        margin: auto !important;
+
+    }
+
+    .tenpx {
+        font-size: 10px;
+    }
+
+    .twelenpx {
+        font-size: 10px;
+    }
+
+    .t12px {
+        font-size: 12px;
+    }
+
+    .t14px {
+        font-size: 14px;
+    }
+
+    .thirtypx {
+        font-size: 3.2vmin;
+    }
+
+    .thirtyfivepx {
+        font-size: 4.2vmin;
+    }
+
+    .ninepx {
+        font-size: 9px;
+    }
+
+    .f11px {
+        font-size: 11px;
+    }
+
+    .f12px {
+        font-size: 12px;
+    }
+
+    .theight {
+        max-height: 10px !important;
+    }
+
+    .nomargin {
+        margin: 0 !important;
+    }
+
+    .overflow {
+        overflow: scroll;
+    }
+
+    .imgauto {
+        height: 30px;
+        width: 30px;
+    }
+
+    .container {
+        width: 100%;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        overflow: auto;
+    }
+
+    .respontext {
+        font-size: 30px;
+    }
+
+    .respan {
+        font-size: 15px;
+    }
+
+    .ah {
+        height: 320px;
+    }
+
+    .ah2 {
+        height: 220px;
+    }
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            font-size: 22px;
+        }
+
+        .respan {
+            font-size: 12px;
+        }
+
+    }
+
+    @media screen and (min-width: 720px) {
+        .w720 {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .w720ngc {
+            padding-left: 0px;
+
+        }
+
+    }
+
+    @media screen and (max-width: 1280px) {
+        .tableemp {
+            min-width: auto !important;
+            max-width: auto !important;
+            margin: auto !important;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: none !important;
+        }
+
+    }
+
+    @media screen and (max-width: 990px) {
+        .tableemp {
+            min-width: 330px !important;
+            max-width: 500px !important;
+            margin: auto !important;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1280px) {
+        .bheight {
+            height: 492px !important;
+        }
+
+        .respontext {
+            font-size: 18px;
+        }
+
+        .respan {
+            font-size: 10px;
+        }
+
+        .ah {
+            height: 360px;
+        }
+
+        .ah2 {
+            height: 240px;
+        }
+
+        .fs {
+            font-size: 10px;
+        }
+
+        .whfs {
+            font-size: 15px;
+        }
+
+        .twpx {
+            font-size: 9px !important;
+        }
+
+        .vw {
+            font-size: 14px !important;
+        }
+
+        .vw2 {
+            font-size: 12px !important;
+        }
+
+        .fc-popover {
+            top: 148px !important;
+        }
+    }
+
+
+
+    @media screen and (max-height: 667px) {
+        .bheight {
+            height: 404px !important;
+        }
+
+        .ah {
+            height: 270px;
+        }
+
+        .ah2 {
+            height: 170px;
+        }
+
+        .vw {
+            font-size: 12px !important;
+        }
+
+        .vw2 {
+            font-size: 12px !important;
+        }
+
+        p {
+            margin: -4px 0 10px !important;
+        }
+
+        .h667 {
+            height: 420px !important;
+        }
+
+        .h6672 {
+            height: 437px !important;
+        }
+    }
+
+    .eh {
+        font-weight: 800;
+    }
+
+    .scrollable-element {
+        scrollbar-width: thin !important;
+    }
+
+    .table {
+        border: none !important;
+    }
+
+    .twpx {
+        font-size: 12px;
+    }
+
+    .af {
+        font-size: 12px;
+    }
+
+    .ahf {
+        font-size: 13px;
+    }
+
+    th {
+        border: none !important;
+    }
+
+    .gray {
+        color: rgb(148, 142, 142);
+    }
+
+    .dgray {
+        color: rgb(109, 105, 105);
+    }
+
+    .text-danger {
+        color: #ff0000;
+    }
+
+    .fc-time {
+        display: none !important;
+    }
+
+    .important {
+        color: #ff0000 !important;
+    }
+	
+	
+	.style-15::-webkit-scrollbar-track
+	{
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+		background-color: #F5F5F5;
+		border-radius: 0px;
+	}
+
+	.style-15::-webkit-scrollbar
+	{
+		width: 5px;
+		background-color: #F5F5F5;
+	}
+
+	.style-15::-webkit-scrollbar-thumb
+	{
+		border-radius: 0px;
+		background-color: #FFF;
+		background-image: -webkit-gradient(linear,
+										   40% 0%,
+										   75% 84%,
+										   from(#4D9C41),
+										   to(#19911D),
+										   color-stop(.6,#54DE5D))
+	}
+	
+	.space_right .well { margin-right: 20px; }
+</style>
+<div class="wrapper" ng-controller="EPDashboardController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+
+
+        <section class="content style-15">
+            <img src="assets/images/delsanlogo2.png" style="height:60px; padding-bottom: 8px;display:none">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px; " >
+                    <div class="bheight" style="background-color: #c3c7ca !important; color: white; height: 460px;">
+
+                        <div class="well well-graphic" style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <a href="#/admin/emp/profile" style="color: white !important;">
+							<div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-2 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/php/admin/hr/employee/pix/0427.jpg?1591229368"
+                                        style="height: 60px; border-radius: 50%;" class="user-image" alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-10  col-xs-10">
+                                <div style="padding-left: 30px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                        margin: 0 0 -5px !important; font-weight: 600 !important;">
+                                        {{dashboard.values.accoutfname +" "+ dashboard.values.accoutlname}}
+                                    </p>
+                                    <span class="respan">{{ dashboard.values.userInformation.post }}</span>
+                                </div>
+                            </div>
+							</a>
+                        </div>
+
+                        <div class="text-center container">
+                            <table style="border: 2px solid #00b050;"
+                                class="tableemp example2 row-border hover table-striped table-bordered ng-isolate-scope dataTable no-footer dtr-inline">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="theight" style="background-color: #00b050  !important;">
+                                            <p class="respontext nomargin">{{ summary.curr_date | date:'EEE' }} </p>
+                                            <p class="tenpx nomargin">{{ summary.curr_date | date:' MMM dd, yyyy'}}</p>
+                                        </th>
+                                        <th style="background-color: #ffffff  !important;" class="text-black">
+                                            <p class="respontext nomargin">{{ summary.curr_in }}</p>
+                                            <p class="tenpx nomargin">Login Time</p>
+                                        </th>
+                                        <th style="background-color: #ff0000  !important;">
+                                            <p class="respontext nomargin">{{ summary.curr_late }}</p>
+                                            <p class="tenpx nomargin">Minutes Late</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="text-center container" style="padding-top : 12px">
+                           <table
+                                class="tableemp example2 row-border hover table-striped table-bordered ng-isolate-scope dataTable no-footer dtr-inline"
+                                style="border: 2px solid #00b050; table-layout: fixed !important;">
+
+                                <thead>
+                                    <tr role="row">
+                                        <th colspan=4 class="theight  as1280"
+                                            style="background-color: #00b050  !important;">
+                                            <p class="nomargin vw2">Attendance Summary - {{ dashboard.values.daterange }}</p>
+                                        </th>
+                                    </tr>
+                                    <tr role="row" style="color: #444;">
+                                        <th class="theight as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important; ">
+                                            <p class="twelenpx nomargin text-black">Reg Hours</p>
+                                        </th>
+                                        <th class="theight  as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="twelenpx nomargin text-black">Tardiness</p>
+                                        </th>
+                                        <th class="theight  as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="twelenpx nomargin text-black">Absences</p>
+                                        </th>
+                                        <th class="theight  as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="twelenpx nomargin text-black">Leaves</p>
+                                        </th>
+                                    </tr>
+                                    <tr role="row" style="color: #444;">
+                                        <th class="theight  text-black  as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="respontext">{{ summary.reg_day }}</p>
+                                            <p class="ninepx nomargin">Days</p>
+                                        </th>
+                                        <th class="theight  text-black  as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="respontext">{{ summary.late_mins }}</p>
+                                            <p class="ninepx nomargin text-black">Minutes</p>
+                                        </th>
+                                        <th class="theight  text-black  as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="respontext">{{ summary.absent_day }}</p>
+                                            <p class="ninepx nomargin text-black">Days</p>
+                                        </th>
+                                        <th class="theight  text-black as1280"
+                                            style="background-color: #ffffff  !important; border: 1px solid #ded3d3  !important;">
+                                            <p class="respontext">{{ summary.leave_day }}</p>
+                                            <p class="ninepx nomargin text-black">Days</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="text-center" style="padding-top : 12px">
+                            <a href="./#/admin/emp/timesheet"> 
+								<button
+									style="width: 88% !important; border: 2px solid #ffffff; font-size: 18px; font-weight: 600 !important;"
+									class="btn btn-success vw">View Timesheet</button>
+							</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding-bottom: 10px;"
+                    class="col-lg-6 col-md-4 col-sm-12 col-xs-12 w720"
+                    ng-init="announcement()">
+                    <div class="bheight" style=" background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-1 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/announcement.png" style="height: 60px;"
+                                        class="user-image" alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-11  col-xs-10">
+                                <div style="padding-left: 30px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                        margin: 0 0 -5px !important; font-weight: 600 !important;">Announcements</p>
+                                    <span class="fs">Company Activities, Memorandums, Holidays and etc.</span>
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="row">
+							<div ng-class="{'col-md-8  col-xs-6' : summary.bdates.length > 0, 'col-md-12  col-xs-12 space_right' : summary.bdates.length == 0 }">
+                                <div class="container text-black" style="overflow: hidden !important; ">
+                                    <div class="well well-graphic ah scrollable-element style-15"
+                                        style="margin-left: 20px; overflow: auto; border: 2px solid #00b050; ">
+                                        <div class="row" ng-repeat="al in announcelist">
+											<div class="col-md-10">
+												<div class="row eh ahf {{al.type}}">
+													<div class="col-md-2 col-xs-5">{{al.name}}</div>
+													<div
+														class="{{epviews.indexOf(dashboard.values.accouttype) > -1 ? 'col-md-5 col-xs-7' : 'col-md-6 col-xs-7' }}">
+														{{al.title}}</div>
+													<div
+														class="{{epviews.indexOf(dashboard.values.accouttype) > -1 ? 'col-md-4 col-xs-6' : 'col-md-3 col-xs-6' }}">
+														{{al.start | date:'EEE MM/dd/yyyy'}}</div>
+													<div ng-click="files2( al.id );" class="col-md-1 col-xs-6" style="cursor:pointer">{{ al.filesize }}</div>
+												</div>
+												<p class="af dgray">
+													{{al.description | limitTo: 200 }}
+												</p>
+											</div>
+											<div class="col-md-2 text-center eh">
+												<span style="color :rgb(32, 32, 32) !important; cursor:pointer" ng-click="view_announcement( al );" >
+													<small><u>Click to View</u></small>
+												</span>
+											</div>
+										</div>
+                                    </div>
+                                </div>
+                            </div>
+							<!-- new -->
+							<div ng-if="summary.bdates.length > 0" class="col-md-4 col-xs-6">
+                                <div class="container text-black" style="overflow: hidden !important; ">
+                                    <div class="well well-graphic ah scrollable-element text-center style-15"
+                                        style=" margin-right: 20px; border: 2px solid #00b050;">
+                                        <table class="text-center" style="width: 100%;">
+                                            <tr>
+                                                <th class="text-black  text-center" colspan="2">
+                                                    <h3 class="eh nomargin whfs">Todays Birthday</h3>
+                                                    <p class="twpx gray">{{ summary.curr_date | date:' MMM dd, yyyy'}}</p>
+                                                </th>
+                                            </tr>
+                                            <tr ng-repeat="natalday in summary.bdates" >
+                                                <td>
+                                                    <p class="bf1280"> {{ natalday.name }} &nbsp;&nbsp; <img
+                                                            ng-src="{{ natalday.path }}"
+                                                            style="height:35px;  border-radius: 50%; border: 1px solid rgb(32, 32, 32);"
+                                                            class="user-image imgh" alt="User Image" >
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+							<!-- end new -->
+						</div>
+                    </div>
+                </div>
+				<!-- new -->
+				<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;"
+                    ng-if="epviews.indexOf(dashboard.values.accouttype) === -1">
+                    <div class="bheight" style="background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-2 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/mv.png" style="height: 60px;" class="user-image"
+                                        alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-10  col-xs-10">
+                                <div style="padding-left: 20px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                margin: 0 0 -5px !important; font-weight: 600 !important;">MISSION & VISION</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6  col-xs-6">
+                                <div class="container text-black" style="overflow: hidden !important; ">
+                                    <div class="well well-graphic ah scrollable-element style-15"
+                                        style="margin-left: 15px; overflow: auto; border: 2px solid #00b050;">
+										<p ng-bind-html="dashboard.values.userInformation.mission" style="text-align: justify"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-6">
+                                <div class="container text-black" style="overflow: hidden !important; ">
+                                    <div class="well well-graphic ah scrollable-element style-15"
+                                        style="margin-right: 15px; overflow: auto; border: 2px solid #00b050;">
+										<p ng-bind-html="dashboard.values.userInformation.vision" style="text-align: justify"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;"
+                    ng-if="epviews.indexOf(dashboard.values.accouttype) > -1" ng-init="mvmodal()">
+                    <div class="bheight" style="background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-2 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/staff.png" style="height: 60px;" class="user-image"
+                                        alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-10  col-xs-10">
+                                <div style="padding-left: 20px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                    margin: 0 0 -5px !important; font-weight: 600 !important;">Staff Management</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center container">
+                            <table
+                                class="tableemp example2 row-border hover table-striped table-bordered ng-isolate-scope dataTable no-footer dtr-inline"
+                                style=" border: 2px solid #00b050;">
+                                <thead>
+                                    <tr role="row">
+                                        <th style="background-color: #0070c0  !important;">
+                                            <p class="nomargin fs">Total Headcount : {{ staff.headctr }}</p>
+                                        </th>
+                                        <th style="background-color: #ff0000  !important;">
+                                            <p class="nomargin fs">For Approval : {{ staff.pending_lv }}</p>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2" style="background-color: #ffffff  !important;" class="ah2">
+                                            <table class="table" style="width: 100%;">
+                                                <tr>
+                                                    <td class="text-black " colspan="2"
+                                                        style="background-color: #ffffff  !important; ">
+                                                        <h3 class="eh nomargin whfs">WHO's OUT ?</h3>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="background-color: #ffffff  !important; width: 82px;"
+                                                        class="text-black w1280">
+                                                        <p class="text-left nomargin fs" style="color: #0070c0;">
+                                                            Tommorow
+                                                        </p>
+                                                        <p class="text-left nomargin twpx gray">
+                                                            {{ staff.tomo_date | date:' MMM dd, yyyy'}}</p>
+                                                    </td>
+                                                    <td class="text-black "
+                                                        style="background-color: #ffffff  !important;">
+                                                        <p class="text-left nomargin">
+															<img ng-repeat="imgtom in staff.img_tom" ng-src="{{ imgtom.src }}"
+                                                                style="height:35px;  border-radius: 50%; border: 1px solid rgb(32, 32, 32);"
+                                                                class="user-image" alt="User Image" >
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-black"
+                                                        style="background-color: #ffffff  !important;">
+                                                        <p class="text-left nomargin fs" style="color: #ff0000;">Today
+                                                        </p>
+                                                        <p class="text-left nomargin twpx gray">
+                                                            {{ staff.curr_date | date:' MMM dd, yyyy'}}</p>
+                                                    </td>
+                                                    <td class="text-black "
+                                                        style="background-color: #ffffff  !important;">
+                                                        <p class="text-left nomargin">
+                                                            <img ng-repeat="imgnow in staff.img_now" ng-src="{{ imgnow.src }}"
+                                                                style="height:35px;  border-radius: 50%; border: 1px solid rgb(32, 32, 32);"
+                                                                class="user-image" alt="User Image" >
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-black"
+                                                        style="background-color: #ffffff  !important;">
+                                                        <p class="text-left nomargin fs" style="color: #5b1eeb;">
+                                                            Yesterday
+                                                        </p>
+                                                        <p class="text-left nomargin twpx gray">
+                                                            {{ staff.yest_date | date:' MMM dd, yyyy'}}</p>
+                                                    </td>
+                                                    <td class="text-black "
+                                                        style="background-color: #ffffff  !important;">
+                                                        <p class="text-left nomargin">
+                                                            <img ng-repeat="imgyes in staff.img_yes" ng-src="{{ imgyes.src }}"
+                                                                style="height:35px;  border-radius: 50%; border: 1px solid rgb(32, 32, 32);"
+                                                                class="user-image" alt="User Image" >
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+                        <div class="text-center" style="padding-top : 12px">
+                            <button
+                                style="width: 88% !important; border: 2px solid #ffffff; font-size: 18px; font-weight: 600 !important;"
+                                class="btn btn-success vw ">View Staff Records</button>
+                        </div>
+                    </div>
+                </div>
+				<!-- end new -->
+            </div>
+
+            <div class="row" style="padding-top: 5px; padding-bottom: 32px;">
+
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px; ">
+                    <div class="bheight h667"
+                        style="background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-2 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/leave.png" style="height: 70px;" class="user-image"
+                                        alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-10  col-xs-10">
+                                <div style="padding-left: 10px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                margin: 0 0 -5px !important; font-weight: 600 !important;">Leave Entitlement</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center container">
+                            <table class="tableemp" style="background-color: #c3c7ca  !important; width: 100%;">
+                                <tbody>
+                                    <tr>
+                                        <td ng-repeat=" lv in leavesumm " ng-if="lv.id == 2 || lv.id == 1" ng-click="setlinkParams(lv.id)" style="cursor: pointer" >
+                                            <div  class="text-black text-center"
+                                                style=" border: 2px solid #00b050; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: white;">
+                                                <h4 class="t14px text-black eh">{{ lv.leave_alias }}</h4>
+                                                <div class="respontext eh">
+
+                                                    <img ng-src="{{ 'assets/images/' + lv.imgicon }}" style="height: 38px;"
+                                                        class="user-image" alt="User Image">
+                                                    {{ lv.available_day }}
+                                                </div>
+                                                <h4 class="t12px text-black eh nomargin">Days available</h4>
+                                                <p class="f11px nomargin">Total Balance Day : {{ lv.balance_day }} Days</p>
+                                                <p class="f11px">Used : {{ lv.used_day }} | Pending : {{ lv.pending_day }}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+									<tr>
+                                        <td ng-repeat=" lv in leavesumm " ng-if="lv.id == 4 || lv.id == 3" ng-click="setlinkParams(lv.id)" style="cursor: pointer" >
+                                            <div  class="text-black text-center"
+                                                style=" border: 2px solid #00b050; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: white;">
+                                                <h4 class="t14px text-black eh">{{ lv.leave_alias }}</h4>
+                                                <div class="respontext eh">
+
+                                                    <img ng-src="{{ 'assets/images/' + lv.imgicon }}" style="height: 38px;"
+                                                        class="user-image" alt="User Image">
+                                                    {{ lv.available_day }}
+                                                </div>
+                                                <h4 class="t12px text-black eh nomargin">Days available</h4>
+                                                <p class="f11px nomargin">Total Balance Day : {{ lv.balance_day }} Days</p>
+                                                <p class="f11px">Used : {{ lv.used_day }} | Pending : {{ lv.pending_day }}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center" ng-if=" leavesumm.length > 5 ">
+                            <button
+                                style="width: 88% !important; border: 2px solid #ffffff; font-size: 18px; font-weight: 600 !important;"
+                                class="btn btn-success vw">View More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 w720" style="padding-bottom: 10px;">
+                    <div class="bheight" style=" background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-1 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/plan.png" style="height: 60px;" class="user-image"
+                                        alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-11  col-xs-10">
+                                <div style="padding-left: 30px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                        margin: 0 0 -5px !important; font-weight: 600 !important;">Planner</p>
+                                    <span class="respan">Meetings, Product Demos, Onsite Visit and etc</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container text-black" style="overflow: hidden !important;">
+                            <div class="well well-graphic ah scrollable-element style-15"
+                                style="margin-left: 20px; margin-right: 20px; overflow: auto; border: 2px solid #00b050;">
+                                <div style="height: 430px !important;" ng-init="plans()">
+                                    <div fc="" fc-options="calendarOptions" ng-model="events"
+                                        class="calendar ng-pristine ng-untouched ng-valid ng-isolate-scope fc fc-unthemed fc-ltr ng-not-empty">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding-bottom: 10px;">
+                    <div class="bheight h6672"
+                        style="background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-2 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/peso.png" style="height: 70px;" class="user-image"
+                                        alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-10  col-xs-10">
+                                <div style="padding-left: 30px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                margin: 0 0 -5px !important; font-weight: 600 !important;">Compensation</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center container">
+                            <table class="tableemp" style="background-color: #c3c7ca  !important; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <div class="text-black text-center"
+                                                style=" border: 2px solid #00b050; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: white;">
+                                                <h4 class="t14px text-black eh">Payslip</h4>
+                                                <div class="respontext eh" style="margin-bottom: 10px;">
+
+                                                    <img ng-src="assets/images/payslip.png" style="height: 88px;"
+                                                        class="user-image" alt="User Image">
+
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-black text-center"
+                                                style=" border: 2px solid #00b050; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: white;">
+                                                <h4 class="t14px text-black eh">Loans</h4>
+                                                <div class="respontext eh" style="margin-bottom: 10px;">
+                                                    <img ng-src="assets/images/loans.png" style="height: 88px;"
+                                                        class="user-image" alt="User Image">
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-black text-center"
+                                                style=" border: 2px solid #00b050; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: white;">
+                                                <h4 class="t14px text-black eh">Benefits</h4>
+                                                <div class="respontext eh" style="margin-bottom: 10px;">
+
+                                                    <img ng-src="assets/images/benefits.png" style="height: 88px;"
+                                                        class="user-image" alt="User Image">
+
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-black text-center"
+                                                style=" border: 2px solid #00b050; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: white;">
+                                                <h4 class="t14px text-black eh">Year to Date</h4>
+                                                <div class="respontext eh" style="margin-bottom: 10px;">
+                                                    <img ng-src="assets/images/365.png" style="height: 88px;"
+                                                        class="user-image" alt="User Image">
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+                        <div class="text-center">
+                            <button
+                                style="width: 88% !important; border: 2px solid #ffffff; font-size: 18px; font-weight: 600 !important;"
+                                class="btn btn-success vw">Click to View</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+    </div>
+	
+	<div class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">{{ memo.title }} </h3>
+					<sub>{{ 'By: ' + memo.name + ' | ' + memo.start }}</sub>
+				</div>
+				<div class="modal-body" style="color:black !important;background:white !important">					
+					<div class="row">
+						<div class="col-xs-12" >
+							<p ng-bind-html="  memo.desc "></p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer btn-success">
+					<button type="button" class="btn btn-danger pull-right"  data-target="#announcement_box" data-toggle="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="eventCreate" class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">New Plan</h4>
+				</div>
+				<div class="modal-body form-group" style="color:black !important;background:white !important">		
+					<div style="display: none;">start :
+						<input type="text" name="event_title" class="form-control" id="startd" style="display: none;">
+					</div>
+					<div style="display: none;">end :
+						<input type="text" name="event_title" class="form-control" id="endd">
+					</div>
+					<div>Plan :
+						<input type="text" name="event_title" class="form-control" ng-model="event_title">
+					</div>
+					<div>Color :
+						<input type="color" name="favcolor" class="form-control" value="#ccc" ng-model="event_color">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-raised" data-target="#eventCreate" data-toggle="modal" >Cancel</button>
+					<button type="button" class="btn btn-primary btn-raised" ng-click="addPlan()">Save</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<div id="editPlanmodal" class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">Edit Plan</h4>
+				</div>
+				<div class="modal-body form-group" style="color:black !important;background:white !important">		
+					<div style="display: none;">ID :
+						<input type="text" name="event_title" class="form-control" id="eventid">
+					</div>
+					<div>Plan :
+						<input type="text" name="event_title" class="form-control" ng-model="editplantitle" id="eventtitle">
+					</div>
+					<div>Color :
+						<input type="color" name="favcolor" class="form-control" value="#ccc" ng-model="editplantype"
+							id="bgcolor">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-raised" data-target="#editPlanmodal" data-toggle="modal">Cancel</button>
+					<button type="button" class="btn btn-primary btn-raised" ng-click="editPlan('modal')">Save</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<div id="mvmodal" class="modal fade modal-success" data-backdrop="static" id="announcement_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="border: none !important;">
+					<h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body form-group" style="color:black !important;background:white !important">		
+                    <div class="bheight" style="background-color: #c3c7ca !important; color: white; height: 460px;">
+                        <div class="well well-graphic"
+                            style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                            <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-2 col-xs-2">
+                                <div class="imgauto">
+                                    <img ng-src="assets/images/mv.png" style="height: 60px;" class="user-image"
+                                        alt="User Image">
+                                </div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-10  col-xs-10">
+                                <div style="padding-left: 20px;" class="well-text well-color text-left">
+                                    <p class="respontext" style="
+                                margin: 0 0 -5px !important; font-weight: 600 !important;">MISSION & VISION</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6  col-xs-6">
+                                <div class="container text-black" style="overflow: hidden !important; ">
+                                    <div class="well well-graphic ah scrollable-element style-15"
+                                        style="margin-left: 15px; overflow: auto; border: 2px solid #00b050;">
+										<p ng-bind-html="dashboard.values.userInformation.mission" style="text-align: justify"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-6">
+                                <div class="container text-black" style="overflow: hidden !important; ">
+                                    <div class="well well-graphic ah scrollable-element style-15"
+                                        style="margin-right: 15px; overflow: auto; border: 2px solid #00b050;">
+										<p ng-bind-html="dashboard.values.userInformation.vision" style="text-align: justify"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-raised" ng-click="closemv()">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+	
+    </section>
+</div>
+
+<div ng-include="footerTemplate"></div>
+
+</div>

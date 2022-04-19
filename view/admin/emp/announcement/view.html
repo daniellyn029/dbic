@@ -1,0 +1,459 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #00b050;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    .danger {
+        color: red;
+        margin: 0px !important;
+    }
+
+    .csuccess {
+        color: green;
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .fw9 {
+        font-weight: 900;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1280px) {
+        .bheight {
+            height: 492px !important;
+        }
+    }
+
+    @media screen and (max-height: 667px) {
+        .bheight {
+            height: 404px !important;
+        }
+    }
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: auto !important;
+        }
+    }
+
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .autoh {
+            margin-bottom: 60px !important;
+            height: auto !important;
+        }
+
+        .tm {
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+        }
+
+        .thw {
+            width: 60px !important;
+        }
+
+    }
+
+    .thw {
+        width: 180px;
+    }
+
+
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+
+    .bheight {
+        height: 600px;
+    }
+
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        text-decoration: underline;
+    }
+
+    .tm {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+    }
+
+    .th {
+        color: black !important;
+        background-color: white !important;
+        border-top: 1px solid rgb(77, 73, 73) !important;
+        border-bottom: 1px solid rgb(77, 73, 73) !important;
+
+    }
+
+
+    .circlearancione {
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    .dot {
+        height: 22px;
+        width: 22px;
+        background-color: green;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .dot2 {
+        height: 22px;
+        width: 22px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+
+    .dot3 {
+        height: 22px;
+        width: 22px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+
+    span {
+        margin-left: 5px;
+    }
+
+    #block_container {
+        text-align: center;
+    }
+
+    #bloc1,
+    #bloc2 {
+        display: inline;
+    }
+
+    .toolbar {
+        margin-left: 80px;
+    }
+
+    .btn-group button {
+        background-color: #00b050;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-width: 1px;
+        color: white;
+    }
+
+    .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+
+
+    .dataTables_filter input[type="search"] {
+        border: 1px solid #767676 !important;
+        border-radius: 3px;
+    }
+
+    input.empty {
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+    }
+
+
+
+
+    th {
+        border-top: 2px solid #ddd;
+        font-weight: 600 !important;
+        border-bottom: 2px solid #ddd;
+    }
+
+    td {
+        font-weight: 600 !important;
+    }
+
+    table {
+        margin-top: 2px;
+    }
+
+    .important {
+        color: #ff0000 !important;
+    }
+
+    tbody:hover {
+        background-color: #a6c0e7;
+        cursor: pointer;
+        border: 0px !important;
+    }
+
+    tbody tr:hover+tr th {
+        border-top-color: #a6c0e7;
+        border: 0px !important;
+        /* change any cells without a bottom border - make the next row have top border go red (so it looks like current row bottom border) */
+    }
+
+    .bd th:hover {
+        border-top-color: #a6c0e7;
+        border: 0px !important;
+
+    }
+
+    .ml50 {
+        margin-left: 50px;
+    }
+
+    .mr50 {
+        margin-right: 50px;
+    }
+
+    small {
+        font-size: 12px !important;
+    }
+
+    pre {
+        border: 0px !important;
+    }
+</style>
+<div class="wrapper" ng-controller="EPAnnouncementController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="autoh"
+                style=" background-color: #c3c7ca !important; color: white; height: 820px; padding-bottom: 2px;">
+                <div class="well well-graphic"
+                    style=" height: 95px !important; background-color: #f39c12  !important; margin-bottom: 11px !important;">
+                    <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-1 col-xs-2">
+                        <div class="imgauto">
+                            <img ng-src="assets/php/admin/hr/employee/pix/0427.jpg?1591229368"
+                                style="height: 70px; border-radius: 50%;" class="user-image" alt="User Image">
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-9 col-lg-11  col-xs-10">
+                        <div class="well-text well-color text-left">
+                            <p class="respontext" style="
+                                margin: 0 0 -5px !important; font-weight: 600;">Announcements
+                                <a href="#/admin/emp/announcement"><img ng-src="assets/images/laback.png"
+                                        style="height: 50px;" class="user-image pull-right alt=" User Image">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="well well-lg text-black bheight text-center tm"
+                    style="padding: 2px !important; overflow: auto;" ng-init="viewid()">
+                    <h2 class="text-center" ng-repeat="av in announcementview">
+                        {{av.title}}
+                        <p><small> {{av.start | date:'EEE MM/dd/yyyy'}}</small></p>
+                    </h2>
+
+                    <div class="text-left ml50 mr50" style="margin-top:50px" ng-repeat="av in announcementview" ng-bind-html="av.description" ></div>
+
+
+                    <embed ng-if="av.file" ng-repeat="av in announcementview" class="text-left ml50 mr50" width="94%" height="100%"
+                        ng-src="{{filesrc(av.file)}}" />
+
+                    <p></p>
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

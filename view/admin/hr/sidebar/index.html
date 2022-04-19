@@ -1,0 +1,321 @@
+<!-- Left side column. contains the logo and sidebar -->
+
+<!-- sidebar: style can be found in sidebar.less -->
+<style>
+	/*
+	@media screen and (max-width: 1440px) {
+		.sidebar1280 {
+			overflow: auto;
+			overflow-x: hidden;
+			height: 100vh !important;
+		}
+	}
+    @media screen and (max-width: 1280px) {
+        .sidebar1280 {
+            overflow: auto;
+            height: 100vh !important;
+        }
+    }
+	*/
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#4D9C41),
+                to(#19911D),
+                color-stop(.6, #54DE5D))
+    }
+	.sidebar1280 {
+		overflow: auto;
+		height: 100vh;
+		padding-bottom:160px;
+	}
+	.content {
+		padding-bottom: 100px;
+	}
+</style>
+<section class="sidebar style-15">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img ng-src="{{ dashboard.values.userInformation.pic }}" style="width:25px" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ dashboard.values.userInformation.fname + ' ' + dashboard.values.userInformation.lname }}</p>
+        </div>
+      </div>
+     
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" ng-init="activeclass()">   
+		<li class="header">MAIN NAVIGATION</li>
+		<li id="home">
+			<a href="#/admin/home" >
+			  <i style="background: url('assets/images/icons/sidebar/hr/Dashboard.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Back To Dashboard</span>
+			</a>
+		</li>	
+		<li id="dashboard" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0 ">
+			<a id="dashboard" href="#/admin/hr/dashboard">
+			  <i style="background: url('assets/images/icons/sidebar/hr/Home.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Home</span>        
+			</a>
+		</li>
+		<li id="employees" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0 ">
+			<a href="#/admin/hr/employees" >
+				<i style="background: url('assets/images/icons/sidebar/hr/Employees.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Employees</span>        
+			</a>
+		</li>
+
+
+
+	
+		<li class="header" ng-if="(dashboard.values.userInformation.promotion_approver != '1' && dashboard.values.userInformation.lateral_transfer_approver != '1' && dashboard.values.userInformation.wage_increase_approver != '1') && (dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.type =='HR')">PERSONNEL ACTION</li>
+		<li class="header" ng-if="(dashboard.values.userInformation.promotion_approver == '1' || dashboard.values.userInformation.lateral_transfer_approver == '1' || dashboard.values.userInformation.wage_increase_approver == '1') && dashboard.values.userInformation.type !='HR'">PERSONNEL ACTION</li>
+		<li class="header" ng-if="(dashboard.values.userInformation.promotion_approver == '1' || dashboard.values.userInformation.lateral_transfer_approver == '1' || dashboard.values.userInformation.wage_increase_approver == '1') && dashboard.values.userInformation.type =='HR'">PERSONNEL ACTION</li>
+
+
+
+		<li ng-if="dashboard.values.userInformation.lateral_transfer_approver == '1' || dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN'">
+			<a href="#/lateral-transfer---current---" >
+				<i style="background: url('assets/images/icons/sidebar/hr/Lateral PA - Transfer.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Lateral Transfer</span>        
+			</a>
+		</li>
+		<!-- <li ng-if="">
+			<a href="#/lateral-transfer---current---" >
+				<i style="background: url('assets/images/icons/sidebar/hr/Lateral PA - Transfer.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Lateral Transfer</span>        
+			</a>
+		</li> -->
+
+
+		<li ng-if="dashboard.values.userInformation.wage_increase_approver == '1' || dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN'">
+			<a href="#/wage-increase---current---" >
+				<i style="background: url('assets/images/icons/sidebar/hr/PA - Wage Increase.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Wage Increase</span>        
+			</a>
+		</li>
+		
+
+		<li ng-if="dashboard.values.userInformation.promotion_approver == '1' || dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN'">
+			<a href="#/promotion-and-upgradation---current---" >
+				<i style="background: url('assets/images/icons/sidebar/hr/PA - Promotion.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Promotion</span>        
+			</a>
+		</li>
+		<!-- <li ng-if="">
+			<a href="#/promotion-and-upgradation---current---" >
+				<i style="background: url('assets/images/icons/sidebar/hr/PA - Promotion.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Promotion</span>        
+			</a>
+		</li> -->
+
+
+
+		
+		
+		<li class="header" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0 ">DOCUMENT TEMPLATES</li>
+		<li style="min-width:250px;border-radius:3px" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">
+			<a href="#/admin/hr/cln">
+				<i style="background: url('assets/images/icons/sidebar/hr/Document Template.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Certificates,&nbsp;Letter&nbsp;&&nbsp;Notices</span>        
+			</a>
+		</li>
+		
+		
+		<li class="header" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">REPORTS</li>
+		<li id="report" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">
+			<a href="#/admin/hr/emp/report">
+				<i style="background: url('assets/images/icons/sidebar/hr/Report - Employees Record.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Employees Data Report</span>        
+			</a>
+		</li>
+		<li class="treeview" id="header-esetting" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">
+			<a href="">
+				<i style="background: url('assets/images/icons/sidebar/hr/Report - 201 Reports.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>201 Reports</span><i class="fa fa-angle-left pull-right"></i>
+			</a>
+			<ul id="esetting" class="treeview-menu">
+				<li id="ageDistribution" >
+					<a href="#/hr/ageDistribution" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Age Distribution</span>        
+					</a>
+				</li>
+				<li id="birthday" >
+					<a href="#/hr/birthday">
+						<i class="fa fa-circle-o text-blue"></i> <span>Birthday</span>        
+					</a>
+				</li>
+				<li id="compensation" >
+					<a href="#/hr/compensation">
+						<i class="fa fa-circle-o text-blue"></i> <span>Compensation & <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Benefits</span>        
+					</a>
+				</li>
+				<li id="weeklyHeadCountCompRep" >
+					<a href="#/hr/weeklyHeadCountCompRep" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Headcount<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Comparative Report</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/hiredEmployees" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Hired Employees</span>        
+					</a>
+				</li>
+				<li id="resignDetail" >
+					<a href="#/hr/resignDetail">
+						<i class="fa fa-circle-o text-blue"></i> <span>Resigned Employees</span>        
+					</a>
+				</li>
+				<li id="empTemp" >
+					<a href="#/hr/empTemp">
+						<i class="fa fa-circle-o text-blue"></i> <span>Daily Temperature</span>
+					</a>
+				</li>
+				<!-- <li id="leaveConvertion" >
+					<a href="#/hr/leaveConvertion">
+						<i class="fa fa-cube"></i> <span>Leave Convertion</span>        
+					</a>
+				</li> -->
+			<!-- <li id="employmentRecord" >
+					<a href="#/hr/employmentRecord">
+						<i class="fa fa-cube"></i> <span>Employment Record</span>        
+					</a>
+				</li> -->
+			</ul>
+		</li>
+		<li class="treeview" id="header-esetting" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">
+			<a href="">
+				<i style="background: url('assets/images/icons/sidebar/hr/Report - Employment Records.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Employment Record</span><i class="fa fa-angle-left pull-right"></i>
+			</a>
+			<ul id="esetting" class="treeview-menu">
+				<!--li id="awardsReceived" >
+					<a href="#/hr/awardsReceived" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Awards Received</span>        
+					</a>
+				</li>
+				<li id="commendations" >
+					<a href="#/hr/commendations" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Commendations</span>        
+					</a>
+				</li>
+				<li id="disciplinaryActions" >
+					<a href="#/hr/disciplinaryActions" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Disciplinary Actions</span>        
+					</a>
+				</li-->
+				<li id="educationalAttainment" >
+					<a href="#/hr/educationalAttainment" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Educational<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Attainment</span>        
+					</a>
+				</li>
+				<li id="employmentHistory" >
+					<a href="#/hr/employmentHistory" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Employment History</span>        
+					</a>
+				</li>
+				<li id="employeeMovement" >
+					<a href="#/hr/employeeMovement" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Employee Movement</span>        
+					</a>
+				</li>
+				<li id="examinationsummary" >
+					<a href="#/hr/examinationsSummary" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Examinations<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Summary</span>        
+					</a>
+				</li>
+				<li id="licenses" >
+					<a href="#/hr/licenses" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Licenses</span>        
+					</a>
+				</li>
+				<!--li id="propertyAccountability" >
+					<a href="#/hr/propertyAccountability" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Property<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accountability</span>        
+					</a>
+				</li>
+				<li id="skillsInventory" >
+					<a href="#/hr/skillsInventory" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Skills Inventory</span>        
+					</a>
+				</li-->
+				<li id="trainingsTaken" >
+					<a href="#/hr/trainingsTaken" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Trainings Taken</span>        
+					</a>
+				</li>
+				
+				<!--li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Organization <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Membership</span>        
+					</a>
+				</li>		
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Projects and Activities</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Personal Data</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Employee<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Data (Archive)</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>De Minimis<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Report</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Employee Data<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Report</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Timesheet<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consolidated Report</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Loan Audit<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Report</span>        
+					</a>
+				</li>
+				<li id="leaveBalance" >
+					<a href="#/hr/employmentRecord" >
+						<i class="fa fa-circle-o text-blue"></i> <span>Compensation<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Report</span>        
+					</a>
+				</li-->
+				
+			</ul>
+		</li>
+		<li class="header" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">SETTINGS</li>
+		<li ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0" id="preference">
+			<a href="#/admin/hr/preference" >
+				<i style="background: url('assets/images/icons/sidebar/hr/Minimum Take Home Pay.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Setup and Preferences</span>        
+			</a>
+		</li>
+		<li class="header" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">FILE MAINTENANCE</li>
+		<li id="mass-data-update" ng-if="dashboard.values.userInformation.type =='HR' || dashboard.values.userInformation.type =='SYSADMIN' || dashboard.values.userInformation.hrunit.length > 0">
+			<a href="#/mass-data-update" >
+				<i style="background: url('assets/images/icons/sidebar/hr/Mass Data Updater.png');background-repeat: no-repeat;background-size: 17px;color:transparent;margin-right: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><span>Mass Data Updater</span>        
+			</a>
+		</li>
+
+
+
+		
+
+
+
+    </ul>
+    </section>
+    <!-- /.sidebar -->
+  

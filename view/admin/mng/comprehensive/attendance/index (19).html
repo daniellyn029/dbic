@@ -1,0 +1,435 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #0073b7 ;  }
+	}
+    @media screen and (max-width: 414px) {
+        .fwzhreso{
+            font-size: 12pt;
+            text-align: left;
+            width: 100px;
+        }
+        .inoutwid{
+            width:180px !important;
+        }
+        .resocenwid{
+            width: 190px !important;
+        }
+
+    }
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+    @media screen and (max-width: 1366px) {
+        .fwzhreso{
+            font-size: 12pt;
+            text-align: left;
+            width: 100px;
+        }
+        .inoutwid{
+            width:230px !important;
+        }
+        .resocenwid{
+            width: 240px !important;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        .fwzhreso{
+            font-size: 12pt;
+            text-align: left;
+            width: 100px;
+        }
+        .inoutwid{
+            width:190px !important;
+        }
+        .resocenwid{
+            width: 190px !important;
+        }
+
+
+    }
+
+
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#0073b7),
+                to(#178dd1),
+                color-stop(.6, #06507a))
+    }
+	 /* HeaderBackground */
+     .background{
+        color:white;
+        background-color: #00a65a;
+        text-align:center
+    }
+     /* freeze Header */
+	tbody{
+		display:block;
+        /* overflow:auto;  */
+	}
+	thead, tbody tr {
+		display:table;
+		width:100%;
+		table-layout:fixed;
+	} 
+    /* END */
+    .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+        z-index: 3;
+        color: #fff;
+        cursor: default;
+        background-color: #00a65a;
+        border-color: #00a65a;
+    }
+    .mar0{
+        margin: 0 !important;
+    }
+    .fwzh{
+        font-size: 12pt;
+        text-align: left;
+    }
+    .padleft5{
+        padding-left: 5px;
+    }
+    .fwz {
+        font-size: 12pt;
+    }
+    .fwz1 {
+        font-size: 11pt;
+        vertical-align: top;
+        word-wrap: break-word;
+        padding: 5px;
+    }
+    .bhit{
+        height: 40px;
+        width: 120px;
+        /* font-size: 13pt; */
+    }
+    .bhitreso{
+        height: 40px;
+        width: 340px;
+    }
+    .resowid{
+        width:200px;
+    }
+    
+    .resocenwid{
+        width:350px;
+    }
+    .out{
+        text-align: center;
+        width: 100px;
+        height: 40px;
+        border-radius: 7px;
+        padding-top: 10px;
+        color:#FFF;
+    }
+    .in{
+        text-align: center;
+        width: 100px;
+        height: 40px;
+        border-radius: 7px;
+        padding-top: 10px;
+        color:#FFF;
+    }
+    .inoutwid{
+        width:280px;
+        text-align: center;
+        border-radius: 7px;
+    }
+    .pad20{
+        padding-bottom:20px;
+    }
+
+</style>
+<div class="wrapper" ng-controller="MNGAttendanceTodayController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<a style="color: white !important;" class="">
+					<img ng-src="assets/images/icons/HRIS Dashboard icon Manager.png"
+						style="height: 80px;  border-radius: 50%; margin-right:15px"
+						class="user-image pull-left" alt="User Image">
+				</a>
+				<div>
+					<p class="respontext" style=" margin: 0 0 -5px !important; font-size:28pt">Staff Management</p>
+				</div>
+				<div style="font-size: 15pt">Attendance Today - {{ today | date:"EEEE," }} {{today | date:"MMM d, yyyy"}}</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/mng/dashboard"> Manager's Portal</a></li>
+                <li class="active">Attendance Today</li>
+			</ol>
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content">                
+			<div class="row mar0">				
+                <div class = "col-md-6 col-xs-12">
+                    <div class="search-input-wrapper">
+                        <div class="btn-toolbar">
+                            <label>Show
+                                <select class="" ng-model="dashboard.values.pageSize">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-md-6 col-xs-12" style="text-align: right;">
+                    <button style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;" onclick="angular.element(this).scope().xport()"><i class="fa fa-file-excel-o fa-sm"></i>&nbsp;&nbsp;&nbsp;Export</button>
+                    <button style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;" title="Search" data-toggle="modal" data-target="#modal-search"><i class="fa fa-search fa-sm"></i>&nbsp;&nbsp;&nbsp;Filter</button>
+                    <button id="btn-refreshh" style="width:100px;margin: 0 3px 0 3px;color : white;border-radius: 5px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border-width: 1px;background: black;" onclick="angular.element(this).scope().dtInstance.reloadData()"><i class="fa fa-refresh fa-sm"></i>&nbsp;&nbsp;&nbsp;Refresh</button>
+                </div>
+                
+                <div class = "col-md-12 col-xs-12">
+                    <div class="row style-15" style ="overflow-y: auto;">
+                        <table id="sortableView" class="sortable" ng-init="attendance_func();" style="width: 100%;">
+                            <thead >
+                                <tr>
+                                    <th class = "background fwzh" style="height:40px; width:300px; border-radius: 7px 0px 0px 7px; padding-left:100px;" >Name</th>
+                                    <th class = "background fwzh padleft5" style="width:200px">Position</th>
+                                    <th class = "background fwzh padleft5" style="width:100px">Shift</th>
+                                    <th class = "background fwzh padleft5" style="width:100px">Time IN</th>
+                                    <th class = "background fwzh padleft5" style="width:100px">Time OUT</th>
+                                    <th class = "background fwzhreso padleft5 resowid" style="border-radius: 0px 7px 7px 0px;">Resolution Center</th>
+                                </tr>
+                            </thead>
+                            <tbody class="style-15" style="height:500px">
+                                <tr dir-paginate="view in attendace_today_view | itemsPerPage: dashboard.values.pageSize" current-page="dashboard.values.attendancetodayPage" ng-show="attendace_today_view.length > 0">
+                                   
+                                    <td style="width:300px; word-wrap: break-word; vertical-align: center;">
+                                        <table class="table text-left">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border: none; width: 50px;">
+                                                        <img
+                                                            src="assets/php/admin/hr/employee/pix/{{view.pic}}?1591229368"
+                                                            style="height: 40px; border-radius: 50%;" class="user-image mar0">
+                                                         
+                                                    </td>
+                                                    <td style="border: none; width: 250px; vertical-align: center;">
+                                                        
+                                                        <p class="mar0 fwz" style="color:#3c8dbc">{{ view.empname }}</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td class="fwz1" style="width:200px;">{{view.post}}</td>
+                                    <td class="fwz1" style="width:100px;">{{view.shift_status}}</td>
+                                    <td class="pad20" style="width:200px;">
+                                        <table>
+                                            <tr ng-if="view.shiftin&&view.shiftout">
+                                                <td>
+                                                    <div class="in" style="background-color: lightseagreen;">{{view.shiftin}}</div>
+                                                </td>
+                                                <td>
+                                                    <div class="out" style="background-color: lightcoral;">{{view.shiftout}}</div>
+                                                </td>
+                                            </tr>
+                                            <tr ng-if="view.shiftin==''&&view.shiftout==''">
+                                                <div class="inoutwid" style="background-color: lightcoral; color:white">Absent</div>
+                                            </tr>
+                                        </table>
+                                    </td>
+                               
+                                    <!-- <td class="fwz1" style="width:100px;">
+                                        <div class="in" style="background-color: orange;">{{view.shiftin}}</div>
+                                    </td>
+                                    <td class="fwz1" style="width:100px;">
+                                        <div class="out" style="background-color: #006ba6;">{{view.shiftout}}</div>
+                                    </td>
+                                    <td class="fwz1" style="width:200px;" ng-if="view.shiftin==''&&view.shiftout==''">
+                                        <div class="inoutwid">{{view.absent}}</div>
+                                    </td> -->
+                                    
+        
+                                    <td class="fwz1" style="width:200px;">
+                                        <button class="btn btn-lg btn-block bhitreso resocenwid" style="background: orange; color: white;  margin-bottom: 5px; border-radius: 7px;">No IN & OUT
+                                        </button>
+                                    </td>
+                      
+                                   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.Row-->                    
+            </div>
+            
+            <!-- Pagination -->
+            <div class="text-right">
+                <dir-pagination-controls boundary-links="true" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+            </div>
+            <!-- /.pagination -->
+
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

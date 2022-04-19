@@ -1,0 +1,1224 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 10px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    .fc-week {
+        height: 95px !important;
+    }
+
+    .fc-scroller {
+        height: auto !important;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .fw9 {
+        font-weight: 900;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+    @media screen and (max-height: 720px),
+    screen and (max-width: 1366px) {
+        .bheight {
+            height: 492px !important;
+        }
+    }
+
+    @media screen and (max-height: 667px) {
+
+        .bheight {
+            height: 404px !important;
+        }
+    }
+
+    @media screen and (max-width: 1366px) {
+
+        .col-md-3 {
+            width: 33% !important;
+        }
+
+        .col-md-9 {
+            width: 67% !important;
+        }
+
+        .lvtext {
+            font-size: 12px !important;
+        }
+
+        .imglicon {
+            height: 25px !important;
+        }
+
+        .fc-event {
+            height: auto !important;
+        }
+
+        .fc-content {
+            font-size: 10px !important;
+        }
+
+        .fc-week {
+            height: 75px !important;
+        }
+
+        .fc-scroller {
+            height: auto !important;
+        }
+
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 24px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 11px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+        .fc-day-header {
+            font-size: .8em !important;
+        }
+
+        .fc-toolbar {
+            padding: 0px !important;
+
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 10px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+    }
+
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .autoh {
+            margin-bottom: 60px !important;
+            height: auto !important;
+        }
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .tm {
+            margin-left: 15px !important;
+            margin-right: 0px !important;
+        }
+
+        .ah {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+    }
+
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+
+    .bheight {
+        height: auto;
+    }
+
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        text-decoration: underline;
+    }
+
+    .tm {
+        margin-left: 5px;
+        margin-right: 5px;
+
+    }
+
+    .nomargin {
+        margin: 0 !important;
+    }
+
+    .t14px {
+        font-size: 14px;
+    }
+
+    .eh {
+        font-weight: 800;
+        line-height: 16px;
+    }
+
+    .t12px {
+        font-size: 12px;
+    }
+
+    .f11px {
+        font-size: 11px;
+    }
+
+    #calendar-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .dl {
+        cursor: move;
+        z-index: 2;
+    }
+
+    .dot {
+        height: 22px;
+        width: 22px;
+        background-color: green;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .dot2 {
+        height: 22px;
+        width: 22px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+
+    .dot3 {
+        height: 22px;
+        width: 22px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+    .dot4 {
+        height: 22px;
+        width: 22px;
+        background-color: orangered;
+        border-color: rgba(255, 68, 0, 0.397);
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgba(255, 68, 0, 0.397);
+    }
+
+
+
+    span {
+        margin-left: 5px;
+    }
+
+    #block_container {
+        text-align: center;
+    }
+
+    #bloc1,
+    #bloc2 {
+        display: inline;
+    }
+
+    .sick {
+        display: none;
+    }
+
+    .ui-draggable-handle {
+        -ms-touch-action: initial !important;
+        touch-action: initial !important
+    }
+
+    .style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#f39c12),
+                to(#f39c12),
+                color-stop(.6, #f39c12));
+    }
+
+    .dw {
+        z-index: 2;
+    }
+
+    .mwid {
+        min-width: 300px !important;
+        max-width: 600px !important;
+    }
+
+    .fc-toolbar {
+        padding: 0px;
+        margin: 0;
+    }
+
+    .fc-button {
+        text-transform: capitalize;
+    }
+
+    .fc-basic-view .fc-day-number,
+    .fc-basic-view .fc-week-number {
+        padding: 0px;
+    }
+
+    .fc-day-number {
+        font-size: 14px;
+        font-weight: 300;
+        padding-right: 2px;
+    }
+
+    .imglicon {
+        height: 38px;
+    }
+
+    .fc-popover {
+        max-width: 500px;
+    }
+
+    a.btn {
+        height: 100%;
+        white-space: normal !important;
+        color: white !important;
+
+    }
+
+    .lvtext {
+        font-size: 16px;
+    }
+
+    .lvtextn {
+        font-size: 22px;
+    }
+
+    .dw {
+        width: 150px !important;
+    }
+
+    .col-md-3 {
+        width: 28%;
+    }
+
+    .col-md-9 {
+        width: 72%;
+    }
+
+    h3 {
+        margin-top: 0px;
+    }
+</style>
+<div class="wrapper" ng-controller="EPAppLeaveController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper" ng-init="empleaves('')">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content"
+            style="padding-top : 5px; padding-left: 5px !important; padding-right: 5px !important;">
+            <div class="autoh"
+                style=" background-color: #c3c7ca !important; color: white; height: 820px; padding-bottom: 2px;">
+                <div class="well well-graphic bg-yellow" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px;">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a style="color: white !important;" class="">
+                                <img ng-src="assets/images/leaveentitlement.png"
+                                    style="height: 80px;  border-radius: 50%; margin-right:15px"
+                                    class="user-image pull-left" alt="User Image">
+                            </a>
+                            <div>
+                                <p class="respontext" style=" margin: 0 0 -5px !important; font-size:28pt">Leaves
+                                    Application</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+                            <ol class="breadcrumb" style="width: 380px;font-size: 9pt;margin-bottom: 0px;">
+                                <li style="color:black !important"><a href=".#/admin/home"
+                                        style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+                                <li style="color:black !important"><a href=".#/admin/emp/dashboard"
+                                        style="color:black !important">Employee's Portal</a></li>
+                                <li style="color:black !important">Timekeeping</li>
+                                <li class="active">Leaves Application</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 text-center tld" style="padding-left: 20px ; padding-right: 0px ; ">
+                        <div class="col-md-12">
+                            <h3 class="text-left text-black">Click and Drag Leave Type</h3>
+                            <div class="btn-group btn-group-justified">
+                                <a href="" class="btn"></a>
+                                <a href="" class="btn" style=" color: black !important">Available Leaves</a>
+                                <a href="" class="btn" style=" color: black !important">Pending for Approval</a>
+                                <a href="" class="btn" style=" color: black !important">Used Leaves</a>
+                                <a href="" class="btn" style=" color: black !important">Total</a>
+                            </div>
+                            <div class="btn-group btn-group-justified {{ lv.dl }}"
+                                ng-repeat="lv in leavesumm | orderBy : 'idleave'"
+                                data-event='{ "title": "{{lv.leave_name}}", "backgroundColor": "{{lv.bg}}", "id": "p1", "idleave" : "{{lv.idleave}}" }'
+                                style="margin-bottom: 4px; ">
+                                <a href="" class="btn lvtext"
+                                    style="background-color:  {{lv.bg}}; min-width: 1.25%;">{{ lv.leave_name }}</a>
+                                <a href="" class="btn lvtextn"
+                                    style=" color: {{lv.bg}} !important; background-color: white;">
+                                    {{ lv.available_day }}</a>
+                                <a href="" class="btn lvtextn"
+                                    style=" color: {{lv.bg}} !important; background-color: white;">
+                                    {{ lv.pending_day }}</a>
+                                <a href="" class="btn lvtextn"
+                                    style=" color: {{lv.bg}} !important; background-color: white;">
+                                    {{ lv.used_day }}</a>
+                                <a href="" class="btn lvtextn"
+                                    style=" color: {{lv.bg}} !important; background-color: white;">
+                                    {{ lv.balance_day }}</a>
+                            </div>
+
+                        </div>
+
+                        <!-- <div class="col-md-6" style="padding-right: 10px; padding-left: 10px;"
+                            ng-repeat="lv in leavesumm | orderBy : 'idleave'">
+                            <div class="text-white text-center {{ lv.dl }}"
+                                data-event='{ "title": "{{lv.leave_name}}", "backgroundColor": "{{lv.bg}}", "id": "p1", "idleave" : "{{lv.idleave}}" }'
+                                style="border: 2px solid white; margin-bottom: 10px; background-color: {{lv.bg}};">
+                                <h4 class="t14px eh">{{ lv.leave_name }}</h4>
+                                <div class="respontext eh">
+                                    <img ng-src="assets/images/{{ lv.imgicon }}" class="user-image imglicon"
+                                        alt="User Image">
+                                    {{ lv.available_day }}
+                                </div>
+                                <h4 class="t12px eh nomargin">Days available</h4>
+                                <p class="f11px nomargin">Total Entitlement : {{ lv.balance_day }} Days
+                                </p>
+                                <p class="f11px">Used : {{ lv.used_day }} | Pending : {{ lv.pending_day }}
+                                </p>
+                            </div>
+                        </div> -->
+
+                        <!-- <table class="tableemp"
+                            style="background-color: #c3c7ca  !important; width: 100%; table-layout: fixed;">
+
+                        <thead>
+                            <tr>
+                                <td style="width: 50%;">
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Vacation Leave", "backgroundColor": "#fe9901", "id": "p1", "idleave" : "2" }'
+                                        style="border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #fe9901;"
+                                        ng-repeat="lv in leavesumm " ng-if="lv.idleave == 2">
+                                        <h4 class="t14px eh">{{ lv.leave_alias }}</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/vacation.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            {{ lv.available_day }}
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days available</h4>
+                                        <p class="f11px nomargin">Total Balance Day : {{ lv.balance_day }} Days
+                                        </p>
+                                        <p class="f11px">Used : {{ lv.used_day }} | Pending : {{ lv.pending_day }}
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Sick Leave", "backgroundColor": "#00af50", "id": "p2", "idleave" : "1", "balance" : "{{ lv.available_day }}"  }'
+                                        style="cursor: move; border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #00af50;"
+                                        ng-repeat="lv in leavesumm" ng-if="lv.idleave == 1">
+                                        <h4 class="t14px eh">{{ lv.leave_alias }}</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/sick.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            {{ lv.available_day }}
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days available</h4>
+                                        <p class="f11px nomargin">Total Balance Day : {{ lv.balance_day }} Days
+                                        </p>
+                                        <p class="f11px">Used : {{ lv.used_day }} | Pending : {{ lv.pending_day }}
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Birthday Leave", "backgroundColor": "#ff3300", "id": "p3"   }'
+                                        style=" border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #ff3300;">
+                                        <h4 class="t14px eh">Birthday</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/bl.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days Available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Compensatory Leave", "backgroundColor": "#01b0f1", "id": "p4"   }'
+                                        style="border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #01b0f1;">
+                                        <h4 class="t14px eh">Compensatory</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/comp.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days Available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Emergency Leave", "backgroundColor": "#0071c0", "id": "p5"   }'
+                                        style=" border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #0071c0;">
+                                        <h4 class="t14px eh">Emergency</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/el.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Magna Carta Leave", "backgroundColor": "#1f4e78", "id": "p6"   }'
+                                        style=" border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #1f4e78;">
+                                        <h4 class="t14px eh">Magna Carta</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/mc.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Solo Parent Leave", "backgroundColor": "#395723", "id": "p7" , "idleave" :"4"   }'
+                                        style=" border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #395723;">
+                                        <h4 class="t14px eh">Solo Parent</h4>
+                                        <div class="respontext eh">
+                                            <img ng-src="assets/images/sl.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days Available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Paternity Leave", "backgroundColor": "#7e6000", "id": "p8"   }'
+                                        style="border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #7e6000;">
+                                        <h4 class="t14px eh">Paternity</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/pl.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days Available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Leave Without Pay", "backgroundColor": "#010101", "id": "p9", "idleave" :"3"  }'
+                                        style=" border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #010101;">
+                                        <h4 class="t14px eh">Without Pay</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/lwop.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days Available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-white text-center dl"
+                                        data-event='{ "title": "Bereavement Leave", "backgroundColor": "#58267f", "id": "p10"  }'
+                                        style="border: 2px solid white; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #58267f;">
+                                        <h4 class="t14px eh">Bereavement</h4>
+                                        <div class="respontext eh">
+
+                                            <img ng-src="assets/images/berl.png" class="user-image imglicon"
+                                                alt="User Image">
+                                            40
+                                        </div>
+                                        <h4 class="t12px eh nomargin">Days Available</h4>
+                                        <p class="f11px nomargin">Total Balance: 14 Days</p>
+                                        <p class="f11px">Used : 4 | Pending : 3</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </thead>
+
+                        </table> -->
+                    </div>
+                    <div class="col-md-9" style="padding-left: 0px;">
+                        <div class="well well-lg text-black bheight text-center tm " style="padding: 0px !important;">
+                            <div class="well well-graphic ah scrollable-element style-15"
+                                style="overflow: auto;  margin: 0px !important;">
+                                <div id='calendar-container' style="height: 665px;" class="fcheight ">
+
+                                    <div id="calendarleave" fc="" fc-options="calendarOptions" ng-model="events"
+                                        class="calendar ng-pristine ng-untouched ng-valid ng-isolate-scope fc fc-unthemed fc-ltr ng-not-empty ">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="modal fade " id="modal-add" data-backdrop="static" role="dialog"
+        style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+        <div style="min-width:450px" class="modal-dialog mwid">
+            <form ng-submit="addLeave(add.picFile)">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: {{bgcolor}} ; color : white;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            style="color: white; opacity: 1;"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Apply {{applicationtype}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="empid">Date From<span class="req-field"> *</span></label>
+                                    <input type="text" class="form-control" ng-disabled="isSaving" type="text" readonly
+                                        ng-model="add.datefrom" placeholder="Date from" maxlength="10" id="leave_start"
+                                        name="leave_start"
+                                        style="border-top: none; border-right: none; border-left: none; border-image: initial; border-bottom: 1px solid black; width: 100%; height: 30px; background: white; padding-top: 0px; padding-bottom: 0px;">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="empid">Date To<span class="req-field"> *</span></label>
+                                    <input type="text" class="form-control" ng-disabled="isSaving" type="text" readonly
+                                        ng-model="add.dateto" placeholder="Date To" maxlength="10" id="leave_end"
+                                        name="leave_end"
+                                        style="border-top: none; border-right: none; border-left: none; border-image: initial; border-bottom: 1px solid black; width: 100%; height: 30px; background: white; padding-top: 0px; padding-bottom: 0px;">
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12 " style="height:30px">
+                                <div class="form-group">
+                                    <button type="button" style="width:100px" class="btn btn-sm btn-success pull-left"
+                                        ng-click="resetCreateAcct()">Reset</button>
+                                    <button type="button" style="width:100px" class="btn btn-sm btn-success pull-right"
+                                        ng-click="generateTbl()">Generate</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="box3" style="height: auto;max-height: 300px; ">
+                                        <table id="example22"
+                                            style="width:100%;table-layout: fixed;border-collapse: collapse;"
+                                            class="tabless table-bordered">
+                                            <thead>
+                                                <tr style="display: block;">
+                                                    <th style="text-align:center;padding: 5px;width: 130px;">
+                                                        Date
+                                                    </th>
+                                                    <th style="text-align:center;padding: 5px;width: 130px;">
+                                                        Shift
+                                                    </th>
+                                                    <th style="text-align:center;padding: 5px;width: 100px;">
+                                                        Hours
+                                                    </th>
+                                                    <th style="text-align:center;padding: 5px;width: 210px;">
+                                                        Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody
+                                                style="display:block;overflow-y: auto;height: auto;max-height: 280px;">
+                                                <tr ng-repeat="(key, value) in add.leave_dates track by $index">
+                                                    <td style="text-align:center;padding: 5px;width: 130px;">
+                                                        {{ value.date }} </td>
+                                                    <td style="text-align:center;padding: 5px;width: 130px;">
+                                                        {{ value.shift }} </td>
+                                                    <td style="text-align:center;padding: 5px;width: 100px;">
+                                                        {{ value.hrs }} </td>
+                                                    <td style="text-align:center;padding: 5px;width: 210px;">
+                                                        <select
+                                                            ng-change="calcLeavehrs( add.leave_dates[key]['hrs'], add.leave_dates[key]['val'], key )"
+                                                            ng-disabled="isSaving2" class="form-control"
+                                                            ng-model="add.leave_dates[key]['val']" style="color:black;"
+                                                            ng-if="add.leave_dates[key]['val']">
+                                                            <option
+                                                                ng-repeat="(key, value) in add.leave_dates[key]['drop'] track by $index"
+                                                                value="{{ value.id }}"> {{ value.valz }}
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="pull-left" ng-show=" add.leave_dates.length > 0 "> Units
+                                        Applied: {{ total_units }}</label>
+                                    <label class="pull-right" ng-show=" add.leave_dates.length > 0 ">Leave
+                                        Balance: {{ add.leave_dates[0]["bal"] }}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="leave_remarks">Remarks</label>
+                                    <textarea id="leave_remarks" name="leave_remarks" ng-disabled="isSaving2" .
+                                        oninput="auto_grow(this)" class="form-control txtresize" ng-model="add.remarks"
+                                        ng-init="add.remarks = ''" required
+                                        style="border-top: none; border-right: none; border-left: none; border-image: initial; border-bottom: 1px solid black; width: 100%; height: 30px; background: white; padding-top: 0px; padding-bottom: 0px;"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12" ng-if="showfilebtn == 1">
+                                <div class="form-group">
+                                    <label for="leave_file">File</label>
+                                    <input ng-disabled="isSaving2" class="form-control" type="file" ngf-select
+                                        ngf-multiple="true" ng-model="add.picFile" name="file[]" accept="image/*"
+                                        required
+                                        style="border-top: none; border-right: none; border-left: none; border-image: initial; border-bottom: 1px solid black; width: 100%; height: 30px; background: white; padding-top: 0px; padding-bottom: 0px;" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer" style="background-color: {{bgcolor}} ; color : white;">
+                    <button id="cancelleave" style="width:100px" data-target="#modal-add" data-dismiss="modal"
+                        type="button" ng-click="resetCreateAcct()" class="btn btn-default pull-left"
+                        data-dismiss="modal" ng-disabled="isSaving">Cancel</button>
+                    <button style="width:100px" id="btn-unit-add" type="submit" class="btn btn-primary"
+                        ng-disabled="isSaving2 || total_units != add.leave_dates[0]['bal']"
+                        ng-if="add.idleave == 5">Save</button>
+                    <button style="width:100px" id="btn-unit-add" type="submit" class="btn btn-primary"
+                        ng-disabled="isSaving2 || total_units > add.leave_dates[0]['bal']"
+                        ng-if="add.idleave != 5">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-mutiple" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body text-center">
+                <p>Multiple days ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="showadd();">No</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+<div ng-include="footerTemplate"></div>
+</div>
+<script>
+    function auto_grow(element) {
+        element.style.height = "5px";
+        element.style.height = (element.scrollHeight) + "px";
+    }
+</script>
+<!-- <div ng-init="app_leaves_functions()">
+                <div class="box-header">
+                    <button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-primary pull-right"
+                        ng-click="dtInstance.reloadData()" title="Refresh">
+                        <i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+                    </button>
+                    <button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Search"
+                        data-toggle="modal" data-target="#modal-search">
+                        <i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+                    </button>
+                    <button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Create"
+                        data-toggle="modal" data-target="#modal-add" ng-click="resetCreateAcct()">
+                        <i class="fa fa-plus-circle fa-sm" style="padding:3px"></i>Apply
+                    </button>
+                </div>
+                <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+                    class="example2 row-border hover table-striped table-bordered"></table>
+
+                <div class="modal fade modal-info" id="modal-search" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Search</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_acct">Employee</label>
+                                        <select ng-disabled="isSaving" id="search_acct" class="form-control"
+                                            ng-model="search.acct"
+                                            ng-options="search_employees.id as search_employees.empname for search_employees in dashboard.values.accounts | filter: filterAcct"
+                                            required>
+                                            <option value="">Select Employee</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_docu">Document Number</label>
+                                        <input type="text" class="form-control" id="search_docu" name="search_docu"
+                                            placeholder="Enter Document Number" maxlength="60" ng-model="search.docu">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_docu">Application Status</label>
+                                        <select class="form-control" id="app_status" name="app_status"
+                                            ng-model="search.appstat">
+                                            <option value="">Status</option>
+                                            <option value="1">Approved</option>
+                                            <option value="2">Disapproved</option>
+                                            <option value="3">Pending</option>
+                                            <option value="4">Canceled</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_leave">Leave Name</label>
+                                        <select ng-disabled="isSaving" id="search_leave" class="form-control"
+                                            ng-model="search.leave"
+                                            ng-options="search_leave.id as search_leave.name for search_leave in dashboard.values.leaves"
+                                            required>
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_dfrom">Leave Date From</label>
+                                        <input type="text" readonly searchdatepickers ng-model="search.datefrom"
+                                            class="form-control" placeholder="Date from" maxlength="10"
+                                            id="search_dfrom" name="search_dfrom" required />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search_dto">Leave Date To</label>
+                                        <input type="text" readonly searchdatepickers ng-model="search.dateto"
+                                            class="form-control" placeholder="Date To" maxlength="10" id="search_dto"
+                                            name="search_dto" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline btn-danger pull-left" ng-click="resetSearch()"
+                                data-target="#modal-search" data-toggle="modal">Reset</button>
+                            <button type="button" class="btn btn-outline btn-primary" ng-click="unitSearch()"
+                                data-target="#modal-search" data-toggle="modal">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="modal fade modal-info" id="editModal" data-backdrop="static" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Update Request</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important">
+                            <div class="row">
+                                <form ng-hide="mySignUpForm3" role="form" name="registerForm3">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="docnum">Document Number</label>
+                                            <input disabled type="text" readonly ng-model="edit.docnumber"
+                                                class=" readonly form-control" placeholder="Document No." maxlength="20"
+                                                id="docnum" name="docnum" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="leavename">Leave Type</label>
+                                            <input disabled type="text" readonly ng-model="edit.leave_name"
+                                                class=" readonly form-control" placeholder="Leave Type" maxlength="20"
+                                                id="leavename" name="leavename" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="eleave_acct">Employee</label>
+                                            <select disabled id="eleave_acct" class="readonly form-control"
+                                                ng-model="edit.idacct"
+                                                ng-options="add_employees.id as add_employees.empname for add_employees in dashboard.values.accounts | filter: filterAcct"
+                                                required>
+                                                <option value="">Select Employee</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="req_date">Date</label>
+                                            <input disabled type="text" readonly ng-model="edit.date"
+                                                class=" readonly form-control" placeholder="Date" maxlength="10"
+                                                id="req_date" name="req_date" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="eleave_start">Time From</label>
+                                            <input disabled type="text" readonly ng-model="edit.stime"
+                                                class=" readonly form-control" placeholder="Time from" maxlength="10"
+                                                id="eleave_start" name="eleave_start" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="eleave_end">Time To</label>
+                                            <input disabled type="text" readonly ng-model="edit.ftime"
+                                                class="readonly form-control" placeholder="Time To" maxlength="10"
+                                                id="eleave_end" name="eleave_end" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" ng-if="edit.remarks">
+                                        <div class="form-group">
+                                            <label for="eleave_remarks">Remarks</label>
+                                            <textarea id="eleave_remarks" name="eleave_remarks" disabled
+                                                class="readonly form-control txtresize"
+                                                ng-model="edit.remarks"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="ecurrent_status">Current Status</label>
+                                            <input disabled type="text" readonly ng-model="edit.leave_status"
+                                                class=" readonly form-control" maxlength="10" id="ecurrent_status"
+                                                name="ecurrent_status" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" ng-show=" edit.curr_stat == 3 ">
+                                        <div class="form-group">
+                                            <label for="edit_status">Update Status To</label>
+                                            <select class="form-control" id="edit_status" name="edit_status"
+                                                ng-model="edit.stat" required>
+                                                <option value="">--Select Status--</option>
+                                                <option value="4">Canceled</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" ng-if="edit.reason">
+                                        <div class="form-group">
+                                            <label for="eleave_reason">Reason</label>
+                                            <textarea id="eleave_reason" name="eleave_reason"
+                                                class="form-control txtresize" ng-model="edit.reason"></textarea>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width:100px" data-target="#editModal" data-dismiss="modal" type="button"
+                                class="btn btn-default pull-left" data-dismiss="modal"
+                                ng-disabled="isSaving">Cancel</button>
+                            <button style="width:100px" id="btn-unit-edit" type="button" class="btn btn-primary"
+                                ng-click="editreq()" ng-disabled="isSaving"
+                                ng-show=" edit.curr_stat == 3 ">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->

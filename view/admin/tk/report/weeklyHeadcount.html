@@ -1,0 +1,256 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        
+        padding: 10px !important;
+
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #337ab7 ;  }
+	}
+    .mybox {
+		  background-image: linear-gradient(black, black);
+		  background-repeat: no-repeat;
+		  background-size: 1px 50%, calc(100% - 4px) 100%;
+		  background-position: right bottom, 1px 0;		  
+		  display: table-cell;
+		  text-align:center;
+		  vertical-align:middle;
+		}
+		.boxlast{
+			display: table-cell;
+			text-align:center;
+		    vertical-align:middle;
+		}
+		.tin{
+			width: 40px;
+		}
+</style>
+<div class="wrapper" ng-controller="TKReportController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+        <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+            <div class="content-wrapper">
+                <spinner name="form01spinner" ng-cloak="">
+                    <div class="overlay"></div>
+                    <div class="spinner">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
+                    </div>
+                    <div class="please-wait">Please Wait...</div>
+                </spinner>
+
+                <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+                    <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                        <i class="fa fa-clock-o" style="float: left;color:#00000052"></i>                 
+                        <div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Timekeeper's Portal</div>
+                        <div style="font-size: 15pt;text-indent:15px">Weekly Headcount Report</div>    
+                    </div>
+                    <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                        <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href=".#/admin/tk/timesheet"> Timekeeper's Portal</a></li>
+                        <li><a href=".#/admin/tk/report/rptsheet">Timekeeping Reports</a></li>
+                        <li class="active">Weekly Headcount</li>
+                    </ol>
+                    <div class="bgPulse hidden-xs">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </section>
+				<section class="content">
+					<div class="row" style="padding:50px">
+						<table>
+							<tr>
+								<div style="font-size:18pt; text-align:center"><strong>DANIELLYN'S INTERNATIONAL HOTEL</strong></div>
+								<div style="font-size:15pt; text-align:center; font-weight: bold;">Headcount Forecast for Canteen Operations</div>
+								<div style="font-size:11pt; text-align:center;  padding-bottom:20px;">From 1/20/2020 to 2/20/2020</div>
+							</tr>
+						</table>
+
+						<div class="row">
+
+							<div class = "row" style="border-bottom: 1px solid black; border-top: 1px solid black; border-right: 1px solid black; border-left: 1px solid black;">
+								<div class = "col-md-12">
+									<table style="width:100%">
+										<td style="width:5%; border-right: 1px solid black; text-align: center;">#</td>
+										<td style="width:20%; border-right: 1px solid black; text-align: center;">Department Name</td>
+										<td style="width:10%; border-right: 1px solid black; text-align: center;">Compressed</td>
+										<td style="width:10%; border-right: 1px solid black; text-align: center;">1st Shift</td>
+										<td style="width:10%; border-right: 1px solid black; text-align: center;">2nd Shift</td>
+										<td style="width:10%; border-right: 1px solid black; text-align: center;">3rd Shift</td>
+										<td style="width:10%; text-align: center;">Total Headcount</td>
+									</table>
+								</div>
+							</div>
+							<div class = "col-md-12" style = "padding: 20px 0 0 0;">
+								<table style="width:100%; padding: 0 0 0 0;">
+									<td style="width:5%; text-align: center;">1</td>
+									<td style="width:20%; text-align: center;">Engineering</td>
+									<td style="width:10%; text-align: center;">324</td>
+									<td style="width:10%; text-align: center;">0</td>
+									<td style="width:10%; text-align: center;">0</td>
+									<td style="width:10%; text-align: center;">166</td>
+									<td style="width:10%; text-align: center;">490</td>
+								</table>
+							</div>
+							<div class = "col-md-12" style="padding: 20px 0 0 0 ;">
+								<div class = "col-sm-11">
+									<div style="font-size:11pt; font-weight:bold;"></div>
+								</div>
+								<div class = "col-sm-1" style = "padding:0 0 0 0">
+									<div style="border-top: 1px solid black;font-weight:bold; text-align:right;">123456789.00</div>
+									<div style="border-top: 1px solid black; font-weight:bold;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+        
+            
+    </div> <!--/.content wrapper-->
+    <div ng-include="footerTemplate"></div>
+</div> <!--/.wrapper-->

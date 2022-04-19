@@ -1,0 +1,2445 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .fixwidth {
+        width: 50px !important;
+    }
+
+    .lbltbl {
+        font-weight: bold;
+        font-size: 10pt;
+        text-align: right;
+        padding: 5px !important;
+        width: 140px !important;
+    }
+
+    .datatbl {
+        text-indent: 5px;
+        padding: 5px !important;
+        font-size: 9pt;
+        width: 210px !important;
+    }
+
+    .print-only {
+        display: none;
+    }
+
+    @media print {
+        .no-print {
+            display: none;
+        }
+
+        .print-only {
+            display: block;
+        }
+    }
+
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #00f383;
+        }
+
+        25% {
+            background: #00d976;
+        }
+
+        50% {
+            background: #00c068;
+        }
+
+        100% {
+            background: #00a65a;
+        }
+    }
+</style>
+<div class="wrapper" ng-controller="HREmployeeController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head"
+            style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">
+					<span style="visibility:hidden">&nbsp;&nbsp;&nbsp;</span>
+				</i>
+                <div style="font-size: 12pt;padding-top: 15px;text-indent:15px">
+                    {{ dashboard.values.userInformation.db.company }}</div>
+                <div style="font-size: 20pt;text-indent:15px">HR Portal</div>
+                <div style="font-size: 15pt; text-indent:15px">Employees</div>
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/hr/dashboard"> HR Portal</a></li>
+                <li class="active">Employees</li>
+            </ol>
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <section class="content">
+            <div ng-init="employees_functions()">
+                <div class="box-header">
+                    <button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-primary pull-right"
+                        ng-click="dtInstance.reloadData()" title="Refresh">
+                        <i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+                    </button>
+                    <button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Search"
+                        data-toggle="modal" data-target="#modal-search">
+                        <i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+                    </button>
+                    <button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Create"
+                        data-toggle="modal" data-target="#modal-add" ng-click="resetCreateAcct()">
+                        <i class="fa fa-plus-circle fa-sm" style="padding:3px"></i>Add
+                    </button>
+                </div>
+                <table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+                    class="example2 row-border hover table-striped table-bordered"></table>
+
+                <div class="modal fade modal-info" id="modal-add" data-backdrop="static" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                    <div class="modal-dialog modal-lg" style="width:75% !important">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Add Employee</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important">
+                            <div class="row">
+                                <form ng-hide="mySignUpForm" role="form" name="registerForm">
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6">
+                                            <div class="profile-pic"
+                                                style="padding: 30px; padding-top:0px; text-align: center;">
+                                                <img class="img-responsive img-thumbnail img-circle"
+                                                    ngf-thumbnail="!add.picFile ? add.prof_pic : add.picFile" alt=""
+                                                    style="margin-bottom: 15px;width:200px;height:200px;cursor:pointer">
+                                                <input class="form-control" type="file" ngf-select
+                                                    ng-model="add.picFile" id="file" name="file" accept="image/*"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="empid">Employee ID<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="empid" name="empid"
+                                                    placeholder="Employee ID" maxlength="{{ add.empidlngth }}"
+                                                    ng-model="add.empid" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="userPassword">Password<span class="req-field">
+                                                        *</span></label>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control"
+                                                        ng-model="add.password.userPassword" placeholder="Password"
+                                                        id="userPassword" name="userPassword"
+                                                        ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&._])[A-Za-z\d$@$!%*#?&._]{6,}$/"
+                                                        maxlength="10" required ng-disabled="isSaving" />
+                                                    <a class="input-group-addon"
+                                                        title="Password should be 6 to 10 characters long and should contain atleast one number, atleast one character and atleast one of these special characters @$!%*#?&._"
+                                                        data-toggle="tooltip" data-placement="bottom"><i
+                                                            class="fa fa-question-circle"></i></a>
+                                                </div>
+                                                <div ng-messages="registerForm.userPassword.$error">
+                                                    <div ng-message="pattern"
+                                                        style='color:white;font-style:italic;font-size:9pt'>
+                                                        Password should be 6 to 10 characters long and should contain
+                                                        atleast one number, atleast one character and atleast one of
+                                                        these special characters @$!%*.#?&_
+                                                        <br /><b>(No other special characters will be accepted)</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="fname">First Name<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="fname" name="fname"
+                                                    placeholder="First Name" maxlength="60" ng-model="add.fname"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="mname">Middle Name<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="mname" name="mname"
+                                                    placeholder="Middle Name" maxlength="60" ng-model="add.mname"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="lname">Last Name<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="lname" name="lname"
+                                                    placeholder="Last Name" maxlength="60" ng-model="add.lname" required
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="suffix">Suffix</label>
+                                                <input type="text" class="form-control" id="suffix" name="suffix"
+                                                    placeholder="Suffix" maxlength="5" ng-model="add.suffix"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="sex">Gender<span class="req-field"> *</span></label>
+                                                <select id="sex" name="sex" class="form-control" ng-model="add.sex"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label>Current Address<span class="req-field"> *</span></label>
+                                                    <input type="text" class="form-control" id="addr_st" name="addr_st"
+                                                        placeholder="Street" maxlength="80" ng-model="add.addr_st"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="addr_area"
+                                                        name="addr_area" placeholder="Area/Location" maxlength="80"
+                                                        ng-model="add.addr_area" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="addr_city"
+                                                        name="addr_city" placeholder="City" maxlength="80"
+                                                        ng-model="add.addr_city" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="addr_prov"
+                                                        name="addr_prov" placeholder="Region/Province" maxlength="80"
+                                                        ng-model="add.addr_prov" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="addr_code"
+                                                        name="addr_code" placeholder="Zip Code" maxlength="5"
+                                                        ng-model="add.addr_code" ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="idtax">Tax Exempt Code<span class="req-field">
+                                                            *</span></label>
+                                                    <select ng-model="add.idtax" class="form-control" id="idtax"
+                                                        name="idtax" required ng-disabled="isSaving">
+                                                        <option value="">Select Tax Exemption Code</option>
+                                                        <option value="Z">Zero</option>
+                                                        <option value="S">Single</option>
+                                                        <option value="M">Married</option>
+                                                        <option value="H">Head of Family</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="idtin">TIN Number</label>
+                                                    <input type="text" class="form-control" id="idtin" name="idtin"
+                                                        placeholder="TIN" maxlength="25" ng-model="add.idtin"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="idsss">SSS Number</label>
+                                                    <input type="text" class="form-control" id="idsss" name="idsss"
+                                                        placeholder="SSS" maxlength="25" ng-model="add.idsss"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="idpayroll">PAYROLL Number</label>
+                                                    <input type="text" class="form-control" id="idpayroll"
+                                                        name="idpayroll" placeholder="PAYROLL" maxlength="25"
+                                                        ng-model="add.idpayroll" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label for="license_prc">PRC License</label>
+                                                    <input type="text" class="form-control" id="license_prc"
+                                                        name="license_prc" placeholder="PRC License" maxlength="25"
+                                                        ng-model="add.license_prc" ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="idaccttype">Account Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="idaccttype" name="idaccttype" class="form-control"
+                                                    ng-model="add.idaccttype"
+                                                    ng-options="addaccttype.id as addaccttype.type for addaccttype in dashboard.values.accttype"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="idemptype">Employee Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="idemptype" name="idemptype" class="form-control"
+                                                    ng-model="add.idemptype"
+                                                    ng-options="addemptypes.id as addemptypes.type for addemptypes in dashboard.values.emptypes"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" id="email" name="email"
+                                                    placeholder="Email" maxlength="50" ng-model="add.email"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="cnumber">Contact Number<span class="req-field">
+                                                        *</span></label>
+                                                <input type="text" class="form-control" id="cnumber" name="cnumber"
+                                                    placeholder="Contact Number" maxlength="11" ng-model="add.cnumber"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="bdate">Birth Date<span class="req-field"> *</span></label>
+                                                <input type="text" readonly datepickers ng-model="add.bdate"
+                                                    class="form-control" placeholder="Birth Date" maxlength="10"
+                                                    id="bdate" name="bdate" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="bplace">Birth Place<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="bplace" name="bplace"
+                                                    placeholder="Birth Place" maxlength="40" ng-model="add.bplace"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="citizenship">Citizenship<span class="req-field">
+                                                        *</span></label>
+                                                <select ng-model="add.citizenship" class="form-control" id="citizenship"
+                                                    name="citizenship" required ng-disabled="isSaving">
+                                                    <option value="">Select Citizenship</option>
+                                                    <option value="British">British</option>
+                                                    <option value="Filipino">Filipino</option>
+                                                    <option value="German">German</option>
+                                                    <option value="Korean">Korean</option>
+                                                    <option value="American">American</option>
+                                                    <option value="Taiwanese">Taiwanese</option>
+                                                    <option value="Chinese">Chinese</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="religion">Religion<span class="req-field"> *</span></label>
+                                                <select ng-model="add.religion" class="form-control" id="religion"
+                                                    name="religion" required ng-disabled="isSaving">
+                                                    <option value="">Select Religion</option>
+                                                    <option value="Aglipayan">Aglipayan</option>
+                                                    <option value="Born Again Christian">Born Again Christian</option>
+                                                    <option value="Baptist">Baptist</option>
+                                                    <option value="Roman Catholic">Roman Catholic</option>
+                                                    <option value="Christian">Christian</option>
+                                                    <option value="Evangelical">Evangelical</option>
+                                                    <option value="Iglesia ni Cristo">Iglesia ni Cristo</option>
+                                                    <option value="Islam">Islam</option>
+                                                    <option value="Mormon">Mormon</option>
+                                                    <option value="Orthodox">Orthodox</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="civilstat">Civil Status<span class="req-field">
+                                                        *</span></label>
+                                                <select id="civilstat" name="civilstat" class="form-control"
+                                                    ng-model="add.civilstat"
+                                                    ng-options="addstat.id as addstat.stat for addstat in dashboard.values.civilstat"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Civil Status</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="spouse">Spouse</label>
+                                                <input type="text" class="form-control" id="spouse" name="spouse"
+                                                    placeholder="Spouse" maxlength="80" ng-model="add.spouse"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label>Permanent Address<span class="req-field"> *</span></label>
+                                                    <input type="text" class="form-control" id="per_st" name="per_st"
+                                                        placeholder="Street" maxlength="80" ng-model="add.per_st"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="per_area"
+                                                        name="per_area" placeholder="Area/Location" maxlength="80"
+                                                        ng-model="add.per_area" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="per_city"
+                                                        name="per_city" placeholder="City" maxlength="80"
+                                                        ng-model="add.per_city" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="per_prov"
+                                                        name="per_prov" placeholder="Region/Province" maxlength="80"
+                                                        ng-model="add.per_prov" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="per_code"
+                                                        name="per_code" placeholder="Zip Code" maxlength="5"
+                                                        ng-model="add.per_code" ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="idhealth">PHL HEALTH Number</label>
+                                                    <input type="text" class="form-control" id="idhealth"
+                                                        name="idhealth" placeholder="PHL HEALTH" maxlength="25"
+                                                        ng-model="add.idhealth" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="idibig">PAG IBIG No.</label>
+                                                    <input type="text" class="form-control" id="idibig" name="idibig"
+                                                        placeholder="PAG IBIG" maxlength="25" ng-model="add.idibig"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label for="idpassport">Passport Number</label>
+                                                    <input type="text" class="form-control" id="idpassport"
+                                                        name="idpassport" placeholder="Passport" maxlength="25"
+                                                        ng-model="add.idpassport" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label for="license_drive">Driver's License</label>
+                                                    <input type="text" class="form-control" id="license_drive"
+                                                        name="license_drive" placeholder="Driver's License"
+                                                        maxlength="25" ng-model="add.license_drive"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Educational Backgorund</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addeb()"></i>
+                                    </div>
+                                    <div id="eb" class="col-md-12">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="ea">Educational attainment</label>
+                                                <input type="text" class="form-control" name="eb[]"
+                                                    placeholder="Educational attainment" maxlength="80"
+                                                    ng-disabled="isSaving" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="sn">School</label>
+                                                <input type="text" class="form-control" name="ebschool[]"
+                                                    placeholder="School" maxlength="80" ng-disabled="isSaving"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="ebfrom[]">From</label>
+                                                <input type="text" class="form-control" id="ebfrom[]" name="ebfrom[]"
+                                                    placeholder="From" maxlength="10" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="ebto[]">To</label>
+                                                <input type="text" class="form-control" id="ebto[]" name="ebto[]"
+                                                    placeholder="To" maxlength="10" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Employement History</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addeh()"></i>
+                                    </div>
+                                    <div id="eh" class="col-md-12">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="company[]">Company</label>
+                                                <input type="text" class="form-control" placeholder="Company"
+                                                    name="ehcompany[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="position[]">Position</label>
+                                                <input type="text" class="form-control" placeholder="Position"
+                                                    name="ehposition[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="cfrom[]">From</label>
+                                                <input type="text" class="form-control" placeholder="From"
+                                                    maxlength="10" name="ehfrom[]" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="cto">To</label>
+                                                <input type="text" class="form-control" placeholder="To" maxlength="10"
+                                                    name="ehto[]" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Exam Taken</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addet()"></i>
+                                    </div>
+                                    <div id="et" class="col-md-12">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Exam</label>
+                                                <input type="text" class="form-control" placeholder="Exam"
+                                                    name="etexam[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Location</label>
+                                                <input type="text" class="form-control" placeholder="Location"
+                                                    name="etlocation[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="text" class="form-control" placeholder="Date"
+                                                    maxlength="10" name="etdate[]" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Training Taken</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addtt()"></i>
+                                    </div>
+                                    <div id="tt" class="col-md-12">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Training</label>
+                                                <input type="text" class="form-control" placeholder="Training"
+                                                    name="tttraining[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Location</label>
+                                                <input type="text" class="form-control" placeholder="Location"
+                                                    name="ttlocation[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Date</label>
+                                                <input type="text" class="form-control" placeholder="Date"
+                                                    maxlength="10" name="ttdate[]" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Exam Taken</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addet()"></i>
+                                    </div>
+                                    <div id="et" class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exam[]">Exam</label>
+                                                <input type="text" class="form-control" placeholder="Exam"
+                                                    name="ehcompany[]" maxlength="80" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="etdate[]">Date Taken</label>
+                                                <input type="text" class="form-control" placeholder="From"
+                                                    maxlength="10" name="ehfrom[]" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+
+                                    </div> -->
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width:100px" data-target="#modal-add" data-dismiss="modal" type="button"
+                                class="btn btn-default pull-left" data-dismiss="modal"
+                                ng-disabled="isSaving">Cancel</button>
+                            <button style="width:100px" id="btn-unit-add" type="button" class="btn btn-primary"
+                                ng-click="addEmployeeInfo( add.picFile )" ng-disabled="isSaving">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade modal-info" id="editModal" data-backdrop="static" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                    <div class="modal-dialog modal-lg" style="width:75% !important">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Update Employee</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important">
+                            <div class="row">
+                                <form ng-hide="mySignUpForm" role="form" name="registerFormEdit">
+
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6">
+                                            <div class="profile-pic" style="padding: 30px;text-align: center;">
+                                                <img class="img-responsive img-thumbnail img-circle"
+                                                    ngf-thumbnail="!edit.epicFile ? edit.eprof_pic : edit.epicFile"
+                                                    alt=""
+                                                    style="margin-bottom: 15px;width:200px;height:200px;cursor:pointer">
+                                                <input class="form-control" type="file" ngf-select
+                                                    ng-model="edit.epicFile" id="efile" name="efile" accept="image/*"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="umpid">Employee ID<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="umpid" name="umpid"
+                                                    placeholder="Employee ID" maxlength="{{ edit.empidlngth }}"
+                                                    ng-model="edit.empid" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="euserPassword">New Password<span class="req-field">
+                                                        *</span></label>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control"
+                                                        ng-model="edit.password.userPassword" placeholder="Password"
+                                                        id="euserPassword" name="euserPassword"
+                                                        ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&._])[A-Za-z\d$@$!%*#?&._]{6,}$/"
+                                                        maxlength="10" required ng-disabled="isSaving" />
+                                                    <a class="input-group-addon"
+                                                        title="Password should be 6 to 10 characters long and should contain atleast one number, atleast one character and atleast one of these special characters @$!%*#?&._"
+                                                        data-toggle="tooltip" data-placement="bottom"><i
+                                                            class="fa fa-question-circle"></i></a>
+                                                </div>
+                                                <div ng-messages="registerFormEdit.euserPassword.$error">
+                                                    <div ng-message="pattern"
+                                                        style='color:white;font-style:italic;font-size:9pt'>
+                                                        Password should be 6 to 10 characters long and should contain
+                                                        atleast one number, atleast one character and atleast one of
+                                                        these special characters @$!%*.#?&_
+                                                        <br /><b>(No other special characters will be accepted)</b>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="efname">First Name<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="efname" name="efname"
+                                                    placeholder="First Name" maxlength="60" ng-model="edit.fname"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="emname">Middle Name<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="emname" name="emname"
+                                                    placeholder="Middle Name" maxlength="60" ng-model="edit.mname"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="elname">Last Name<span class="req-field"> *</span></label>
+                                                <input type="text" class="form-control" id="elname" name="elname"
+                                                    placeholder="Last Name" maxlength="60" ng-model="edit.lname"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="esuffix">Suffix</label>
+                                                <input type="text" class="form-control" id="esuffix" name="esuffix"
+                                                    placeholder="Suffix" maxlength="5" ng-model="edit.suffix"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="esex">Gender<span class="req-field"> *</span></label>
+                                                <select id="esex" name="esex" class="form-control" ng-model="edit.sex"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label>Current Address<span class="req-field"> *</span></label>
+                                                    <input type="text" class="form-control" id="eaddr_st"
+                                                        name="eaddr_st" placeholder="Street" maxlength="80"
+                                                        ng-model="edit.addr_st" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eaddr_area"
+                                                        name="eaddr_area" placeholder="Area/Location" maxlength="80"
+                                                        ng-model="edit.addr_area" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eaddr_city"
+                                                        name="eaddr_city" placeholder="City" maxlength="80"
+                                                        ng-model="edit.addr_city" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eaddr_prov"
+                                                        name="eaddr_prov" placeholder="Region/Province" maxlength="80"
+                                                        ng-model="edit.addr_prov" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eaddr_code"
+                                                        name="eaddr_code" placeholder="Zip Code" maxlength="5"
+                                                        ng-model="edit.addr_code" ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="eidtax">Tax Exempt Code<span class="req-field">
+                                                            *</span></label>
+                                                    <select ng-model="edit.idtax" class="form-control" id="eidtax"
+                                                        name="eidtax" required ng-disabled="isSaving">
+                                                        <option value="">Select Tax Exemption Code</option>
+                                                        <option value="Z">Zero</option>
+                                                        <option value="S">Single</option>
+                                                        <option value="M">Married</option>
+                                                        <option value="H">Head of Family</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="eidtin">TIN Number</label>
+                                                    <input type="text" class="form-control" id="eidtin" name="eidtin"
+                                                        placeholder="TIN" maxlength="25" ng-model="edit.idtin"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="eidsss">SSS Number</label>
+                                                    <input type="text" class="form-control" id="eidsss" name="eidsss"
+                                                        placeholder="SSS" maxlength="25" ng-model="edit.idsss"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="eidpayroll">PAYROLL Number</label>
+                                                    <input type="text" class="form-control" id="eidpayroll"
+                                                        name="eidpayroll" placeholder="PAYROLL" maxlength="25"
+                                                        ng-model="edit.idpayroll" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label for="elicense_prc">PRC License</label>
+                                                    <input type="text" class="form-control" id="elicense_prc"
+                                                        name="elicense_prc" placeholder="PRC License" maxlength="25"
+                                                        ng-model="edit.license_prc" ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="eidaccttype">Account Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="eidaccttype" name="eidaccttype" class="form-control"
+                                                    ng-model="edit.idaccttype"
+                                                    ng-options="editaccttype.id as editaccttype.type for editaccttype in dashboard.values.accttype"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="eidemptype">Employee Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="eidemptype" name="eidemptype" class="form-control"
+                                                    ng-model="edit.idemptype"
+                                                    ng-options="editemptypes.id as editemptypes.type for editemptypes in dashboard.values.emptypes"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="eemail">Email</label>
+                                                <input type="text" class="form-control" id="eemail" name="eemail"
+                                                    placeholder="Email" maxlength="50" ng-model="edit.email"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ecnumber">Contact Number<span class="req-field">
+                                                        *</span></label>
+                                                <input type="text" class="form-control" id="ecnumber" name="ecnumber"
+                                                    placeholder="Contact Number" maxlength="11" ng-model="edit.cnumber"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ebdate">Birth Date<span class="req-field"> *</span></label>
+                                                <input type="text" readonly datepickers ng-model="edit.bdate"
+                                                    class="form-control" placeholder="Birth Date" maxlength="10"
+                                                    id="ebdate" name="ebdate" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ebplace">Birth Place<span class="req-field">
+                                                        *</span></label>
+                                                <input type="text" class="form-control" id="ebplace" name="ebplace"
+                                                    placeholder="Birth Place" maxlength="40" ng-model="edit.bplace"
+                                                    required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ecitizenship">Citizenship<span class="req-field">
+                                                        *</span></label>
+                                                <select ng-model="edit.citizenship" class="form-control"
+                                                    id="ecitizenship" name="ecitizenship" required
+                                                    ng-disabled="isSaving">
+                                                    <option value="">Select Citizenship</option>
+                                                    <option value="British">British</option>
+                                                    <option value="Filipino">Filipino</option>
+                                                    <option value="German">German</option>
+                                                    <option value="Korean">Korean</option>
+                                                    <option value="American">American</option>
+                                                    <option value="Taiwanese">Taiwanese</option>
+                                                    <option value="Chinese">Chinese</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ereligion">Religion<span class="req-field"> *</span></label>
+                                                <select ng-model="edit.religion" class="form-control" id="ereligion"
+                                                    name="ereligion" required ng-disabled="isSaving">
+                                                    <option value="">Select Religion</option>
+                                                    <option value="Aglipayan">Aglipayan</option>
+                                                    <option value="Born Again Christian">Born Again Christian</option>
+                                                    <option value="Baptist">Baptist</option>
+                                                    <option value="Roman Catholic">Roman Catholic</option>
+                                                    <option value="Christian">Christian</option>
+                                                    <option value="Evangelical">Evangelical</option>
+                                                    <option value="Iglesia ni Cristo">Iglesia ni Cristo</option>
+                                                    <option value="Islam">Islam</option>
+                                                    <option value="Mormon">Mormon</option>
+                                                    <option value="Orthodox">Orthodox</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="ecivilstat">Civil Status<span class="req-field">
+                                                        *</span></label>
+                                                <select id="ecivilstat" name="ecivilstat" class="form-control"
+                                                    ng-model="edit.civilstat"
+                                                    ng-options="addstat.id as addstat.stat for addstat in dashboard.values.civilstat"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Civil Status</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="espouse">Spouse</label>
+                                                <input type="text" class="form-control" id="espouse" name="espouse"
+                                                    placeholder="Spouse" maxlength="80" ng-model="edit.spouse"
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label>Permanent Address<span class="req-field"> *</span></label>
+                                                    <input type="text" class="form-control" id="eper_st" name="eper_st"
+                                                        placeholder="Street" maxlength="80" ng-model="edit.per_st"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eper_area"
+                                                        name="eper_area" placeholder="Area/Location" maxlength="80"
+                                                        ng-model="edit.per_area" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eper_city"
+                                                        name="eper_city" placeholder="City" maxlength="80"
+                                                        ng-model="edit.per_city" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eper_prov"
+                                                        name="eper_prov" placeholder="Region/Province" maxlength="80"
+                                                        ng-model="edit.per_prov" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:30px">
+                                                    <input type="text" class="form-control" id="eper_code"
+                                                        name="eper_code" placeholder="Zip Code" maxlength="5"
+                                                        ng-model="edit.per_code" ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="padding:0px !important;margin-bottom:15px">
+                                            <div class="form-group">
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="eidhealth">PHL HEALTH Number</label>
+                                                    <input type="text" class="form-control" id="eidhealth"
+                                                        name="eidhealth" placeholder="PHL HEALTH" maxlength="25"
+                                                        ng-model="edit.idhealth" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-6" style="margin-top:5px">
+                                                    <label for="eidibig">PAG IBIG Number</label>
+                                                    <input type="text" class="form-control" id="eidibig" name="eidibig"
+                                                        placeholder="PAG IBIG" maxlength="25" ng-model="edit.idibig"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+
+
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label for="eidpassport">Passport Number</label>
+                                                    <input type="text" class="form-control" id="eidpassport"
+                                                        name="eidpassport" placeholder="Passport" maxlength="25"
+                                                        ng-model="edit.idpassport" ng-disabled="isSaving" />
+                                                </div>
+                                                <div class="col-sm-12" style="margin-top:5px">
+                                                    <label for="elicense_drive">Driver's License</label>
+                                                    <input type="text" class="form-control" id="elicense_drive"
+                                                        name="elicense_drive" placeholder="Driver's License"
+                                                        maxlength="25" ng-model="edit.license_drive"
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Educational Backgorund</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addeeb()"></i>
+
+                                    </div>
+                                    <div class="col-md-12 eeb">
+                                        <div ng-if="edit.eb == ''">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eea">Educational attainment</label>
+                                                    <input type="text" class="form-control" name="neb[]"
+                                                        placeholder="Educational attainment" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="esn">School</label>
+                                                    <input type="text" class="form-control" name="nebschool[]"
+                                                        placeholder="School" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eebfrom[]">From</label>
+                                                    <input type="text" class="form-control" name="nebfrom[]"
+                                                        placeholder="From" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eebto[]">To</label>
+                                                    <input type="text" class="form-control" name="nebto[]"
+                                                        ng-model="eb.dto" placeholder="To" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-repeat="eb in edit.eb">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eea">Educational attainment</label>
+                                                    <input type="text" class="form-control" name="eeb[]"
+                                                        ng-model="eb.attainment" placeholder="Educational attainment"
+                                                        maxlength="80" ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="esn">School</label>
+                                                    <input type="text" class="form-control" name="eebschool[]"
+                                                        ng-model="eb.school" placeholder="School" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eebfrom[]">From</label>
+                                                    <input type="text" class="form-control" id="ebfrom[]"
+                                                        name="eebfrom[]" ng-model="eb.dfrom" placeholder="From"
+                                                        maxlength="10" required ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eebto[]">To</label>
+                                                    <input type="text" class="form-control" id="eebto[]" name="eebto[]"
+                                                        ng-model="eb.dto" placeholder="To" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Employement History</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addeeh()"></i>
+                                    </div>
+                                    <div class="col-md-12 eeh">
+                                        <div ng-if="edit.eh == ''">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Company</label>
+                                                    <input type="text" class="form-control" name="nehcompany[]"
+                                                        placeholder="Company" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Position</label>
+                                                    <input type="text" class="form-control" name="nehposition[]"
+                                                        placeholder="Position" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>From</label>
+                                                    <input type="text" class="form-control" name="nehfrom[]"
+                                                        placeholder="From" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>To</label>
+                                                    <input type="text" class="form-control" name="nehto[]"
+                                                        placeholder="To" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-repeat="eh in edit.eh">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ehcompany">Company</label>
+                                                    <input type="text" class="form-control" name="eehcompany[]"
+                                                        ng-model="eh.company" placeholder="Company" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eschool">Position</label>
+                                                    <input type="text" class="form-control" name="eehpositionl[]"
+                                                        ng-model="eh.position" placeholder="Position" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eehfrom[]">From</label>
+                                                    <input type="text" class="form-control" id="ehfrom[]"
+                                                        name="eehfrom[]" ng-model="eh.dfrom" placeholder="From"
+                                                        maxlength="10" required ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="eehto[]">To</label>
+                                                    <input type="text" class="form-control" id="eehto[]" name="eehto[]"
+                                                        ng-model="eh.dto" placeholder="To" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Exam Taken</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addeet()"></i>
+                                    </div>
+                                    <div class="col-md-12 eet">
+                                        <div ng-if="edit.et == ''">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Exam</label>
+                                                    <input type="text" class="form-control" name="netexam[]"
+                                                        placeholder="Exam" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text" class="form-control" name="netlocation[]"
+                                                        placeholder="Location" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="text" class="form-control" name="netdate[]"
+                                                        placeholder="From" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-repeat="et in edit.et">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Exam</label>
+                                                    <input type="text" class="form-control" name="eetexam[]"
+                                                        ng-model="et.et" placeholder="Exam" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text" class="form-control" name="eetlocation[]"
+                                                        ng-model="et.location" placeholder="Location" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="text" class="form-control" name="eetdate[]"
+                                                        ng-model="et.date" placeholder="From" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12"
+                                        style="border:1px solid black;padding:13px;font-size:12pt;background-color: #f0eeee !important; color: black;margin-bottom: 5px;">
+                                        <b>Training Taken</b>
+                                        <i class="fa fa-plus-circle pull-right"
+                                            style="font-size: 22px; cursor: pointer; color: green;"
+                                            ng-click="addett()"></i>
+                                    </div>
+                                    <div class="col-md-12 ett">
+                                        <div ng-if="edit.tt == ''">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Training</label>
+                                                    <input type="text" class="form-control" name="ntttraining[]"
+                                                        placeholder="Training" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text" class="form-control" name="nttlocation[]"
+                                                        placeholder="Location" maxlength="80" ng-disabled="isSaving"
+                                                        required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="text" class="form-control" name="nttdate[]"
+                                                        placeholder="From" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-repeat="et in edit.tt">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Training</label>
+                                                    <input type="text" class="form-control" name="eetexam[]"
+                                                        ng-model="et.et" placeholder="Training" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text" class="form-control" name="eetlocation[]"
+                                                        ng-model="et.location" placeholder="Location" maxlength="80"
+                                                        ng-disabled="isSaving" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="text" class="form-control" name="eetdate[]"
+                                                        ng-model="et.date" placeholder="From" maxlength="10" required
+                                                        ng-disabled="isSaving" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Entities<span class="req-field"> *</span></label>
+                                                <div class="col-sm-12">
+                                                    <div class="form-inline">
+                                                        <div class="checkbox" ng-repeat="$item in edit.dbs"
+                                                            ng-show="$item.id">
+                                                            <label style="margin-right:10px"><input type="checkbox"
+                                                                    ng-model="$item.checked"
+                                                                    ng-disabled="{{$item.abled}}">{{$item.company}}
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width:100px" data-target="#editModal" data-dismiss="modal" type="button"
+                                class="btn btn-default pull-left" data-dismiss="modal"
+                                ng-disabled="isSaving">Cancel</button>
+                            <button style="width:100px" id="btn-unit-edit" type="button" class="btn btn-primary"
+                                ng-click="editEmployeeInfo( edit.epicFile )" ng-disabled="isSaving">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade modal-info" id="modal-search" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);">
+                    <div class="modal-dialog">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Filter</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="short3id">Employee ID</label>
+                                        <input type="text" class="form-control" id="short3id" 
+                                            maxlength="8" ng-model="search.empid">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="short3type">Account Status</label>
+                                        <select select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" id="short3type" class="form-control" ng-model="search.utype"
+                                            ng-options="empUnits.id as empUnits.type for empUnits in dashboard.values.emptypes track by empUnits.id">
+                                            <!--option value="">Select Employee Type</option-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="short3name">Name</label>
+                                        <input type="text" class="form-control" id="short3name" 
+                                            maxlength="60" ng-model="search.empname">
+                                    </div>
+                                </div>
+								<div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="short3unit">Classification</label>
+                                       <select id="short3unit" class="form-control" ng-model="search.unit"
+                                            ng-options="dept.id as dept.name for dept in dashboard.values.department | filter: typeLimit track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;" >
+                                            <!--option value="">Select Classification</option-->
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="short3lvl">Job Level</label>
+                                        <select id="short3lvl" class="form-control" ng-model="search.idlvl"
+                                            ng-options="dept.id as dept.lvllbl for dept in dashboard.values.joblvl track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <!--option value="">Select Level</option-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="short3loc">Job Location</label>
+                                        <select id="short3loc" class="form-control" ng-model="search.idloc"
+                                            ng-options="dept.id as dept.loc for dept in dashboard.values.locs track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <!--option value="">Select Location</option-->
+                                        </select>
+                                    </div>
+                                </div>
+								<div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="short3grp">Pay Group</label>
+                                        <select id="short3grp" class="form-control" ng-model="search.idpaygrp"
+                                            ng-options="dept.id as dept.name for dept in dashboard.values.paygroups track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <!--option value="">Select Group</option-->
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="short3stat">Pay Status</label>
+                                        <select id="short3stat" class="form-control" ng-model="search.idpaystat"
+                                            ng-options="dept.id as dept.name for dept in dashboard.values.paystat track by dept.id" select2 style="border:none;border-bottom: 1px black solid;text-align: center;font-size:12px;width: 100%;text-align-last: center;">
+                                            <!--option value="">Select Location</option-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline btn-danger pull-left" ng-click="resetSearch()" >Reset</button>
+                            <button type="button" class="btn btn-outline btn-primary" ng-click="unitSearch()"
+                                data-target="#modal-search" data-toggle="modal">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="form01print" class="print-only" style="color:black">
+                    <div style="display:table;width: 870px !important;">
+                        <div
+                            style="display:table-cell;width: 870px !important;vertical-align: middle;text-align:center">
+                        </div>
+                        <div
+                            style="display:table-cell;width: 870px !important;text-align: center;font-size:18pt;font-weight: 600;vertical-align: middle">
+                        </div>
+                        <div
+                            style="display:table-cell;width: 870px !important;text-align:center;vertical-align: middle">
+                            <div class="row" style="width:100%;text-align:center">
+                                <img class="img-thumbnail"
+                                    ng-src="{{ !view.epicFile ? view.eprof_pic : view.epicFile }}" alt=""
+                                    style="margin-bottom: 15px;width:175px;height:165px">
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>PERSONAL INFORMATION</b>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>NAME:</h5><br />
+                            <span
+                                style="padding-left:10px">{{ view.lname + ( !view.suffix ? ', ' : ' ' +  view.suffix + ', ') + view.fname + ' ' + view.mname }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>EMAIL:</h5><br />
+                            <span style="padding-left:10px">{{ view.email }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>CONTACT NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.cnumber }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+                        <h5>CURRENT ADDRESS:</h5><br />
+                        <span style="padding-left:10px">{{ view.addr }}</span>
+                    </div>
+                    <div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+                        <h5>PERMANENT ADDRESS:</h5><br />
+                        <span style="padding-left:10px">{{ view.per }}</span>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DATE OF BIRTH:</h5><br />
+                            <span style="padding-left:10px">{{ view.bdate }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>AGE:</h5><br />
+                            <span style="padding-left:10px">{{ view.age + ' YEARS OLD' }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>GENDER:</h5><br />
+                            <span style="padding-left:10px">{{ view.sexstr }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important;border:1px solid black;padding:5px;">
+                        <h5>PLACE OF BIRTH:</h5><br />
+                        <span style="padding-left:10px">{{ view.bplace }}</span>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>CITIZENSHIP:</h5><br />
+                            <span style="padding-left:10px">{{ view.citizenship }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>RELIGION:</h5><br />
+                            <span style="padding-left:10px">{{ view.religion }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>CIVIL STATUS:</h5><br />
+                            <span style="padding-left:10px">{{ view.civil_status }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>SPOUSE:</h5><br />
+                            <span style="padding-left:10px">{{ view.spouse }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>TAX CODE:</h5><br />
+                            <span style="padding-left:10px">{{ view.taxname }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>TIN NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.idtin }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SSS NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.idsss }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PHIL HEALTH:</h5><br />
+                            <span style="padding-left:10px">{{ view.idhealth }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAG IBIG:</h5><br />
+                            <span style="padding-left:10px">{{ view.idibig }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAYROLL ACCOUNT:</h5><br />
+                            <span style="padding-left:10px">{{ view.idpayroll }}</span>
+                        </div>
+                    </div>
+
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PASSPORT NUMBER:</h5><br />
+                            <span style="padding-left:10px">{{ view.idpassport }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DRIVER'S LICENSE:</h5><br />
+                            <span style="padding-left:10px">{{ view.license_drive }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PRC LICENSE:</h5><br />
+                            <span style="padding-left:10px">{{ view.license_prc }}</span>
+                        </div>
+                    </div>
+                    <div
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>HRIS DATA</b>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>LABOR TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.labor_type }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>EMPLOYMENT TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.emp_status }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>BUSINESS UNIT:</h5><br />
+                            <span style="padding-left:10px">{{ view.business_unit }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>POSITION:</h5><br />
+                            <span style="padding-left:10px">{{ view.post }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>SUPERIOR:</h5><br />
+                            <span style="padding-left:10px">{{ view.superior }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>JOB LOCATION:</h5><br />
+                            <span style="padding-left:10px">{{ view.job_loc }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>WORK SHIFT:</h5><br />
+                            <span style="padding-left:10px">{{ view.wshift_name }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SHIFT TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.sched }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAY GROUP:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_grp }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>PAY STATUS:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_status }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DEPENDENTS:</h5><br />
+                            <span style="padding-left:10px">{{ view.dependent }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>REVENUE TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_revenue }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>RELEASE TYPE:</h5><br />
+                            <span style="padding-left:10px">{{ view.pay_release }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SALARY:</h5><br />
+                            <span style="padding-left:10px">{{ view.salary }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>HIRE DATE:</h5><br />
+                            <span style="padding-left:10px">{{ view.hdate }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>REGULARIZATION DATE:</h5><br />
+                            <span style="padding-left:10px">{{ view.rdate }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>SEPERATION DATE:</h5><br />
+                            <span style="padding-left:10px">{{ view.sdate }}</span>
+                        </div>
+                    </div>
+                    <div style="display:table;width: 870px !important">
+                        <div style="display:table-cell;width: 100% !important;border:1px solid black;padding:5px">
+                            <h5>JOB TENURE:</h5><br />
+                            <span style="padding-left:10px">{{ view.nos_yrs }}</span>
+                        </div>
+                        <!--div style="display:table-cell;width: 50% !important;border:1px solid black;padding:5px">
+                            <h5>PREVIOUS EMPLOYER:</h5><br />
+                            <span style="padding-left:10px">{{ view.prev_employer }}</span>
+                        </div-->
+                    </div>
+                    <div ng-if="view.eb != ''"
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>EDUCATIONAL BACKGROUND</b>
+                    </div>
+                    <div style="display:table;width: 870px !important" ng-repeat="veb in view.eb">
+
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>EDUCATIONAL ATTAINMENT:</h5><br />
+                            <span style="padding-left:10px">{{ veb.attainment }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>SCHOOL:</h5><br />
+                            <span style="padding-left:10px">{{ veb.school }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>FROM:</h5><br />
+                            <span style="padding-left:10px">{{ veb.dfrom }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>TO:</h5><br />
+                            <span style="padding-left:10px">{{ veb.dto }}</span>
+                        </div>
+
+                    </div>
+                    <div ng-if="view.eb != ''"
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>EMPLOYMENT HISTORY</b>
+                    </div>
+                    <div style="display:table;width: 870px !important" ng-repeat="veh in view.eh">
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>COMPANY:</h5><br />
+                            <span style="padding-left:10px">{{ veh.company }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>POSITION:</h5><br />
+                            <span style="padding-left:10px">{{ veh.position }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>FROM:</h5><br />
+                            <span style="padding-left:10px">{{ veh.dfrom }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 25% !important;border:1px solid black;padding:5px">
+                            <h5>TO:</h5><br />
+                            <span style="padding-left:10px">{{ veh.dto }}</span>
+                        </div>
+                    </div>
+                    <div ng-if="view.et != ''"
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>EXAM TAKEN</b>
+                    </div>
+                    <div style="display:table;width: 870px !important" ng-repeat="vet in view.et">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>EXAM:</h5><br />
+                            <span style="padding-left:10px">{{ vet.et }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>LOCATION:</h5><br />
+                            <span style="padding-left:10px">{{ vet.location }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DATE:</h5><br />
+                            <span style="padding-left:10px">{{ vet.date }}</span>
+                        </div>
+                    </div>
+                    <div ng-if="view.tt != ''"
+                        style="display:table;width: 870px !important;border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important;">
+                        <b>TRAINING TAKEN</b>
+                    </div>
+                    <div style="display:table;width: 870px !important" ng-repeat="vtt in view.tt">
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>TRAINING:</h5><br />
+                            <span style="padding-left:10px">{{ vtt.et }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>LOCATION:</h5><br />
+                            <span style="padding-left:10px">{{ vtt.location }}</span>
+                        </div>
+                        <div style="display:table-cell;width: 33.3% !important;border:1px solid black;padding:5px">
+                            <h5>DATE:</h5><br />
+                            <span style="padding-left:10px">{{ vtt.date }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade modal-info" id="viewModal" data-backdrop="static" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                    <div class="modal-dialog modal-lg" style="min-width: 450px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">View Employee</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important;padding-bottom:0px !important">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <div class="profile-pic" style="text-align: right;">
+                                            <img class="img-thumbnail"
+                                                ng-src="{{ !view.epicFile ? view.eprof_pic : view.epicFile }}" alt=""
+                                                style="margin-bottom: 15px;width:150px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12"
+                                    style="border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important; color: black;">
+                                    <b>PERSONAL INFORMATION</b>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>NAME:</h5><span
+                                            style="padding-left:10px">{{ view.lname + ( !view.suffix ? ', ' : ' ' +  view.suffix + ', ') + view.fname + ' ' + view.mname }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>EMAIL:</h5><span style="padding-left:10px">{{ view.email }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>CONTACT NUMBER:</h5><span
+                                            style="padding-left:10px">{{ view.cnumber }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero" style="border:1px solid black;">
+                                    <div class="col-md-12" style="border:1px solid black;padding:5px">
+                                        <h5>CURRENT ADDRESS:</h5> <span style="padding-left:10px">{{ view.addr }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero" style="border:1px solid black;">
+                                    <div class="col-md-12" style="border:1px solid black;padding:5px">
+                                        <h5>PERMANENT ADDRESS:</h5> <span
+                                            style="padding-left:10px">{{ view.per }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>DATE OF BIRTH:</h5> <span style="padding-left:10px">{{ view.bdate }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>AGE:</h5><span
+                                            style="padding-left:10px">{{ view.age + ' YEARS OLD' }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>GENDER:</h5> <span style="padding-left:10px">{{ view.sexstr }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero" style="border:1px solid black;">
+                                    <div class="col-md-12" style="border:1px solid black;padding:5px">
+                                        <h5>PLACE OF BIRTH:</h5><span style="padding-left:10px">{{ view.bplace }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>CITIZENSHIP:</h5> <span
+                                            style="padding-left:10px">{{ view.citizenship }}</span>
+                                    </div>
+                                    <div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>RELIGION:</h5> <span style="padding-left:10px">{{ view.religion }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>CIVIL STATUS:</h5> <span
+                                            style="padding-left:10px">{{ view.civil_status }}</span>
+                                    </div>
+                                    <div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>SPOUSE:</h5> <span style="padding-left:10px">{{ view.spouse }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>TAX CODE:</h5> <span style="padding-left:10px">{{ view.taxname }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>TIN NUMBER:</h5> <span style="padding-left:10px">{{ view.idtin }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>SSS NUMBER:</h5> <span style="padding-left:10px">{{ view.idsss }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PHIL HEALTH:</h5> <span style="padding-left:10px">{{ view.idhealth }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PAG IBIG:</h5> <span style="padding-left:10px">{{ view.idibig }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PAYROLL ACCOUNT:</h5> <span
+                                            style="padding-left:10px">{{ view.idpayroll }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PASSPORT NUMBER:</h5> <span
+                                            style="padding-left:10px">{{ view.idpassport }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>DRIVER'S LICENSE:</h5> <span
+                                            style="padding-left:10px">{{ view.license_drive }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PRC LICENSE:</h5> <span
+                                            style="padding-left:10px">{{ view.license_prc }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12"
+                                    style="border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important; color: black;">
+                                    <b>HRIS DATA</b>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>LABOR TYPE:</h5> <span
+                                            style="padding-left:10px">{{ view.labor_type }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>EMPLOYMENT TYPE:</h5> <span
+                                            style="padding-left:10px">{{ view.emp_status }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>BUSINESS UNIT:</h5> <span
+                                            style="padding-left:10px">{{ view.business_unit }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>POSITION:</h5> <span style="padding-left:10px">{{ view.post }}</span>
+                                    </div>
+                                    <div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>SUPERIOR:</h5> <span style="padding-left:10px">{{ view.superior }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>JOB LOCATION:</h5> <span style="padding-left:10px">{{ view.job_loc }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>WORK SHIFT:</h5> <span
+                                            style="padding-left:10px">{{ view.wshift_name }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>SHIFT TYPE:</h5> <span style="padding-left:10px">{{ view.sched }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PAY GROUP:</h5> <span style="padding-left:10px">{{ view.pay_grp }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>PAY STATUS:</h5> <span
+                                            style="padding-left:10px">{{ view.pay_status }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>DEPENDENTS:</h5> <span style="padding-left:10px">{{ view.dependent }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>REVENUE TYPE:</h5> <span
+                                            style="padding-left:10px">{{ view.pay_revenue }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>RELEASE TYPE:</h5> <span
+                                            style="padding-left:10px">{{ view.pay_release }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>SALARY:</h5> <span style="padding-left:10px">{{ view.salary }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>HIRE DATE:</h5> <span style="padding-left:10px">{{ view.hdate }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>REGULARIZATION DATE:</h5> <span
+                                            style="padding-left:10px">{{ view.rdate }}</span>
+                                    </div>
+                                    <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                        <h5>SEPERATION DATE:</h5> <span
+                                            style="padding-left:10px">{{ view.sdate }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div class="col-md-12" style="border:1px solid black;padding:5px">
+                                        <h5>JOB TENURE:</h5> <span style="padding-left:10px">{{ view.nos_yrs }}</span>
+                                    </div>
+                                    <!--div class="col-md-6" style="border:1px solid black;padding:5px">
+                                        <h5>PREVIOUS EMPLOYER:</h5> <span
+                                            style="padding-left:10px">{{ view.prev_employer }}</span>
+                                    </div-->
+                                </div>
+
+                                <div class="col-md-12" ng-if="view.eb != ''"
+                                    style="border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important; color: black;">
+                                    <b>EDUCATIONAL BACKGROUND</b>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div ng-repeat="veb in view.eb">
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>EDUCATIONAL ATTAINMENT</h5> <span
+                                                style="padding-left:10px">{{ veb.attainment }}</span>
+                                        </div>
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>SCHOOL</h5> <span style="padding-left:10px">{{ veb.school }}</span>
+                                        </div>
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>FROM</h5> <span style="padding-left:10px">{{ veb.dfrom }}</span>
+                                        </div>
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>TO</h5> <span style="padding-left:10px">{{ veb.dto }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" ng-if="view.eb != ''"
+                                    style="border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important; color: black;">
+                                    <b>EMPLOYMENT HISTORY</b>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div ng-repeat="veh in view.eh">
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>COMPANY</h5> <span style="padding-left:10px">{{ veh.company }}</span>
+                                        </div>
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>POSITION</h5> <span style="padding-left:10px">{{ veh.position }}</span>
+                                        </div>
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>FROM</h5> <span style="padding-left:10px">{{ veh.dfrom }}</span>
+                                        </div>
+                                        <div class="col-md-3" style="border:1px solid black;padding:5px">
+                                            <h5>TO</h5> <span style="padding-left:10px">{{ veh.dto }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" ng-if="view.et != ''"
+                                    style="border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important; color: black;">
+                                    <b>EXAM TAKEN</b>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div ng-repeat="vet in view.et">
+                                        <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                            <h5>EXAM</h5> <span style="padding-left:10px">{{ vet.et }}</span>
+                                        </div>
+                                        <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                            <h5>LOCATION</h5> <span style="padding-left:10px">{{ vet.location }}</span>
+                                        </div>
+                                        <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                            <h5>DATE</h5> <span style="padding-left:10px">{{ vet.date }}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12" ng-if="view.tt != ''"
+                                    style="border:1px solid black;padding:5px;font-size:12pt;background-color: #f0eeee !important; color: black;">
+                                    <b>TRAINING TAKEN</b>
+                                </div>
+                                <div class="col-md-12 paddingZero">
+                                    <div ng-repeat="vtt in view.tt">
+                                        <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                            <h5>TRAINING</h5> <span style="padding-left:10px">{{ vtt.et }}</span>
+                                        </div>
+                                        <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                            <h5>LOCATION</h5> <span style="padding-left:10px">{{ vtt.location }}</span>
+                                        </div>
+                                        <div class="col-md-4" style="border:1px solid black;padding:5px">
+                                            <h5>DATE</h5> <span style="padding-left:10px">{{ vtt.date }}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width:100px" type="button" class="btn btn-danger pull-right" ng-print
+                                print-element-id="form01print" ng-disabled="isSaving">Print</button>
+                            <button style="width:100px" data-target="#viewModal" data-dismiss="modal" type="button"
+                                class="btn btn-default pull-left" data-dismiss="modal"
+                                ng-disabled="isSaving">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade modal-info" id="assignModal" data-backdrop="static" role="dialog"
+                    style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                    <div class="modal-dialog modal-lg" style="width:75%">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Assign Employee</h4>
+                        </div>
+                        <div class="modal-body" style="background: #38b3d894 !important">
+                            <div class="row">
+                                <form ng-hide="mySignUpForm" role="form" name="registerFormAssign">
+
+                                    <div class="col-md-6">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="labortype">Labor Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="labortype" name="labortype" class="form-control"
+                                                    ng-model="assign.idlabor"
+                                                    ng-options="ltype.id as ltype.type for ltype in assign.labors | orderBy:'type'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="estat">Employment Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="estat" name="estat" class="form-control"
+                                                    ng-model="assign.empstat"
+                                                    ng-options="etype.id as etype.stat for etype in assign.estats | orderBy:'stat'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="businessunit">Business Unit<span class="req-field">
+                                                        *</span></label>
+                                                <select id="businessunit" name="businessunit" class="form-control"
+                                                    ng-model="assign.idunit"
+                                                    ng-options="bunit.id as bunit.name for bunit in assign.units  | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Unit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="position">Position<span class="req-field"> *</span></label>
+                                                <select id="position" name="position" class="form-control"
+                                                    ng-model="assign.idpos"
+                                                    ng-options="posss.id as posss.name for posss in assign.poss | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Position</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="wshift">Work Shift<span class="req-field"> *</span></label>
+                                                <select id="wshift" name="wshift" class="form-control"
+                                                    ng-model="assign.wshift"
+                                                    ng-options="wshifts.id as wshifts.name for wshifts in assign.workshifts  | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Work Shift</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="shifttype">Shift Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="shifttype" name="shifttype" class="form-control"
+                                                    ng-model="assign.schedtype"
+                                                    ng-options="sched.id as sched.type for sched in assign.schedules | orderBy:'type'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Shift Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="joblocation">Job Location<span class="req-field">
+                                                        *</span></label>
+                                                <select id="joblocation" name="joblocation" class="form-control"
+                                                    ng-model="assign.idloc"
+                                                    ng-options="locs.id as locs.loc for locs in assign.locs | orderBy:'loc'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Location</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="supperior">Superior<span class="req-field"> *</span></label>
+                                                <select id="supperior" name="supperior" class="form-control"
+                                                    ng-model="assign.idsuperior"
+                                                    ng-options="supperiors.id as supperiors.empname for supperiors in assign.supperiors | orderBy:'empname'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Superior</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="paygroup">Pay Group<span class="req-field"> *</span></label>
+                                                <select id="paygroup" name="paygroup" class="form-control"
+                                                    ng-model="assign.idpaygrp"
+                                                    ng-options="arr1.id as arr1.name for arr1 in assign.paygroups | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Pay Group</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="paystat">Pay Status<span class="req-field"> *</span></label>
+                                                <select id="paystat" name="paystat" class="form-control"
+                                                    ng-model="assign.idpaystat"
+                                                    ng-options="arr2.id as arr2.name for arr2 in assign.paystat | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Pay Status</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="payrevenue">Pay Revenue Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="payrevenue" name="payrevenue" class="form-control"
+                                                    ng-model="assign.idrevenue"
+                                                    ng-options="arr3.id as arr3.name for arr3 in assign.payrevenues | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="payrelease">Release Type<span class="req-field">
+                                                        *</span></label>
+                                                <select id="payrelease" name="payrelease" class="form-control"
+                                                    ng-model="assign.idrelease"
+                                                    ng-options="arr4.id as arr4.name for arr4 in assign.payreleases | orderBy:'name'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Type</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="dependent">Dependents<span class="req-field">
+                                                        *</span></label>
+                                                <select id="dependent" name="dependent" class="form-control"
+                                                    ng-model="assign.dependent" required ng-disabled="isSaving">
+                                                    <option value="0"> Zero </option>
+                                                    <option value="1"> One </option>
+                                                    <option value="2"> Two </option>
+                                                    <option value="3"> Three </option>
+                                                    <option value="4"> Four </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="salary">Salary<span class="req-field"> *</span></label>
+                                                <input type="text" number-float class="form-control" id="salary"
+                                                    placeholder="Enter Salary" maxlength="10" ng-model="assign.salary"
+                                                    ng-disabled="isSaving">
+                                            </div>
+                                        </div>
+                                        <!--div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="prevemployer">Previous Employer</label>
+                                                <input type="text" class="form-control" id="prevemployer"
+                                                    placeholder="Enter Previous Employer" maxlength="60"
+                                                    ng-model="assign.prev_employer" ng-disabled="isSaving">
+                                            </div>
+                                        </div-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="hdate">Hire Date<span class="req-field"> *</span></label>
+                                                <input type="text" readonly datepickers ng-model="assign.hdate"
+                                                    class="form-control" placeholder="Hire Date" maxlength="10"
+                                                    id="hdate" name="hdate" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="rdate">Regularization Date</label>
+                                                <input type="text" readonly datepickers ng-model="assign.rdate"
+                                                    class="form-control" placeholder="Regularization Date"
+                                                    maxlength="10" id="rdate" name="rdate" required
+                                                    ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" ng-if="assign.empstat == 6">
+                                            <div class="form-group">
+                                                <label for="sdate">Seperation Date</label>
+                                                <input type="text" readonly datepickers ng-model="assign.sdate"
+                                                    class="form-control" placeholder="Seperation Date" maxlength="10"
+                                                    id="sdate" name="sdate" required ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="daysmonth">DaysMonth</label>
+                                                <input type="text" number-float class="form-control" id="daysmonth"
+                                                    placeholder="DaysMonth Rate" maxlength="7"
+                                                    ng-model="assign.daysmonth" ng-disabled="isSaving" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="joblvl">Job Level</label>
+                                                <select id="joblvl" name="joblvl" class="form-control"
+                                                    ng-model="assign.idlvl"
+                                                    ng-options="lvl.id as lvl.lvllbl for lvl in dashboard.values.joblvl | orderBy:'lvl'"
+                                                    required ng-disabled="isSaving">
+                                                    <option value="">Select Job Level</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div>
+                                            <label>Leaves</label>
+                                        </div>
+                                        <table class="table table-bordered" style="width:100%">
+                                            <tr>
+                                                <th style="text-align:center;font-weight:900"> Name </th>
+                                                <th style="text-align:center;font-weight:900"> Entitlement (Hours) </th>
+                                                <th style="text-align:center;font-weight:900"> Used (Hours) </th>
+                                                <th style="text-align:center;font-weight:900"> Balance (Hours) </th>
+                                            </tr>
+                                            <tr ng-repeat="(key, value) in assign.leaves">
+                                                <td style="vertical-align:middle"> {{ assign.leaves[key]['name'] }}
+                                                </td>
+                                                <td> <input type="text" class="form-control" numbers-only
+                                                        ng-model="assign.leaves[key]['entitle']" ng-disabled="isSaving">
+                                                </td>
+                                                <td> <input type="text" class="form-control readonly" disabled readonly
+                                                        numbers-only ng-model="assign.leaves[key]['used']"
+                                                        ng-disabled="isSaving"> </td>
+                                                <td> <input type="text" class="form-control readonly" disabled readonly
+                                                        numbers-only ng-model="assign.leaves[key]['balance']"
+                                                        ng-disabled="isSaving"> </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="width:100px" data-target="#assignModal" data-dismiss="modal" type="button"
+                                class="btn btn-default pull-left" data-dismiss="modal"
+                                ng-disabled="isSaving">Cancel</button>
+                            <button style="width:100px" id="btn-unit-assign" type="button" class="btn btn-primary"
+                                ng-click="assignEmployeeInfo()" ng-disabled="isSaving">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

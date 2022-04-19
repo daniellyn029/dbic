@@ -1,0 +1,160 @@
+<style>
+.sidebar-menu .treeview-menu { padding-left: 0px}
+</style>
+<!-- Left side column. contains the logo and sidebar -->
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img ng-src="{{ dashboard.values.userInformation.pic }}" style="width:25px" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{ dashboard.values.userInformation.fname + ' ' + dashboard.values.userInformation.lname }}</p>
+        </div>
+      </div>
+     
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu" ng-init="activeclass()">  
+	
+	  <li class="header">MAIN NAVIGATION</li>
+	  <li id="home" ng-if=" dashboard.values.accouttype != 3 || dashboard.values.userInformation.undersecretary!='' " > <!--Jerald-->
+        <a href="#/admin/home" >
+          <i class="fa fa-dashboard"></i> <span>Back To Dashboard</span>        
+        </a>
+      </li>	
+		<li id="dashboard">
+            <a href="#/admin/emp/dashboard">
+                <i class="fa fa-home"></i> <span>Home</span>
+            </a>
+        </li>
+
+		  <li class="treeview" id="header-esetting">
+            <a href="">
+                <i class="fa fa-clock-o"></i></i><span>Timekeeping</span><i class="fa fa-angle-left pull-right"></i>
+            </a>
+            <ul id="esetting" class="treeview-menu">
+                <li id="ageDistribution">
+                    <a href="#/admin/emp/timekeeping">
+                        <i class="fa fa-circle-o text-blue"></i> <span>Calendar</span>
+                    </a>
+                </li>
+                <li id="timesheet" >
+                  <a href="#/admin/emp/timesheet" >
+                    <i class="fa fa-circle-o text-blue"></i> <span>Timesheet Details</span>        
+                  </a>
+                </li>
+                <li id="timekeeping2">
+                    <a href="#/admin/emp/timekeeping2">
+                        <i class="fa fa-circle-o text-blue"></i> <span>Timekeeping Application</span>
+                    </a>
+                </li>
+                <li id="leaveapp" >
+                  <a href="#/admin/emp/app/leaveapp" >
+                    <i class="fa fa-circle-o text-blue"></i> <span>Leaves Application</span>        
+                  </a>
+                </li>	
+            </ul>
+        </li>
+        <li class="treeview" id="header-esetting">
+          <a href="">
+              <i class="fa fa-money"></i></i><span>Compensation</span><i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul id="esetting" class="treeview-menu">
+            <li id="payslip">
+              <a href="#/admin/emp/payslip">
+                  <i class="fa fa-circle-o text-blue"></i> <span>Payslip</span>
+              </a>
+            </li>
+              <li id="timesheet" >
+                <a href="#/admin/emp/loans" >
+                  <i class="fa fa-circle-o text-blue"></i> <span>Loans</span>        
+                </a>
+              </li>
+              <li id="timekeeping2">
+                  <a href="#/admin/emp/benefits">
+                      <i class="fa fa-circle-o text-blue"></i> <span>Benefits</span>
+                  </a>
+              </li>
+              <li id="leaveapp" >
+                <a href="#/admin/emp/last" >
+                  <i class="fa fa-circle-o text-blue"></i> <span>Year to Date</span>        
+                </a>
+              </li>	
+          </ul>
+        </li>
+
+
+
+
+
+
+	  <!--li id="payslip" >
+        <a href="#/admin/emp/payslip" >
+          <i class="fa fa-money"></i> <span>Payslip</span>        
+        </a>
+      </li-->
+	  <li id="announcement" >
+        <a href="#/admin/emp/announcement" >
+          <i class="fa fa-bullhorn"></i> <span>Announcements</span>        
+        </a>
+      </li>
+	  <li id="planner" >
+        <a href="#/admin/emp/app/planner" >
+          <i class="fa fa-calendar"></i> <span>Planner</span>        
+        </a>
+      </li>	
+	  <!-- <li id="profile" >
+        <a href="#/admin/emp/profile" >
+          <i class="fa fa-user-circle-o"></i> <span>Profile</span>        
+        </a>
+      </li> -->
+    
+    	<li class="treeview" id="header-esetting" >
+        <a href="">
+          <i class="fa fa-user-circle-o"></i> <span>Employee Profile</span><i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul id="esetting" class="treeview-menu">
+          <li id="profile" >
+            <a href="#/admin/emp/profile" >
+              <i class="fa fa-circle-o text-blue"></i> <span>Employee Information</span>        
+            </a>
+          </li>
+          <li id="editprofile" >
+            <a href="#/admin/emp/profile/editprofile">
+              <i class="fa fa-circle-o text-blue"></i> <span>Change Request</span>        
+            </a>
+          </li>
+        </ul>
+      </li>
+	  <li class="header">LOANS</li>
+	  
+      <li id="cashadvance" >
+        <a href="#/admin/emp/app/cashadvance-current" >
+          <i class="fa fa-money"></i> <span>Cash Advance</span>        
+        </a>
+      </li>
+	  <!-- <li class="header">APPLICATIONS</li>
+	  
+	  <li id="leaveapp" >
+        <a href="#/admin/emp/app/leaveapp" >
+          <i class="fa fa-universal-access"></i> <span>Leaves Application</span>        
+        </a>
+      </li>	
+	  <li id="adjustapp" >
+        <a href="#/admin/emp/app/adjustapp" >
+          <i class="fa fa-universal-access"></i> <span>Adjustment Application</span>        
+        </a>
+      </li>
+	  <li id="overtimeapp" >
+        <a href="#/admin/emp/app/overtimeapp" >
+          <i class="fa fa-universal-access"></i> <span>Overtime Application</span>        
+        </a>
+      </li>
+	  	 -->
+
+    </ul>
+    </section>
+    <!-- /.sidebar -->
+  

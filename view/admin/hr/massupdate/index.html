@@ -1,0 +1,594 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #006ba6;
+        text-align: center
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #00f383;
+        }
+
+        25% {
+            background: #00d976;
+        }
+
+        50% {
+            background: #00c068;
+        }
+
+        100% {
+            background: #00a65a;
+        }
+    }
+
+    .fc-day-grid-container {
+        overflow: hidden auto !important;
+        height: 340px !important;
+    }
+
+    .fc-widget-header {
+        margin-right: 0px;
+    }
+
+    .fc-more-cell {
+        text-align: center;
+        font-size: 12pt;
+        font-weight: bold;
+    }
+
+    .fc-view-container {
+        border: 1px solid #ddd;
+    }
+
+    .fc-day-grid-event {
+        background: none;
+        border: 0px;
+        color: black !important;
+        cursor: pointer !important
+    }
+
+    .fc-today-button {
+        visibility: hidden
+    }
+
+    .fc-unthemed td.fc-today {
+        background: #cef98a;
+    }
+
+    .my-legend .legend-title {
+        text-align: left;
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-size: 90%;
+    }
+
+    .my-legend .legend-scale ul {
+        margin: 0;
+        padding: 0;
+        float: left;
+        list-style: none;
+    }
+
+    .my-legend .legend-scale ul li {
+        display: block;
+        float: left;
+        width: 50px;
+        margin-bottom: 6px;
+        text-align: center;
+        font-size: 80%;
+        list-style: none;
+    }
+
+    .my-legend ul.legend-labels li span {
+        display: block;
+        float: left;
+        height: 25px;
+        width: 50px;
+        padding: 5px;
+    }
+
+    .my-legend .legend-source {
+        font-size: 70%;
+        color: #999;
+        clear: both;
+    }
+
+    .my-legend a {
+        color: #777;
+    }
+
+    .vap {
+        /* background-color: #ccc; */
+        background-color: white;
+        height: 400px !important;
+        margin-bottom: 15px;
+        border: 0.8px solid #d2d6de;
+    }
+
+    .radio {
+        margin-top: 0px !important;
+    }
+
+    @media screen and (max-width: 1280px) {
+        .m2-1280 {
+            width: 20%;
+        }
+
+        .m10-1280 {
+            width: 80%;
+        }
+
+        .sec-head {
+            height: 112px !important;
+            padding-top: 0px !important;
+        }
+
+        .p5 {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+        }
+    }
+
+    .style-1::-webkit-scrollbar{
+		height:10px;
+		width:4px;
+		border-radius: 4px;
+		background: transparent;
+		transition: all 0.3s ease;
+	}
+	.style-1::-webkit-scrollbar:hover{
+		background: #c6c7ca;
+	}
+	.style-1::-webkit-scrollbar-thumb{
+		background: #777779;
+		border-radius: 4px;
+	}
+</style>
+
+<div class="wrapper" ng-controller="HRMassUpdaterController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+                <i class="fa"
+                    style="background: url('assets/images/icons/HRIS Dashboard icon HR.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+                <div style="font-size: 12pt;padding-top: 15px;text-indent:15px">
+                    {{ dashboard.values.userInformation.db.company }}</div>
+                <div style="font-size: 20pt;text-indent:15px">File Maintenance</div>
+                <div style="font-size: 15pt; text-indent:15px">Mass Data Updater</div>
+            </div>
+            <ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/hr/dashboard"> HR Portal</a></li>
+                <li class="active">Mass Data Updater</li>
+            </ol>
+            <div class="bgPulse hidden-xs">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+
+        <!-- <section class="content" style="padding-bottom: 50px !important;overflow-y:auto !important"> -->
+        <section id="content" class="content" style="overflow-y:hidden;padding-bottom: 5px !important">
+            <!-- <div class="row"> -->
+            <div class="well row" style="    height: auto !important;margin: 0px;margin-bottom: 30px;" >
+                <div class="col-md-12 col-xs-12">
+                    <p><i class="fa fa-pencil" aria-hidden="true"></i> Mass Data Updater</p>
+                    <h3 style="margin-top: 20px;">Select Record</h3>
+                </div>
+                <div class="col-md-12 col-xs-12 paddingZero" style="margin-top: 10px;">
+                    <div class="col-md-2 col-xs-12">
+                        <div class="form-group">
+                            <label>Mass Update</label>
+                            <select select2 class="form-control" ng-model="entry.mu" ng-change="select()" style="width:100%">
+                                <option value="mwi">Minimum Wage Increase</option>
+                                <option value="tt">Tax Table</option>
+                                <option value="sdand">Set Dates as Non-Working Day</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-xs-12" ng-show="entry.mu == 'mwi'">
+                        <div class="form-group col-md-2 p5">
+                            <label>Wage Order No.</label>
+                            <input class="form-control" ng-model="entry.mwi.wono" style="width:100%">
+                        </div>
+                        <div class="form-group col-md-2 p5">
+                            <label>Effectivity Date</label>
+                            <input readonly class="form-control" datepickers ng-model="entry.mwi.effdate" style="background-color:white" style="width:100%">
+                        </div>
+                        <div class="form-group col-md-2 p5">
+                            <label>Minimum Wage</label>
+                            <input class="form-control" number-form ng-model="entry.mwi.minwage" ng-change="filterRegion(entry.mwi.region);" style="width:100%">
+                        </div>
+                        <div class="form-group col-md-2 p5">
+                            <label>Region</label>
+                            <select id="mwiregion" select2 class="form-control" ng-model="entry.mwi.region" ng-change="filterRegion(entry.mwi.region);" style="width:100%">
+                                <option value=""></option>
+                                <option ng-repeat="data in region track by $index" value="{{data.region}}">{{data.region}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 p5">
+                            <label>Attachment</label>
+                            <input type="file" class="form-control" ngf-select ng-model="entry.mwi.attach" id="file" name="file" accept="application/pdf" ng-disabled="isSaving" style="width:100%" />
+                        </div>
+                    </div>
+                    <div class="col-md-10 col-xs-12" ng-show="entry.mu == 'tt'">
+                        <div class="form-group col-md-3 p5">
+                            <label>Internal Revenue</label>
+                            <select id="mutype" select2 class="form-control" ng-model="entry.tt.ir" style="width:100%">
+                                <option value=""></option>
+                                <option ng-repeat="t in dropdowns[0] track by $index" value="{{t.id}}">{{t.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3 p5">
+                            <label>Pay Group</label>
+                            <select id="mupaygrp" select2 class="form-control" ng-model="entry.tt.paygrp" style="width:100%" ng-change="filterPayGrp(entry.tt.paygrp);">
+                                <option value=""></option>
+                                <option value="all">All</option>
+                                <option ng-repeat="pg in dropdowns[1] track by $index" value="{{pg.id}}">{{pg.name}}</option>
+                            </select>
+                        </div>
+                        <!-- <div class="col-md-8">
+                            <div class="paddingZero col-md-6">
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <div class="col-md-6 radio paddingZero">
+                                        <label>
+                                            <input type="radio" name="taxtype"> Table-Based
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 radio paddingZero">
+                                        <label>
+                                            <input type="radio" name="taxtype"> Cummulative
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 radio paddingZero">
+                                        <label>
+                                            <input type="radio" name="taxtype"> Annualized
+                                        </label>
+                                    </div>
+                                    <div class="col-md-6 radio paddingZero">
+                                        <label>
+                                            <input type="radio" name="taxtype"> User-Defined
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="paddingZero form-group col-md-6">
+                                <label>Pay Group</label>
+                                <select class="form-control" ng-model="entry.mu">
+                                    <option value="">All</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Date Updated</label>
+                                <input class="form-control" value="{{today | date:'EEEE, MMMM dd, yyyy'}}" readonly>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="col-md-10 col-xs-12" ng-show="entry.mu == 'sdand'">
+                        <div class="form-group col-md-2 p5">
+                            <label for="classif">Classification</label>
+                            <select id="classif" select2 class="form-control" ng-model="entry.sdand.classif" style="width:100%" ng-change="filterClassif(entry.sdand.classif);">
+                                <option value=""></option>
+                                <!--option value="all">All</option-->
+                                <option ng-repeat="dept in dashboard.values.department | filter: typeLimit track by $index" value="{{dept.id}}">{{dept.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2 p5">
+                            <label>Shift</label>
+                            <select id="sdandshift" select2 class="form-control" ng-model="entry.sdand.shift" style="width:100%">
+                                <option value=""></option>
+                                <option ng-repeat="s in shifts track by $index" value="{{s.id}}">{{s.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-1 p5" style="width:5% !important">
+                            <div class="radio" style="margin-bottom:0px">
+                                <label>
+                                    <input type="radio" name="day" ng-model="entry.sdand.typeshift" value="Whole Shift">
+                                    WS
+                                </label>
+                            </div>
+                            <div class="radio" style="margin-bottom:0px">
+                                <label>
+                                    <input disabled type="radio" name="day" ng-model="entry.sdand.typeshift" value="1st Half Shift">
+                                    FH
+                                </label>
+                            </div>
+                            <div class="radio" style="margin-bottom:0px">
+                                <label>
+                                    <input disabled type="radio" name="day" ng-model="entry.sdand.typeshift" value="2nd Half Shift">
+                                    SH
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 p5" style="width: 28.33% !important">
+                            <label>Note</label>
+                            <input class="form-control" ng-model="entry.sdand.note" style="width:100%">
+                        </div>
+                        <div class="form-group col-md-2 p5">
+                            <label>Start Date</label>
+                            <input readonly class="form-control" datepickers ng-model="entry.sdand.sdate" style="background-color:white" style="width:100%" ng-change="filterClassif(entry.sdand.classif);">
+                        </div>
+                        <div class="form-group col-md-2 p5">
+                            <label>End Date</label>
+                            <input readonly class="form-control" datepickers ng-model="entry.sdand.edate" style="background-color:white" style="width:100%" ng-change="filterClassif(entry.sdand.classif);">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12 paddingZero">
+                    <div class="col-md-12 col-xs-12">
+                        <p>Validate and Preview</p>
+                        <div class="col-md-12 col-xs-12 vap paddingZero style-1" style="overflow:auto">
+                            <table class="table table-bordered table-condensed text-center" ng-if="entry.mu == 'mwi'">
+                                <thead>
+                                    <tr>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">ID</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Last Name</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">First Name</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">MI</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Classification</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Region</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Daily Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="vbr in viewByRegion track by $index">
+                                        <td>{{vbr.id}}</td>
+                                        <td>{{vbr.lname}}</td>
+                                        <td>{{vbr.fname}}</td>
+                                        <td>{{vbr.mname}}</td>
+                                        <td>{{vbr.business_unit}}</td>
+                                        <td>{{vbr.job_region}}</td>
+                                        <td>{{vbr.salary | number : 2}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered table-condensed text-center" ng-if="entry.mu == 'tt'">
+                                <thead>
+                                    <tr>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">ID</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Last Name</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">First Name</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">MI</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Classification</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Internal Revenue</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Pay Group</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="vbpg in viewByPayGroup track by $index">
+                                        <td>{{vbpg.id}}</td>
+                                        <td>{{vbpg.lname}}</td>
+                                        <td>{{vbpg.fname}}</td>
+                                        <td>{{vbpg.mname}}</td>
+                                        <td>{{vbpg.business_unit}}</td>
+                                        <td>{{vbpg.internalrev}}</td>
+                                        <td>{{vbpg.paygroup}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered table-condensed text-center" ng-if="entry.mu == 'sdand'">
+                                <thead>
+                                    <tr>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">ID</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Last Name</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">First Name</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">MI</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Classification</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Shift</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">Start Date</th>
+                                        <th style="border:1px solid white;background-color:#00a65a;color:white">End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="vbc in viewByClassif track by $index">
+                                        <td>{{vbc.id}}</td>
+                                        <td>{{vbc.lname}}</td>
+                                        <td>{{vbc.fname}}</td>
+                                        <td>{{vbc.mname}}</td>
+                                        <td>{{vbc.business_unit}}</td>
+                                        <td>{{vbc.shiftstatus}}</td>
+                                        <td>{{vbc.startdate}}</td>
+                                        <td>{{vbc.enddate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <div class="col-md-12 col-xs-12 paddingZero" ng-if="entry.mu == 'mwi'">
+                            <div class="col-md-6 col-xs-12"><span>Wage Order : Implementing rules issued by the Regional Boards</span></div>
+                            <div class="col-md-6 col-xs-12">
+                                <button class="pull-right btn btn-sm btn-primary" style="width:100px;margin:0px 0px 0px 5px" ng-click="updatemwi(entry.mwi.attach);">Update</button>
+                                <button class="pull-right btn btn-sm btn-danger"  style="width:100px;margin:0px 0px 0px 5px" ng-click="resetmwi();">Reset</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 paddingZero" ng-if=" entry.mu=='tt'">
+                            <div class="col-md-6 col-xs-12"><span>Tax Table : Is used to compute for the monthly withholding tax to be paid to the government</span></div>
+                            <div class="col-md-6 col-xs-12">
+                                <button class="pull-right btn btn-sm btn-primary" style="width:100px;margin:0px 0px 0px 5px" ng-click="updatett();">Update</button>
+                                <button class="pull-right btn btn-sm btn-danger"  style="width:100px;margin:0px 0px 0px 5px" ng-click="resettt();">Reset</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12 paddingZero" ng-if=" entry.mu=='sdand'">
+                            <div class="col-md-6 col-xs-12"><span>Set as Non-Working Day: Due to calamity initiated activity. Non-working day or holiday.<br> (Note: WS - <i>Whole Shift</i>, FH - <i>First Half</i>, SH - <i>Second Half</i>)</span></div>
+                            <div class="col-md-6 col-xs-12">
+                                <button class="pull-right btn btn-sm btn-primary" style="width:100px;margin:0px 0px 0px 5px" ng-click="updatesdand();">Update</button>
+                                <button class="pull-right btn btn-sm btn-danger"  style="width:100px;margin:0px 0px 0px 5px" ng-click="resetsdand();">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <div ng-include=" footerTemplate"></div>
+
+</div>

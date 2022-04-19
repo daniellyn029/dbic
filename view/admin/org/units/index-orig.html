@@ -1,0 +1,390 @@
+<style>
+	.main-footer {
+		background: #fff;
+		padding: 5px;
+		color: #444;
+		border-top: 1px solid #d2d6de;
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+		z-index: 999;
+	}
+	.content-wrapper{
+		background:white
+	}
+	.example2 th{
+		color:white;
+		background-color: #006ba6;
+		text-align:center
+	}
+	.btnTD{
+		text-align:center;
+	}
+	.info{
+		font-weight: bold;
+	}
+	.ui-widget-header {
+		border: 1px solid green;
+		background: #008d4c;
+		color:black;
+	}
+	.lightbox-modal{
+		z-index:99999 !important;
+	}
+	.bder{
+		border:0px solid black;
+	}
+	.table-striped>tbody>tr:nth-child(odd)>td, 
+	.table-striped>tbody>tr:nth-child(odd)>th {
+	background-color: #d9e5f3;
+	}
+	table.dataTable>tbody>tr.child ul li {
+		border-bottom: 0px solid #efefef !important;
+	}	
+	.req-field {
+		color: red;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #e8867a ;  }
+		25%  { background: #e47365 ;  }
+		50%  { background: #e15f4f ;  }
+		100%  { background: #dd4b39 ; }
+	}
+</style>
+<div class="wrapper" ng-controller="BusinessUnitsController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+		<spinner name="form01spinner" ng-cloak="">
+			<div class="overlay"></div>
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+			<div class="please-wait">Please Wait...</div>
+		</spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black; ">	
+			<div style="font-size: 9em;z-index:5;/*color:#dd4b39 !important*/">
+				<i class="fa" style="background: url('assets/images/icons/HRIS Dashboard icon Organization.png');background-repeat: no-repeat;background-size: 115px;color: transparent;width: 120px;float: left;color:transparent">&nbsp;&nbsp;&nbsp;</i>
+					<div style="font-size: 12pt;padding-top: 15px;">{{ dashboard.values.userInformation.dbcompany }}</div>		
+					<div style="font-size: 20pt;">Organizational Data</div>
+					<div style="font-size: 15pt;">Classification</div>		
+			</div>
+            <ol class="breadcrumb" style="margin-left:160px;background: #f5f5f5 !important">
+                <li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/org/struct"> Organizational Data</a></li>
+                <li class="active">Classification</li>
+            </ol>
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content">
+			<div ng-init="business_units_functions()">
+				<div class="box-header">
+					<button id="btn-refreshh" style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" ng-click="dtInstance.reloadData()" title="Refresh">
+						<i class="fa fa-refresh fa-sm" style="padding:3px"></i>Refresh
+					</button>
+					<button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Search" data-toggle="modal" data-target="#modal-search"  >
+						<i class="fa fa-search fa-sm" style="padding:3px"></i>Filter
+					</button>
+					<button style="margin-right:3px;" class="btn btn-flat btn-primary pull-right" title="Create" data-toggle="modal" data-target="#modal-add" ng-click="resetCreateAcct()">
+						<i class="fa fa-plus-circle fa-sm" style="padding:3px"></i>Add
+					</button>	
+				</div>
+				<table datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="example2 row-border hover table-striped table-bordered"></table>
+				<div class="modal fade modal-info" id="modal-add" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Add Classification</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="shortid">Short ID<span class="req-field"> *</span></label>
+									  <input type="text" class="form-control" id="shortid" placeholder="Enter ID" maxlength="10" ng-model="add.alias">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="shortcntr">Cost Center</label>
+									  <input type="text" class="form-control" id="shortcntr" placeholder="Enter Cost Center" maxlength="200" ng-model="add.costcenter">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+									  <label for="shortname">Name<span class="req-field"> *</span></label>
+									  <input type="text" class="form-control" id="shortname" placeholder="Enter Name" maxlength="60" ng-model="add.name">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="shorttype">Type<span class="req-field"> *</span></label>
+										<select id="shorttype" class="form-control" ng-model="add.utype" ng-options="addUnits.id as addUnits.type for addUnits in dashboard.values.unittypes | filter: typeLimit" ng-change="addUnitType(add.utype, '')">
+											<option value="">Select Type</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="shorthead">Head</label>
+										<select id="shorthead" class="form-control" ng-model="add.head" ng-options="addHead.id as addHead.name for addHead in dashboard.values.unithead" >
+											<option value="">Select Head</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12 hidden">
+									<div class="form-group">
+										<label for="shorthead1">Deputy 1</label>
+										<select id="shorthead1" class="form-control" ng-model="add.deputy1" ng-options="addHead.id as addHead.name for addHead in dashboard.values.unithead" >
+											<option value="">Select Head</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12 hidden">
+									<div class="form-group ">
+										<label for="shorthead2">Deputy 2</label>
+										<select id="shorthead2" class="form-control" ng-model="add.deputy2" ng-options="addHead.id as addHead.name for addHead in dashboard.values.unithead" >
+											<option value="">Select Head</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="shortdept">{{ lbl }}<span class="req-field"> *</span></label> 
+										<select id="shortdept" class="form-control" ng-model="add.dept" ng-options="addDept.id as addDept.name for addDept in dashboard.values.unitdept" >
+											<option value="">Select Entity</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="shortstat">Status</label>
+										<select id="shortstat" class="form-control" ng-model="add.stat" >
+											<option value="0">Inactive</option>
+											<option value="1">Active</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button data-target="#modal-add" data-dismiss="modal" type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="isSaving">Cancel</button>
+                    		<button id="btn-unit-add" type="button" class="btn btn-primary" ng-click="addUnitProcess()" ng-disabled="isSaving" >Add</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="modal fade modal-info" id="editModal" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Update Classification</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="short2id">Short ID<span class="req-field"> *</span></label>
+										<input type="text" class="form-control" disabled id="short2id" placeholder="Enter ID" maxlength="4" ng-model="edit.alias">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									  <label for="short2cntr">Cost Center</label>
+									  <input type="text" class="form-control" id="short2cntr" placeholder="Enter Cost Center" maxlength="200" ng-model="edit.costcenter">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="short2name">Name<span class="req-field"> *</span></label>
+										<input type="text" class="form-control" id="short2name" placeholder="Enter Name" maxlength="60" ng-model="edit.name">
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="short2type">Type<span class="req-field"> *</span></label>
+										<select id="short2type" class="form-control" ng-model="edit.utype" ng-options="addUnits.id as addUnits.type for addUnits in dashboard.values.unittypes | filter: typeLimit" ng-change="addUnitType(edit.utype, edit.id)">
+											<option value="">Select Type</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="short2head">Head</label>
+										<select id="short2head" class="form-control" ng-model="edit.head" ng-options="addHead.id as addHead.name for addHead in dashboard.values.unithead" >
+											<option value="">Select Head</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12 hidden">
+									<div class="form-group">
+										<label for="short2head1">Deputy 1</label>
+										<select id="short2head1" class="form-control" ng-model="edit.deputy1" ng-options="addHead.id as addHead.name for addHead in dashboard.values.unithead" >
+											<option value="">Select Head</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12 hidden">
+									<div class="form-group">
+										<label for="short2head2">Deputy 2</label>
+										<select id="short2head2" class="form-control" ng-model="edit.deputy2" ng-options="addHead.id as addHead.name for addHead in dashboard.values.unithead" >
+											<option value="">Select Head</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="short2dept">{{ lbl }}<span class="req-field"> *</span></label>
+										<select id="short2dept" class="form-control" ng-model="edit.dept" ng-options="addDept.id as addDept.name for addDept in dashboard.values.unitdept" >
+											<option value="">Select Entity</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="short2stat">Status</label>
+										<select id="short2stat" class="form-control" ng-model="edit.stat" >
+											<option value="0">Inactive</option>
+											<option value="1">Active</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button data-target="#editModal" data-dismiss="modal" type="button" class="btn btn-default" data-dismiss="modal" ng-disabled="isSaving" >Cancel</button>
+							<button id="btn-unit-edit" type="button" class="btn btn-primary" ng-click="editUnitProcess()" ng-disabled="isSaving" >Update</button>
+						</div>
+					</div>
+				</div>
+			
+				<div class="modal fade modal-info" id="modal-search" role="dialog" style="background: rgba(0, 0, 0, 0.8);" >
+					<div class="modal-dialog">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Search Classification</h4>
+						</div>
+						<div class="modal-body" style="background: #38b3d894 !important">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="short3id">Short ID</label>
+										<input type="text" class="form-control" id="short3id" placeholder="Enter ID" maxlength="4" ng-model="search.alias">
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="form-group">
+										<label for="short3name">Name</label>
+										<input type="text" class="form-control" id="short3name" placeholder="Enter Name" maxlength="60" ng-model="search.name">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="short3stat">Status</label>
+										<select id="short3stat" class="form-control" ng-model="search.stat" >
+											<option value="">Status</option>
+											<option value="0">Inactive</option>
+											<option value="1">Active</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="form-group">
+										<label for="short3type">Type</label>
+										<select id="short3type" class="form-control" ng-model="search.utype" ng-options="addUnits.id as addUnits.type for addUnits in dashboard.values.unittypes | filter: typeLimit" >
+											<option value="">Select Type</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline btn-danger pull-left" ng-click="resetSearch()" data-target="#modal-search" data-toggle="modal">Reset</button>
+							<button type="button" class="btn btn-outline btn-primary" ng-click="unitSearch()" data-target="#modal-search" data-toggle="modal">Search</button>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+        </section>        
+    </div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div>

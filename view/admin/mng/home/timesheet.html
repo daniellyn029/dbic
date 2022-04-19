@@ -1,0 +1,1798 @@
+<!-- <style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+   .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #0073b7 ;  }
+	}
+	
+	
+	
+</style>
+<div class="wrapper" ng-controller="MNGHomeController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">
+            <div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-users" style="float: left;color:#00000052"></i>									
+				<div style="font-size: 20pt;padding-top: 15px;text-indent:15px">Manager's Portal</div>
+				<div style="font-size: 15pt;text-indent:15px">Dashboard</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/mng/dashboard"> Manager's Portal</a></li>
+                <li class="active">Dashboard</li>
+			</ol>
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+
+        <section class="content" style="padding-bottom: 50px !important;overflow-y:auto !important">                
+			<div class="row" >
+				<div class="col-md-12">
+					<div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 bg-green" style="padding:0px" >
+						<span class="info-box-icon" style="padding-top:8px;height:60px !important;font-size: 40px;"><i class="fa fa-user-circle"></i></span>
+						<div class="info-box-content text-left">
+							<span class="info-box-text">Total Personel:</span>
+							<span class="info-box-number">{{ dashboard.values.late_tbl.length }}</span>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 bg-red" style="padding:0px" >
+						<span class="info-box-icon" style="padding-top:8px;height:60px !important;font-size: 40px;"><i class="fa fa-calendar"></i></span>
+						<div class="info-box-content text-left">
+							<span class="info-box-text">Date Range:</span>
+							<span class="info-box-number"><input id="picker1" ng-disabled="isSaving" readonly type="text" ng-model="dashboard.values.daterange" style="background:#dd4b39;border: none;"></span>
+						</div>
+					</div>
+				</div>				
+			</div>
+			<div class="row" style="margin-top:15px">
+				<div class="col-lg-12" >
+					<div class="col-lg-6 col-sm-12 col-xs-12" style="padding:0px;" >
+						
+						<div class="col-xs-6" style="margin-top: 10%;">
+							<div class="box" style="border-top:none; min-height: 225px;box-shadow:none">
+								<div class="table-responsive text-center">
+									<table id="tblPresents" class="example2 table table-bordered table-hover table-condensed table-striped ">	
+										<thead>		
+											<th></th>
+											<th> DATE </th>
+											<th> PRESENT </th>
+										</thead>
+										<tbody>
+											<tr ng-click="view_present( present )" id="{{'present_' + present.date}}" dir-paginate="(key, present) in dashboard.values.present_tbl | itemsPerPage: '5' " ng-if="dashboard.values.present_tbl.length > 0" pagination-id="present_data_tbl" style="cursor:pointer;" >
+												<th style="{{ 'text-align:center;background:' + present.colour  }}"></th>
+												<td style="text-align:center;">{{ present.date }}</td>
+												<td style="text-align:center;">{{ present.present }}</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="pagination row" ng-show="dashboard.values.present_tbl.length > 0">
+										<dir-pagination-controls boundary-links="true" pagination-id="present_data_tbl" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-6" >
+							<div class="center-block" style="width:100% !important">
+								<canvas id="doughnut" class="chart chart-doughnut chart-xs" chart-data="data" chart-labels="labels" chart-options="options" ></canvas>
+							</div>
+						</div>
+						
+						
+					</div>
+					<div class="col-lg-6 col-sm-12 col-xs-12" style="padding:0px;" >
+						
+						<div class="col-xs-4" style="padding:0px;text-align:center" >
+							<div style="padding: 20px 0;border-radius: 5px;">
+								<i class="fa fa-clock-o fa-2x"></i>
+								<p id="late_data" class="counter-count_set1" style="font-size: 44pt;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;width: 125px;height: 100px;margin-right: auto;margin-left: auto;background: #f57000;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p>
+								<p class="count-text " style="font-size: 25px;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;">Lates</p>
+							</div>
+						</div>
+						<div class="col-xs-8" style="padding: 10px;min-height: 225px;" >
+							<div class="box" style="border-top:none; min-height: inherit;box-shadow:none">
+								<div class="table-responsive text-center">
+									<table id="tblLates" class="example2 table table-bordered table-hover table-condensed table-striped">	
+										<thead>		
+											<th> STAFF </th>
+											<th> COUNT </th>
+										</thead>
+										<tbody>
+											<tr ng-click="view_lates( late_data )" id="{{'late_' + $index}}" dir-paginate="late_data in dashboard.values.late_tbl | filter: late_data_search  | itemsPerPage: '5' " ng-if="dashboard.values.late_tbl.length > 0" pagination-id="late_data_tbl" style="cursor:pointer" >
+												<td style="text-align:center;">{{ late_data.empname }}</td>
+												<td style="text-align:center;font-weight:bold;">{{ late_data.lte_ctr }}</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="pagination row" ng-show="dashboard.values.late_tbl.length > 0">
+										<dir-pagination-controls boundary-links="true" pagination-id="late_data_tbl" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="col-xs-4" style="padding:0px;text-align:center" >
+							<div style="padding: 20px 0;border-radius: 5px;">
+								<i class="fa fa-calendar-check-o fa-2x"></i>
+								<p id="absent_data" class="counter-count_set1" style="font-size: 44pt;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;width: 125px;height: 100px;margin-right: auto;margin-left: auto;background: #f57000;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p>
+								<p class="count-text " style="font-size: 25px;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;">Absent</p>
+							</div>
+						</div>
+						<div class="col-xs-8" style="padding: 10px;min-height: 225px;" >
+							<div class="box" style="border-top:none; min-height: inherit;box-shadow:none">
+								<div class="table-responsive text-center">
+									<table id="tblAbsent" class="example2 table table-bordered table-hover table-condensed table-striped">	
+										<thead>		
+											<th> STAFF </th>
+											<th> COUNT </th>
+										</thead>
+										<tbody>
+											<tr ng-click="view_absent( absent_data )" id="{{'absnt_' + $index}}" dir-paginate="absent_data in dashboard.values.absent_tbl | filter: absent_data_search  | itemsPerPage: '5' " ng-if="dashboard.values.absent_tbl.length > 0" pagination-id="absent_data_table" style="cursor:pointer" >
+												<td style="text-align:center;">{{ absent_data.empname }}</td>
+												<td style="text-align:center;font-weight:bold;">{{ absent_data.absent_ctr }}</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="pagination row" ng-show="dashboard.values.absent_tbl.length > 0">
+										<dir-pagination-controls boundary-links="true" pagination-id="absent_data_table" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:15px">
+				<div class="col-lg-12" >
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:0px;" >
+						<div class="col-xs-12" style="text-align:center" >
+							<h3 class="pull-left"> Leaves Chart </h3>
+							<canvas id="bar" class="chart chart-bar"
+							  chart-data="line_data" chart-labels='line_labels' chart-series="line_series" chart-colors="line_colors" chart-options="line_options">
+							</canvas>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:0px;" >
+						<div class="col-xs-12" style="text-align:center;padding:0px;" >
+							<h3 class="text-left"> Leaves Counter </h3>
+							<div class="box" style="border-top:none; min-height: inherit;box-shadow:none">
+								<div class="table-responsive text-center">
+									<table id="tblAbsent" class="example2 table table-bordered table-hover table-condensed table-striped">	
+										<thead>		
+											<th style="background: #00a65a;"> TYPE </th>
+											<th style="background: #f39c12"> PENDING </th>
+											<th style="background: #0073b7;"> APPROVED </th>
+											<th style="background: #dd4b39;"> DECLINED </th>
+										</thead>
+										<tbody>
+											<tr id="{{'leaves_' + $index}}" dir-paginate="leaves_data in dashboard.values.leaves_tbl | itemsPerPage: '5' " ng-if="dashboard.values.leaves_tbl.length > 0" pagination-id="leaves_data_table"  >
+												<td style="text-align:center;">{{ leaves_data.name }}</td>
+												<td style="text-align:center;cursor:pointer;"><a ng-if="leaves_data.pending > 0" style="color:black" href="#/admin/mng/app/leaveapp?ty={{ leaves_data.id }}&st=3&df={{ leaves_data.df }}&dt={{ leaves_data.dt }}" >{{ leaves_data.pending }}</a><span ng-if="leaves_data.pending == 0">{{ leaves_data.pending }}</span></td>
+												<td style="text-align:center;cursor:pointer;"><a ng-if="leaves_data.approve > 0" style="color:black" href="#/admin/mng/app/leaveapp?ty={{ leaves_data.id }}&st=1&df={{ leaves_data.df }}&dt={{ leaves_data.dt }}" >{{ leaves_data.approve }}</a><span ng-if="leaves_data.approve == 0">{{ leaves_data.approve }}</span></td>
+												<td style="text-align:center;cursor:pointer;"><a ng-if="leaves_data.decline > 0" style="color:black" href="#/admin/mng/app/leaveapp?ty={{ leaves_data.id }}&st=2&df={{ leaves_data.df }}&dt={{ leaves_data.dt }}" >{{ leaves_data.decline }}</a><span ng-if="leaves_data.decline == 0">{{ leaves_data.decline }}</span></td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="pagination row" ng-show="dashboard.values.leaves_tbl.length > 0">
+										<dir-pagination-controls boundary-links="true" pagination-id="leaves_data_table" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:50px">
+				<div class="col-lg-12" >
+					<div class="col-lg-6 col-sm-12 col-xs-12" style="padding:0px;" >
+						<div class="col-xs-12" >
+							<h3 class="text-center"> Attendance Adjustment Applications</h3>
+							<div class="col-xs-12 col-sm-6 col-md-6" style="padding-top: 4%;">
+								<p id="aa_total" class="counter-count_set2" style="font-size: 42px;background-color: #00a65a;border-radius: 50%;color: #ffffff;text-align: center;width: 152px;height: 152px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%;line-height: 150px;margin-left: auto;margin-right: auto;">0</p>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6 text-center" >
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/adjustapp?st=3&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="aa_pending" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #f39c12;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Pending</p>
+								</div>
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/adjustapp?st=1&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="aa_approve" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #4096c9;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Approved</p>
+								</div>
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/adjustapp?st=2&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="aa_decline" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #dd4b39;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Declined</p>
+								</div>
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/adjustapp?st=4&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="aa_cancel" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #b12e77;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Canceled</p>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col-lg-6 col-sm-12 col-xs-12" style="padding:0px;" >
+						<div class="col-xs-12" >
+							<h3 class="text-center"> Overtime Applications</h3>
+							<div class="col-xs-12 col-sm-6 col-md-6" style="padding-top: 4%;">
+								<p id="ot_total" class="counter-count_set2" style="font-size: 42px;background-color: #00a65a;border-radius: 50%;color: #ffffff;text-align: center;width: 152px;height: 152px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%;line-height: 150px;margin-left: auto;margin-right: auto;">0</p>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6 text-center" >
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/overtimeapp?st=3&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="ot_pending" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #f39c12;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Pending</p>
+								</div>
+								<div class="col-xs-3 col-sm-12 ">
+									<a style="color:black" href="#/admin/mng/app/overtimeapp?st=1&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="ot_approve" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #4096c9;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Approved</p>
+								</div>
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/overtimeapp?st=2&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="ot_decline" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #dd4b39;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Declined</p>
+								</div>
+								<div class="col-xs-3 col-sm-12 "> 
+									<a style="color:black" href="#/admin/mng/app/overtimeapp?st=4&df={{ dashboard.values.applications_data.df }}&dt={{ dashboard.values.applications_data.dt }}" >
+										<p id="ot_cancel" class="counter-count_set2" style="cursor:pointer;font-size: 100%;font-weight: normal;margin-top: 10px;margin-bottom: 0;text-align: center;margin-right: auto;margin-left: auto;background: #b12e77;vertical-align: middle;padding: 5px;border-radius: 15px;color: white;">0</p> 
+									</a>
+									<p class="count-text " style="font-size: 9pt;font-weight: normal;margin-top: 0px;margin-bottom: 0;text-align: center;font-weight:900">Canceled</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </section>        
+    </div>
+
+	<div class="modal fade modal-success" data-backdrop="static" id="present_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Present As Of: {{ dashboard.values.present_details.date }} </h4>
+				</div>
+				<div class="modal-body" style="color:black !important;background:white !important">					
+					<div class="row">
+						<div class="col-xs-12" >
+							<div class="box" style="border-top:none;box-shadow: none;">
+								<div class="table-responsive text-center">
+									<table class="example2 table table-bordered table-hover table-condensed table-striped">	
+										<thead>		
+											<th> EMPID </th>
+											<th> NAME </th>
+										</thead>
+										<tbody>
+											<tr dir-paginate="(key, present_detail) in dashboard.values.present_details.empids | itemsPerPage: '5' " ng-if="dashboard.values.present_details.empids.length > 0" pagination-id="present_details"  current-page="present_details_page" >
+												<td style="text-align:center;">{{ dashboard.values.present_details.empids[($index + (present_details_page * 5)) - 5] }}</td>
+												<td style="text-align:center;">{{ dashboard.values.present_details.empname[($index + (present_details_page * 5)) - 5] }}</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="pagination col-xs-12" ng-show="dashboard.values.present_details.empids.length > 0" style=" text-align: right;">
+										<dir-pagination-controls boundary-links="true" pagination-id="present_details" template-url="view/page/dirPagination.html"></dir-pagination-controls>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer btn-success">
+					<button type="button" class="btn btn-danger pull-right"  data-target="#present_box" data-toggle="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade modal-success" data-backdrop="static" id="late_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><i class="fa fa-clock-o" aria-hidden="true"></i> Lates Of Employee ID: {{ dashboard.values.late_details.empid }} </h4>
+				</div>
+				<div class="modal-body" style="color:black !important;background:white !important">					
+					<div class="row">
+						<div class="col-xs-12" >
+							<h4>{{ dashboard.values.late_details.empname }}</h4>
+							<div class="box" style="border-top:none;box-shadow: none;">
+								<div class="table-responsive text-center">
+									<table class="example2 table table-bordered table-hover table-condensed table-striped">	
+										<thead>		
+											<th> DATE </th>
+											<th> HOURS</th>
+										</thead>
+										<tbody>
+											<tr ng-repeat="late_datez in dashboard.values.late_details.lte_dates" >
+												<td style="text-align:center;">{{ dashboard.values.late_details.lte_dates[$index] }}</td>
+												<td style="text-align:center;font-weight:bold;">{{ dashboard.values.late_details.lte_hrs[$index] }}</td>
+											</tr>
+											<tr>
+												<td style="color: white;background-color: #006ba6;text-align: center;"> Total Hours: </td>
+												<td style="color: white;background-color: #006ba6;text-align: center;"> {{ dashboard.values.late_details.late_hours }} </td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer btn-success">
+					<button type="button" class="btn btn-danger pull-right"  data-target="#late_box" data-toggle="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade modal-success" data-backdrop="static" id="absent_box" role="dialog" style="background: rgba(0, 0, 0, 0.8);overflow: scroll !important;"  >
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Absents Of Employee ID: {{ dashboard.values.absent_details.empid }} </h4>
+				</div>
+				<div class="modal-body" style="color:black !important;background:white !important">					
+					<div class="row">
+						<div class="col-xs-12" >
+							<h4>{{ dashboard.values.absent_details.empname }}</h4>
+							<div class="box" style="border-top:none;box-shadow: none;">
+								<div class="table-responsive">
+									<table class="example2 table table-bordered table-hover table-condensed table-striped">	
+										<thead>		
+											<th> DATE </th>
+											<th> HOURS</th>
+										</thead>
+										<tbody>
+											<tr ng-repeat="late_datez in dashboard.values.absent_details.absent_dates" >
+												<td style="text-align:center;">{{ dashboard.values.absent_details.absent_dates[$index] }}</td>
+												<td style="text-align:center;font-weight:bold;">{{ dashboard.values.absent_details.absent_hrs[$index] }}</td>
+											</tr>
+											<tr>
+												<td style="color: white;background-color: #006ba6;text-align: center;"> Total Hours: </td>
+												<td style="color: white;background-color: #006ba6;text-align: center;"> {{ dashboard.values.absent_details.absent_hours }} </td>
+											</tr>
+										</tbody>
+									</table>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer btn-success">
+					<button type="button" class="btn btn-danger pull-right"  data-target="#absent_box" data-toggle="modal" >Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div ng-include="footerTemplate"></div>
+
+</div> -->
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+
+    .content-wrapper {
+        background: white
+    }
+
+    .example2 th {
+        color: white;
+        background-color: #00b050;
+        text-align: center;
+    }
+
+    .btnTD {
+        text-align: center;
+    }
+
+    .info {
+        font-weight: bold;
+    }
+
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color: black;
+    }
+
+    .lightbox-modal {
+        z-index: 99999 !important;
+    }
+
+    .bder {
+        border: 0px solid black;
+    }
+
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: #d9e5f3;
+    }
+
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }
+
+    .req-field {
+        color: red;
+    }
+
+    .paddingZero {
+        padding: 0px !important;
+    }
+
+    .txtresize {
+        resize: vertical;
+        min-height: 110px !important;
+    }
+
+    .sec-head {
+        overflow: hidden;
+        animation: bgColor 8s normal forwards;
+    }
+
+    .bgPulse {
+        width: 100%;
+        height: 100%;
+    }
+
+    .bgPulse span {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #fff;
+
+    }
+
+    .bgPulse span:nth-child(2n+1) {
+        background: transparent;
+        border: 5px solid #fff;
+    }
+
+    .bgPulse span:nth-child(1) {
+        border-radius: 12px;
+        top: 30%;
+        left: 30%;
+        animation: animate 10s linear infinite;
+    }
+
+    .bgPulse span:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        animation: animate 15s linear infinite;
+    }
+
+    .bgPulse span:nth-child(3) {
+        top: 40%;
+        left: 70%;
+        animation: animate 20s linear infinite;
+    }
+
+    .bgPulse span:nth-child(4) {
+        border-radius: 12px;
+        top: 60%;
+        left: 80%;
+        animation: animate 12s linear infinite;
+    }
+
+    .bgPulse span:nth-child(5) {
+        top: 60%;
+        left: 40%;
+        animation: animate 17s linear infinite;
+    }
+
+    .bgPulse span:nth-child(6) {
+        border-radius: 12px;
+        top: 60%;
+        left: 60%;
+        animation: animate 22s linear infinite;
+    }
+
+    .bgPulse span:nth-child(7) {
+        top: 60%;
+        left: 20%;
+        animation: animate 17s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(0) translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(1) translateY(-100px) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bgColor {
+        0% {
+            background: #f7ba5b;
+        }
+
+        25% {
+            background: #f5b043;
+        }
+
+        50% {
+            background: #f4a62a;
+        }
+
+        100% {
+            background: #f39c12;
+        }
+    }
+
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+    }
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .fw9 {
+        font-weight: 900;
+    }
+
+    .respontext {
+        font-size: 40px;
+    }
+
+
+    @media screen and (max-width: 1280px) {
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 24px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 11px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+        .pcomp {
+            font-size: 10px !important;
+        }
+
+        .f1280 {
+            font-size: 12px;
+        }
+
+        table {
+            font-size: 9px !important;
+        }
+
+        table.dataTable {
+            font-size: 13px !important;
+        }
+
+        .fwidth {
+            width: 173px !important;
+        }
+
+        .dot {
+            height: 16px !important;
+            width: 16px !important;
+        }
+
+        .dot1 {
+            height: 13px !important;
+            width: 13px !important;
+        }
+
+        .dot2 {
+            height: 13px !important;
+            width: 13px !important;
+        }
+
+        .dot3 {
+            height: 13px !important;
+            width: 13px !important;
+        }
+
+
+        .m9 {
+            width: 73% !important;
+            zoom: 75%;
+        }
+
+        .m3 {
+            width: 27% !important;
+            padding-left: 0px !important;
+        }
+
+        .h2font {
+            font-size: 24px !important;
+        }
+
+        .h2small {
+            font-size: 10px !important;
+            line-height: 32px !important;
+        }
+
+        .staffimg {
+            height: 49px !important;
+            margin-top: 21px !important;
+            margin-left: 1px !important;
+        }
+
+        .staffname {
+            margin-top: 8px;
+            margin-left: 18px !important;
+        }
+
+        .staffstat {
+            margin-left: 18px !important;
+            margin-top: 10px;
+        }
+
+        .std {
+            margin-left: 20px;
+            margin-top: 18px !important;
+            height: auto;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .bheight {
+            height: auto !important;
+        }
+
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 0px !important;
+        }
+
+        .eh {
+            line-height: 10px !important;
+        }
+
+        .respontext {
+            font-size: 30px !important;
+        }
+
+        .f11px {
+            font-size: 9px !important;
+        }
+
+        .fcheight {
+            height: 519px !important;
+        }
+
+
+    }
+
+
+    @media screen and (max-width: 414px) {
+        .respontext {
+            padding-left: 28px;
+            font-size: 24px !important;
+        }
+
+        .autoh {
+            margin-bottom: 60px !important;
+            height: auto !important;
+        }
+
+        .tld {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .tm {
+            margin-left: 15px !important;
+            margin-right: 0px !important;
+        }
+
+        .ah {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+
+        .td1 {
+            width: 100% !important;
+        }
+
+        .td2 {
+            width: 100% !important;
+        }
+
+
+
+    }
+
+    .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    }
+
+    .bheight {
+        display: flex;
+        height: auto;
+    }
+
+
+    .fw6 {
+        font-weight: 600;
+    }
+
+    .u {
+        text-decoration: underline;
+    }
+
+    .tm {
+        margin-left: 15px;
+        margin-right: 15px;
+
+    }
+
+    .nomargin {
+        margin: 0 !important;
+    }
+
+    .t14px {
+        font-size: 14px;
+    }
+
+    .eh {
+        font-weight: 800;
+        line-height: 16px;
+    }
+
+    .t12px {
+        font-size: 12px;
+    }
+
+    .f11px {
+        font-size: 11px;
+    }
+
+    #calendar-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .dl {
+        cursor: move;
+        z-index: 2;
+    }
+
+    .dot {
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        line-height: 18px;
+        margin-right: 3px;
+    }
+
+    .dot1 {
+        height: 20px;
+        width: 20px;
+        background-color: green;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .dot2 {
+        height: 20px;
+        width: 20px;
+        background-color: red;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(83, 13, 13);
+    }
+
+    .dot3 {
+        height: 20px;
+        width: 20px;
+        background-color: yellow;
+        border-color: white;
+        border-radius: 50%;
+        line-height: 18px;
+        border: 2px solid rgb(114, 114, 17);
+    }
+
+
+    span {
+        margin-left: 5px;
+    }
+
+    #block_container {
+        height: auto;
+        text-align: center;
+        width: 100%;
+    }
+
+    #bloc1,
+    #bloc2 {
+
+        float: left !important;
+    }
+
+    /* .btn-group button {
+
+        background-color: #00b050;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        border-width: 1px;
+        color: white;
+    }
+
+    .btn-group:after {
+        content: "";
+        clear: both;
+
+    } */
+
+
+    /* */
+
+
+    .btnTD {
+        padding: 0px 18px !important;
+
+    }
+
+    .td1 {
+        padding-top: 13px;
+        width: 10%;
+    }
+
+    .td2 {
+        width: 90%;
+    }
+
+    .btnTD {
+        background-color: rgb(226, 225, 225) !important;
+    }
+
+    .ml-5 {
+        margin-left: 5px !important;
+    }
+
+    .fs25 {
+        font-size: 25px;
+        margin: 0px;
+    }
+
+    .pcomp {
+        font-size: 13px;
+    }
+
+    .btnTDsunit {
+        width: 400px;
+    }
+
+    .text-left {
+        text-align: left;
+    }
+
+    .green {
+        background-color: #00b050;
+    }
+
+    .h2small {
+        font-size: 19px;
+        line-height: 39px;
+        margin: 0px !important;
+    }
+
+    .staffbox {
+        background-color: whitesmoke;
+        height: 100px;
+        margin: 10px;
+        border: 1px solid;
+        padding: 2px;
+        box-shadow: 1px 1px 7px 3px #888888;
+        color: #444343;
+    }
+
+    .staffimg {
+        height: 60px;
+        border-radius: 50%;
+        margin-top: 14px;
+        margin-left: 6px;
+    }
+
+    .nomargin {
+        margin: 0px !important;
+    }
+
+    .staffname {
+        margin-top: 8px;
+        margin-left: 30px;
+    }
+
+    .staffstat {
+        margin-left: 30px;
+        margin-top: 10px;
+    }
+
+    .staffldiv {
+        margin-top: 17px;
+        margin-right: 14px;
+    }
+
+    .approved {
+        background-color: green;
+        border: 2px solid rgb(13, 87, 13);
+    }
+
+    .pending {
+        background-color: yellow;
+        border: 2px solid rgb(112, 112, 10);
+    }
+
+    .declined {
+        background-color: red;
+        border: 2px solid rgb(83, 9, 9);
+    }
+
+    .well {
+        border-radius: 0px !important;
+    }
+
+    #bar {
+        height: 260px !important;
+    }
+
+    #pie {
+        height: 290px !important;
+    }
+
+    #barh {
+        height: 200px !important;
+    }
+
+    h4 {
+        margin-top: 0px !important;
+    }
+
+    .staffbox:hover {
+        background-color: rgb(190, 190, 252);
+    }
+
+    .underline {
+        border-bottom: 1px solid black !important;
+        width: 100%;
+        display: block;
+    }
+
+    .th {
+        color: black !important;
+        background-color: white !important;
+        border-top: 1px solid rgb(77, 73, 73) !important;
+        border-bottom: 1px solid rgb(77, 73, 73) !important;
+    }
+
+    table.dataTable tbody th,
+    table.dataTable tbody td {
+        padding: 1px 0px !important;
+    }
+
+    table.dataTable thead th,
+    table.dataTable thead td {
+        padding: 0px 0px !important;
+        border-bottom: 1px solid #111;
+    }
+
+    table.dataTable p {
+        padding: 0px !important;
+    }
+
+    .btn-group {
+        background-color: #00b050;
+    }
+
+    button {
+        background-color: #00b050;
+
+    }
+
+    table.dataTable tbody {
+        text-align: center;
+    }
+
+    .m9 {
+        padding-right: 0px;
+    }
+
+    .std {
+        margin-left: 20px;
+        margin-top: 14px;
+        height: auto;
+    }
+
+    .cp {
+        color: #00b050;
+    }
+
+    .pp {
+        color: #008db0
+    }
+
+    .cgreen {
+        color: #00b050;
+        font-size: 25px;
+    }
+
+    .btn-group {
+        color: white;
+    }
+
+    .active {
+        background-color: rgb(190, 190, 252);
+    }
+</style>
+
+<div class="wrapper" ng-controller="MNGHomeController" ng-init="dashboard.active();">
+
+    <div class="main-header" ng-include="headerTemplate"></div>
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div>
+
+    <div class="content-wrapper">
+
+        <section class="content">
+            <div class="autoh"
+                style=" background-color: #c3c7ca !important; color: white; height: 820px; padding-bottom: 2px;">
+                <div class="well well-graphic"
+                    style=" height: 95px !important; background-color: #00b050  !important; margin-bottom: 11px !important;">
+                    <div class="well-icon hide-xs col-sm-2 col-md-3 col-lg-1 col-xs-2">
+                        <div class="imgauto">
+                            <img ng-src="assets/images/staff.png" style="height: 70px;" class="user-image"
+                                alt="User Image">
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-9 col-lg-11  col-xs-10">
+                        <div class="well-text well-color text-left">
+                            <p class="respontext" style="
+                            margin: 0 0 -5px !important; font-weight: 600 !important;">Staff Management
+                                <a href="#/admin/mng/dashboard"><img ng-src="assets/images/laback.png"
+                                        style="height: 50px;" class="user-image pull-right alt=" User Image">
+                                </a>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row" ng-init="setup_timesheet_functions()">
+                    <div class="col-md-9 m9">
+                        <div class="well well-graphic std">
+
+                            <table style="color:rgb(68, 68, 68) !important;" datatable="" dt-options="dtOptions"
+                                dt-columns="dtColumns" dt-instance="dtInstance"
+                                class="example2 row-border hover table-striped table-bordered">
+                                <tfoot>
+                                    <tr>
+                                        <th class="th"> </th>
+                                        <th class="th">
+                                            <div id="bloc1" class="dot1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            <div id="bloc2"><span>{{totalapproved}}</span></div>
+                                        </th>
+                                        <th class="th">
+                                            <div id="bloc1" class="dot2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            <div id="bloc2"><span>{{totaldeclined}}</span></div>
+                                        </th>
+                                        <th class="th">
+                                            <div id="block_container">
+                                                <div id="bloc1" class="dot3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                                <div id="bloc2"><span>{{totalpending}}</span></div>
+                                            </div>
+                                        </th>
+                                        <th>Total: </th>
+                                        <th class="th"></th>
+                                        <th class="th"> {{ sumhrs.reg }} </th>
+                                        <th class="th"> {{ sumhrs.ot }} </th>
+
+
+                                        <th class="th"> {{ sumhrs.late }} </th>
+                                        <th class="th"> {{ sumhrs.ut }} </th>
+                                        <th class="th"> {{ sumhrs.absent }} </th>
+
+
+                                        <th class="th"></th>
+                                        <th class="th"> </th>
+                                        <th class="th"> </th>
+                                        <th class="th"> {{ sumhrs.leave }} </th>
+                                        <th class="th"></th>
+                                        <th class="th"></th>
+                                    </tr>
+                                    <tr>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;" class="text-black">Aprroved</th>
+                                        <th style="background-color: white;" class="text-black">Disapproved</th>
+                                        <th style="background-color: white;" class="text-black">Pending</th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                        <th style="background-color: white;"> </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+
+                            <div class="modal fade modal-info" id="modal-changeshift" role="dialog"
+                                style="background: rgba(0, 0, 0, 0.8);" ng-init="shifts()">
+                                <div class="modal-dialog  modal-sm">
+                                    <div class="modal-header" style="background: #00b050   !important">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Change Shift</h4>
+                                    </div>
+                                    <div class="modal-body" style="background: whitesmoke !important">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <p ng-repeat="sl in shiftlist"> <button
+                                                            class="btn btn-default form-control"
+                                                            ng-click="proceedcs(sl.id)" id="cs{{sl.id}}"
+                                                            data-toggle="confirmcs">
+                                                            {{sl.name}}</button>
+                                                    </p>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="background: #00b050   !important">
+                                        <button type="button" class="btn btn-outline btn-danger" data-dismiss="modal"
+                                            ng-click="cancelcs(cid)">Cancel</button>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade modal-info" id="modal-add" data-backdrop="static" role="dialog"
+                                style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                                <div class="modal-dialog" style="min-width:450px !important">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Apply Adjustment</h4>
+                                    </div>
+                                    <div class="modal-body" style="background: #38b3d894 !important">
+                                        <div class="row">
+
+                                            <form ng-hide="mySignUpForm" role="form" name="registerForm2">
+
+                                                <!-- <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="leave_acct">Employee</label>
+                                                    <select ng-disabled="isSaving" id="leave_acct" class="form-control"
+                                                        ng-model="add.acct"
+                                                        ng-options="add_employees.id as add_employees.empname for add_employees in dashboard.values.accounts | filter: filterAcct"
+                                                        required>
+                                                        <option value="">Select Employee</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+
+                                                <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="leave_start">Date From</label>
+                                                    <input ng-disabled="isSaving" type="text" readonly datepickers
+                                                        ng-model="add.datefrom" class="form-control"
+                                                        placeholder="Date from" maxlength="10" id="leave_start"
+                                                        name="leave_start" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="leave_end">Date To</label>
+                                                    <input ng-disabled="isSaving" type="text" readonly datepickers
+                                                        ng-model="add.dateto" class="form-control" placeholder="Date To"
+                                                        maxlength="10" id="leave_end" name="leave_end" required />
+                                                </div>
+                                            </div> -->
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="leave_remarks">Remarks</label>
+                                                        <textarea id="leave_remarks" name="leave_remarks"
+                                                            ng-disabled="isSaving2" class="form-control txtresize"
+                                                            ng-model="add.remarks"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="leave_file">File</label>
+                                                        <input ng-disabled="isSaving2" class="form-control" type="file"
+                                                            ngf-select ngf-multiple="true" ng-model="add.picFile"
+                                                            name="file[]" accept="image/*" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 " style="height:30px">
+                                                    <div class="form-group">
+                                                        <button style="width:100px"
+                                                            class="btn btn-sm btn-success pull-left"
+                                                            ng-click="resetCreateAcct()">Reset</button>
+                                                        <button style="width:100px"
+                                                            class="btn btn-sm btn-success pull-right"
+                                                            ng-click="generateTbl()">Generate</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <div class="box3" style="height: 150px; ">
+                                                            <div class="box-body3 table-responsive">
+                                                                <table id="example22"
+                                                                    style="width:100%;table-layout: fixed;border-collapse: collapse;"
+                                                                    class="tabless table-bordered">
+                                                                    <thead>
+                                                                        <tr style="display: block;">
+                                                                            <th
+                                                                                style="text-align:center;padding: 5px;width: 140px;">
+                                                                                Date </th>
+                                                                            <th
+                                                                                style="text-align:center;padding: 5px;width: 140px;">
+                                                                                Shift </th>
+                                                                            <th
+                                                                                style="text-align:center;padding: 5px;width: 140px;">
+                                                                                Hours </th>
+                                                                            <th
+                                                                                style="text-align:center;padding: 5px;width: 147px;">
+                                                                                Action </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody
+                                                                        style="display:block; width: 100%;overflow-y: scroll;height: 140px;">
+                                                                        <tr
+                                                                            ng-repeat="(key, value) in add.leave_dates track by $index">
+                                                                            <td
+                                                                                style="text-align:center;padding:5px;width: 25%;">
+                                                                                {{ value.date }} </td>
+                                                                            <td
+                                                                                style="text-align:center;padding:5px;width: 25%;">
+                                                                                {{ value.shift }} </td>
+                                                                            <td
+                                                                                style="text-align:center;padding:5px;width: 25%;">
+                                                                                {{ value.hrs }} </td>
+                                                                            <td
+                                                                                style="text-align:center;padding:5px;width: 23%;">
+                                                                                <select
+                                                                                    ng-change="calcLeavehrs( add.leave_dates[key]['hrs'], add.leave_dates[key]['val'], key )"
+                                                                                    ng-disabled="isSaving2"
+                                                                                    class="form-control"
+                                                                                    ng-model="add.leave_dates[key]['val']"
+                                                                                    style="color:black;"
+                                                                                    ng-if="add.leave_dates[key]['val']">
+                                                                                    <option
+                                                                                        ng-repeat="(key, value) in add.leave_dates[key]['drop'] track by $index"
+                                                                                        value="{{ value.id }}">
+                                                                                        {{ value.valz }} </option>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button style="width:100px" data-target="#modal-add" data-dismiss="modal"
+                                            type="button" class="btn btn-default pull-left" data-dismiss="modal"
+                                            ng-disabled="isSaving2">Cancel</button>
+                                        <button style="width:100px" id="btn-unit-add" type="button"
+                                            class="btn btn-primary" ng-click="addAdj(add.picFile)"
+                                            ng-disabled="isSaving2 ">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade modal-info" id="modal-addot" data-backdrop="static" role="dialog"
+                                style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                                <div class="modal-dialog" style="min-width:450px !important">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Apply Overtime</h4>
+                                    </div>
+                                    <div class="modal-body" style="background: #38b3d894 !important">
+                                        <div class="row">
+
+                                            <form ng-hide="mySignUpForm" role="form" name="registerForm2">
+
+                                                <!-- <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="ot_acct">Employee</label>
+                                                    <select ng-disabled="isSaving" id="ot_acct" class="form-control"
+                                                        ng-model="add.acct"
+                                                        ng-options="add_employees.id as add_employees.empname for add_employees in dashboard.values.accounts"
+                                                        required>
+                                                        <option value="">Select Employee</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+
+
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ot_start">Start Time</label>
+                                                        <input timepick type="text" placeholder="Start"
+                                                            class="form-control" id="ot_start" name="ot_start"
+                                                            ng-model="add.start_time" required ng-disabled="isSaving" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ot_end">End Time</label>
+                                                        <input timepick type="text" placeholder="End"
+                                                            class="form-control" id="ot_end" name="ot_end"
+                                                            ng-model="add.end_time" required ng-disabled="isSaving" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="ot_remarks">Remarks</label>
+                                                        <textarea id="ot_remarks" name="ot_remarks"
+                                                            ng-disabled="isSaving" class="form-control txtresize"
+                                                            ng-model="add.remarks"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button style="width:100px" ng-click="cancelot(cot)" type="button"
+                                            class="btn btn-default pull-left" ng-disabled="isSaving">Cancel</button>
+                                        <button style="width:100px" id="btn-unit-add" type="button"
+                                            class="btn btn-primary" ng-click="addOt()"
+                                            ng-disabled="isSaving ">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade modal-info" id="modal-addleave" data-backdrop="static" role="dialog"
+                                style="background: rgba(0, 0, 0, 0.8);overflow:scroll !important">
+                                <div class="modal-dialog" style="min-width:450px !important">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Apply Leave</h4>
+                                    </div>
+                                    <div class="modal-body" style="background: #38b3d894 !important">
+                                        <div class="row">
+
+                                            <form ng-hide="mySignUpForm" role="form" name="registerForm2">
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ot_start">Start Time</label>
+                                                        <input timepick type="text" placeholder="Start"
+                                                            class="form-control" id="ot_start" name="ot_start"
+                                                            ng-model="add.start_time" required ng-disabled="isSaving" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="ot_end">End Time</label>
+                                                        <input timepick type="text" placeholder="End"
+                                                            class="form-control" id="ot_end" name="ot_end"
+                                                            ng-model="add.end_time" required ng-disabled="isSaving" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="ot_remarks">Remarks</label>
+                                                        <textarea id="ot_remarks" name="ot_remarks"
+                                                            ng-disabled="isSaving" class="form-control txtresize"
+                                                            ng-model="add.remarks"></textarea>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button style="width:100px" type="button" class="btn btn-default pull-left"
+                                            ng-disabled="isSaving" ng-click="cancelleave(lid)">Cancel</button>
+                                        <button style="width:100px" id="btn-unit-add" type="button"
+                                            class="btn btn-primary" ng-click="addOt()"
+                                            ng-disabled="isSaving ">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade modal-info" id="modal-aot" role="dialog"
+                                style="background: rgba(0, 0, 0, 0.8);" ng-init="shifts()">
+                                <div class="modal-dialog  modal-sm" style="width: 150px !important;">
+                                    <div class="modal-header text-center" style="background: #00b050   !important">
+                                        <h4 class="modal-title" style="line-height: 0px !important;">Approved ?</h4>
+                                    </div>
+                                    <div class="modal-body" style="background: whitesmoke !important">
+                                        <table class="text-center" style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <td width="50%" class="text-black">
+                                                        <img ng-src="assets/images/approve.png"
+                                                            style="height: 50px; cursor: pointer;"
+                                                            class="user-image pull-right" ng-click="otact('approve')">
+                                                    </td>
+                                                    <td width=" 50%" class="text-black">
+                                                        <img ng-src="assets/images/decline.png"
+                                                            style="height: 50px; cursor: pointer;"
+                                                            class="user-image pull-right" ng-click="otact('decline')">
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" col-md-3 m3">
+                        <div style="background-color: white; height: 717px; margin: 14px; overflow: auto;">
+                            <div class="green" style="height: 60px; padding: 15px; position: -webkit-sticky; /* Safari */
+                            position: sticky; top: 0;">
+                                <h2 class="h2font" style="margin: 0px !important; font-weight: 600;">
+                                    {{date | date:' MMM dd, yyyy'}}
+                                    <p class="pull-right h2small">Headcount : </p>
+                                </h2>
+                            </div>
+
+                            <!--update-->
+                            <div class="staffbox" id="1">
+                                <img ng-src="assets/php/admin/hr/employee/pix/0427.jpg?1591229368"
+                                    class="user-image staffimg pull-left" alt="User Image">
+                                <div class="pull-left staffname">
+                                    <p class="nomargin">Full Name</p>
+                                    <p class="nomargin">8AM - 5PM</p>
+                                    <p class="nomargin">7:46 AM</p>
+                                    <p class="nomargin">
+                                    <div id="bloc1" class="dot approved">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                    Sick
+                                    Leave
+                                    </p>
+                                </div>
+                                <div class="pull-left staffstat">
+                                    <img ng-src="assets/images/sick.png" style="height: 35px !important;"
+                                        class="user-image staffimg pull-left" alt="User Image">
+                                </div>
+                                <div class="pull-right staffldiv">
+                                    <p style="font-size: 26px; margin-bottom: 10px; cursor: pointer;">
+                                        <i class="fa fa-phone" aria-hidden="true" ng-click="viewcontact()"></i></p>
+                                    <p class="nomargin" style="font-size: 26px; cursor: pointer;" ng-click="
+                                        viewtimesheet('1')"> <i class="fa fa-clock-o" aria-hidden="true"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="staffbox" id="2">
+                                <img ng-src="assets/php/admin/hr/employee/pix/0427.jpg?1591229368"
+                                    class="user-image staffimg pull-left" alt="User Image">
+                                <div class="pull-left staffname">
+                                    <p class="nomargin">Full Name</p>
+                                    <p class="nomargin">8AM - 5PM</p>
+                                    <p class="nomargin">7:46 AM</p>
+                                    <p class="nomargin">
+                                    <div id="bloc1" class="dot approved">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                    Sick
+                                    Leave
+                                    </p>
+                                </div>
+                                <div class="pull-left staffstat">
+                                    <img ng-src="assets/images/sick.png" style="height: 35px !important;"
+                                        class="user-image staffimg pull-left" alt="User Image">
+                                </div>
+                                <div class="pull-right staffldiv">
+                                    <p style="font-size: 26px; margin-bottom: 10px; cursor: pointer;">
+                                        <i class="fa fa-phone" aria-hidden="true" ng-click="viewcontact()"></i></p>
+                                    <p class="nomargin" style="font-size: 26px; cursor: pointer;" ng-click="
+                                        viewtimesheet('2')"> <i class="fa fa-clock-o" aria-hidden="true"></i></p>
+                                </div>
+                            </div>
+                            <!--update-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div id="sc" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" style="width: 357px !important;">
+            <div class="modal-content round-0" style="border-radius: 7%;">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <img ng-src="assets/php/admin/hr/employee/pix/0427.jpg?1591229368"
+                            class="user-image staffimg pull-left" alt="User Image" style="margin-top: 0px !important;">
+                    </h4>
+                    <div class="pull-left staffname">
+                        <p class="nomargin">Full Name</p>
+                        <p class="nomargin">Web Developer</p>
+                    </div>
+                    <img ng-src="assets/images/contact.png" style="height: 38px !important;"
+                        class="user-image pull-right" alt="User Image" style="margin-top: 4px !important;">
+                </div>
+                <div class="modal-body form-group">
+
+                    <table style="font-size: 14px; width: 100% !important;">
+                        <tbody class="noborder">
+                            <tr>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px">Home
+                                    Address</td>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px"
+                                    class="underline">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px">Email
+                                    Address</td>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px"
+                                    class="underline">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px">Phone
+                                    Number</td>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px"
+                                    class="underline">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px">Fax
+                                    Number</td>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px"
+                                    class="underline">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px">Mobile
+                                    Number</td>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px"
+                                    class="underline">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px">
+                                    Emergency Contacts</td>
+                                <td style="font-size: 14px; background-color: white; border: 0px;" width="160px"
+                                    class="underline">&nbsp;</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="modal-footer green">
+                    <h4 class="pull-left" style="color: white; font-weight: 600; font-size: 30px;">
+                        Contact</h4>
+                    <div style="position: absolute; right: 11px; bottom: 55px;">
+                        <button type="button" class="close" style="color: red; opacity: 1; font-size: 30px;"
+                            data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-window-close" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    </section>
+</div>
+
+<div ng-include="footerTemplate"></div>
+
+</div>

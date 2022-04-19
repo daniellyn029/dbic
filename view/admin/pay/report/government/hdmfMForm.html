@@ -1,0 +1,1182 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+    .fixwidth {
+		width: 50px !important;
+	}
+	.lbltbl{
+		font-weight:bold;
+		font-size:10pt;	
+		text-align:right;
+		padding:5px !important;
+		width:140px !important;
+	}
+	.datatbl{
+		text-indent:5px;
+		padding:5px !important;
+		font-size:9pt;
+		width:210px !important;
+	}
+	.print-only{
+		display: none;
+	}
+	
+	@media print {
+		.no-print {
+			display: none;
+		}
+	
+		.print-only{
+			display: block;
+		}
+	}
+	
+	
+	progress[value] {
+	  /* Reset the default appearance */
+	  -webkit-appearance: none;
+	   appearance: none;
+
+	  width: 250px;
+	  height: 20px;
+	}
+	progress[value]::-webkit-progress-bar {
+	  background-color: #eee;
+	  border-radius: 2px;
+	  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	progress[value]::-webkit-progress-value {
+	  background-image:
+		   -webkit-linear-gradient(-45deg, 
+								   transparent 33%, rgba(0, 0, 0, .1) 33%, 
+								   rgba(0,0, 0, .1) 66%, transparent 66%),
+		   -webkit-linear-gradient(top, 
+								   rgba(255, 255, 255, .25), 
+								   rgba(0, 0, 0, .25)),
+		   -webkit-linear-gradient(left, #09c, #f44);
+
+		border-radius: 2px; 
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #76dcdc ;  }
+		25%  { background: #62d6d6 ;  }
+		50%  { background: #4dd1d1 ;  }
+		100% { background: #39cccc ;  }
+	}
+    .mybox {
+          background-image: linear-gradient(black, black);
+          background-repeat: no-repeat;
+          background-size: 1px 50%, calc(100% - 4px) 100%;
+          background-position: right bottom, 1px 0;		  
+          display: table-cell;
+          text-align:center;
+          vertical-align:middle;
+        }
+        .mybox1 {
+          background-image: linear-gradient(black, black);
+          background-repeat: no-repeat;
+          background-size: 1px 140%, calc(100% - 4px) 100%;
+          background-position: right bottom, 1px 0;		  
+          display: table-cell;
+          text-align:center;
+          vertical-align:middle;
+        }
+        .boxlast{
+            display: table-cell;
+            text-align:center;
+            vertical-align:middle;
+        }
+        .tin{
+            width: 40px;
+        }
+        .tin1{
+            width: 80px;
+        }
+        .odd{
+            background:#D3D3D3;
+        }
+        .even{
+            background: white;
+        }
+        .h{
+            display:inline-block;
+            transform:scale(2,3); /* W3C */
+            -webkit-transform:scale(1.7,1); /* Safari and Chrome */
+            -moz-transform:scale(2,3); /* Firefox */
+            -ms-transform:scale(2,3); /* IE 9 */
+            -o-transform:scale(2,3); /* Opera */
+        }
+</style>
+<div class="wrapper" ng-controller="PMMonthlyConController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+    <div class="content-wrapper">
+        <spinner name="form01spinner" ng-cloak="">
+            <div class="overlay"></div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="please-wait">Please Wait...</div>
+        </spinner>
+        <section class="content-header sec-head" style="height: 150px;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;">            
+			<div style="font-size: 9em;/*color: #00a65a !important;*/">
+				<i class="fa fa-edit" style="float: left;color:#00000052"></i>									
+					<div style="font-size: 20pt;padding-top: 15px; text-indent:15px">Payroll Master's Portal</div>
+					<div style="font-size: 15pt; text-indent:15px">M1 Form</div>		
+			</div>
+			<ol class="breadcrumb" style="margin-left:125px;background: #f5f5f5 !important">
+				<li><a href=".#/admin/home"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href=".#/admin/pay/process"> Payroll Master's Portal</a></li>
+				 <li><a href=".#/admin/pay/report/register">Government Reports</a></li>
+                <li class="active">M1 Form</li>
+			</ol>	
+			<div class="bgPulse hidden-xs">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+        </section>
+        <section class = "section">
+            <div class = "row">
+                <div id="container" style="width: 1125px !important; margin-left:auto; margin-right:auto; margin-top:20px; height: 220vh !important;">
+                    <table  style="width:100%">
+                        <tr>
+                            <td style="width:10%">
+                                <table style="width:100%">
+                                    <tr>
+                                        <td style="width:10%">
+                                            <div><img src="assets/images/pagibiglogo1.png" style="width:100px;height:85px" /></div>
+                                        </td> 
+                                    </tr>
+                                </table>
+                            </td> 
+                            <td style="width:90%">
+                                <table style="width:99.99%">
+                                    <tr>
+                                        <td style="font-size:17pt; padding-left:190px;">
+                                            <div class="h"><strong>MEMBERSHIP REGISTRATION/REMITTANCE FORM</strong></div>    
+                                        </td>
+                                        <td >
+                                            <div style="font-size:15pt; text-align:right"><strong>HDMF <br> M1-1</strong></div>    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table style = "width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        <div style="display:table-cell; width:150px;"> 
+                                                            <div style="margin-left:130px; text-align:center; border:1px solid black; ">X</div>
+                                                        </div>	
+                                                        <div style="display:table-cell;"> 
+                                                            <span style="margin-left: 10px;">PRIVATE EMPLOYER</span>							
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="display:table-cell; width:150px;"> 
+                                                            <div style="margin-left:130px; text-align:center; border:1px solid black; ">X</div>
+                                                        </div>	
+                                                        <div style="display:table-cell;"> 
+                                                            <span style="margin-left: 10px;">GOVERNMENT CONTROLLED CORP.</span>							
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div style="display:table-cell; width:150px;"> 
+                                                            <div style="margin-left:130px;text-align:center; border:1px solid black; margin-top: 5px;">X</div>
+                                                        </div>	
+                                                        <div style="display:table-cell; "> 
+                                                            <span style="margin-left: 10px;">LOCAL GOVERNMENT UNIT</span>							
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div style="display:table-cell; width:150px;"> 
+                                                            <div style="margin-left:130px;text-align:center; border:1px solid black; margin-top: 5px;">X</div>
+                                                        </div>	
+                                                        <div style="display:table-cell;"> 
+                                                            <span style="margin-left: 10px;">NATIONAL GOVERNMENT AGENCY</span>							
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            <div style="font-size:9pt; text-align: center;">(Please read instruction at the back)</div>
+                                                        </td>
+                                                    </tr>
+                                            </table>
+                                        </td>
+                                        <td style = "border-right:1px solid black; border-left:1px solid black; border-top:1px solid black;">
+                                            <div style="display:table-cell; width:262px; padding-bottom:40px;"> 
+                                                <span style="margin-left:10px;">MONTH</span>
+                                                <span style="margin-left:174px;">YEAR</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td> 
+                        </tr>
+                    </table>
+                    <table border="1" style="width:100%;">
+                        <tr>
+                            <td style="width:50%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:35%; padding-bottom:25px;"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">NAME OF EMPLOYER</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:25%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:5%;"> 
+                                            <div> 
+                                                <span style="margin-left: 5px; margin-bottom:10px">FOR PRIVATE</span>
+                                            </div>
+                                            <div>
+                                                <span style="margin-left: 5px; margin-bottom:10px">EMPLOYER</span>
+                                            </div>
+                                        </td>
+                                        <td style="width:25%; border-left:1px solid black; border-right: 1px solid black; padding-bottom:30px;"> 
+                                            <div> 
+                                                <span>EMPLOYER SSS NO.</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:25%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:30%;">
+                                            <div>
+                                                <span style="margin-left: 5px; margin-bottom:10px">FOR GOV'T</span>
+                                            </div>
+                                            <div>
+                                                <span style="margin-left: 5px; margin-bottom:10px">EMPLOYER</span>
+                                            </div>
+                                        </td>
+                                        <td style="width:70%; border-left: 1px solid black; vertical-align:bottom;">
+                                            <div>
+                                                <div class="tin1 mybox1" style="background: none; font-size:8pt;">AGENCY <br> CODE</div>
+                                                <div class="tin1 mybox1" style="background: none; font-size:8pt;">BRANCH <br> CODE</div>
+                                                <div class="tin1 boxlast" style="background: none; font-size:8pt;">REGION <br> CODE</div>
+                                            </div> 
+                                            <div>
+                                                <div class="tin1 mybox1">0444</div>
+                                                <div class="tin1 mybox1">123</div>
+                                                <div class="tin1 boxlast">123</div>
+                                            </div> 
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table  border="1" style="width:100%;">
+                        <tr>
+                            <td style="width:50%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:35%; padding-bottom:20px;"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">ADDRESS OF EMPLOYER</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:20%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:25%;  padding-bottom:20px;"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">TIN</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:17%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="padding-bottom:20px;"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">ZIP CODE</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:25%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="padding-bottom:20px;"> 
+                                            <div> 
+                                                <span style="margin-left: 3px;">TELEPHONE NO/S</span>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>  
+                    <table  border="1" style="width:100%; "> 
+                        <tr>
+                            <td style="width:20%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td style="width:35%;"> 
+                                            <div> 
+                                                <span style="margin-left: 50px">TIN/DATE OF BIRTH</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:40%; border-right: 1px solid black;">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <div style="margin-left:10px; text-align: center;"> 
+                                                NAME OF EMPLOYEES
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:40%; font-size:9pt"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">(Family Name</span>
+                                            </div>
+                                        </td>
+                                        <td style="width:30%; font-size:9pt;"> 
+                                            <div> 
+                                                <span style="margin-left:3 px;">First Name</span>
+                                            </div>
+                                        </td>
+                                        <td style="width:30%; font-size:9pt"> 
+                                            <div> 
+                                                <span style="margin-left: 10px;">Middle Name)</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:40%">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <div style ="text-align: center;"> 
+                                            <span >C O N T R I B U T I O N S</span>
+                                        </div> 
+                                    </tr>
+                                    <tr>
+                                        <td border ="1" style = "width:40%;z-index:1">
+                                            <table style = "width:100%;z-index:1; text-align: center;">
+                                                <tr>
+                                                    <td style = "border-right: 1px solid black; border-top: 1px solid black; width:37.9%;">
+                                                        <div> 
+                                                            <span>EMPLOYEE</span>
+                                                        </div>
+                                                    </td>
+                                                    <td style = "border-right: 1px solid black; border-top: 1px solid black; width:38.3%;">
+                                                        <div> 
+                                                            <span >EMPLOYER</span>
+                                                        </div>
+                                                    </td>
+                                                    <td style = "border-top: 1px solid black;width:34%;">
+                                                        <div> 
+                                                            <span>TOTAL</span>
+                                                        </div>
+                                                    </td>      
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr> 
+                                </table>
+                            </td>
+                        </tr>     
+                    </table>
+                    <table style="width:100%;border-right: 1px solid black;border-left: 1px solid black;">
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">1.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;"></td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">2.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">3.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">4.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">5.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">6.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">7.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">8.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">9.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">10.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">11.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">12.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">13.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">14.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">15.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">16.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">17.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">18.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">19.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">20.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">21.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">22.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">23.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">24.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">25.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">26.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">27.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">28.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">29.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">30.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">31.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">32.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">33.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">34.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">35.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">36.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">37.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">38.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "odd">
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">39.</td>
+                            <td border ="1" style = "width:40%;z-index:1">
+                                <table style = "width:100%;z-index:1;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                        <tr class = "even" >
+                            <td border ="1" style = "width:20%; "></td>
+                            <td border ="1" style = "width:40%; border-left: 1px solid black;">40.</td>
+                            <td border ="1" style = "width:40%; ">
+                                <table style = "width:100%;border-collapse: collapse;">
+                                    <tr>
+                                        <td style = "border-left: 1px solid black; border-right: 1px solid black; width:37.9%;">&nbsp;</td>
+                                        <td style = "border-right: 1px solid black; width:38.3%;">  </td>
+                                        <td style = "width:33%;"></td>      
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr> 
+                    </table>
+                    <table style="width:100%;/* margin-top: 10px; */">
+                            <tr>
+                                <td style="border: 1px solid black; font-size:9pt; width: 20.1%;">No. of Employees <br> on this page</td>
+                                <td style="border: 1px solid black; font-size:9pt; width: 24%;"> Total No. of Employees <br> if last page</td>
+                                <td style="width: 10px;"></td>
+                                <td style="border: 1px solid black; font-size:8pt; width:171px;">TOTAL FOR <br> THIS PAGE</td>
+                                <td style="border: 1px solid black; font-size:8pt; width:171px; ">
+                                    <span style="margin-left: 3px">&#8369;</span>
+                                </td>
+                                <td style="border: 1px solid black; font-size:8pt; width:171px;">
+                                    <span style="margin-left: 3px">&#8369;</span>
+                                </td>
+                                <td style="border: 1px solid black; font-size:8pt;">
+                                    <span style="margin-left: 3px">&#8369;</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style ="border: 1px solid black; font-size:9pt; text-align: center;"><strong>FOR Pag-IBIG USE ONLY</strong></td>
+                                <td style="width: 10px;"></td>
+                                <td style="border: 1px solid black; font-size:8pt; width:171px;">GRAND TOTAL <br> (if last page)</td>
+                                <td style="border: 1px solid black; font-size:8pt; width:171px; ">
+                                    <span style="margin-left: 3px">&#8369;</span>
+                                </td>
+                                <td style="border: 1px solid black; font-size:8pt; width:171px;">
+                                    <span style="margin-left: 3px">&#8369;</span>
+                                </td>
+                                <td style="border: 1px solid black; font-size:8pt;">
+                                    <span style="margin-left: 3px">&#8369;</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid black; font-size:9pt;">
+                                    <table style = "width: 100%;">
+                                        <td style="width:30%; border-right: 1px solid black; padding-bottom:38px;">PFR/VALIDATION No
+                                        </td>
+                                        <td style="width:30%; border-right: 1px solid black; vertical-align:bottom;">
+                                            <div>
+                                                <div style="padding-bottom:8px">DATE</div>
+                                            </div> 
+                                            <div>
+                                                <div>
+                                                    <span style = "margin-left:20px">MM</span>
+                                                    <span style = "margin-left:30px">DD</span>
+                                                    <span style = "margin-left:40px">YY</span>
+                                                </div>
+                                                <div class="tin1 mybox1">04</div>
+                                                <div class="tin1 mybox1">07</div>
+                                                <div class="tin1 boxlast">1997</div>
+                                            </div> 
+                                        </td>
+                                        <td style="width:30%; padding-bottom:21px">
+                                            <div>
+                                                <span style="margin-left: 3px;">AMOUNT</span>
+                                            </div>
+                                            <div>
+                                                <span style="margin-left: 3px; font-size:15px;">&#8369;</span>
+                                            </div>
+                                        </td>
+                                    </table>
+                                </td>
+                                <td style="width: 10px;"></td>
+                                <td colspan="4" style ="border: 1px solid black; font-size:9pt; text-align: center;"><strong>CERTIFIED CORRECT BY:</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid black; font-size:9pt;">
+                                    <table style = "width: 100%;">
+                                        <td style="width:66.6%; border-right: 1px solid black; padding-bottom:20px;">COLLECTING BANK
+                                        </td>
+                                        <td style="width:59.9%;padding-bottom:20px;">REMARKS
+                                        </td>
+                                    </table>   
+                                </td> 
+                                <td style="width: 10px;"></td>
+                                <td colspan="4" style="border: 1px solid black; font-size:9pt;">
+                                    <table style = "width: 100%;">
+                                        <td style="width:83%; border-right: 1px solid black; padding-bottom:20px;">SIGNATURE OVER PRINTED NAME
+                                        </td>
+                                        <td style="width:30%;padding-bottom:20px;">DATE</td>
+                                    </table>   
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 1px solid black; font-size:9pt;">
+                                    <table style = "width: 100%;">
+                                        <td style="width:30%; border-right: 1px solid black; vertical-align:bottom;">
+                                            <div>
+                                                <div style="padding-bottom:5px">TICKET DATE</div>
+                                            </div> 
+                                            <div>
+                                                <div>
+                                                    <span style = "margin-left:20px">MM</span>
+                                                    <span style = "margin-left:30px">DD</span>
+                                                    <span style = "margin-left:40px">YY</span>
+                                                </div>
+                                                <div class="tin1 mybox1">06</div>
+                                                <div class="tin1 mybox1">07</div>
+                                                <div class="tin1 boxlast">2020</div>
+                                            </div> 
+                                        </td>
+                                        <td style="width:30%; border-right: 1px solid black; padding-bottom:38px;">RECONCILED BY
+                                        </td>
+                                        
+                                        <td style="width:30%; padding-bottom:38px;">CHECKED BY</td>
+                                    </table>
+                                </td>
+                                <td style="width: 10px; border-bottom: 1px solid black"></td>
+                                <td colspan="4" style="border: 1px solid black; ">
+                                    <table style = "width: 100%;">
+                                        <td style="width:83%; border-right: 1px solid black; padding-bottom:38px;font-size:9pt;">OFFICIAL DESIGNATION
+                                        </td>
+                                        <td style="width:30%;">
+                                            <table style = "width: 100%;">
+                                                    <td style="width:30%;padding-bottom:45px; border-right: 1px solid black;font-size:6pt;">PAGE NO.</td>
+                                                    <td style="width:30%;padding-bottom:45px; font-size:6pt;">NO.OF PAGES</td>
+                                            </table>
+                                        </td>
+                                    </table>   
+                                </td> 
+                            </tr>
+                    </table>
+                        <tr>
+                            <td colspan="2">
+                                <span style = "float:right; font-size:6pt;">(Revised 05/2003)</span>	
+                            </td>
+                            <td colspan="2">
+                                <div> 
+                                    <span style = "font-size: 13pt;"><strong>NOTE: <i>NEW REGISTRANTS SHALL PROVIDE TIN AND DATE OF BIRTH </i></strong></span>	
+                                </div>
+                                <div> 
+                                    <span style = "font-size: 13pt; margin-left:306px;"><strong>THIS FORM CAN BE REPRODUCED. NOT FOR SALE</strong></span>	
+                                </div>
+                            </td>
+                        </tr>
+                </div>
+                <!--/.Container--> 
+            </div>
+        </section>
+
+    </div>
+    <!--/.content wrapper-->
+    <div ng-include="footerTemplate"></div>
+</div>

@@ -1,0 +1,876 @@
+<style>
+    .main-footer {
+        background: #fff;
+        padding: 5px;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        z-index: 999;
+    }
+    .content-wrapper{
+        background:white
+    }
+    .example2 th{
+        color:white;
+        background-color: #006ba6;
+        text-align:center
+    }
+    .btnTD{
+        text-align:center;
+    }
+    .info{
+        font-weight: bold;
+    }
+    .ui-widget-header {
+        border: 1px solid green;
+        background: #008d4c;
+        color:black;
+    }
+    .lightbox-modal{
+        z-index:99999 !important;
+    }
+    .bder{
+        border:0px solid black;
+    }
+    .table-striped>tbody>tr:nth-child(odd)>td, 
+    .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #d9e5f3;
+    }
+    table.dataTable>tbody>tr.child ul li {
+        border-bottom: 0px solid #efefef !important;
+    }	
+    .req-field {
+        color: red;
+    }
+    .paddingZero{
+        padding: 0px !important;
+    }
+   .txtresize{ 
+		resize:vertical; 
+		min-height:110px !important;
+	}
+	
+	.sec-head{
+		overflow:hidden;
+		animation: bgColor 8s normal forwards;
+	}	
+	.bgPulse{
+		width: 100%;
+		height: 100%;
+	}	
+	.bgPulse span{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #fff;
+		
+	}	
+	.bgPulse span:nth-child(2n+1){
+		background: transparent;
+		border: 5px solid #fff;
+	}	
+	.bgPulse span:nth-child(1){
+		border-radius:12px;
+		top: 30%;
+		left: 30%;
+		animation: animate 10s linear infinite;
+	}	
+	.bgPulse span:nth-child(2){
+		top: 20%;
+		left: 50%;
+		animation: animate 15s linear infinite;
+	}	
+	.bgPulse span:nth-child(3){
+		top: 40%;
+		left: 70%;
+		animation: animate 20s linear infinite;
+	}	
+	.bgPulse span:nth-child(4){
+		border-radius:12px;
+		top: 60%;
+		left: 80%;
+		animation: animate 12s linear infinite;
+	}
+	.bgPulse span:nth-child(5){
+		top: 60%;
+		left: 40%;
+		animation: animate 17s linear infinite;
+	}
+	.bgPulse span:nth-child(6){
+		border-radius:12px;
+		top: 60%;
+		left: 60%;
+		animation: animate 22s linear infinite;
+	}
+	.bgPulse span:nth-child(7){
+		top: 60%;
+		left: 20%;
+		animation: animate 17s linear infinite;
+	}	
+	@keyframes animate{
+		0% { transform: scale(0) translateY(0) rotate(0deg); opacity: 0; }
+		50% { opacity: 0.4; }
+		100% { transform: scale(1) translateY(-100px) rotate(360deg); opacity: 1; }
+	}
+	@keyframes bgColor{
+		0%   { background: #63a0d4 ;  }
+		25%  { background: #4f93ce ;  }
+		50%  { background: #3b87c8 ;  }
+		100% { background: #337ab7 ;  }
+	}
+	
+    @media screen and (min-width: 320px),
+    screen and (max-width: 667px) {
+        .mwid {
+            min-width: 300px !important;
+            max-width: 397px !important;
+        }
+		.obfont1 {
+			/* text-align: right; */
+			font-size: 11px !important;
+		}
+		.issueReso{
+			text-align: left;
+			padding: 0; 
+			padding-left:10px !important;
+			/* font-size:10px; */
+		}
+		
+    }
+		.respontext {
+        	font-size: 40px !important;
+    	}
+	@media screen and (max-width: 1366px) {
+		
+		.respontext {
+        	font-size: 30px !important;
+    	}
+		.obtotalfont{
+			font-size: 35pt !important; 
+		}
+		.obimage{
+			height: 70px !important; 
+			margin: 10px 0px 0px -4px !important;
+		}
+		.remindersbox {
+			font-size: 20px;
+			font-weight: normal;
+			margin-bottom: 5px;
+			text-align: center;
+			width: 285px !important;
+			height: 120px;
+			margin-right: auto;
+			margin-left: auto;
+			background: #0070c0;
+			vertical-align: middle;
+
+			border-radius: 15px;
+			color: white;
+    	}
+		.pad83{
+			padding-left: 34px !important;
+		}
+		.resofilter{
+			height: 29px; 
+			font-size:10pt; 
+			right: 25px;
+			width: 160px !important;
+		}
+		.issueReso{
+			text-align: left;
+			padding: 0; 
+			padding-left:10px !important;
+		}
+
+    }
+	@media screen and (max-width: 1024px) {
+
+		.respontext {
+        	font-size: 30px !important;
+    	}
+		.obtotalfont{
+			font-size: 25pt !important; 
+		}
+		.obimage{
+			height: 40px !important; 
+			margin: 10px 0px 0px -4px !important;
+		}
+		.apppad24{
+			padding-left: 10px !important;
+		}
+		.viewarrow{
+			padding:0 !important; 
+			font-size:15pt; 
+			color:#70ad47;
+		}
+		.viewdet{
+			padding:0 !important;
+			font-size: 10pt !important;
+		}
+		.obfont1{
+			text-align: center !important;
+			font-size: 7pt !important;
+		}
+		.graphss{
+			height: 290px !important;
+			display: block !important;
+			width: 290px !important; 
+			/* width:725
+			height="335" */
+		}
+		.wid125{
+			width: 125px !important;
+			padding-left:0px !important;
+			
+		}
+		.resofilter{
+			height: 29px; 
+			font-size:10pt; 
+			right: 25px;
+			width: 141px !important;
+		}
+
+    }
+	@media screen and (max-width: 414px) {
+        .respontext {
+            /* padding-left: 28px; */
+            font-size: 24px !important;
+        }
+
+
+    }
+
+
+
+
+
+
+	.respontext {
+        font-size: 40px;
+    }
+
+    
+
+	
+	/* .fc-day-grid-container{
+		overflow: hidden auto !important;
+		height: 340px !important;
+	}
+	.fc-widget-header{
+		margin-right: 0px;
+	}
+	.fc-more-cell{
+		text-align: center;
+		font-size: 12pt;
+		font-weight: bold;
+	}
+	.fc-view-container {
+		border: 1px solid #ddd;
+	}
+	.fc-day-grid-event{
+		background: none;
+		border: 0px;
+		color: black !important;
+		cursor: pointer !important
+	}
+	.fc-today-button{
+		visibility: hidden
+	}
+	.fc-unthemed td.fc-today {
+		background: #cef98a;
+	}
+	
+	.my-legend .legend-title {
+		text-align: left;
+		margin-bottom: 8px;
+		font-weight: bold;
+		font-size: 90%;
+    }
+	.my-legend .legend-scale ul {
+		margin: 0;
+		padding: 0;
+		float: left;
+		list-style: none;
+	}
+	.my-legend .legend-scale ul li {
+		display: block;
+		float: left;
+		width: 50px;
+		margin-bottom: 6px;
+		text-align: center;
+		font-size: 80%;
+		list-style: none;
+	}
+	.my-legend ul.legend-labels li span {
+		display: block;
+		float: left;
+		height: 25px;
+		width: 50px;
+		padding: 5px;
+	}
+	.my-legend .legend-source {
+		font-size: 70%;
+		color: #999;
+		clear: both;
+	}
+	.my-legend a {
+		color: #777;
+	} */
+	.style-15::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+        border-radius: 0px;
+    }
+
+    .style-15::-webkit-scrollbar {
+        width: 5px;
+		height: 5px;
+        background-color: #F5F5F5;
+    }
+
+    .style-15::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        background-color: #FFF;
+        background-image: -webkit-gradient(linear,
+                40% 0%,
+                75% 84%,
+                from(#0073b7),
+                to(#178dd1),
+                color-stop(.6, #06507a))
+    }
+	.wpreminder {
+        border: 2px solid #373e4d !important;
+        border-top: 40px solid #373e4d !important;
+        overflow: auto;
+    }
+	.wappPend {
+        border: 2px solid #44a3c0 !important;
+        border-top: 40px solid #44a3c0 !important;
+        overflow: auto;
+    }
+	.wissues {
+        border: 2px solid #ffc000 !important;
+        border-top: 40px solid #ffc000 !important;
+        overflow: auto;
+    }
+	.wnotif {
+        border: 2px solid #44a3c0 !important;
+        border-top: 40px solid #44a3c0 !important;
+        overflow: auto;
+    }
+	/* .wpnyear {
+        border: 2px solid #3c8dbc  !important;
+        border-bottom: 40px solid #3c8dbc  !important;
+        overflow: auto;
+    } */
+	.wfooter {
+        position: absolute;
+        top: 1.5%;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+	.wfooter1 {
+        position: absolute;
+        top: 2%;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+	.wheader1 {
+        position: absolute;
+        bottom: 5%;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+    }
+	.bh {
+        height: 760px;
+    }
+	.bhissues {
+        height: 435px;
+    }
+	.bhnotif {
+        height: 320px;
+    }
+	.well {
+        border-radius: 0px !important;
+    }
+	/* .autoh {
+        height: auto !important;
+        margin-bottom: 20px;
+    } */
+	.well1 {
+        margin: 0px;
+    }
+	.hit{
+            height: 150px !important;
+            width: 370px !important;
+            /* font-size: 13pt; */
+    }
+	.apphit{
+		height: 100px;
+	}
+	.padbot{
+		padding-bottom: 10px;
+	}
+	.well-lg1 {
+        border-radius: 14px 14px 0px 0px !important;
+    }
+	.viewdetshit{
+		height: 30px;
+	}
+	.viewdetshimargin{
+		margin: -20px 2px 0;
+	}
+    .remindersbox {
+        font-size: 20px;
+        font-weight: normal;
+        margin-bottom: 5px;
+        text-align: center;
+        /* width: 370px; */
+        height: 120px;
+        margin-right: auto;
+        margin-left: auto;
+        background: #0070c0;
+        vertical-align: middle;
+
+        border-radius: 15px;
+        color: white;
+    }
+	.font35{
+		font-size:35pt;
+	}
+	.font25{
+		font-size:25pt;
+	}
+	.curclock{
+		height: 180px;
+    	margin-top: 10px;
+	}
+	.nomargin {
+        margin: 0px !important;
+    }
+	/* ModalFilter */
+	.select2-container--default .select2-selection--single {
+		border: none !important;
+		/* border-bottom: 1px solid black !important; */
+		height: 30px !important;
+		padding: 1px !important;
+		text-align-last: center !important;
+	
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+		height: 30px !important;
+	
+	}
+	.select2-container .select2-selection--single .select2-selection__rendered {
+		padding-left: 0;
+		padding-right: 70px;
+		height: auto;
+		font-size: 10pt;
+		margin-top: 1px;
+	}
+	.select2-container {
+		box-sizing: border-box;
+		display: inline-block;
+		margin: 0;
+		position: relative;
+		vertical-align: middle;
+		padding-right: 5px;
+	}
+    label{
+		color: black !important;
+		font-weight: 400;
+		font-size:10pt;
+		margin-bottom: 0px;
+	}
+	.obimage{
+		height: 70px; 
+		margin: 10px 0px 0px 0px;
+	}
+	.obfont1{
+		text-align: right;
+		font-size: 12px;
+	}
+	.obtotalfont{
+		font-size:40pt; 
+	}
+	.pad83{
+		padding-left:83px;
+	}
+	.resofilter{
+		height: 29px; 
+		font-size:10pt; 
+		right: 25px;
+		width: 200px;
+		
+	}
+	.issueReso{
+		text-align: left;
+		padding: 0; 
+		padding-left:24px;
+	}
+	.viewarrow{
+		
+		padding:6px 10px 0px 0px; 
+		font-size:15pt; 
+		
+	}
+	.viewdet{
+		padding:2px 0px 0px 4px;
+	}
+	.graphss{
+		height: 335px;
+		display: block;
+		/* width: 725px !important;  */
+	}
+	/* .wid125{
+		width:200px;
+		padding-left:89px;
+	} */
+</style>
+<div class="wrapper" ng-controller="TKHomeController" ng-init="dashboard.active();">
+    <div class="main-header" ng-include="headerTemplate"></div> 
+    <div class="main-sidebar" ng-include="leftNavigationTemplate"></div> 
+
+	<div class="content-wrapper">
+		<section style="height: auto;color: #ffff;text-shadow: 12;box-shadow: 0 8px 6px -6px black;border:none">
+            
+			<div class="well well-graphic bg-blue" style=" height: auto !important; 
+                margin-bottom: 10px !important;
+                padding-top: 8px;
+                padding-bottom: 8px; border-radius:0px; border:none">
+                    
+					<div class="row">
+						<div class="col-md-6" style="margin-bottom:15px">
+							<a style="color: white !important;" class="">
+								<img ng-src="assets/images/icons/HRIS Dashboard icon Timekeeper.png"
+									style="height: 80px;  border-radius: 50%; margin-right:15px" class="user-image pull-left"
+									alt="User Image">
+							</a>
+							<div >
+								<p class="respontext" style=" margin: 0 0 -5px !important; font-weight: lighter !important;">Timekeeper's Portal</p>
+								<p style=" margin: 0 0 -5px !important; font-weight: lighter !important; font-size:20px">Dashboard</p>
+							</div>
+						</div>
+						<div class="col-md-6" style="text-align: -webkit-right;padding-top:10px">
+							<ol class="breadcrumb" style="width: 265px;font-size: 9pt;margin-bottom: 0px;margin-top:10px">
+								<li style="color:black !important"><a href=".#/admin/home" style="color:black !important"><i class="fa fa-dashboard"></i> Home</a></li>
+								<li style="color:black !important"><a href=".#/admin/emp/dashboard" style="color:black !important">Timekeeper's Portal</a></li>
+								<li class="active">Dashboard</li>
+							</ol>
+						</div>
+					</div>
+            </div>
+        </section>
+
+		<section class="content"
+		style="padding: 0px 7px 0px 7px !important; margin-top:-7px !important">
+			<div style="color: white; height: 820px; padding-bottom: 2px;  background-color: #FFF;">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="padding: 0;" ng-init="reminders_func()">
+						<div class="col-lg-12 col-md-12" style="padding:5px 0px 10px 15px;">
+							<div class="well1 text-black text-center wpreminder style-15 text-center bh" style="background-color: #FFF; border-radius: 7px;">
+								<div class="col-md-12">
+									<p style="font-size: 15pt;">{{today | date:'EEEE, MMMM dd yyyy'}}</p>
+								</div>
+								<div class="col-md-12 padbot">									
+									<canvas class="curclock" id="canvas" width="400" height="400"></canvas>
+									<div class="font25" ng-init="display_ct()"><span id='ct'></span> {{current_time | date:'a'}}</div>
+									<!-- <p class="font25"><span id="hourclock"></span>:<span id="minclock"></span>:<span id="secclock"></span> {{current_time | date:'a'}}</p> -->
+									
+								</div>
+								<div class="col-md-12">
+									<a href="#" style="color: #FFF;">
+                                        <div class="remindersbox" style="background: #c3472f; margin-bottom: 5px; border-radius: 7px;">
+											<p style="margin:0;">{{dashboard.values.period.pay_start | date:"MM/dd/yyyy"}}</p>
+											<p style="margin:0;">to</p>
+											<p style="margin:0;">{{dashboard.values.period.pay_end | date:"MM/dd/yyyy"}}</p>
+											<p style="margin:0;">Open Cutoff Period</p>
+										</div>
+									</a>
+									<a href="#" style="color: #FFF;" ng-init="days_process()">
+                                        <div class="remindersbox" disabled style="background: #548235; margin-bottom: 5px; border-radius: 7px;">
+											<p class="font35">{{days_process.days}}</p>
+											<p>Days to Processing</p>
+										</div>
+									</a>
+									<a href="#" style="color: #FFF;" ng-init="totalemp()">
+                                        <div class="remindersbox" style="background: #044a4a; margin-bottom: 5px; border-radius: 7px;">
+											<p class="font35">{{totalemployees.total}}</p>
+											<p>Total Headcount</p>
+										</div>
+                                    </a>
+                                    
+								</div>
+								<div class="wfooter" style="padding-left: 24px;">
+									Reminders
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 col-md-4 col-sm-12 col-xs-12" style="padding: 0;">
+						<div class="col-lg-12 col-md-12" style="padding:5px 0px 10px 10px;">
+							<div class="well1 text-black text-center wappPend style-15 text-center bh" style="background-color: #FFF; border-radius: 7px;">
+								<div class="col-md-12" style="padding: 5px 10px 0px 10px;">
+									<!--Official Business Trip-->
+									<div class="col-md-4" style="padding:0px 5px 0px 0px;" ng-init="total_ob()">
+										<div class="well-lg1 text-black apphit" style="background-color: #44a3c0; border-top:2px solid #44a3c0;border-right:2px solid #44a3c0;border-left:2px solid #44a3c0">
+											<div class="col-md-6">
+												<img ng-src="assets/images/tkHome/OB.png" class="user-image obimage" alt="User Image">
+											</div>
+											<div class="col-md-6" style="padding:0;">
+												<div class="obtotalfont" style="color:white;">{{totalob.total}}
+													<div class="text-black obfont1" >Official Business Trip</div>
+												</div>
+											</div>
+										</div>
+										<div class="viewdetshit" style="border:2px solid #44a3c0; border-radius: 0px 0px 7px 7px;">
+											<p class="pull-left viewdet">View Details</p>
+											<a href="#/admin/tk/app/obtripapp">
+												<p class="pull-right viewarrow" style="color:#44a3c0">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</a>
+											<!-- <p class="pull-left" style="padding:2px 0px 0px 4px; margin:-6 0 0 !important;">View Details</p>
+											<p class="pull-right" style="padding:4px 10px 0px 0px; font-size:15pt; color:#44a3c0">
+												<i class="fa fa-arrow-circle-right"></i>
+											</p> -->
+										</div>
+									</div>
+									<!-- Adjustment -->
+									<div class="col-md-4" style="padding:0px 5px 0px 0px;" ng-init="total_aa()">
+										<div class="well-lg1 text-black apphit" style="background-color: #c55a11; border-top:2px solid #c55a11;border-right:2px solid #c55a11;border-left:2px solid #c55a11">
+											<div class="col-md-6">
+												<img ng-src="assets/images/tkHome/Adjustment.png" class="user-image obimage" alt="User Image">
+											</div>
+											<div class="col-md-6" style="padding:0;">
+												<div class="obtotalfont" style="color:white;">{{totalaa.total}}
+													<div class="text-black obfont1" >Adjustment</div>
+												</div>
+											</div>
+											<!-- <div>
+												<img ng-src="assets/images/icons/HRIS Dashboard icon Admin.png"
+												style="height: 100px;  border-radius: 50%; margin-right:1px" class="user-image pull-left"
+												alt="User Image">
+												<p style="color:white; font-size:46pt;">{{totalaa.total}}</p>
+												<p class="viewdetshimargin" style="text-align:right;font-size: 14px;">Adjustment</p>
+												<p class="pull-right" style="padding:6px 10px 0px 0px; font-size:15pt; color:#c55a11">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</div> -->
+										</div>
+										<div class="viewdetshit" style="border:2px solid #c55a11; border-radius: 0px 0px 7px 7px;">
+											<p class="pull-left viewdet">View Details</p>
+											<a href="#/admin/tk/app/adjustapp">
+												<p class="pull-right viewarrow" style="color:#c55a11">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</a>
+												
+											<!-- <p class="pull-left" style="padding:2px 0px 0px 4px;">View Details</p>
+											<p class="pull-right" style="padding:6px 10px 0px 0px; font-size:15pt; color:#c55a11">
+												<i class="fa fa-arrow-circle-right"></i>
+											</p> -->
+										</div>
+									</div>
+									<!-- Overtime -->
+									<div class="col-md-4" style="padding:0;" ng-init="total_ot()">
+										<div class="well-lg1 text-black apphit" style="background-color: #a4a0a0; border-top:2px solid #a4a0a0;border-right:2px solid #a4a0a0;border-left:2px solid #a4a0a0">
+											<div class="col-md-6">
+												<img ng-src="assets/images/tkHome/overtime.png" class="user-image obimage" alt="User Image">
+											</div>
+											<div class="col-md-6" style="padding:0;">
+												<div class="obtotalfont" style="color:white;">{{totalot.total}}
+													<div class="text-black obfont1" >Overtime</div>
+												</div>
+											</div>
+										</div>
+										<div class="viewdetshit" style="border:2px solid #a4a0a0; border-radius: 0px 0px 7px 7px;">
+											<p class="pull-left viewdet">View Details</p>
+											<a href="#/admin/tk/app/overtimeapp">
+												<p class="pull-right viewarrow" style="color:#a4a0a0">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</a>
+											
+											<!-- <p class="pull-left" style="padding:2px 0px 0px 4px;">View Details</p>
+											<p class="pull-right" style="padding:6px 10px 0px 0px; font-size:15pt; color:#a4a0a0">
+												<i class="fa fa-arrow-circle-right"></i>
+											</p> -->
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12" style="padding:5px 10px 0px 10px;">
+									<!-- Leave -->
+									<div class="col-md-4" style="padding:5px 5px 0px 0px;" ng-init="total_leaves()">
+										<div class="well-lg1 text-black apphit" style="background-color: #ffc000; border-top:2px solid #ffc000;border-right:2px solid #ffc000;border-left:2px solid #ffc000">
+											<div class="col-md-6">
+												<img ng-src="assets/images/tkHome/Leave.png" class="user-image obimage" alt="User Image">
+											</div>
+											<div class="col-md-6" style="padding:0;">
+												<div class="obtotalfont" style="color:white;">{{totalleaves.total}}
+													<div class="text-black obfont1" >Leave</div>
+												</div>
+											</div>
+										</div>
+										<div class="viewdetshit" style="border:2px solid #ffc000; border-radius: 0px 0px 7px 7px;">
+											<p class="pull-left viewdet">View Details</p>
+											<a href="#/admin/tk/app/leaveapp">
+												<p class="pull-right viewarrow" style="color:#ffc000">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</a>
+											
+											<!-- <p class="pull-left" style="padding:2px 0px 0px 4px;">View Details</p>
+											<p class="pull-right" style="padding:6px 10px 0px 0px; font-size:15pt; color:#ffc000">
+												<i class="fa fa-arrow-circle-right"></i>
+											</p> -->
+										</div>
+									</div>
+									<!-- Change Shift -->
+									<div class="col-md-4" style="padding:5px 5px 0px 0px;" ng-init="total_CS()">
+										<div class="well-lg1 text-black apphit" style="background-color: #4472c4; border-top:2px solid #4472c4;border-right:2px solid #4472c4;border-left:2px solid #4472c4">
+											<div class="col-md-6">
+												<img ng-src="assets/images/tkHome/Change Shift.png" class="user-image obimage" alt="User Image">
+											</div>
+											<div class="col-md-6" style="padding:0;">
+												<div class="obtotalfont" style="color:white;">{{totalcs.total}}
+													<div class="text-black obfont1" >Change Shift</div>
+												</div>
+											</div>
+										
+										</div>
+										<div class="viewdetshit" style="border:2px solid #4472c4; border-radius: 0px 0px 7px 7px;">
+											<p class="pull-left viewdet">View Details</p>
+											<a href="#/admin/tk/app/changeshiftapp">
+												<p class="pull-right viewarrow" style="color:#4472c4">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</a>
+											<!-- <p class="pull-left" style="padding:2px 0px 0px 4px;">View Details</p>
+											<p class="pull-right" style="padding:6px 10px 0px 0px; font-size:15pt; color:#4472c4">
+													<i class="fa fa-arrow-circle-right"></i>
+											</p> -->
+										</div>
+									</div>
+									<!-- Duty Roster -->
+									<div class="col-md-4" style="padding:5px 0px 0px 0px;" ng-init="total_duty_roster()">
+										<div class="well-lg1 text-black apphit" style="background-color: #70ad47; border-top:2px solid #70ad47;border-right:2px solid #70ad47;border-left:2px solid #70ad47">
+											<div class="col-md-6 col-xs-12">
+												<img ng-src="assets/images/tkHome/Duty Roster Icon.png" class="user-image obimage" alt="User Image">
+											</div>
+											<div class="col-md-6 col-xs-12" style="padding:0;">
+												<div class="obtotalfont" style="color:white;">{{totaldutyroster.total}}
+													<div class="text-black obfont1" >Duty Roster</div>
+												</div>
+											</div>
+										
+										</div>
+										<div class="viewdetshit" style="border:2px solid #70ad47; border-radius: 0px 0px 7px 7px;">
+											<p class="pull-left viewdet">View Details</p>
+											<a href="#/admin/tk/app/dutyroster">
+												<p class="pull-right viewarrow" style="color:#70ad47;">
+													<i class="fa fa-arrow-circle-right"></i>
+												</p>
+											</a>
+											
+										</div>
+									</div>
+								</div>
+								<div style="padding:5px 0px 0px 0px;">
+									<p class="font25" style="text-align: center;">Monthly Application Statistic Report</p>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0px;" >
+										<div class="col-xs-12" style="text-align:center" >
+										
+											<div style="width:99%" ng-init="barchartdiv()">
+												<canvas id="bar23" class="chart-bar ng-isolate-scope graphss" ></canvas>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								
+								<div class="wfooter apppad24" style="padding-left:24px;">
+									{{totalpending_length}} Applications Pending for Approval
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding: 0;">
+						<div class="col-lg-12 col-md-12" style="padding:5px 0px 10px 10px;">
+							<div class="col-md-12" style="padding: 0 15px 5px 0px;" ng-init="resolution()">
+								<div class="well1 text-black text-center wissues style-15 text-center bhissues" style="background-color: #FFF;padding-top:10px ">
+									<table class="table fw6 text-left">
+										<tbody>
+											<tr ng-repeat="n in noti">
+												<td style="border: none;">
+													<p class="nomargin font12" style="color:black">{{ n.reso_date }}</p>
+												</td>
+												<td style="border: none;"><img
+														src="assets/php/admin/hr/employee/pix/{{n.pic}}.jpg?1591229368"
+														style="height: 40px; border-radius: 50%;" class="user-image">
+												</td>
+												<td style="border: none;">
+													<p class="nomargin font12" style="color:black">{{ n.empname }}</p>
+												</td>
+												<td style="border: none;">
+													<p class="nomargin font12" style="color:black">{{ n.reso_txt }}</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="col-md-12 col-xs-12 wfooter" style="padding: 0;">
+										<div class="col-md-6 col-xs-6 issueReso">
+											 {{noti_length}} Issues for Resolution
+										</div>
+										<!-- <div class="col-md-6 col-xs-6 text-right wid125"> -->
+											<div class="col-md-6 col-xs-6 text-right">
+											<select id="dept_id" class="text-black resofilter" ng-model="department" ng-change="resolution()"
+											ng-options="dept.id as dept.name for dept in dashboard.values.department | filter: typeLimit track by dept.id" select2 >
+												<option value="">Select Department</option>
+											</select>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="col-md-12" style="padding: 0 15px 0px 0px;">
+								<div class="well1 well-lg text-black text-center wnotif style-15 text-center bhnotif" style="background-color: #FFF;" ng-init="notification()">
+									<table class="table fw6 text-left">
+										<tbody>
+											<tr ng-repeat="nz in notif track by $index">
+												<td><img src="assets/php/admin/hr/employee/pix/{{nz.id}}.jpg?1591229368"
+														style="height: 40px; border-radius: 50%;" class="user-image">
+												</td>
+												<td>
+													<h4 class="nomargin">{{ nz.name }}</h4>
+														<p class="nomargin" ng-bind-html="nz.empactiontaken"></p>
+														<!-- <p>High Temperature {{n.empactiontaken}} </p> -->
+												</td>
+											</tr>
+			
+										</tbody>
+									</table>
+	
+									<div class="wfooter">
+										Notification
+									</div>
+								</div>
+							</div>
+							
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+    <div ng-include="footerTemplate"></div>
+</div>
